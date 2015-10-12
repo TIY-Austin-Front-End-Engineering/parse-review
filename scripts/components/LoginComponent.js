@@ -27,6 +27,7 @@ module.exports = react.createClass({
 						<label for="userName" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 					</div>
+					<input className="button-primary" type="submit" value="Login"  />
 				</div>
 			)
 	},
