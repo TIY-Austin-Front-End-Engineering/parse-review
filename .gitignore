@@ -18,3 +18,4 @@
 /node_modules/vinyl-source-stream
 /node_modules/watchify
 .DS_Store
+.idea/
