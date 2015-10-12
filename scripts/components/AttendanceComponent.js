@@ -11,7 +11,7 @@ module.exports = React.createClass({
 		})
 		var attendance = (
 			<table className="u-full-width">
-				<h1>Teacher Name - Quiz Name</h1>
+				<h1>Quiz Name</h1>
   				<thead>
   					<tr>
   						<th>Day Administered</th>
