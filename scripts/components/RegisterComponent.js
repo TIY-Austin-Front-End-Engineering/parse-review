@@ -13,6 +13,7 @@ module.exports= React.createClass ({
 		}
 		return(
 				<form onSubmit={this.onRegister}>
+					<h2>Register</h2>
 					<div className="row">
 					    <div className="six columns">
 					      <label for="firstName">First Name</label>
