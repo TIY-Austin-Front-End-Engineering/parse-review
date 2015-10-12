@@ -9,7 +9,7 @@ module.exports= React.createClass ({
 	render: function() {
 		var errorElement = null;
 		if (this.state.error) {
-			errorElement = (<p className= 'errorMessage'>{this.state.error}</p>)
+			errorElement = (<p className= "error-message">{this.state.error}</p>)
 		}
 		return(
 				<form onSubmit={this.onRegister}>
@@ -40,7 +40,7 @@ module.exports= React.createClass ({
 				  	<div className="row">
 					    <div className="six columns">
 					      <label for="password">Password</label>
-					      <input className="u-full-width" ref="passWord" type="password" placeholder="password" id="passWord">
+					      <input className="u-full-width" ref="password" type="password" placeholder="password" id="password">
 					   	</div>
 				  	</div>
 				  <input className="button-primary" type="submit" value="Submit">
@@ -56,7 +56,7 @@ module.exports= React.createClass ({
 				lastName: this.refs.lastName.value,
 				userName: this.refs.userName.value,
 				email: this.refs.email.value,
-				passWord: this.refs.passWord.value
+				password: this.refs.password.value
 			},
 			{
 				success: (u) => {
