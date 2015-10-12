@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 module.exports = react.createClass({
 	getInitialState: function() {
 		return(
-			error: null;
+			error: null
 		)
 	},
 	render: function() {
