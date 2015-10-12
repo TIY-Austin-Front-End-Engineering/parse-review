@@ -3,7 +3,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 window.$ = require('jquery');
-window.jquery = $;
+window.jQuery = $;
 
 
 Parse.initialize('qy4WDiTUAsyns9L817gjZdVf1aEQTetovh1yNDTk', 'xrkwhyHvS5Y9od0EWmN9hd0ssv28caF4YATtQaPJ');
@@ -23,7 +23,7 @@ var Router = Backbone.Router.extend({
 		'login': 'login',
 		'register': 'register',
 		'postQuestionComponent': 'postQuestionComponent',
-		'logout': 'home'
+		'logout': 'logout'
 
 	},
 	home: function() {
@@ -41,6 +41,9 @@ var Router = Backbone.Router.extend({
 	createQuestion: function() {
 		React.render(<PostQuestionComponent/>, app);
 	},
+	logOut: function()
+		Parse.User.logOut();
+		this.navigate('home', {trigger: true} );
 });
 
 var r = new Router();
