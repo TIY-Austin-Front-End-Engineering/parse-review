@@ -2,4 +2,4 @@
 .DS_Store
 /scripts/bundle.js
 /scripts/bundle.js.map
-/styles/main.sass.css
+/styles/*.sass.css
