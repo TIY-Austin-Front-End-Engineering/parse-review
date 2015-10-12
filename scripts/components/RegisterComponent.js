@@ -17,34 +17,34 @@ module.exports= React.createClass ({
 					<div className="row">
 					    <div className="six columns">
 					      <label for="firstName">First Name</label>
-					      <input className="u-full-width" ref="firstName" type="text" placeholder="Jill" id="firstName">
+					      <input className="u-full-width" ref="firstName" type="text" placeholder="Jill" id="firstName" />
 					   	</div>
 				  	</div>
 				  	<div className="row">
 					    <div className="six columns">
 					      <label for="lastName">Last Name</label>
-					      <input className="u-full-width" ref="lastName" type="text" placeholder="Gates" id="lastName">
+					      <input className="u-full-width" ref="lastName" type="text" placeholder="Gates" id="lastName" />
 					   	</div>
 				  	</div>
 				  	<div className="row">
 					    <div className="six columns">
 					      <label for="userName">User Name</label>
-					      <input className="u-full-width" ref="userName" type="text" placeholder="user name" id="userName">
+					      <input className="u-full-width" ref="userName" type="text" placeholder="user name" id="userName" />
 					   	</div>
 				  	</div>
 				  	<div className="row">
 					    <div className="six columns">
 					      <label for="exampleEmailInput">Your Email</label>
-					      <input className="u-full-width" ref="email" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+					      <input className="u-full-width" ref="email" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
 					   	</div>
 				  	</div>
 				  	<div className="row">
 					    <div className="six columns">
 					      <label for="password">Password</label>
-					      <input className="u-full-width" ref="password" type="password" placeholder="password" id="password">
+					      <input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 					   	</div>
 				  	</div>
-				  <input className="button-primary" type="submit" value="Submit">
+				  <input className="button-primary" type="submit" value="Submit"  />
 				</form>
 			)
 	},	
