@@ -11,19 +11,27 @@ module.exports = React.createClass({
 		var currentUser = Parse.User.current();
 		var links = []; 
 		if(currentUser.get('teacher') === true) {
-			links.push(<li><a href="#">Dashboard</a></li>);
-			links.push(<li><a href="#">Create Quiz</a></li>);
-			links.push(<li><a href="#">Log Out</a></li>);
-			links.push(<li>{currentUser.get('firstname')} {currentUser.get('lastname')}</li>);
+			links.push(<li className="nav-bar-button"><a href="#">Dashboard</a></li>);
+			links.push(<li className="nav-bar-button"><a href="#">Create Quiz</a></li>);
+			links.push(<li className="nav-bar-button"><a href="#">Log Out</a></li>);
+			links.push(<li className="nav-bar-button">{currentUser.get('firstname')} {currentUser.get('lastname')}</li>);
 		}        
 		else if(currentUser) {
-			links.push(<li><a href="#">Take Quiz</a></li>);
-			links.push(<li><a href="#">Log Out</a></li>);
-			links.push(<li>{currentUser.get('firstname')} {currentUser.get('lastname')}</li>);
+			links.push(<li className="nav-bar-button"><a href="#">Take Quiz</a></li>);
+			links.push(<li className="nav-bar-button"><a href="#">Log Out</a></li>);
+			links.push(<li className="nav-bar-button">{currentUser.get('firstname')} {currentUser.get('lastname')}</li>);
 		}
 		else {
-			links.push(<li><a href="#register">Register</a></li>);
-            links.push(<li><a href="#login">Log In</a></li>);
+			links.push(<li className="nav-bar-button"><a href="#register">Register</a></li>);
+            links.push(<li className="nav-bar-button"><a href="#login">Log In</a></li>);
 		}
+		return( 
+			<nav className="nav-bar">
+				<ul>
+					<li className="logo"></li>
+					{links}
+				</ul>
+			</nav>
+			)
 	}
 });
