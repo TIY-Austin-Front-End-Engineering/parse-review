@@ -21,7 +21,8 @@ module.exports = React.createClass({
 		queryQuizModel.find().then( 
 			(question) => { 
 				this.setState({allQuestions: question});
-			},
+			})
+	},
 
 	render: function() {
 		if(this.state.allQuestions.length == 0){
@@ -40,4 +41,5 @@ module.exports = React.createClass({
 				</div>
 			</div>
 		</div>	
-	}
+	)}
+});
