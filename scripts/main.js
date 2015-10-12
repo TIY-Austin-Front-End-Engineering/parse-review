@@ -27,19 +27,19 @@ var Router = Backbone.Router.extend({
 
 	},
 	home: function() {
-		React.render(<HomeComponent />, app);
+		ReactDOM.render(<HomeComponent />, app);
 	},
 	dashboard: function() {
-		React.render(<DashboardComponent router={r} />, app);
+		ReactDOM.render(<DashboardComponent router={r} />, app);
 	},
 	login: function() {
-		React.render(<LoginComponent router={r} />, app);
+		ReactDOM.render(<LoginComponent router={r} />, app);
 	},
 	register: function() {
-		React.render(<RegisterComponent router={r} />, app);
+		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	createQuestion: function() {
-		React.render(<PostQuestionComponent/>, app);
+		ReactDOM.render(<PostQuestionComponent/>, app);
 	},
 	logOut: function()
 		Parse.User.logOut();
