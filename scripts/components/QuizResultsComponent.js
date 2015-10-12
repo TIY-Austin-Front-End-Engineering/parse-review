@@ -11,7 +11,7 @@ module.exports = React.createClass({
 	getInitialState: function() {
 	    return {
 	    	user: this.props.user,
-	    	quiz: null,
+	    	quizzes: null,
 	    	questions: [],
 	        error: null
 	    }
@@ -22,7 +22,7 @@ module.exports = React.createClass({
 		.first({
 			success: (result) => {
         		this.setState({
-					quiz: result
+					quizzes: result
 				});
    			},
     		error: (error) => {
