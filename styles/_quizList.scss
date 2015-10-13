@@ -9,7 +9,40 @@
 		}
 	}
 	.quiz-container{
-
+		font-family: $fontFanwood;
+		background-color: $innerContainer;
+		color: white;
+		padding: 1em;
+		margin: 1em;
+		div:first-child{
+			font-size: 18px;
+			font-family: $fontQuestrial;
+		}
+		div{
+			font-size: 14px;
+			.quiz-start-expire{
+				margin-right: 1em;
+				display: inline-block;
+				.quiz-time-title{
+					font-weight: bold;
+					color: $linkColor;
+					font-size: 15px;
+				}
+			}
+		}
+		hr{
+			margin: 5px 0;
+			border-color: $hover;
+		}
+	}
+}
+@media screen and(min-width: 550px) {
+	.quiz-container{
+		div{
+			.quiz-start-expire{
+				display: inline-block;
+			}
+		}
 	}
 }
 

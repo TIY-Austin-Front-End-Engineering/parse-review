@@ -21,12 +21,13 @@ module.exports = React.createClass({
 			var startTime = quiz.get('startTime');
 			var expireTime = quiz.get('expireTime');
 			return (
-				<div className="quiz-container">
-					<div key={quiz.id}>
+				<div key={quiz.id} className="quiz-container">
+					<div>
 						<div>{quiz.get('quizTitle')}</div>
-						<div>{quiz.get('totalQuestions')}</div>
-						<div>{moment(startTime).format("dddd, MMMM Do, h:mm a")}</div>
-						<div>{moment(expireTime).format("dddd, MMMM Do, h:mm a")}</div>
+						<hr />
+						<div>Total Questions: {quiz.get('totalQuestions')}</div>
+						<div className="quiz-start-expire"><span className="quiz-time-title">Start-Time</span>: {moment(startTime).format("MMMM Do, h:mm a")}</div>
+						<div className="quiz-start-expire"><span className="quiz-time-title">Expire-Time</span>: {moment(expireTime).format("MMMM Do, h:mm a")}</div>
 					</div>
 				</div>
 			)
