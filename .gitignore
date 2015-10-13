@@ -1,5 +1,7 @@
 /node_modules
 .DS_Store
+.idea/
 /scripts/bundle.js
 /scripts/bundle.js.map
-/styles/main.sass.css
+/styles/*.sass.css
+
