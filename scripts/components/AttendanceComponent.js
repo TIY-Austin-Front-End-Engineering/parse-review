@@ -14,7 +14,7 @@ module.exports = React.createClass({
 	},
 	componentWillMount: function() {
 		var quizQuery = new Parse.Query(QuizModel);
-		quizQuery.descending('createdAt').find().then(
+		quizQuery.descending('startTime').find().then(
 			(quizes) => {
 				this.setState({quizList: quizes})
 			},

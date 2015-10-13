@@ -27,31 +27,33 @@
 
 **User Model**
 
->username: string,
->password: string,
->teacher: boolean,
->email: string
+>`firstname: string`
+>`lastname: string`
+>`username: string`
+>`password: string`
+>`teacher: boolean`
+>`email: string`
 
 **Question Model**
 
->questionTitle: string,
->questionContent: string,
->questionChoices: array,
->correctChoice: string,
->quizId: pointer
+>`questionTitle: string`
+>`questionContent: string`
+>`questionChoices: array`
+>`correctChoice: string`
+>`quizId: pointer`
 
 **Student Answer Model**
 
->studentCorrect: boolean,
->studentChoice: string,
->userId: pointer,
->questionId: pointer
+>`studentCorrect: boolean`
+>`studentChoice: string`
+>`userId: pointer`
+>`questionId: pointer`
 
 **Quiz Model**
 
->quizTitle: string,
->totalQuestions: number,
->startTime: Date,
->expireTime: Date
+>`quizTitle: string`
+>`totalQuestions: number`
+>`startTime: Date`
+>`expireTime: Date`
 
 
