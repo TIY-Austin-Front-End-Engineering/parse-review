@@ -5,7 +5,6 @@ var Backbone = require('backbone');
 window.$ = require('jquery');
 window.jQuery = $;
 
-
 Parse.initialize('CKo05MhMwPBIhtDVEPXIkPSdbEgeP66R6nm2HUjm', 'DTN20m4e87Tffl5XmCXAjRMphFlikfqNhmTyU3Bq');
 
 var RegisterComponent = require('./components/RegisterComponent');
@@ -13,6 +12,7 @@ var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
 var PostQuestionComponent = require('./components/PostQuestionComponent');
+var HomeComponent = require('./components/HomeComponent');
 
 var app = document.getElementById('app');
 
@@ -28,7 +28,7 @@ var Router = Backbone.Router.extend({
 
 	},
 	home: function() {
-		//ReactDOM.render(<HomeComponent />, app);
+		ReactDOM.render(<HomeComponent />, app);
 	},
 	dashboard: function() {
 		// ReactDOM.render(<DashboardComponent router={r} />, app);
