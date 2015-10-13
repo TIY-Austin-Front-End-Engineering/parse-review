@@ -42,6 +42,8 @@ module.exports = React.createClass({
 		  )
 	},
 	fetch: function(){
+		this.query.descending("createdAt");
+		this.query.limit(5);
 		this.query.find().then(
 			(allQuizzes) => {
 				this.setState({quizList: allQuizzes})
