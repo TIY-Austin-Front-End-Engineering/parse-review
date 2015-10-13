@@ -13,42 +13,51 @@ module.exports= React.createClass ({
 		if (this.state.error) {
 			errorElement = (<p className= "red">{this.state.error}</p>)
 		}
-		return(
-				<form onSubmit={this.onRegister} className="form">
-					<h2>Register</h2>
-					{errorElement}
-					<div className="row">
-						<div className="six columns">
-							<label htmlFor="firstName">First Name</label>
-							<input className="u-full-width" ref="firstName" type="text" placeholder="Jill" id="firstName" />
-						</div>
+		return (
+			<div className="container">
+				<div className="row">
+					<div className="six columns">
+						<form onSubmit={this.onRegister} className="form">
+							<h2>Register</h2>
+							{errorElement}
+								<div className="row">
+									<div className="twelve columns">
+										<label htmlFor="firstName">First Name</label>
+										<input className="u-full-width" ref="firstName" type="text" placeholder="Jill" id="firstName" />
+									</div>
+								</div>
+								<div className="row">
+									<div className="twelve columns">
+										<label htmlFor="lastName">Last Name</label>
+										<input className="u-full-width" ref="lastName" type="text" placeholder="Gates" id="lastName" />
+									</div>
+								</div>
+								<div className="row">
+									<div className="twelve columns">
+										<label htmlFor="userName">User Name</label>
+										<input className="u-full-width" ref="username" type="text" placeholder="user name" id="userName" />
+									</div>
+								</div>
+								<div className="row">
+									<div className="twelve columns">
+									<label htmlFor="exampleEmailInput">Your Email</label>
+									<input className="u-full-width" ref="email" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
+									</div>
+								</div>
+								<div className="row">
+								<div className="twelve columns">
+										<label htmlFor="password">Password</label>
+										<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
+									</div>
+								</div>
+								<button className="button-primary">Register</button>
+						</form>
 					</div>
-					<div className="row">
-						<div className="six columns">
-							<label htmlFor="lastName">Last Name</label>
-							<input className="u-full-width" ref="lastName" type="text" placeholder="Gates" id="lastName" />
-						</div>
+					<div className="six columns">
+						<img className="img-register" src='http://i.istockimg.com/file_thumbview_approve/73612225/3/stock-illustration-73612225-register-here-grunge-retro-red-isolated-ribbon-stamp.jpg'></img>
 					</div>
-					<div className="row">
-						<div className="six columns">
-							<label htmlFor="userName">User Name</label>
-							<input className="u-full-width" ref="username" type="text" placeholder="user name" id="userName" />
-						</div>
-					</div>
-					<div className="row">
-						<div className="six columns">
-							<label htmlFor="exampleEmailInput">Your Email</label>
-							<input className="u-full-width" ref="email" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
-						</div>
-					</div>
-					<div className="row">
-						<div className="six columns">
-							<label htmlFor="password">Password</label>
-							<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
-						</div>
-					</div>
-					<button className="button-primary">Register</button>
-				</form>
+				</div>
+			</div>
 			)
 	},	
 	onRegister: function(e) {
