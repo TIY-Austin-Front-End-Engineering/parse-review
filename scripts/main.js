@@ -12,6 +12,7 @@ var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
 var PostQuestionComponent = require('./components/PostQuestionComponent');
+var HomeComponent = require('./components/HomeComponent');
 
 var app = document.getElementById('app');
 
@@ -27,7 +28,7 @@ var Router = Backbone.Router.extend({
 		'logout': 'logout'
 	},
 	home: function() {
-		//ReactDOM.render(<HomeComponent />, app);
+		ReactDOM.render(<HomeComponent />, app);
 	},
 	dashboard: function() {
 		// ReactDOM.render(<DashboardComponent router={r} />, app);
