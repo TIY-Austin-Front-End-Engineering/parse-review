@@ -22,7 +22,7 @@ var Router = Backbone.Router.extend({
 		'dashboard': 'dashboard',
 		'login': 'login',
 		'register': 'register',
-		'postQuestionComponent': 'postQuestionComponent',
+		'PostQuestionComponent': 'createQuestion',
 		'logout': 'logout'
 
 	},

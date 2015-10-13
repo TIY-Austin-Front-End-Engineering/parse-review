@@ -7,58 +7,62 @@ module.exports = React.createClass({
 	//created a blank array for multiple choice answers to be added into
 	getInitialState: function(){
 		return (
-			{choices: []}
+			{
+				choices: [],
+				errorElement: null
+			}
+
 		);
 	},
 	render: function() {
+		console.log('render '+ this.state.errorElement)
 	//once a new multiple choice answer is added in, choiceRows will map and display onto the page
 		var choiceRows = this.state.choices.map(function(choice){
 			return(
 				<label>
-				<input type="radio" value={choice}/>
-				{newChoice}
+				<input type="radio" value={choice} name="choices"/>
+				{choice}
 				</label>
 			)
 		});
 		return (
 	//the html to display on the post question page
 			<form>
-				<input type="text" ref="questionTitle" className="validate" />
-				<input type="text" ref="choice" className="validate" />
+				<input type="text" ref="questionTitle" className="validate" placeholder="Question" />
+				<input type="text" ref="choice" className="validate" placeholder="Answer"/>
 
 				<button onClick={this.onAddChoice}> Add Choice </button>
 					{choiceRows}
-					{errorElement}
+					{this.state.errorElement}
 				<input type="text" ref="questionAnswer" className="validate" />
 				<button onClick={this.onSubmit}>Submit Question</button>
 			</form>
 
 		);
 	},
-	onSubmit: function(e){
+	onSubmit: function(e) {
 	//selecting the correct answer from the multiple choice array
 		e.preventDefault();
 		var correctAnswer = null;
-		var errorElement = null;
-		for(var i = 0; i < currentChoices.length; i++) {
-			var correct = currentChoices[i];
+		console.log(this);
+		for(var i = 0; i < this.state.choices.length; i++) {
+			var correct = this.state.choices[i];
 			if(correct.checked) {
 				correctAnswer = correct.value;
 			}
 		}
-		if(correctAnswer = null){
-			errorElement = (
-				<p className="red">Please select a correct answer</p>
-			);
+		if(correctAnswer === null){
+			this.setState({errorElement: 'this is an error'});
 		}
 	//once question is filled out, send to the server
 		var newQuestion = new QuestionModel({
 			questionContent: this.refs.questionTitle.value,
-			questionChoices: choices,
+			questionChoices: this.state.choices,
 			correctChoice: correctAnswer
 		});
 
 		newQuestion.save();
+		console.log(newQuestion);
 
 	},
 	onAddChoice: function(){
