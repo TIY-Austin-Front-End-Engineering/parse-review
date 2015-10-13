@@ -31,7 +31,7 @@ module.exports = React.createClass({
             	</form>
 
         );
-    }
+    },
     onSubmit: function(e){
     	e.preventDefault();
     	var correctAnswer = null;
