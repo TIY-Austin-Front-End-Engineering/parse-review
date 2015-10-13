@@ -50,7 +50,9 @@ module.exports = React.createClass({
 	render: function() {
 		console.log('quiz list '+this.state.quizList);
 		var quizOptions = this.state.quizList.map(function(quiz) {
-			
+			return (
+				<option value={quiz.get('objectiD')}>{quiz.get('quiztitle')}</option>
+			)
 		})
 		//var showComponent = null;
 		// var attendanceBodyData = this.quiz.map(function(student) {
@@ -79,12 +81,11 @@ module.exports = React.createClass({
 					<div className="six columns">
 						<h1>Class Attendance</h1>
 						<label htmlFor="exampleRecipientInput">Select Quiz/Day</label>
-						<select className="u-full-width" id="exampleRecipientInput">
-						<option value="Option 1">Questions</option>
-						<option value="Option 2">Admiration</option>
-						<option value="Option 3">Can I get your number?</option>
+						<select className="u-full-width" id="exampleRecipientInput" key="quizPick">
+							{quizOptions}
 						</select>
 					</div>
+					<button>Select</button>
 				</form>
 					
 			</div>
