@@ -20,10 +20,12 @@ module.exports = React.createClass({
 		}
 	},
 	componentWillMount: function(){
+		console.log(this.state.question.id);
+		console.log(Parse.User.current().id);
 		//Lines 18-27 first grabs the specific quiz, then grabs the answers associated with the specific question, then filters only the answer by the current user.
 		innerQuery.equalTo('quizId', this.state.quizId);
 		query.matchesQuery('questionId', this.state.question.id)
-		.equalTo('userId', Parse.User.current())
+		.equalTo('userId', Parse.User.current().id)
 		.find().then(function(studentAnswer){
 			console.log(studentAnswer);
 			this.setState({

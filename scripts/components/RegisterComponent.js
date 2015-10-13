@@ -14,7 +14,7 @@ module.exports= React.createClass ({
 			errorElement = (<p className= "red">{this.state.error}</p>)
 		}
 		return(
-				<form onSubmit={this.onRegister}>
+				<form onSubmit={this.onRegister} className="form">
 					<h2>Register</h2>
 					{errorElement}
 					<div className="row">
