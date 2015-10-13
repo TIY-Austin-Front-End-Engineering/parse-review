@@ -34,6 +34,6 @@ module.exports = React.createClass({
 				<div className="logo"></div>
 				{links}
 			</nav>
-			)
+		)
 	}
 });
