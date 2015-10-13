@@ -15,7 +15,7 @@ module.exports = React.createClass({
 	componentWillMount: function() {
 		var quizQuery = new Parse.Query(QuizModel);
 		quizQuery.descending('createdAt').find().then(
-			(quizes) => {
+			(quiz) => {
 				this.setState({quizList: quizes})
 			},
 			(err) => {
@@ -48,10 +48,7 @@ module.exports = React.createClass({
 		// )
 	},
 	render: function() {
-		console.log('quiz list '+this.state.quizList);
-		var quizOptions = this.state.quizList.map(function(quiz) {
-			
-		})
+		console.log(this.state.quizList);
 		//var showComponent = null;
 		// var attendanceBodyData = this.quiz.map(function(student) {
 		// 	<AttendanceRowComponent student={student} date={this.quiz}/>
@@ -77,8 +74,7 @@ module.exports = React.createClass({
 			<div>
 				<form>
 					<div className="six columns">
-						<h1>Class Attendance</h1>
-						<label htmlFor="exampleRecipientInput">Select Quiz/Day</label>
+						<label for="exampleRecipientInput">Select Quiz</label>
 						<select className="u-full-width" id="exampleRecipientInput">
 						<option value="Option 1">Questions</option>
 						<option value="Option 2">Admiration</option>
@@ -86,7 +82,7 @@ module.exports = React.createClass({
 						</select>
 					</div>
 				</form>
-					
+				//{showComponent}
 			</div>
 		)
 	}
