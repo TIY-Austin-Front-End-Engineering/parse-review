@@ -1,5 +1,5 @@
 nav {
-	background: #280036;
+	background: $navbar;
 	height: 67px;
 }
 .nav-bar-button {
@@ -7,12 +7,12 @@ nav {
 	padding: 1.5em;
 	a {
 		text-decoration: none;
-		color: #F9D824;
+		color: $hover;
 	}
 }
 a:hover {
-  	color: #FD9856;
-  	background-color: #280036;
+  	color: $hover;
+  	background-color: $navbar;
 }
 .logo {
 	height: 4em;
@@ -20,7 +20,7 @@ a:hover {
 	float: left;
 }
 .user-name-display {
-	color: #F9D824;
+	color: $navbar;
 	display: inline;
 	padding: 1.5em;
 	float: left;
