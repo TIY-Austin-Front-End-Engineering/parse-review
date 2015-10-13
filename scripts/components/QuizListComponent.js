@@ -1,3 +1,7 @@
+// Pulling data from Quiz Model to get information on the Quiz Title,
+// Total Number of Questions, Quiz Start Time and Quiz Expiration Time
+// and displaying that information.
+
 var React = require('react');
 var QuizModel = require('../models/QuizModel');
 
