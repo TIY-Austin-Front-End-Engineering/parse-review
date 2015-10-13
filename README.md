@@ -27,31 +27,52 @@
 
 **User Model**
 
->username: string,
->password: string,
->teacher: boolean,
->email: string
+>`firstname: string` <br>
+>`lastname: string` <br>
+>`username: string` <br>
+>`password: string` <br>
+>`teacher: boolean` <br>
+>`email: string` <br>
 
 **Question Model**
 
->questionTitle: string,
->questionContent: string,
->questionChoices: array,
->correctChoice: string,
->quizId: pointer
+>`questionTitle: string` <br>
+>`questionContent: string` <br>
+>`questionChoices: array` <br>
+>`correctChoice: string` <br>
+>`quizId: pointer` <br>
 
 **Student Answer Model**
 
->studentCorrect: boolean,
->studentChoice: string,
->userId: pointer,
->questionId: pointer
+>`studentCorrect: boolean` <br>
+>`studentChoice: string` <br>
+>`userId: pointer` <br>
+>`questionId: pointer` <br>
 
 **Quiz Model**
 
->quizTitle: string,
->totalQuestions: number,
->startTime: Date,
->expireTime: Date
+>`quizTitle: string`  <br>
+>`totalQuestions: number` <br>
+>`startTime: Date` <br>
+>`expireTime: Date` <br>
 
+<hr> 
+
+##Style Guide
+
+_Open to Change!_
+
+**Fonts**
+
+* Questrial
+* Fanwood Text
+
+**Color Palette**
+
+* http://www.colourlovers.com/palette/2209236/Rust_of_the_Story
+* NavBar Color `#280036`
+* Button Color `#24677F`
+* Body Background Color `#FFEBBE`
+* Inner Container Color `#934C47`
+* :hover Color `#FD9856`
 
