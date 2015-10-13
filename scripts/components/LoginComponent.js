@@ -1,4 +1,4 @@
-// This is for the Log in component
+// This is for the Log in component that lets users access their account.
 var React = require('react');
 var ReactDOM = require('react-dom');
 
