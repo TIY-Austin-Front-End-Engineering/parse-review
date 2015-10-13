@@ -51,7 +51,6 @@ var Router = Backbone.Router.extend({
 	},
 	quizList: function() {
 		ReactDOM.render(<QuizListComponent />, app);
-		console.log('moved')
 	}
 });
 
