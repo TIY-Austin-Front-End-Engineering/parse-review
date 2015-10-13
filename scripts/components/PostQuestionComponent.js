@@ -7,58 +7,68 @@ module.exports = React.createClass({
 	//created a blank array for multiple choice answers to be added into
 	getInitialState: function(){
 		return (
-			{choices: []}
+			{
+				choices: [],
+				feedbackElement: null
+			}
+
 		);
 	},
 	render: function() {
+		console.log('render '+ this.state.errorElement)
 	//once a new multiple choice answer is added in, choiceRows will map and display onto the page
 		var choiceRows = this.state.choices.map(function(choice){
 			return(
 				<label>
-				<input type="radio" value={choice}/>
-				{newChoice}
+				<input className="radioo" type="radio" value={choice} name="choices"/>
+				{choice}
 				</label>
 			)
 		});
 		return (
 	//the html to display on the post question page
-			<form>
-				<input type="text" ref="questionTitle" className="validate" />
-				<input type="text" ref="choice" className="validate" />
+			<div>
+				<input type="text" ref="questionTitle" className="validate" placeholder="Question" />
+				<input type="text" ref="choice" className="validate" placeholder="Answer"/>
 
 				<button onClick={this.onAddChoice}> Add Choice </button>
+					<div ref="choiceRows">				
 					{choiceRows}
-					{errorElement}
-				<input type="text" ref="questionAnswer" className="validate" />
+					</div>
+					{this.state.feedbackElement}
 				<button onClick={this.onSubmit}>Submit Question</button>
-			</form>
+			</div>
 
 		);
 	},
-	onSubmit: function(e){
+	onSubmit: function() {
 	//selecting the correct answer from the multiple choice array
-		e.preventDefault();
+		var radioBtns = this.refs.choiceRows.querySelectorAll('.radioo');
 		var correctAnswer = null;
-		var errorElement = null;
-		for(var i = 0; i < currentChoices.length; i++) {
-			var correct = currentChoices[i];
+		for(var i = 0; i < radioBtns.length; i++) {
+			var correct = radioBtns[i];
 			if(correct.checked) {
 				correctAnswer = correct.value;
 			}
 		}
-		if(correctAnswer = null){
-			errorElement = (
-				<p className="red">Please select a correct answer</p>
-			);
+		//once question is filled out, send to the server
+		if(correctAnswer === null){
+			this.setState({feedbackElement: 'this is an error'});
+		}else{
+			var newQuestion = new QuestionModel({
+				questionContent: this.refs.questionTitle.value,
+				questionChoices: this.state.choices,
+				correctChoice: correctAnswer
+				
+			});
+			newQuestion.save();
+			this.refs.questionTitle.value = '',
+			this.refs.choice.value = '',
+			this.setState({choices: []});
+			this.setState({feedbackElement: 'new question submitted'});
 		}
-	//once question is filled out, send to the server
-		var newQuestion = new QuestionModel({
-			questionContent: this.refs.questionTitle.value,
-			questionChoices: choices,
-			correctChoice: correctAnswer
-		});
-
-		newQuestion.save();
+		
+		
 
 	},
 	onAddChoice: function(){
