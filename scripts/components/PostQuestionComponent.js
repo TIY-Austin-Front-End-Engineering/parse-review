@@ -9,7 +9,7 @@ module.exports = React.createClass({
 		return (
 			{
 				choices: [],
-				errorElement: null
+				feedbackElement: null
 			}
 
 		);
@@ -35,7 +35,7 @@ module.exports = React.createClass({
 					<div ref="choiceRows">				
 					{choiceRows}
 					</div>
-					{this.state.errorElement}
+					{this.state.feedbackElement}
 				<button onClick={this.onSubmit}>Submit Question</button>
 			</div>
 
@@ -53,15 +53,22 @@ module.exports = React.createClass({
 		}
 		//once question is filled out, send to the server
 		if(correctAnswer === null){
-			this.setState({errorElement: 'this is an error'});
+			this.setState({feedbackElement: 'this is an error'});
 		}else{
 			var newQuestion = new QuestionModel({
 				questionContent: this.refs.questionTitle.value,
 				questionChoices: this.state.choices,
 				correctChoice: correctAnswer
+				
 			});
 			newQuestion.save();
+			this.refs.questionTitle.value = '',
+			this.refs.choice.value = '',
+			this.setState({choices: []});
+			this.setState({feedbackElement: 'new question submitted'});
 		}
+		
+		
 
 	},
 	onAddChoice: function(){
