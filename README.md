@@ -56,4 +56,23 @@
 >`startTime: Date` <br>
 >`expireTime: Date` <br>
 
+<hr> 
+
+##Style Guide
+
+_Open to Change!_
+
+**Fonts**
+
+* Questrial
+* Fanwood Text
+
+**Color Palette**
+
+* http://www.colourlovers.com/palette/2209236/Rust_of_the_Story
+* NavBar Color `#280036`
+* Button Color `#24677F`
+* Body Background Color `#FFEBBE`
+* Inner Container Color `#934C47`
+* :hover Color `#FD9856`
 
