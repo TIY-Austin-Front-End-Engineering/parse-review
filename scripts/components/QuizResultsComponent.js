@@ -9,47 +9,49 @@ var PossibleAnswersComponent = require('./components/PossibleAnswersComponent');
 
 module.exports = React.createClass({
 	getInitialState: function() {
-	    return {
-	    	user: this.props.user,
-	    	quizzes: null,
-	    	questions: [],
-	        error: null
-	    }
+		return {
+			user: this.props.user,
+			quizzes: null,
+			questions: [],
+			error: null
+		}
 	},
 	componentWillMount: function() {
-
+		//Lines 20-34 grab the quizId from the server
 		quizQuery.equalTo('objectId', this.props.quiz)
 		.first({
 			success: (result) => {
-        		this.setState({
+				this.setState({
 					quizzes: result
 				});
-   			},
-    		error: (error) => {
-       	 		console.log('didnt find it');
-       	 		this.setState({
+			},
+			error: (error) => {
+				console.log('didnt find it');
+				this.setState({
 					error: err.message
 				})
-    		}
+			}
 		});
+		//Lines 35-50 grab all the questions associated with the previous grabbed quizId
 		questionsQuery.equalTo('quiz_id', this.props.quiz)
 		.find({
 			success: (result) => {
 				console.log(result);
-        		that.setState({
+				that.setState({
 					questions: result
 				});
-   			},
-    		error: (error) => {
-       	 		console.log('didnt find any questions');
-       	 		that.setState({
+			},
+			error: (error) => {
+				console.log('didnt find any questions');
+				that.setState({
 					error: err.message
 				})
-    		}
+			}
 		});
 			
 	},
 	render: function() {
+		//var questions maps out the questions associated with the quizId
 		var questions = this.state.questions
 		.map(function(question) {
 		return (
