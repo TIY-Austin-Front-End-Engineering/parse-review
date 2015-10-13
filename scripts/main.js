@@ -6,7 +6,11 @@ window.$ = require('jquery');
 window.jQuery = $;
 
 
+<<<<<<< HEAD
 Parse.initialize("CKo05MhMwPBIhtDVEPXIkPSdbEgeP66R6nm2HUjm", "DTN20m4e87Tffl5XmCXAjRMphFlikfqNhmTyU3Bq");
+=======
+Parse.initialize('CKo05MhMwPBIhtDVEPXIkPSdbEgeP66R6nm2HUjm', 'DTN20m4e87Tffl5XmCXAjRMphFlikfqNhmTyU3Bq');
+>>>>>>> e4333472ea90aba64d04621d16553c907d02e546
 
 var RegisterComponent = require('./components/RegisterComponent');
 var NavigationComponent = require('./components/NavigationComponent');
@@ -23,7 +27,7 @@ var Router = Backbone.Router.extend({
 		'login': 'login',
 		'register': 'register',
 		'postQuestion': 'postQuestion',
-		'quizResults': 'quizResults',
+		'quizResults/:id': 'quizResults',
 		'logout': 'logout'
 
 	},
