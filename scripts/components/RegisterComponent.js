@@ -2,9 +2,9 @@ var React = require('react');
 
 module.exports= React.createClass ({
 	getInitialState: function() {
-	    return (
-	          error: null
-	    );
+		return {
+			error: null
+		};
 	},
 	render: function() {
 		var errorElement = null;
