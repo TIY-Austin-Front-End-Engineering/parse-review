@@ -11,6 +11,7 @@ module.exports = React.createClass({
 		);
 	},
 	render: function() {
+		console.log('rendering');
 	//once a new multiple choice answer is added in, choiceRows will map and display onto the page
 		var choiceRows = this.state.choices.map(function(choice){
 			return(

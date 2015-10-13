@@ -22,7 +22,7 @@ var Router = Backbone.Router.extend({
 		'dashboard': 'dashboard',
 		'login': 'login',
 		'register': 'register',
-		'postQuestionComponent': 'postQuestionComponent',
+		'createQuestion': 'createQuestion',
 		'logout': 'logout'
 
 	},
@@ -39,7 +39,7 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	createQuestion: function() {
-		ReactDOM.render(<PostQuestionComponent/>, app);
+		ReactDOM.render(<PostQuestionComponent />, app);
 	},
 	logOut: function() {
 		Parse.User.logOut();
