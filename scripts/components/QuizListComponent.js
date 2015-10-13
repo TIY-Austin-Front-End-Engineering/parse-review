@@ -18,16 +18,21 @@ module.exports = React.createClass({
 	render: function(){
 		var allQuizzes = this.state.quizList.map(function(quiz){
 			return (
-				<div key={quiz.id}>
-					<div>{quiz.get('quizTitle')}</div>
-					<div>{quiz.get('totalQuestions')}</div>
-					<div>{quiz.get('startTime').toString()}</div>
-					<div>{quiz.get('expireTime').toString()}</div>
+				<div className="quiz-container">
+					<div key={quiz.id}>
+						<div>{quiz.get('quizTitle')}</div>
+						<div>{quiz.get('totalQuestions')}</div>
+						<div>{quiz.get('startTime').toString()}</div>
+						<div>{quiz.get('expireTime').toString()}</div>
+					</div>
 				</div>
-				)
+			)
 		});
 		return(
 			<div className="QuizListComponent">
+				<div className="quiz-image-container">
+					<img src="/images/quiz.jpg" />
+				</div>
 				{allQuizzes}
 			</div>
 		  )

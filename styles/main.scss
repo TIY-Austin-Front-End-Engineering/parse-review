@@ -1,3 +1,10 @@
 @import 'normalize',
         'skeleton',
-        '_navigation.scss';
+        'variables',
+        'navigation',
+        'quizList',
+        'home';
+
+body {
+	background-color: $bodyBackground;
+}
