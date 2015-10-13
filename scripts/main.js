@@ -5,16 +5,20 @@ var Backbone = require('backbone');
 window.$ = require('jquery');
 window.jQuery = $;
 
-Parse.initialize('CKo05MhMwPBIhtDVEPXIkPSdbEgeP66R6nm2HUjm', 'DTN20m4e87Tffl5XmCXAjRMphFlikfqNhmTyU3Bq');
+Parse.initialize("CKo05MhMwPBIhtDVEPXIkPSdbEgeP66R6nm2HUjm", "DTN20m4e87Tffl5XmCXAjRMphFlikfqNhmTyU3Bq");
 
 var RegisterComponent = require('./components/RegisterComponent');
 var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
 var PostQuestionComponent = require('./components/PostQuestionComponent');
+var QuizResultsComponent = require('./components/QuizResultsComponent');
 var HomeComponent = require('./components/HomeComponent');
 var ClassAnalyticsComponent = require('./components/ClassAnalyticsComponent');
+var DashboardComponent = require('./components/DashboardComponent');
 
+
+var currentUser = Parse.User.current();
 var app = document.getElementById('app');
 
 var Router = Backbone.Router.extend({
@@ -28,12 +32,19 @@ var Router = Backbone.Router.extend({
 		'quizResults/:id': 'quizResults',
 		'logout': 'logout',
 		'classAnalytics': 'classAnalytics'
+		'quizResults/:userId/:quizId': 'quizResults',
+		'logout': 'logout'
 	},
 	home: function() {
 		ReactDOM.render(<HomeComponent />, app);
 	},
 	dashboard: function() {
-		// ReactDOM.render(<DashboardComponent router={r} />, app);
+		// if(currentUser && currentUser.get('teacher') === true) {
+		// 	ReactDOM.render(<DashboardComponent router={r} />, app);
+		// }
+		// else {
+		// 	this.navigate('', {trigger: true});
+		// }
 	},
 	login: function() {
 		ReactDOM.render(<LoginComponent router={r} />, app);
@@ -42,20 +53,27 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	postQuestion: function() {
-		ReactDOM.render(<PostQuestionComponent/>, app);
+		if(currentUser && currentUser.get('teacher') === true) {
+			ReactDOM.render(<PostQuestionComponent/>, app);
+		}
+		else {
+			this.navigate('', {trigger: true});
+		}
 	},
-	quizResults: function(id) {
-		// ReactDOM.render(<QuizResultsComponent/>, app);
+	quizResults: function(userId, quizId) {
+		ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} />, app);
 	},
-	logOut: function() {
+	logout: function() {
 		Parse.User.logOut();
-		this.navigate('home', {trigger: true} );
+		this.navigate('', {trigger: true});
 	},
 	quizList: function() {
 		ReactDOM.render(<QuizListComponent />, app);
 	},
 	classAnalytics: function() {
 		ReactDOM.render(<ClassAnalyticsComponent />, app);
+	dashboard: function() {
+		ReactDOM.render(<DashboardComponent />, app);
 	}
 });
 

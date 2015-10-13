@@ -1,16 +1,17 @@
 @import 'normalize',
-		'skeleton',
-		'navigation',
-		'home';
-
-$navbar: #280036;
-$button: #24677F;
-$bodyBackground: #FFEBBE;
-$innerContainer: #934C47;
-$hover: #FD9856;
-
-// $fontQuestrial: font-family: 'Questrial', sans-serif;
-// $fontFanwood: font-family: 'Fanwood Text', serif;
+        'skeleton',
+        'variables',
+        'navigation',
+        'quizList',
+        'home',
+        'login',
+        'possible-answers',
+        'post-question',
+        'quiz-details',
+        'register',
+        'student-analytics',
+        'class-analytics',
+        'quiz-results';
 
 body {
 	background-color: $bodyBackground;
