@@ -22,16 +22,16 @@ var Router = Backbone.Router.extend({
 		'dashboard': 'dashboard',
 		'login': 'login',
 		'register': 'register',
-		'postQuestionComponent': 'postQuestionComponent',
-		'logout': 'logout',
-		'quizList': 'quizList'
-
+		'quizList': 'quizList',
+		'postQuestion': 'postQuestion',
+		'quizResults': 'quizResults',
+		'logout': 'logout'
 	},
 	home: function() {
 		//ReactDOM.render(<HomeComponent />, app);
 	},
 	dashboard: function() {
-		ReactDOM.render(<DashboardComponent router={r} />, app);
+		// ReactDOM.render(<DashboardComponent router={r} />, app);
 	},
 	login: function() {
 		ReactDOM.render(<LoginComponent router={r} />, app);
@@ -39,8 +39,11 @@ var Router = Backbone.Router.extend({
 	register: function() {
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
-	createQuestion: function() {
+	postQuestion: function() {
 		ReactDOM.render(<PostQuestionComponent/>, app);
+	},
+	quizResults: function(id) {
+		// ReactDOM.render(<QuizResultsComponent/>, app);
 	},
 	logOut: function() {
 		Parse.User.logOut();
