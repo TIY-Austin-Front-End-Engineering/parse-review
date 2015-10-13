@@ -1,3 +1,6 @@
+//The PossibleAnswersComponent pulls the users answers and the answers associated with each questions and renders them on the page, color-coded by correct status
+//The needed properties are the StudentAnswerModel and the QuestionModel for determining the correctly associated questions and answers.
+
 var React = require('react');
 var QuestionModel = require('../models/QuestionModel')
 var query = new Parse.Query(StudentAnswerModel);
