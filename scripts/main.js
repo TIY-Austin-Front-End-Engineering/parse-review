@@ -13,6 +13,8 @@ var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
 var PostQuestionComponent = require('./components/PostQuestionComponent');
+var QuizResultsComponent = require('./components/QuizResultsComponent');
+
 
 var app = document.getElementById('app');
 
@@ -24,7 +26,7 @@ var Router = Backbone.Router.extend({
 		'register': 'register',
 		'quizList': 'quizList',
 		'postQuestion': 'postQuestion',
-		'quizResults/:id': 'quizResults',
+		'quizResults/:userId/:quizId': 'quizResults',
 		'logout': 'logout'
 	},
 	home: function() {
@@ -42,8 +44,8 @@ var Router = Backbone.Router.extend({
 	postQuestion: function() {
 		ReactDOM.render(<PostQuestionComponent/>, app);
 	},
-	quizResults: function(id) {
-		// ReactDOM.render(<QuizResultsComponent/>, app);
+	quizResults: function(userId, quizId) {
+		ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} />, app);
 	},
 	logOut: function() {
 		Parse.User.logOut();

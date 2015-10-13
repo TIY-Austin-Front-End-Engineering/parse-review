@@ -4,30 +4,31 @@
 var React = require('react');
 var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
-var StudentAnswersModel = require('../models/StudentsAnswersModel');
+var StudentAnswersModel = require('../models/StudentAnswerModel');
 var quizQuery = new Parse.Query(QuizModel);
 var questionsQuery = new Parse.Query(QuestionModel);
 var studentAnswersQuery = new Parse.Query(StudentAnswersModel);
-var PossibleAnswersComponent = require('./components/PossibleAnswersComponent');
+var PossibleAnswersComponent = require('./PossibleAnswersComponent');
 var numQuestions = 0;
 var numCorrect = 0;
 
 
 module.exports = React.createClass({
-	getInitialState: function() {
+	getInitialState: function () {
 		return {
-			user: this.props.user,
+			user: this.props.userId,
 			quiz: null,
 			questions: [],
 			error: null
-		
 		}
 	},
-	componentWillMount: function() {
+	componentWillMount: function () {
+		console.log(this.props.quizId)
 		//Lines 20-34 grab the quizId from the server
-		quizQuery.equalTo('objectId', this.props.quiz)
+		quizQuery.equalTo('objectId', this.props.quizId)
 		.first({
 			success: (result) => {
+				console.log(result)
 				this.setState({
 					quiz: result
 				});
@@ -43,8 +44,8 @@ module.exports = React.createClass({
 		questionsQuery.equalTo('quiz_id', this.props.quiz)
 		.find({
 			success: (result) => {
-				console.log(result);
-				that.setState({
+				
+				this.setState({
 					questions: result
 				});
 			},
@@ -59,33 +60,37 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		//var questions maps out the questions associated with the quizId
-		var questions = this.state.questions
-		.map(function(question) {
-			this.setState({
+		if (!this.state.quiz||!this.state.questions){
+			return <div>Nope</div>
+		}else{
 
+			console.log(this.state.quiz);
+			var questions = this.state.questions
+			.map((question)=> {
+				return (
+					<div>
+						<h2>{question.get('questionTitle')}</h2>
+						<h3>{question.get('questionContent')}</h3>
+						<PossibleAnswersComponent question={question} answers={question.get('questionChoices')} correctAnswer={question.get('correctChoice')} quizId={this.state.quiz.id}/>
+					</div>
+					);
 			})
+		
 			return (
 				<div>
-					<h2>{question.get('questionTitle')}</h2>
-					<h3>{question.get('questionContent')}</h3>
-					<PossibleAnswersComponent question={question} answers={question.get('questionChoices')} correctAnswer={question.get('correctChoice')} quizId={this.state.quiz.id}/>
+					<div>
+						<div>Quiz Name: {this.state.quiz.get('quizTitle')}</div>
+						<div>User: {Parse.User.current('username')}</div>
+						<div>Percentage: {this.percent}%</div>
+					</div>
+					<div>
+						{questions}
+					</div>
 				</div>
-				);
-		})
-		return (
-			<div>
-				<div>
-					<div>Quiz Name: {this.state.quiz.get('quizTitle')}</div>
-					<div>User: {Parse.User.current('username')}</div>
-					<div>Percentage: {this.percent}%</div>
-				</div>
-				<div>
-					{questions}
-				</div>
-			</div>
-		);
+			);
+		}
 	},
-	percent: function(){
+	percent: ()=>{
 		//correct answers devided by num questions
 		studentAnswersQuery.equalTo('quiz_id', this.state.quiz)
 		.equalTo('studentCorrect', true).then({
