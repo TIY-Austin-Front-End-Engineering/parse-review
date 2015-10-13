@@ -53,9 +53,9 @@ module.exports = React.createClass({
 		}
 	//once question is filled out, send to the server
 		var newQuestion = new QuestionModel({
-			question: this.refs.questionTitle.value,
-			choices: choices,
-			correctAnswer: correctAnswer
+			questionContent: this.refs.questionTitle.value,
+			questionChoices: choices,
+			correctChoice: correctAnswer
 		});
 
 		newQuestion.save();
