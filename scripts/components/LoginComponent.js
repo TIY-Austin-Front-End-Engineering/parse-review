@@ -1,11 +1,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
  
-module.exports = react.createClass({
+module.exports = React.createClass({
 	getInitialState: function() {
-		return(
+		return {
 			error: null
-		)
+		};
 	},
 	render: function() {
 		var errorElement = null;
@@ -29,24 +29,23 @@ module.exports = react.createClass({
 					</div>
 					<input className="button-primary" type="submit" value="Login"  />
 				</div>
-			)
+			</form>
+		);
 	},
 	onLogin: function(e) {
 		e.preventDefault();
 		var user = new Parse.User();
 		Parse.User.login(
-			{
-				this.refs.userName.value,
-				this.refs.password.value
-			},
+			this.refs.userName.value,
+			this.refs.password.value,
 			{
 				success: (u) => {
 					this.props.router.navigate('', {trigger: true})
-			},
+				},
 				error: (u, error) => {
 					this.setState({
 						error: error.message
-					})
+					});
 				}
 			}	
 		)
