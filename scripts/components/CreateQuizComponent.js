@@ -5,6 +5,15 @@ var QuizModel = require('../models/QuizModel');
 
 
 module.exports = React.createClass({
+	getInitialState: function(){
+		return{
+			quiz: null
+		};
+	},
+	componentWillMount: function(){
+		var query = new Parse.Query(QuizModel);
+		query.get(this.props.quizID)
+	}
 	render:function(){
 		return(
 			<div>
