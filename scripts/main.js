@@ -24,7 +24,7 @@ var Router = Backbone.Router.extend({
 		'register': 'register',
 		'quizList': 'quizList',
 		'postQuestion': 'postQuestion',
-		'quizResults': 'quizResults',
+		'quizResults/:id': 'quizResults',
 		'logout': 'logout'
 	},
 	home: function() {
