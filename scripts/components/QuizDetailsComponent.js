@@ -1,4 +1,4 @@
-// Pulling QuizModel from Database and displaying quiz questions to the Component.
+//Pulling QuizModel from Database and displaying quiz questions to the Component.
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
