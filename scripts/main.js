@@ -13,6 +13,7 @@ var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
 var PostQuestionComponent = require('./components/PostQuestionComponent');
+var AttendanceComponent = require('./components/AttendanceComponent');
 
 var app = document.getElementById('app');
 
@@ -23,7 +24,8 @@ var Router = Backbone.Router.extend({
 		'login': 'login',
 		'register': 'register',
 		'postQuestionComponent': 'postQuestionComponent',
-		'logout': 'logout'
+		'logout': 'logout',
+		'attendance': 'attendance'
 
 	},
 	home: function() {
@@ -44,6 +46,9 @@ var Router = Backbone.Router.extend({
 	logOut: function() {
 		Parse.User.logOut();
 		this.navigate('home', {trigger: true} );
+	},
+	attendance: function() {
+		ReactDOM.render(<AttendanceComponent/>, app);
 	}
 });
 

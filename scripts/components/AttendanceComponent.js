@@ -1,9 +1,41 @@
 var React = require('react');
 var Backbone = require('backbone');
-var AttendanceRowComponent = require('./AttendanceRowComponent');
-
+var AttendanceRowComponent = require('./AttendanceDataRowComponent');
+//pass in quiz id as prop - quiz
 
 module.exports = React.createClass({
+	getInitialState: function() {
+		return {
+			answerList: [],
+			students: []
+		}
+	},
+	componentWillMount: function() {
+		var query = new Parse.Query(StudentAnswer);
+		var innerQuery = new Parse.Query(Parse.Object.extend('Question'));
+		innerQuery.equalTo('quizId', this.props.quiz);
+		query.matchesQuery('questionId', innerQuery);
+		query.find().then( (studentAnswers) => {
+			var AnswersList = _.groupBy(studentAnswers, function() {
+				return studentAnswers.get('userId').id;
+			},
+			(err) => {
+				console.log(err);
+			}
+			)
+			this.setState({answerList: AnswersList});
+		})
+		console.log(AnswersList);
+		var studentsListquery = new Parse.Query(User);
+		studentsListquery.notEqualTo('type','teacher').find().then(
+			(students) => {
+				this.setState({students: students});
+			},
+			(err) => {
+				console.log(err);
+			}
+		)
+	},
 	render: function() {
 		var showComponent = null;
 		var attendanceBodyData = this.quiz.map(function(student) {
@@ -12,14 +44,14 @@ module.exports = React.createClass({
 		var attendance = (
 			<table className="u-full-width">
 				<h1>Quiz Name</h1>
-  				<thead>
-  					<tr>
-  						<th>Day Administered</th>
-  						<th>Student Name</th>
-  						<th>Time Started</th>
-  					</tr>
-  				</thead>
-  				{attendanceBodyData}
+				<thead>
+					<tr>
+						<th>Day Administered</th>
+						<th>Student Name</th>
+						<th>Time Started</th>
+					</tr>
+				</thead>
+				{attendanceBodyData}
 			</table>
 		)
 		var accessDenied = (
@@ -28,6 +60,16 @@ module.exports = React.createClass({
 		Parse.User.current().get('teacher') ? showComponent = attendance : showComponent = accessDenied;
 		return (
 			<div>
+				<form>
+					<div className="six columns">
+						<label for="exampleRecipientInput">Select Quiz</label>
+						<select className="u-full-width" id="exampleRecipientInput">
+						<option value="Option 1">Questions</option>
+						<option value="Option 2">Admiration</option>
+						<option value="Option 3">Can I get your number?</option>
+						</select>
+					</div>
+				</form>
 				{showComponent}
 			</div>
 		)
