@@ -20,49 +20,48 @@ module.exports = React.createClass({
 		var choiceRows = this.state.choices.map(function(choice){
 			return(
 				<label>
-				<input type="radio" value={choice} name="choices"/>
+				<input className="radioo" type="radio" value={choice} name="choices"/>
 				{choice}
 				</label>
 			)
 		});
 		return (
 	//the html to display on the post question page
-			<form>
+			<div>
 				<input type="text" ref="questionTitle" className="validate" placeholder="Question" />
 				<input type="text" ref="choice" className="validate" placeholder="Answer"/>
 
 				<button onClick={this.onAddChoice}> Add Choice </button>
+					<div ref="choiceRows">				
 					{choiceRows}
+					</div>
 					{this.state.errorElement}
-				<input type="text" ref="questionAnswer" className="validate" />
 				<button onClick={this.onSubmit}>Submit Question</button>
-			</form>
+			</div>
 
 		);
 	},
-	onSubmit: function(e) {
+	onSubmit: function() {
 	//selecting the correct answer from the multiple choice array
-		e.preventDefault();
+		var radioBtns = this.refs.choiceRows.querySelectorAll('.radioo');
 		var correctAnswer = null;
-		console.log(this);
-		for(var i = 0; i < this.state.choices.length; i++) {
-			var correct = this.state.choices[i];
+		for(var i = 0; i < radioBtns.length; i++) {
+			var correct = radioBtns[i];
 			if(correct.checked) {
 				correctAnswer = correct.value;
 			}
 		}
+		//once question is filled out, send to the server
 		if(correctAnswer === null){
 			this.setState({errorElement: 'this is an error'});
+		}else{
+			var newQuestion = new QuestionModel({
+				questionContent: this.refs.questionTitle.value,
+				questionChoices: this.state.choices,
+				correctChoice: correctAnswer
+			});
+			newQuestion.save();
 		}
-	//once question is filled out, send to the server
-		var newQuestion = new QuestionModel({
-			questionContent: this.refs.questionTitle.value,
-			questionChoices: this.state.choices,
-			correctChoice: correctAnswer
-		});
-
-		newQuestion.save();
-		console.log(newQuestion);
 
 	},
 	onAddChoice: function(){
