@@ -51,7 +51,7 @@ module.exports = React.createClass({
 		console.log('quiz list '+this.state.quizList);
 		var quizOptions = this.state.quizList.map(function(quiz) {
 			return (
-				<option value={quiz.get('objectiD')}>{quiz.get('quiztitle')}</option>
+				<option value={quiz.get('objectiD')} key={quiz.get('objectiD')}>{quiz.get('quiztitle')} + '-' + {quiz.get('startTime').toDateString()}</option>
 			)
 		})
 		//var showComponent = null;
@@ -77,11 +77,11 @@ module.exports = React.createClass({
 		// Parse.User.current().get('teacher') ? showComponent = attendance : showComponent = accessDenied;
 		return (
 			<div>
-				<form>
+				<form onSubmit={this.selectQuiz}>
 					<div className="six columns">
 						<h1>Class Attendance</h1>
 						<label htmlFor="exampleRecipientInput">Select Quiz/Day</label>
-						<select className="u-full-width" id="exampleRecipientInput" key="quizPick">
+						<select className="u-full-width" id="exampleRecipientInput" ref="quizPick">
 							{quizOptions}
 						</select>
 					</div>
@@ -90,5 +90,9 @@ module.exports = React.createClass({
 					
 			</div>
 		)
+	},
+	selectQuiz: function(e) {
+		e.preventDefault();
+		console.log(this.refs.quizPick.value)
 	}
 })
