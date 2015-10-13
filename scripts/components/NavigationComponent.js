@@ -14,7 +14,7 @@ module.exports = React.createClass({
 		//'if' statement will show all the links including the ones only available to teachers.
 		if(currentUser && currentUser.get('teacher') === true) {
 			links.push(<div key="teacher" className="nav-bar-button"><a href="#dashboard">Dashboard</a></div>);
-			links.push(<div key="teacher" className="nav-bar-button"><a href="#creatQuiz">Create Quiz</a></div>);
+			links.push(<div key="teacher" className="nav-bar-button"><a href="#createQuiz">Create Quiz</a></div>);
 			links.push(<div key="teacher" className="nav-bar-button"><a href="#logout">Log Out</a></div>);
 			links.push(<div key="teacher" className="nav-bar-button">{currentUser.get('username')}</div>);
 		}
