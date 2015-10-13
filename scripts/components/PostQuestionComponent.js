@@ -26,7 +26,6 @@ module.exports = React.createClass({
 			<form>
 				<input type="text" ref="questionTitle" className="validate" />
 				<input type="text" ref="choice" className="validate" />
-
 				<button onClick={this.onAddChoice}> Add Choice </button>
 					{choiceRows}
 					{errorElement}
