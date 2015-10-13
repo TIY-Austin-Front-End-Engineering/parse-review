@@ -2,19 +2,23 @@ var React = require('react');
 var Backbone = require('backbone');
 var AttendanceRowComponent = require('./AttendanceDataRowComponent');
 var QuizModel = require('../models/QuizModel');
+var StudentAnswerModel = require('../models/StudentAnswerModel');
+var QuestionModel = require('../models/QuestionModel');
+var _ = require('backbone/node_modules/underscore');
 //pass in quiz id as prop - quiz
 
 module.exports = React.createClass({
 	getInitialState: function() {
 		return {
-			answerList: [],
+			groupedStudentAnswers: null,
 			students: [],
-			quizList: []
+			quizList: [],
+			show: false
 		}
 	},
 	componentWillMount: function() {
 		var quizQuery = new Parse.Query(QuizModel);
-		quizQuery.descending('startTime').find().then(
+		quizQuery.ascending('startTime').find().then(
 			(quizes) => {
 				this.setState({quizList: quizes})
 			},
@@ -22,59 +26,52 @@ module.exports = React.createClass({
 				console.log(err);
 			}
 		)
-		// var query = new Parse.Query(StudentAnswer);
-		// var innerQuery = new Parse.Query(Parse.Object.extend('Question'));
-		// innerQuery.equalTo('quizId', this.props.quiz);
-		// query.matchesQuery('questionId', innerQuery);
-		// query.find().then( (studentAnswers) => {
-		// 	var AnswersList = _.groupBy(studentAnswers, function() {
-		// 		return studentAnswers.get('userId').id;
-		// 	},
-		// 	(err) => {
-		// 		console.log(err);
-		// 	}
-		// 	)
-		// 	this.setState({answerList: AnswersList});
-		// })
-		// console.log(AnswersList);
-		// var studentsListquery = new Parse.Query(User);
-		// studentsListquery.notEqualTo('type','teacher').find().then(
-		// 	(students) => {
-		// 		this.setState({students: students});
-		// 	},
-		// 	(err) => {
-		// 		console.log(err);
-		// 	}
-		// )
 	},
+	
 	render: function() {
-		console.log('quiz list '+this.state.quizList);
+		console.log(this.state.students);
 		var quizOptions = this.state.quizList.map(function(quiz) {
 			return (
-				<option value={quiz.get('objectiD')} key={quiz.get('objectiD')}>{quiz.get('quiztitle')} + '-' + {quiz.get('startTime').toDateString()}</option>
+				<option value={quiz.id} key={quiz.id}>{quiz.get('quizTitle')} - {(quiz.get('startTime')) ? quiz.get('startTime').toDateString(): 'Date Unspecified'}</option>
 			)
 		})
-		//var showComponent = null;
-		// var attendanceBodyData = this.quiz.map(function(student) {
-		// 	<AttendanceRowComponent student={student} date={this.quiz}/>
-		// })
-		// var attendance = (
-		// 	<table className="u-full-width">
-		// 		<h1>Quiz Name</h1>
-		// 		<thead>
-		// 			<tr>
-		// 				<th>Day Administered</th>
-		// 				<th>Student Name</th>
-		// 				<th>Time Started</th>
-		// 			</tr>
-		// 		</thead>
-		// 		{attendanceBodyData}
-		// 	</table>
-		// )
-		// var accessDenied = (
-		// 	<h1>Must have Admin Permission to view attendance.</h1>
-		// 	)
-		// Parse.User.current().get('teacher') ? showComponent = attendance : showComponent = accessDenied;
+		if(this.state.students.length > 0 && this.state.groupedStudentAnswers) {
+			this.state.students.forEach((student) => {
+				if(this.state.groupedStudentAnswers.hasOwnProperty(student.id)) {
+					student.present = 'present';
+			} else {
+				student.present = 'absent';
+			}
+			})
+			console.log(this.state.students);
+			var attendanceBodyData = null;
+			
+			attendanceBodyData = this.state.students.map(function(student) {
+				return (
+				<AttendanceRowComponent key={student.id} student={student} />
+				)
+			})
+		
+
+		}
+		var showComponent = null;
+		
+		var attendance = (
+			<table className="u-full-width">
+				<thead>
+					<tr>
+						<th>Day Administered</th>
+						<th>Student Name</th>
+						<th>Time Started</th>
+					</tr>
+				</thead>
+				{attendanceBodyData}
+			</table>
+		)
+		var accessDenied = (
+			<h1>Must have Admin Permission to view attendance.</h1>
+			)
+		//Parse.User.current().get('teacher') ? showComponent = attendance : showComponent = accessDenied;
 		return (
 			<div>
 				<form onSubmit={this.selectQuiz}>
@@ -87,12 +84,37 @@ module.exports = React.createClass({
 					</div>
 					<button>Select</button>
 				</form>
-					
+					{showComponent}
+					{attendance}
 			</div>
 		)
 	},
 	selectQuiz: function(e) {
 		e.preventDefault();
-		console.log(this.refs.quizPick.value)
+		var studentQuery = new Parse.Query(Parse.User);
+		studentQuery.equalTo('teacher', false).find().then(
+			(students) => {
+				this.setState({students: students});
+			},
+			(err) => {
+				console.log(err);
+			}
+		);
+		var answerQuery = new Parse.Query(StudentAnswerModel);
+		var innerQuestionQuery = new Parse.Query(Parse.Object.extend('QuestionModel'));
+		innerQuestionQuery.equalTo('quizId', new QuizModel({objectId: this.refs.quizPick.value}));
+		answerQuery.matchesQuery('questionId', innerQuestionQuery);
+		answerQuery.find().then( 
+			(studentAnswers) => {
+				var AnswersList = _.groupBy(studentAnswers, function(answer) {
+					return answer.get('userId').id;
+				})
+				this.setState({groupedStudentAnswers: AnswersList})
+			},
+			(err) => {
+				console.log(err);
+			}
+		)
+		this.setState({show: true});
 	}
 })

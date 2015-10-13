@@ -26,14 +26,8 @@ var Router = Backbone.Router.extend({
 		'quizList': 'quizList',
 		'postQuestion': 'postQuestion',
 		'quizResults/:id': 'quizResults',
-<<<<<<< HEAD
 		'logout': 'logout',
 		'attendance': 'attendance'
-
-
-=======
-		'logout': 'logout'
->>>>>>> 24ac724e746f119951023eb606ac86a4fc67c760
 	},
 	home: function() {
 		//ReactDOM.render(<HomeComponent />, app);
@@ -57,13 +51,11 @@ var Router = Backbone.Router.extend({
 		Parse.User.logOut();
 		this.navigate('home', {trigger: true} );
 	},
-<<<<<<< HEAD
 	attendance: function() {
 		ReactDOM.render(<AttendanceComponent/>, app);
-=======
+	},
 	quizList: function() {
 		ReactDOM.render(<QuizListComponent />, app);
->>>>>>> 24ac724e746f119951023eb606ac86a4fc67c760
 	}
 });
 
