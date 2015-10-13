@@ -1,5 +1,5 @@
 nav {
-	background: #280035;
+	background: #280036;
 }
 .nav-bar-button {
 	float: right;
@@ -9,6 +9,10 @@ nav {
 		text-decoration: none;
 		color: #F9D824;
 	}
+}
+a:hover {
+  	color: #FD9856;
+  	background-color: #280036;
 }
 .logo {
 	height: 4em;
