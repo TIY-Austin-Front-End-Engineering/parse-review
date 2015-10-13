@@ -23,7 +23,8 @@ var Router = Backbone.Router.extend({
 		'login': 'login',
 		'register': 'register',
 		'postQuestionComponent': 'postQuestionComponent',
-		'logout': 'logout'
+		'logout': 'logout',
+		'quizList': 'quizList'
 
 	},
 	home: function() {
@@ -44,6 +45,9 @@ var Router = Backbone.Router.extend({
 	logOut: function() {
 		Parse.User.logOut();
 		this.navigate('home', {trigger: true} );
+	},
+	quizList: function() {
+		ReactDOM.render(<QuizListComponent />, app);
 	}
 });
 
