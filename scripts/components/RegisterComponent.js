@@ -61,7 +61,7 @@ module.exports= React.createClass ({
 				username: this.refs.username.value,
 				password: this.refs.password.value,
 				email: this.refs.email.value,
-				teacher: ''
+				teacher: false
 			},
 			{
 				success: (u) => {
