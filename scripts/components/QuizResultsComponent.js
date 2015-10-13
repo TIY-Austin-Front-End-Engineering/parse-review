@@ -1,3 +1,6 @@
+//The QuizResultsComponent creates the html that dsiplays the users results after having completed a quiz, includong the correct or incorrect answers marked.
+//The expected properties are the QuizModel(to identify which quiz to show the results for), the QuestionModel(to identify what each question needs), and the StudentAnswersModel(so the correct answers will be associated with the proper questions)
+
 var React = require('react');
 var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
