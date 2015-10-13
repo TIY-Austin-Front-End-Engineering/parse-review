@@ -1,12 +1,14 @@
+// This is for the Log in component
 var React = require('react');
 var ReactDOM = require('react-dom');
- 
-module.exports = React.createClass({
+
+// Creating a new React component that lets the user log in into their account. If errors arise, they will be redirected using an error message.
+module.exports = React.createClass({ 
 	getInitialState: function() {
 		return {
 			error: null
 		};
-	},
+	},// if the user does not type in any information this function will prompt them to inout their username and password
 	render: function() {
 		var errorElement = null;
 		if(this.state.error) {
@@ -14,24 +16,27 @@ module.exports = React.createClass({
 
 		}
 		return(
+
+			//Log In form starts here with username and password required
 			<form onLogin={this.onLogin}>
 				<h2>Login</h2>
 				<div className="row">
 					<div className="six columns">
-						<label for="userName" >User Name</label>
+						<label htmlFor="userName" >User Name</label>
 						<input className="u-full-width" ref="userName" type="text" placeholder="user name" id="userName" />
 					</div>
 				</div>
 				<div className="row">
 					<div className="six columns">
-						<label for="userName" >Password</label>
+						<label htmlFor="userName" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 					</div>
-					<input className="button-primary" type="submit" value="Login"  />
+					<button className="button-primary">Log In</button>
 				</div>
 			</form>
 		);
 	},
+	// Function to log in user which uses Parse for as a server with the users information
 	onLogin: function(e) {
 		e.preventDefault();
 		var user = new Parse.User();
@@ -39,9 +44,10 @@ module.exports = React.createClass({
 			this.refs.userName.value,
 			this.refs.password.value,
 			{
+				//routes user to home page when they successfully log in
 				success: (u) => {
 					this.props.router.navigate('', {trigger: true})
-				},
+				},//gives user error message when they enter in no/wrong info
 				error: (u, error) => {
 					this.setState({
 						error: error.message
