@@ -1,20 +1,26 @@
 nav {
-	background: #280036;
+	background: $navbar;
+	height: 67px;
 }
 .nav-bar-button {
 	float: right;
 	padding: 1.5em;
-
 	a {
 		text-decoration: none;
 		color: #F9D824;
 	}
 }
 a:hover {
-  	color: #FD9856;
-  	background-color: #280036;
+  	color: $hover;
+  	background-color: $navbar;
 }
 .logo {
 	height: 4em;
 	width: 4em;
+	float: left;
+}
+.user-name-display {
+	color: #F9D824;
+	padding: 1.5em;
+	float: left;
 }
