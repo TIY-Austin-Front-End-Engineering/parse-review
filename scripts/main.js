@@ -5,8 +5,7 @@ var Backbone = require('backbone');
 window.$ = require('jquery');
 window.jQuery = $;
 
-
-Parse.initialize('qy4WDiTUAsyns9L817gjZdVf1aEQTetovh1yNDTk', 'xrkwhyHvS5Y9od0EWmN9hd0ssv28caF4YATtQaPJ');
+Parse.initialize('CKo05MhMwPBIhtDVEPXIkPSdbEgeP66R6nm2HUjm', 'DTN20m4e87Tffl5XmCXAjRMphFlikfqNhmTyU3Bq');
 
 var RegisterComponent = require('./components/RegisterComponent');
 var NavigationComponent = require('./components/NavigationComponent');
@@ -22,10 +21,10 @@ var Router = Backbone.Router.extend({
 		'dashboard': 'dashboard',
 		'login': 'login',
 		'register': 'register',
+		'quizList': 'quizList',
 		'postQuestion': 'postQuestion',
-		'quizResults': 'quizResults',
+		'quizResults/:id': 'quizResults',
 		'logout': 'logout'
-
 	},
 	home: function() {
 		//ReactDOM.render(<HomeComponent />, app);
@@ -48,6 +47,9 @@ var Router = Backbone.Router.extend({
 	logOut: function() {
 		Parse.User.logOut();
 		this.navigate('home', {trigger: true} );
+	},
+	quizList: function() {
+		ReactDOM.render(<QuizListComponent />, app);
 	}
 });
 

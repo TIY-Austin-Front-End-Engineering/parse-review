@@ -1,3 +1,4 @@
+//This is the navigation component. The router has been passed in as a property.
 var React = require('react');
 var Backbone = require('backbone');
 
@@ -10,26 +11,29 @@ module.exports = React.createClass({
 	render: function() {
 		var currentUser = Parse.User.current();
 		var links = []; 
+		//'if' statement will show all the links including the ones only available to teachers.
 		if(currentUser && currentUser.get('teacher') === true) {
-			links.push(<li><a href="#">Dashboard</a></li>);
-			links.push(<li><a href="#">Create Quiz</a></li>);
-			links.push(<li><a href="#">Log Out</a></li>);
-			links.push(<li>{currentUser.get('firstname')} {currentUser.get('lastname')}</li>);
-		}        
+			links.push(<div key="dashboard" className="nav-bar-button"><a href="#dashboard">Dashboard</a></div>);
+			links.push(<div key="createQuiz" className="nav-bar-button"><a href="#createQuiz">Create Quiz</a></div>);
+			links.push(<div key="logout" className="nav-bar-button"><a href="#logout">Log Out</a></div>);
+			links.push(<div key="username" className="nav-bar-button">{currentUser.get('username')}</div>);
+		}
+		//'else if' statement will only display links that are availble to students. 
 		else if(currentUser && currentUser.get('teacher') === false) {
-			links.push(<li><a href="#">Take Quiz</a></li>);
-			links.push(<li><a href="#">Log Out</a></li>);
-			links.push(<li>{currentUser.get('firstname')} {currentUser.get('lastname')}</li>);
+			links.push(<div key="takeQuiz" className="nav-bar-button"><a href="#takeQuiz">Take Quiz</a></div>);
+			links.push(<div key="logout" className="nav-bar-button"><a href="#logout">Log Out</a></div>);
+			links.push(<div key="username" className="nav-bar-button">{currentUser.get('username')}</div>);
 		}
+		//'else' statement will display links that are available if there is no one logged in.
 		else {
-			links.push(<li><a href="#register">Register</a></li>);
-			links.push(<li><a href="#login">Log In</a></li>);
+			links.push(<div key="register" className="nav-bar-button"><a href="#register">Register</a></div>);
+			links.push(<div key="login" className="nav-bar-button"><a href="#login">Log In</a></div>);
 		}
-
-		return (
-			<nav>
+		return( 
+			<nav className="nav-bar">
+				<img src="../../images/logo_pencil.png" className="logo"></img>
 				{links}
 			</nav>
-		);
+		)
 	}
 });
