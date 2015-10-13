@@ -3,9 +3,10 @@
 
 var React = require('react');
 var QuestionModel = require('../models/QuestionModel')
+var StudentAnswerModel = require('../models/StudentAnswerModel')
 var query = new Parse.Query(StudentAnswerModel);
 var innerQuery = new Parse.Query(QuestionModel);
-
+var numCorrectAnswers = 0;
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -13,14 +14,15 @@ module.exports = React.createClass({
 			answers: this.props.answers,
 			correctAnswer: this.props.correctAnswer,
 			studentChoice: null,
-			quiz: this.props.quiz,
-			question: null
+			quizId: this.props.quizId,
+			question: this.props.question
+			
 		}
 	},
 	componentWillMount: function(){
 		//Lines 18-27 first grabs the specific quiz, then grabs the answers associated with the specific question, then filters only the answer by the current user.
-		innerQuery.equalTo('quizId', this.props.quizId);
-		query.matchesQuery('questionId', this.props.question)
+		innerQuery.equalTo('quizId', this.state.quizId);
+		query.matchesQuery('questionId', this.state.question.id)
 		.equalTo('userId', Parse.User.current())
 		.find().then(function(studentAnswer){
 			console.log(studentAnswer);
@@ -35,7 +37,10 @@ module.exports = React.createClass({
 		.map(function(answer) {
 			//Lines 33-48 display the answers, color-coded to denote correct or incorrect answers
 			if (this.state.studentChoice === this.state.correctAnswer){
-				// this.state.studentChoice.set('studentCorrect'= true)
+				question.save({
+					studentCorrect: true
+				}),
+				numCorrectAnswers+1;
 				return (
 					<div>
 						<h4 className="green">{answer}</h4>
@@ -43,7 +48,9 @@ module.exports = React.createClass({
 				);	
 			}
 			else {
-				// this.state.studentChoice.set('studentCorrect'= false)
+				question.save({
+					studentCorrect: false
+				})
 				return (
 					<div>
 						<h4 className="red" >{answer}</h4>
