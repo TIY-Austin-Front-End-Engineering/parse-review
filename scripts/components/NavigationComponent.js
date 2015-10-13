@@ -31,7 +31,7 @@ module.exports = React.createClass({
 		}
 		return( 
 			<nav className="nav-bar">
-				<div className="logo"></div>
+				<img src="../../images/logo_pencil.png" className="logo"></img>
 				{links}
 			</nav>
 		)

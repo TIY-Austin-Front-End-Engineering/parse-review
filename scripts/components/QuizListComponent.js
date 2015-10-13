@@ -18,14 +18,14 @@ module.exports = React.createClass({
 	render: function(){
 		var allQuizzes = this.state.quizList.map(function(quiz){
 			return (
-				<div>
+				<div key={quiz.id}>
 					<div>{quiz.get('quizTitle')}</div>
 					<div>{quiz.get('totalQuestions')}</div>
-					<div>{quiz.get('startTime')}</div>
-					<div>{quiz.get('expireTime')}</div>
+					<div>{quiz.get('startTime').toString()}</div>
+					<div>{quiz.get('expireTime').toString()}</div>
 				</div>
 				)
-		})
+		});
 		return(
 			<div className="QuizListComponent">
 				{allQuizzes}
