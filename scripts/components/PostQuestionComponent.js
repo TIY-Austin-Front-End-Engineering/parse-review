@@ -1,5 +1,4 @@
 var React = require('react');
-var ReactDOM = require('')
 var Backbone = require('backbone');
 var QuestionModel = require('../models/QuestionModel');
 
