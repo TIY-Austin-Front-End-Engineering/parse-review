@@ -41,7 +41,7 @@ module.exports = React.createClass({
 
 		);
 	},
-	onSubmit: function() {
+	onSubmit: function() {			
 	//selecting the correct answer from the multiple choice array
 		var radioBtns = this.refs.choiceRows.querySelectorAll('.radioo');
 		var correctAnswer = null;
