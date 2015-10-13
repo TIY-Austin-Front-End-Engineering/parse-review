@@ -21,8 +21,8 @@ module.exports = React.createClass({
 				<div key={quiz.id}>
 					<div>{quiz.get('quizTitle')}</div>
 					<div>{quiz.get('totalQuestions')}</div>
-					<div>{quiz.get('startTime')}</div>
-					<div>{quiz.get('expireTime')}</div>
+					<div>{quiz.get('startTime').toString()}</div>
+					<div>{quiz.get('expireTime').toString()}</div>
 				</div>
 				)
 		});

@@ -27,6 +27,8 @@
 
 **User Model**
 
+>`firstname: string`
+>`lastname: string`
 >`username: string`
 >`password: string`
 >`teacher: boolean`
