@@ -41,7 +41,7 @@ var Router = Backbone.Router.extend({
 	createQuestion: function() {
 		ReactDOM.render(<PostQuestionComponent/>, app);
 	},
-	logOut: function()
+	logOut: function(){
 		Parse.User.logOut();
 		this.navigate('home', {trigger: true} );
 });
