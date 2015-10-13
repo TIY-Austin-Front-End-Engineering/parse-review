@@ -1,3 +1,5 @@
+//this component is the dashboard for the analytics componenets. 
+
 'use strict';
 var React = require('react');
 
