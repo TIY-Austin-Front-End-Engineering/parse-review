@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var QuizModel = require('Models/QuizModel');
 var startTime = new Date();
-
+// comment
 
 module.exports = React.createClass({
 	getInitialState: function() {
