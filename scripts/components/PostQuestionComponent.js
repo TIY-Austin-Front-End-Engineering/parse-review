@@ -8,11 +8,26 @@ module.exports = React.createClass({
 	getInitialState: function(){
 		return (
 			{
+				quiz: null,
 				choices: [],
 				feedbackElement: null
 			}
 
 		);
+	},
+	componentWillMount: function() {
+	    var query = new Parse.Query(QuizModel);
+	    query
+	    .get(this.props.quizId)
+	    .then(
+	    	(quiz) => {
+	    		this.setState({ quiz: quiz })
+	    		console.log(quiz);
+	    	},
+	    	(err) => {
+	    		console.log(err);
+	    	}
+	    );
 	},
 	render: function() {
 		console.log('render '+ this.state.errorElement)
