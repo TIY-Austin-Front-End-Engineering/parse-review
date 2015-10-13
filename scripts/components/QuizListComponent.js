@@ -4,6 +4,7 @@
 
 var React = require('react');
 var QuizModel = require('../models/QuizModel');
+var moment = require('moment');
 
 module.exports = React.createClass({
 	getInitialState: function(){
@@ -17,13 +18,15 @@ module.exports = React.createClass({
 	},
 	render: function(){
 		var allQuizzes = this.state.quizList.map(function(quiz){
+			var startTime = quiz.get('startTime');
+			var expireTime = quiz.get('expireTime');
 			return (
 				<div className="quiz-container">
 					<div key={quiz.id}>
 						<div>{quiz.get('quizTitle')}</div>
 						<div>{quiz.get('totalQuestions')}</div>
-						<div>{quiz.get('startTime').toString()}</div>
-						<div>{quiz.get('expireTime').toString()}</div>
+						<div>{moment(startTime).format("dddd, MMMM Do, h:mm a")}</div>
+						<div>{moment(expireTime).format("dddd, MMMM Do, h:mm a")}</div>
 					</div>
 				</div>
 			)

@@ -1,7 +1,6 @@
 .QuizListComponent{
 	.quiz-image-container{
 		height: 20em;
-		width: 100%;
 		margin: 1em auto 0 auto;
 		box-shadow: 2px 2px 2px 2px #000;
 		img{
@@ -11,5 +10,11 @@
 	}
 	.quiz-container{
 
+	}
+}
+
+@media screen and(min-width: 750px) {
+	.quiz-image-container{
+		max-width: 60%;
 	}
 }
