@@ -2,21 +2,56 @@
 
 ## Code Standards
 
-* proper indentation with tabs
-* singles quotes in JavaScript
-* double quotes in HTML/JSX
-* camelCase in JavaScript
-* dash-case in CSS
-* 'Get Skeleton' for CSS framework
-* commenting all components describing:
-    * what they are
-    * what properties are required
-    * what type is each property
-* Suffix all component files names with 'Component'
-* Component variable names should equal to that file name
-* classes should be capitalized and suffixed with their type:
-    * models
-    * components
-    * collections
-* descriptive CSS class names
-* descriptive git commit and branch name
+* Proper indentation with tabs.
+* Singles quotes in JavaScript.
+* Double quotes in HTML/JSX.
+* CamelCase in JavaScript.
+* Dash-case in CSS.
+* 'Get Skeleton' for CSS framework.
+* All components should have comments describing them at the top of the file:
+    * What they are.
+    * What properties are required.
+    * What type is each property.
+* Suffix all component files names with 'Component'.
+* Component variable names should be equal to that file name.
+* Classes should be capitalized and suffixed with their type:
+    * Models
+    * Components
+    * Collections
+* Descriptive CSS class names.
+* Descriptive git commits and branch names.
+
+<hr>
+
+##Models
+
+**User Model**
+
+>username: string,
+>password: string,
+>teacher: boolean,
+>email: string
+
+**Question Model**
+
+>questionTitle: string,
+>questionContent: string,
+>questionChoices: array,
+>correctChoice: string,
+>quizId: pointer
+
+**Student Answer Model**
+
+>studentCorrect: boolean,
+>studentChoice: string,
+>userId: pointer,
+>questionId: pointer
+
+**Quiz Model**
+
+>quizTitle: string,
+>totalQuestions: number,
+>startTime: Date,
+>expireTime: Date
+
+
