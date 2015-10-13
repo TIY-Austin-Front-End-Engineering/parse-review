@@ -1,3 +1,11 @@
+/*
+ *  HomeComponent
+ *
+ *  This is what shows when navigating to the site for the first time
+ *  Requires no properties
+ *
+ */
+
 'use strict';
 var React = require('react');
 
