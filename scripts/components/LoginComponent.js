@@ -18,8 +18,13 @@ module.exports = React.createClass({
 		return(
 
 			//Log In form starts here with username and password required
+<<<<<<< Updated upstream
 			<form onSubmit={this.onLogin}>
-				<h2>Login</h2>
+=======
+			<div className = "loginContainer">
+			<form onLogin={this.onLogin}>
+
+>>>>>>> Stashed changes				<h2>Login</h2>
 				<div className="row">
 					<div className="six columns">
 						<label htmlFor="userName" >User Name</label>
@@ -36,6 +41,7 @@ module.exports = React.createClass({
 					</div>
 				</div>
 			</form>
+			</div>
 		);
 	},
 	// Function to log in user which uses Parse for as a server with the users information
