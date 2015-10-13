@@ -60,10 +60,12 @@ module.exports= React.createClass ({
 				lastName: this.refs.lastName.value,
 				username: this.refs.username.value,
 				password: this.refs.password.value,
-				email: this.refs.email.value
+				email: this.refs.email.value,
+				teacher: ''
 			},
 			{
 				success: (u) => {
+					console.log('test');
 					this.props.router.navigate('', {trigger: true});
 				},
 				error: (u, error) => {
