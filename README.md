@@ -8,6 +8,7 @@
 * CamelCase in JavaScript.
 * Dash-case in CSS.
 * 'Get Skeleton' for CSS framework.
+*  http://getskeleton.com/
 * All components should have comments describing them at the top of the file:
     * What they are.
     * What properties are required.
@@ -64,8 +65,8 @@ _Open to Change!_
 
 **Fonts**
 
-* Questrial
-* Fanwood Text
+* Questrial - Font for **Titles**
+* Fanwood Text - Font for **Everything Else**
 
 **Color Palette**
 
