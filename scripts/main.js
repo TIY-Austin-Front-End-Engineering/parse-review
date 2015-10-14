@@ -34,6 +34,10 @@ var Router = Backbone.Router.extend({
 		'classAnalytics': 'classAnalytics',
 		'quizResults/:userId/:quizId': 'quizResults',
 		'logout': 'logout'
+		'quizDetails/:id':'quizDetailsPage'
+	},
+	quizDetailsPage: function(id){
+		ReactDOM.render(<QuizDetailsComponent quizId={id}  quizIsFinished={quizFinished}/>, app);
 	},
 	home: function() {
 		ReactDOM.render(<HomeComponent />, app);
