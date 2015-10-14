@@ -126,18 +126,19 @@ module.exports = React.createClass({
 
 		var rightContent = ('paul revere');
 
-
 		return (
 			<div className="class-analytics-container">
-				<div className="left-side">
-					<select className="drop-down-class-analytics" onClick={this.onQuizSelected}>
-						<option disabled>Quizzes</option>
-						{leftContent}
-					</select>
-				</div>
+				<div className="row">
+					<div className="left-side">
+						<select className="drop-down-class-analytics" onClick={this.onQuizSelected}>
+							<option disabled>Quizzes</option>
+							{leftContent}
+						</select>
+					</div>
 
-				<div className="right-side">
-					<div>{rightContent}</div>
+					<div className="right-side">
+						<div>{rightContent}</div>
+					</div>
 				</div>
 			</div>
 		)

@@ -1,5 +1,33 @@
-.class-anaylitcs-container {
-	.drop-down-class-analytics {
+.class-analytics-container {
 
+	.left-side {
+		background-color: $innerContainer;
+		width: 25%;
+		height: 5em;
+		display: inline-block;
+		.drop-down-class-analytics {
+			background-color: $button;
+			font-family: $fontFanwood;
+			color: white;
+		}
+	}
+	.right-side {
+		background-color: $innerContainer;
+		width: 50%;
+		display: inline-block;
+	}
+}
+
+.test {
+	div {
+		height: 10em;
+
+		&:first-child {
+			background-color: red;
+		}
+
+		&:last-child {
+			background-color: blue;
+		}
 	}
 }
