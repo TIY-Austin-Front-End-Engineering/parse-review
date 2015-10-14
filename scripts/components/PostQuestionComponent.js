@@ -85,6 +85,7 @@ module.exports = React.createClass({
 			this.refs.choice.value = '',
 			this.setState({choices: []});
 			this.setState({feedbackElement: 'new question submitted'});
+			this.props.router.navigate('editQuiz/'+this.state.quiz.id, {trigger: true});
 		}
 		
 		

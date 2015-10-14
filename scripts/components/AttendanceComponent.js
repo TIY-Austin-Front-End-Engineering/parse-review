@@ -99,7 +99,10 @@ module.exports = React.createClass({
 		var studentQuery = new Parse.Query(Parse.User);
 		studentQuery.equalTo('teacher', false).find().then(
 			(students) => {
-				this.setState({students: students});
+				var sortedStudents = _.sortBy(students, function(student) {
+					return student.get('lastName').toUpperCase();
+				});
+				this.setState({students: sortedStudents});
 			},
 			(err) => {
 				console.log(err);
