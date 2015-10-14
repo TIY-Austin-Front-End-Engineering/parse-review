@@ -17,23 +17,26 @@
 	font-family:Questrial, sans-serif;
 	color:#FD9856;
 	padding-top:4em;
+	min-width: 17em;
+	.u-full-width {
+		width: 70%;
+		
+	}
+	
+	.login-heading{
+		padding-top:1em;
+	}
+
+
+
 
 	
-	h3{
-		padding-top: .5em;
-	}
-
-
-	.login-username{
-		padding-right:10em;
-		padding-left:10em;
-	}
-	.login-password{
-		@extend .login-username;
-	}
 	.button-primary{
 		background-color:#24677F;
 		border:#24677F;
+		color:#F1D000;
+		padding-bottom:3em;
+
 		
 		}
 	.button-primary:hover{

@@ -15,39 +15,19 @@ module.exports = React.createClass({
 			errorElement = (<p className="error-message">{this.state.error}</p>)
 		}
 		return(
-			//Log In form starts here with username and password required
-
-			
-
-			<div className = "loginFormContainer">
+		//Log In form starts here with username and password required
+		<div className = "loginFormContainer">
 			<form className="login-form" onSubmit={this.onLogin}>
-
-				<h2>Login</h2>
-					{errorElement}
-				<div className="row">
-					<div className="login-username">
-					<div className="ten columns">
-						<label htmlFor="userName" >User Name</label>
-						<input className="u-full-width" ref="userName" type="text" placeholder="USERNAME" id="userName" />
-					</div>
-				</div>
-				<div className="row">
-				<div className="login-password">
-					<div className="ten columns">
-						<label htmlFor="userName" >Password</label>
-						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
-
-
-					</div>
-					<div className="row">
-						
-						<button className="button-primary">Log In</button>
-						
-						</div>
-					</div>
-				</div>
+				<h1 className="login-heading">Login</h1>
+				{errorElement}
+				<label htmlFor="userName" >User Name</label>
+				<input className="u-full-width" ref="userName" type="text" 	placeholder="username" id="userName" />
+				<label htmlFor="password" >Password</label>
+				<input className="u-full-width" ref="password" type="password" placeholder ="password" id="password" />
+				<br/><br/>
+				<button className="button-primary">Log In</button>
 			</form>
-			</div>
+		</div>
 		);
 	},
 	// Function to log in user which uses Parse for as a server with the users information
