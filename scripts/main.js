@@ -72,6 +72,7 @@ var Router = Backbone.Router.extend({
 	},
 	classAnalytics: function() {
 		ReactDOM.render(<ClassAnalyticsComponent />, app);
+	},
 	dashboard: function() {
 		ReactDOM.render(<DashboardComponent />, app);
 	}
