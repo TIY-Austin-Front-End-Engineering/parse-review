@@ -55,9 +55,11 @@ var Router = Backbone.Router.extend({
 	postQuestion: function() {
 		if(currentUser && currentUser.get('teacher') === true) {
 			ReactDOM.render(<PostQuestionComponent/>, app);
+			console.log('this one')
 		}
 		else {
 			this.navigate('', {trigger: true});
+			console.log('home')
 		}
 	},
 	quizResults: function(userId, quizId) {
