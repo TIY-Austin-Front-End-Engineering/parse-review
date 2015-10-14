@@ -130,7 +130,7 @@ module.exports = React.createClass({
 		return (
 			<div className="class-anaylitcs-container">
 				<div className="left-side">
-					<select onClick={this.onQuizSelected}>
+					<select className="drop-down-class-analytics" onClick={this.onQuizSelected}>
 						<option disabled>Quizzes</option>
 						{leftContent}
 					</select>
