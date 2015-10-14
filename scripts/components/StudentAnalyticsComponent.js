@@ -23,15 +23,14 @@ module.exports = React.createClass({
 		console.log('test');
 		var quizQuery = new Parse.Query(QuizModel);
 		quizQuery.find().then(
-		(quiz) => {
-			this.setState({allQuizzes: quiz});
-			console.log(this.state.allQuizzes)
-		},
-		(err) => {
-			console.log(err);
-		}
-	);
-
+			(quiz) => {
+				this.setState({allQuizzes: quiz});
+				console.log(this.state.allQuizzes)
+			},
+			(err) => {
+				console.log(err);
+			}
+		);
 	},
 	render: function() {
 		console.log('it works');
