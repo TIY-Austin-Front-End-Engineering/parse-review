@@ -50,7 +50,7 @@ module.exports = React.createClass({
 			return;
 		}
 		this.setState({
-	         currentQuestion:this.state.currentQuestion;
+	         currentQuestion:this.state.currentQuestion
 	    })
 	},
 	answerPicked: function(e){
