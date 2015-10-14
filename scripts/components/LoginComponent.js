@@ -18,26 +18,31 @@ module.exports = React.createClass({
 		return(
 
 			//Log In form starts here with username and password required
-<<<<<<< Updated upstream
-			<form onSubmit={this.onLogin}>
-=======
-			<div className = "loginContainer">
-			<form onLogin={this.onLogin}>
 
->>>>>>> Stashed changes				<h2>Login</h2>
+			
+
+			<div className = "loginFormContainer">
+			<form className="login-form" onSubmit={this.onLogin}>
+
+				<h2>Login</h2>
 				<div className="row">
+					<div className="login-username">
 					<div className="six columns">
 						<label htmlFor="userName" >User Name</label>
 						<input className="u-full-width" ref="userName" type="text" placeholder="user name" id="userName" />
 					</div>
 				</div>
 				<div className="row">
+				<div className="login-password">
 					<div className="six columns">
 						<label htmlFor="userName" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 					</div>
 					<div className="row">
+						
 						<button className="button-primary">Log In</button>
+						</div>
+						</div>
 					</div>
 				</div>
 			</form>
