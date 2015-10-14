@@ -12,12 +12,18 @@ var React = require('react');
 module.exports = React.createClass({
 	render: function() {
 		return(
-			<div className="home-container">
-				<div className="home-title">
-					<h1>Home</h1>
-				</div>
-				<div className="img-box">
-					<img src="http://www.modred.co.uk/wp-content/uploads/2014/11/Illustrations-Owl-480x320.png"/>
+			<div className="home-container-component">
+				<div className="img-box u-max-full-width">
+					<div className="mask">
+						<div className="row">
+							<div className="three columns">
+								<div className="brand-title">Iron Quizzes</div>
+							</div>
+							<div className="nine columns">
+								<span>Content</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		)
