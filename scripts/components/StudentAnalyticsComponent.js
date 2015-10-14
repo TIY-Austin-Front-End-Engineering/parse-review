@@ -35,8 +35,8 @@ module.exports = React.createClass({
 	render: function() {
 		console.log('it works');
 		return (
-			<div>
-				<h1>Student Analytics</h1>
+			<div className="student-container">
+				<h1 className="student-title">Student Analytics</h1>
 			</div>
 		);
 	}
