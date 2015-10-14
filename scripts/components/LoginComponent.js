@@ -12,11 +12,9 @@ module.exports = React.createClass({
 	render: function() {
 		var errorElement = null;
 		if(this.state.error) {
-			errorElement = (<p className="error-message">{this.state.error})</p>)
-
+			errorElement = (<p className="error-message">{this.state.error}</p>)
 		}
 		return(
-
 			//Log In form starts here with username and password required
 			<form onSubmit={this.onLogin}>
 				<h2>Login</h2>
@@ -28,13 +26,14 @@ module.exports = React.createClass({
 				</div>
 				<div className="row">
 					<div className="six columns">
-						<label htmlFor="userName" >Password</label>
+						<label htmlFor="password" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 					</div>
 					<div className="row">
 						<button className="button-primary">Log In</button>
 					</div>
 				</div>
+				{errorElement}
 			</form>
 		);
 	},
@@ -42,7 +41,7 @@ module.exports = React.createClass({
 	onLogin: function(e) {
 		e.preventDefault();
 		console.log(this.refs.password.value)
-		var user = new Parse.User();
+		// var user = new Parse.User();
 		Parse.User.logIn(
 			this.refs.userName.value,
 			this.refs.password.value,
@@ -57,6 +56,6 @@ module.exports = React.createClass({
 					});
 				}
 			}	
-		)
+		);
 	}
 })
