@@ -1,6 +1,7 @@
 var React = require('react');
 var Backbone = require('backbone');
 var QuestionModel = require('../models/QuestionModel');
+var QuizModel = require('../models/QuizModel');
 //component for admin teachers to post questions to the server
 
 module.exports = React.createClass({
@@ -8,11 +9,26 @@ module.exports = React.createClass({
 	getInitialState: function(){
 		return (
 			{
+				quiz: null,
 				choices: [],
 				feedbackElement: null
 			}
 
 		);
+	},
+	componentWillMount: function() {
+	    var query = new Parse.Query(QuizModel);
+	    query
+	    .get(this.props.quizId)
+	    .then(
+	    	(quiz) => {
+	    		this.setState({ quiz: quiz })
+	    		console.log(quiz);
+	    	},
+	    	(err) => {
+	    		console.log(err);
+	    	}
+	    );
 	},
 	render: function() {
 		console.log('render '+ this.state.errorElement)
@@ -41,7 +57,7 @@ module.exports = React.createClass({
 
 		);
 	},
-	onSubmit: function() {
+	onSubmit: function() {			
 	//selecting the correct answer from the multiple choice array
 		var radioBtns = this.refs.choiceRows.querySelectorAll('.radioo');
 		var correctAnswer = null;
@@ -55,7 +71,10 @@ module.exports = React.createClass({
 		if(correctAnswer === null){
 			this.setState({feedbackElement: 'this is an error'});
 		}else{
+			var quizId =this.props.quizId;
+			var targetQuizModel = new QuizModel({objectId: quizId});
 			var newQuestion = new QuestionModel({
+				quizId: targetQuizModel,
 				questionContent: this.refs.questionTitle.value,
 				questionChoices: this.state.choices,
 				correctChoice: correctAnswer

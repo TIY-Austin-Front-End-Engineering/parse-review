@@ -11,12 +11,15 @@ var RegisterComponent = require('./components/RegisterComponent');
 var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
+var CreateQuizComponent = require('./components/CreateQuizComponent');
+var EditQuizComponent = require('./components/EditQuizComponent');
 var PostQuestionComponent = require('./components/PostQuestionComponent');
 var AttendanceComponent = require('./components/AttendanceComponent');
 var QuizResultsComponent = require('./components/QuizResultsComponent');
 var HomeComponent = require('./components/HomeComponent');
 var ClassAnalyticsComponent = require('./components/ClassAnalyticsComponent');
 var DashboardComponent = require('./components/DashboardComponent');
+var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent');
 
 var currentUser = Parse.User.current();
 var app = document.getElementById('app');
@@ -28,11 +31,14 @@ var Router = Backbone.Router.extend({
 		'login': 'login',
 		'register': 'register',
 		'quizList': 'quizList',
-		'postQuestion': 'postQuestion',
+		'createQuiz': 'createQuiz',
+		'editQuiz/:id':'editQuiz',
+		'editQuiz/:id/postQuestion':'postQuestion',
 		'quizResults/:id': 'quizResults',
 		'logout': 'logout',
 		'classAnalytics': 'classAnalytics',
 		'quizResults/:userId/:quizId': 'quizResults',
+		'studentAnalytics': 'studentAnalytics',
 		'quizDetails/:id':'quizDetailsPage',
 		'attendance': 'attendance'
 	},
@@ -48,9 +54,16 @@ var Router = Backbone.Router.extend({
 	register: function() {
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
-	postQuestion: function() {
+	createQuiz: function() {
+		ReactDOM.render(<CreateQuizComponent router={r}/>, app);
+	},
+	editQuiz:function(id){
+		ReactDOM.render(<EditQuizComponent quizId={id} router={r}/>,app)
+	},
+	postQuestion: function(id) {
+		console.log('post question',currentUser.id);
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<PostQuestionComponent/>, app);
+			ReactDOM.render(<PostQuestionComponent quizId={id} router={r}/>, app);
 		}
 		else {
 			this.navigate('', {trigger: true});
@@ -76,6 +89,9 @@ var Router = Backbone.Router.extend({
 	},
 	classAnalytics: function() {
 		ReactDOM.render(<ClassAnalyticsComponent />, app);
+	},
+	studentAnalytics: function() {
+		ReactDOM.render(<StudentAnalyticsComponent />, app);
 	},
 	dashboard: function() {
 		// if(currentUser && currentUser.get('teacher') === true) {
