@@ -2,72 +2,73 @@
 	background: $navbar;
 	height: 67px;
 	overflow: hidden;
-}
-.beniz {
-	display:none;
-}
-a {
-	text-decoration: none;
-	color: #F9D824;
-	.nav-bar-button {
-		display:block;
+	.beniz {
+		display:none;
 	}
-}
-a:hover {
-  	color: $hover;
-  	background-color: $navbar;
-}
-.logo {
-	height: 4em;
-	width: 4em;
-	float: left;
-}
-.user-name-display {
-	color: #F9D824;
-	padding: 1.5em 0 1.5em 1.5em;
-	float: left;
-}
-.hamburger {
-	color: #F9D824;
-	float: right;
-}
-.hamburger-image {
-	height: 3em;
-	width: 3em;
-	padding: .8em;
-}
-.closed {
-	display: none;
-	
-}
-.open {
-	display: block;
-	float: right;
-	position: fixed;
-	top: 70px;
-	right: 0;
-	background: $navbar;
-	text-align: center;
-}
-.nav-bar-button {
-	border-bottom: 2px solid $bodyBackground;
-}
-
-@media screen and (min-width: 550px) {
-	.hamburger-image {
-		display: none;
+	a {
+		text-decoration: none;
+		color: #F9D824;
+		.nav-bar-button {
+			display:block;
+		}
+	}
+	a:hover {
+	  	color: $hover;
+	  	background-color: $navbar;
+	}
+	.logo {
+		height: 4em;
+		width: 4em;
+		float: left;
+		margin-left: .3em;
+	}
+	.user-name-display {
+		color: #F9D824;
+		padding: 1.5em 0 1.5em 1.5em;
+		float: left;
 	}
 	.hamburger {
-		display: none;
+		color: #F9D824;
+		float: right;
 	}
-	#hamburger-list {
+	.hamburger-image {
+		height: 3em;
+		width: 3em;
+		padding: .8em;
+	}
+	.closed {
 		display: none;
+		
+	}
+	.open {
+		display: block;
+		float: right;
+		position: fixed;
+		top: 70px;
+		right: 0;
+		background: $navbar;
+		text-align: center;
 	}
 	.nav-bar-button {
-		float: right;
-		padding: 1.5em 1em;
+		border-bottom: 2px solid $bodyBackground;
 	}
-	.beniz {
-		display: inline;
+
+	@media screen and (min-width: 550px) {
+		.hamburger-image {
+			display: none;
+		}
+		.hamburger {
+			display: none;
+		}
+		#hamburger-list {
+			display: none;
+		}
+		.nav-bar-button {
+			float: right;
+			padding: 1.5em 1em;
+		}
+		.beniz {
+			display: inline;
+		}
 	}
 }
