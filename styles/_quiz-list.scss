@@ -1,0 +1,112 @@
+.quiz-list-component{
+	font-family: $fontFanwood;
+	.row{
+		.left{
+			width: 100%;
+			.copy-container{
+				background-color: $innerContainer;
+				box-shadow: 2px 2px 2px #000;
+				padding: 20px;
+				margin: 1em 10px;
+				.copy-title{
+					font-size: 30px;
+					color: $linkColor;
+					font-family: $fontQuestrial;
+
+				}
+				.copy{
+					color: #FFF;
+					font-size: 20px;
+				}
+				hr{
+					margin: .5em 0;
+					border-color: $hover;
+				}
+			}
+		}
+		.right{
+			width: 100%;
+			margin: 0;
+			.quiz-banner-container{
+				height: 4em;
+				margin: 1em 10px;
+				background-color: $navbar;
+				box-shadow: 2px 2px 2px #000;
+				line-height: 5em;
+				h1{
+					font-family: $fontQuestrial;
+					text-align: center;
+					color: $hover;
+
+				}
+			}
+			.quiz-margin-container{
+				    border: 10px solid transparent;
+				    box-sizing: border-box;
+				.quiz-container{
+					color: white;
+					overflow: hidden;
+					background-color: $innerContainer;
+					transition: box-shadow 0.25s;
+					padding: 20px;
+					border-radius: 0 0 2px 2px;
+					box-sizing: border-box;
+					.quiz-title{
+						height: 35px;
+						font-size: 22px;
+						font-family: $fontQuestrial;
+						span{
+							font-size: 24px;
+							height: 35px;
+							float: left;
+						}
+						.take-quiz{
+							cursor: pointer;
+							color: $linkColor;
+							vertical-align: middle;
+							background-color: $button;
+							margin: 0;
+							float: right;
+						}
+					}
+					div{
+						font-size: 20px;
+						.quiz-start-expire{
+							margin-right: 1em;
+							display: inline-block;
+							.quiz-time-title{
+								font-weight: bold;
+								color: $linkColor;
+								font-size: 15px;
+							}
+						}
+					}
+					hr{
+						margin: 10px 0;
+						border-color: $hover;
+						clear: both;
+					}
+				}
+			}
+		}
+	}
+};
+
+@media screen and (min-width: 1000px){
+	.quiz-list-component{
+		.row{
+			.left{
+				width: 30.6666666667%;
+			}
+			.right{
+				width: 65.3333333333%;
+				margin-left: 4%;
+				.quiz-margin-container{
+					   	display: inline-block;
+					    width: 50%;
+				}
+			}
+		}
+	}
+
+};
