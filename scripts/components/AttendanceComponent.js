@@ -1,3 +1,9 @@
+//This is an attendance component that checks student attendance based on weather a student has answered a question or not
+//component is pulling list of students, checking whether the student has answered questions for a specific test/day, if they have
+//they are marked as present as well as timestamped when the first answer is created to denote to teacher what time the test was started
+//this components access is restricted in the router based on whether current user teacher status is true or false
+//This compnent does use a child component of StudentDataRowComponent to render each student, their status of present or absent and time started
+
 var React = require('react');
 var Backbone = require('backbone');
 var AttendanceRowComponent = require('./AttendanceDataRowComponent');
@@ -5,7 +11,7 @@ var QuizModel = require('../models/QuizModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
 var QuestionModel = require('../models/QuestionModel');
 var _ = require('backbone/node_modules/underscore');
-//pass in quiz id as prop - quiz
+
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -58,7 +64,6 @@ module.exports = React.createClass({
 		
 
 		}
-		var showComponent = null;
 		
 		var attendance = (
 			<table className="u-full-width">
@@ -84,8 +89,7 @@ module.exports = React.createClass({
 					</div>
 					<button>Select</button>
 				</form>
-					{showComponent}
-					{attendance}
+				{attendance}
 			</div>
 		)
 	},
