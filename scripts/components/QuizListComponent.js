@@ -28,12 +28,12 @@ module.exports = React.createClass({
 						<div>
 							<div className="quiz-title">
 								{_this.capitalizeFirstLetter(quiz.get('quizTitle'))}
-								<a href={"#quizDetails/"+ quiz.id} ><button className="take-quiz">Take Quiz</button></a>
 							</div>
 							<hr />
 							<div>Total Questions: {quiz.get('totalQuestions')}</div>
 							<div className="quiz-start-expire"><span className="quiz-time-title">Start-Time</span>: {moment(startTime).format("MMMM Do, h:mm a")}</div>
 							<div className="quiz-start-expire"><span className="quiz-time-title">Expire-Time</span>: {moment(expireTime).format("MMMM Do, h:mm a")}</div>
+							<a href={"#quizDetails/"+ quiz.id} ><button className="take-quiz">Take Quiz</button></a>
 						</div>
 					</div>
 				</div>
