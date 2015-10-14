@@ -80,9 +80,9 @@ module.exports = React.createClass({
 		return (
 			<div>
 				<form onSubmit={this.selectQuiz}>
-					<div className="six columns">
-						<h1>Class Attendance</h1>
-						<label htmlFor="exampleRecipientInput">Select Quiz/Day</label>
+					<div className="att-div">
+						<h1 id="att-title">Class Attendance</h1>
+						<label htmlFor="exampleRecipientInput" className="att-info">Select Quiz/Day</label>
 						<select className="u-full-width" id="exampleRecipientInput" ref="quizPick">
 							{quizOptions}
 						</select>
@@ -98,7 +98,10 @@ module.exports = React.createClass({
 		var studentQuery = new Parse.Query(Parse.User);
 		studentQuery.equalTo('teacher', false).find().then(
 			(students) => {
-				this.setState({students: students});
+				var sortedStudents = _.sortBy(students, function(student) {
+					return student.get('lastName').toUpperCase();
+				});
+				this.setState({students: sortedStudents});
 			},
 			(err) => {
 				console.log(err);
