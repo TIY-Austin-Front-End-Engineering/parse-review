@@ -78,7 +78,7 @@ module.exports = React.createClass({
 			</table>
 		)
 		return (
-			<div>
+			<div className="att-container">
 				<form onSubmit={this.selectQuiz}>
 					<div className="att-div">
 						<h1 id="att-title">Class Attendance</h1>
