@@ -19,14 +19,12 @@ module.exports  = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<form>
-					<input type="text" ref="quizName" placeholder="Quiz Title"/>
-					<input type="date" ref="dateToStart" placeholder="date to starts" />
-					<input type="date" ref="dateExpire" placeholder="date to expire" />
-					<PostQuestionComponent />
-				</form>
+				<button onClick={this.addQuestion}>Add a Question </button>
 			</div>
 		);
+	},
+	addQuestion: function(){
+		this.props.router.navigate('editQuiz/'+this.state.quiz.id+'/postQuestion', {trigger: true});
 	}
 });
 

@@ -71,7 +71,10 @@ module.exports = React.createClass({
 		if(correctAnswer === null){
 			this.setState({feedbackElement: 'this is an error'});
 		}else{
+			var quizId =this.props.quizId;
+			var targetQuizModel = new QuizModel({objectId: quizId});
 			var newQuestion = new QuestionModel({
+				quizId: targetQuizModel,
 				questionContent: this.refs.questionTitle.value,
 				questionChoices: this.state.choices,
 				correctChoice: correctAnswer

@@ -32,7 +32,7 @@ var Router = Backbone.Router.extend({
 		'quizList': 'quizList',
 		'createQuiz': 'createQuiz',
 		'editQuiz/:id':'editQuiz',
-		'postQuestion':'postQuestion',
+		'editQuiz/:id/postQuestion':'postQuestion',
 		'quizResults/:id': 'quizResults',
 		'logout': 'logout',
 		'classAnalytics': 'classAnalytics',
@@ -58,7 +58,8 @@ var Router = Backbone.Router.extend({
 	editQuiz:function(id){
 		ReactDOM.render(<EditQuizComponent quizId={id} router={r}/>,app)
 	},
-	postQuestion: function() {
+	postQuestion: function(id) {
+		console.log('post question',currentUser.id);
 		if(currentUser && currentUser.get('teacher') === true) {
 			ReactDOM.render(<PostQuestionComponent quizId={id} router={r}/>, app);
 		}

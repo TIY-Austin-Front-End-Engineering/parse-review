@@ -28,7 +28,6 @@ module.exports = React.createClass({
 		});
 		newQuiz.save({
 			success: (u) => {
-				console.log('hellomoto');
 				this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
 			}
 
