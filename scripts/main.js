@@ -15,6 +15,7 @@ var PostQuestionComponent = require('./components/PostQuestionComponent');
 var AttendanceComponent = require('./components/AttendanceComponent');
 var QuizResultsComponent = require('./components/QuizResultsComponent');
 var HomeComponent = require('./components/HomeComponent');
+var ClassAnalyticsComponent = require('./components/ClassAnalyticsComponent');
 var DashboardComponent = require('./components/DashboardComponent');
 
 var currentUser = Parse.User.current();
@@ -28,20 +29,18 @@ var Router = Backbone.Router.extend({
 		'register': 'register',
 		'quizList': 'quizList',
 		'postQuestion': 'postQuestion',
-		'quizResults/:userId/:quizId': 'quizResults',
+		'quizResults/:id': 'quizResults',
 		'logout': 'logout',
+		'classAnalytics': 'classAnalytics',
+		'quizResults/:userId/:quizId': 'quizResults',
+		'quizDetails/:id':'quizDetailsPage',
 		'attendance': 'attendance'
+	},
+	quizDetailsPage: function(id){
+		ReactDOM.render(<QuizDetailsComponent quizId={id}  quizIsFinished={quizFinished}/>, app);
 	},
 	home: function() {
 		ReactDOM.render(<HomeComponent />, app);
-	},
-	dashboard: function() {
-		// if(currentUser && currentUser.get('teacher') === true) {
-		// 	ReactDOM.render(<DashboardComponent router={r} />, app);
-		// }
-		// else {
-		// 	this.navigate('', {trigger: true});
-		// }
 	},
 	login: function() {
 		ReactDOM.render(<LoginComponent router={r} />, app);
@@ -74,6 +73,18 @@ var Router = Backbone.Router.extend({
 	},
 	quizList: function() {
 		ReactDOM.render(<QuizListComponent />, app);
+	},
+	classAnalytics: function() {
+		ReactDOM.render(<ClassAnalyticsComponent />, app);
+	},
+	dashboard: function() {
+		// if(currentUser && currentUser.get('teacher') === true) {
+		// 	ReactDOM.render(<DashboardComponent router={r} />, app);
+		// }
+		// else {
+		// 	this.navigate('', {trigger: true});
+		// }
+		ReactDOM.render(<DashboardComponent />, app);
 	}
 });
 

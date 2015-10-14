@@ -1,3 +1,5 @@
+//child component to AttendanceComponent, requires student list to passed in through parrent component
+
 var React = require('react');
 var Backbone = require('backbone');
 var moment = require('moment');
