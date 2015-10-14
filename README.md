@@ -42,6 +42,7 @@
 >`questionChoices: array` <br>
 >`correctChoice: string` <br>
 >`quizId: pointer` <br>
+>`tags: array` <br>
 
 **Student Answer Model**
 
