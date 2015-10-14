@@ -12,7 +12,9 @@ var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
 var CreateQuizComponent = require('./components/CreateQuizComponent');
+var EditQuizComponent = require('./components/EditQuizComponent');
 var HomeComponent = require('./components/HomeComponent');
+var PostQuestionComponent = require('./components/PostQuestionComponent');
 
 var app = document.getElementById('app');
 
@@ -23,7 +25,9 @@ var Router = Backbone.Router.extend({
 		'login': 'login',
 		'register': 'register',
 		'quizList': 'quizList',
-		'createQuiz/:id': 'createQuiz',
+		'createQuiz': 'createQuiz',
+		'editQuiz/:id':'editQuiz',
+		'postQuestion':'postQuestion',
 		'quizResults/:id': 'quizResults',
 		'logout': 'logout'
 	},
@@ -40,7 +44,13 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	createQuiz: function() {
-		ReactDOM.render(<CreateQuizComponent />, app);
+		ReactDOM.render(<CreateQuizComponent router={r}/>, app);
+	},
+	editQuiz:function(id){
+		ReactDOM.render(<EditQuizComponent quizId={id} router={r}/>,app)
+	},
+	postQuestion:function(id){
+		ReactDOM.render(<PostQuestionComponent quizId={id} router={r}/>,app)
 	},
 	quizResults: function(id) {
 		// ReactDOM.render(<QuizResultsComponent/>, app);

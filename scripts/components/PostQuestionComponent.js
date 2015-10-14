@@ -1,6 +1,7 @@
 var React = require('react');
 var Backbone = require('backbone');
 var QuestionModel = require('../models/QuestionModel');
+var QuizModel = require('../models/QuizModel');
 //component for admin teachers to post questions to the server
 
 module.exports = React.createClass({

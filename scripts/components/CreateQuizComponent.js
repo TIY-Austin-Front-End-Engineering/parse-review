@@ -2,18 +2,10 @@ var React = require('react');
 var Backbone = require('backbone');
 var PostQuestionComponent = require('./PostQuestionComponent');
 var QuizModel = require('../models/QuizModel');
+var EditQuizComponent = require('./EditQuizComponent');
 
 
 module.exports = React.createClass({
-	getInitialState: function(){
-		return{
-			quiz: null
-		};
-	},
-	componentWillMount: function(){
-		var query = new Parse.Query(QuizModel);
-		query.get(this.props.quizID)
-	}
 	render:function(){
 		return(
 			<div>
@@ -21,7 +13,7 @@ module.exports = React.createClass({
 					<input type="text" ref="quizName" placeholder="Quiz Title"/>
 					<input type="date" ref="dateToStart" placeholder="date to starts" />
 					<input type="date" ref="dateExpire" placeholder="date to expire" />
-					<button > Add Question</button>
+					<button > Create Quiz</button>
 				</form>
 			</div>
 		);
@@ -34,6 +26,12 @@ module.exports = React.createClass({
 			startTime: new Date(this.refs.dateToStart.value),
 			expireTime: new Date(this.refs.dateExpire.value)
 		});
-		newQuiz.save();
+		newQuiz.save({
+			success: (u) => {
+				console.log('hellomoto');
+				this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
+			}
+
+		});	
 	}
 });
