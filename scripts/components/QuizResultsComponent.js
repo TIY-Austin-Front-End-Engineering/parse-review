@@ -2,12 +2,6 @@
 //The expected properties are the QuizModel(to identify which quiz to show the results for), the QuestionModel(to identify what each question needs), and the StudentAnswersModel(so the correct answers will be associated with the proper questions)
 
 var React = require('react');
-var QuizModel = require('../models/QuizModel');
-var QuestionModel = require('../models/QuestionModel');
-var StudentAnswersModel = require('../models/StudentAnswerModel');
-var quizQuery = new Parse.Query(QuizModel);
-var questionsQuery = new Parse.Query(QuestionModel);
-var studentAnswersQuery = new Parse.Query(StudentAnswersModel);
 var PossibleAnswersComponent = require('./PossibleAnswersComponent');
 var numQuestions = 0;
 var numCorrect = 0;
@@ -23,40 +17,28 @@ module.exports = React.createClass({
 		}
 	},
 	componentWillMount: function () {
-		console.log(this.props.quizId)
-		//Lines 20-34 grab the quizId from the server
-		quizQuery.equalTo('objectId', this.props.quizId)
-		.first({
-			success: (result) => {
-				console.log(result)
-				this.setState({
-					quiz: result
-				});
-			},
-			error: (error) => {
-				console.log('didnt find it');
-				this.setState({
-					error: err.message
-				})
+		var UserModel = Parse.User;
+		var QuizModel = Parse.Object.extend('QuizModel');
+		var QuestionModel = Parse.Object.extend('QuestionModel');
+		var StudentAnswerModel = Parse.Object.extend('StudentAnswerModel');
+
+		var userId = this.props.userId;
+		var targetUserModel = new UserModel({objectId: userId});
+		var quizId = this.props.quizId;
+		var targetQuizModel = new QuizModel({objectId: quizId});
+		var query = new Parse.Query(StudentAnswerModel);
+		var innerQuery = new Parse.Query(QuestionModel);
+		query.equalTo('userId', targetUserModel);
+		innerQuery.equalTo('quizId', targetQuizModel);
+		query.matchesQuery('questionId', innerQuery);
+		query.include('questionId');
+		query.find().then(function(results) {
+			for(var i = 0; i < results.length; i++) {
+				console.log(results[i].get('questionId').get('questionChoices'));
+				console.log(results[i].get('studentChoice'));
+				console.log(results[i].get('questionId').get('questionContent'));
 			}
 		});
-		//Lines 35-50 grab all the questions associated with the previous grabbed quizId
-		questionsQuery.equalTo('quiz_id', this.props.quiz)
-		.find({
-			success: (result) => {
-				
-				this.setState({
-					questions: result
-				});
-			},
-			error: (error) => {
-				console.log('didnt find any questions');
-				that.setState({
-					error: err.message
-				})
-			}
-		});
-			
 	},
 	render: function() {
 		//var questions maps out the questions associated with the quizId
@@ -64,18 +46,6 @@ module.exports = React.createClass({
 			return <div>Nope</div>
 		}else{
 
-			console.log(this.state.quiz);
-			var questions = this.state.questions
-			.map((question)=> {
-				return (
-					<div>
-						<h2>{question.get('questionTitle')}</h2>
-						<h3>{question.get('questionContent')}</h3>
-						<PossibleAnswersComponent question={question} answers={question.get('questionChoices')} correctAnswer={question.get('correctChoice')} quizId={this.state.quiz.id}/>
-					</div>
-					);
-			})
-		
 			return (
 				<div>
 					<div>
@@ -92,14 +62,7 @@ module.exports = React.createClass({
 	},
 	percent: ()=>{
 		//correct answers devided by num questions
-		studentAnswersQuery.equalTo('quiz_id', this.state.quiz)
-		.equalTo('studentCorrect', true).then({
-			success: function (results){
-				numCorrect=results.length()
-			}
-		})
-		numQuestions=this.state.questions.length();
-		return Math.round(numCorrect/numQuestions*100)
+		
 	}
 	
 });
