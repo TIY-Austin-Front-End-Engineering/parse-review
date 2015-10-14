@@ -9,20 +9,19 @@ var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
 
-
-
-module.exports = React.createClass({ 
+module.exports = React.createClass({
 	getInitialState: function() {
 	    return {
 	         currentQuestion:0,
 	    };
-	   
+
 	},
 	componentDidMount: function() {
 		this.start = new Date();
 		var query = new Parse.Query(QuizModel);
 		query.get(this.props.quizId).then(
 			(quiz) => {
+
 				var questionQuery = new Parse.Query(QuestionModel);
 				questionQuery.equalTo("quizId", quiz);
 				questionQuery.find().then(
@@ -33,10 +32,8 @@ module.exports = React.createClass({
 						})
 					}
 				)
-
 			}
 		)
-
 	},
 	submitSolve: function(){
 		this.state.currentQuestion++;
@@ -55,8 +52,7 @@ module.exports = React.createClass({
 		this.setState({
 	         currentQuestion:this.state.currentQuestion;
 	    })
-	    
-	}, 
+	},
 	answerPicked: function(e){
 		this.currentQuestion.selectedChoiceId = e.currentTarget.value;	
 	},
@@ -64,27 +60,27 @@ module.exports = React.createClass({
 		var questions = this.state.questions;
 
 		if(questions == null){
-			return (<div>Loading Quiz...</div>); 
+			return (<div>Loading Quiz...</div>);
 		}
 
 		var questionVar = questions;
 		var currentQuestion = questionVar[this.state.currentQuestion];
 		this.currentQuestion = currentQuestion;
 
-		var self = this;  
+		var self = this;
 		var choices = currentQuestion.get('questionChoices').map(function(qc){
 
 			return(<div><input value={qc} type='radio' name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
 		}); 
-			
+
 			return (
 				<div className="Quiz">
 					<div>
 						{currentQuestion.get('questionContent')}
 					</div>
-					{choices} 
-					<button onClick={this.submitSolve}>Submit</button>				
-				</div>	
+					{choices}
+					<button onClick={this.submitSolve}>Submit</button>
+				</div>
 			)
 	}
 });
