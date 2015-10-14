@@ -47,7 +47,7 @@ module.exports = React.createClass({
 		if(this.state.currentQuestion >= this.state.questions.length){
 			var end = new Date();
 			var elapsed = this.start - end;
-			this.props.quizIsFinished(elapsed)
+			this.props.quizIsFinished(elapsed);
 			return;
 		}
 		this.setState({
@@ -56,23 +56,23 @@ module.exports = React.createClass({
 	    
 	}, 
 	answerPicked: function(e){
-		this.currentQuestion.selectedChoiceId = e.currentTarget.value	
+		this.currentQuestion.selectedChoiceId = e.currentTarget.value;	
 	},
 	render: function() {
-		var questions = this.state.questions 
+		var questions = this.state.questions;
 
 		if(questions == null){
 			return (<div>Loading Quiz...</div>); 
 		}
 
-		var questionVar = questions 
-		var currentQuestion = questionVar[this.state.currentQuestion]
-		this.currentQuestion = currentQuestion 
+		var questionVar = questions;
+		var currentQuestion = questionVar[this.state.currentQuestion];
+		this.currentQuestion = currentQuestion;
 
 		var self = this;  
 		var choices = currentQuestion.get('questionChoices').map(function(qc){
 
-				return(<div><input value={qc} type='radio' name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
+			return(<div><input value={qc} type='radio' name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
 		}); 
 			
 			return (
