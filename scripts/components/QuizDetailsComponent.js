@@ -1,3 +1,7 @@
+// Pulling quiz data from QuizModel and questions from QuestionModel.
+// Printing questions from database to browser page after every submit button click event.
+// Setting answers to created 'answer' model and saving the model to the database
+// Collected start time, end time, and difference.
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
@@ -19,8 +23,6 @@ module.exports = React.createClass({
 		var query = new Parse.Query(QuizModel);
 		query.get(this.props.quizId).then(
 			(quiz) => {
-
-
 				var questionQuery = new Parse.Query(QuestionModel);
 				questionQuery.equalTo("quizId", quiz);
 				questionQuery.find().then(
