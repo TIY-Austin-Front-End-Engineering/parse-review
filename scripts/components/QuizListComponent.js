@@ -28,7 +28,7 @@ module.exports = React.createClass({
 						<div>
 							<div className="quiz-title">
 								{_this.capitalizeFirstLetter(quiz.get('quizTitle'))}
-								<button className="take-quiz">Take Quiz</button>
+								<a href={"#quizDetails/"+ quiz.id} ><button className="take-quiz">Take Quiz</button></a>
 							</div>
 							<hr />
 							<div>Total Questions: {quiz.get('totalQuestions')}</div>
