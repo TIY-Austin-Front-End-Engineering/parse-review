@@ -1,3 +1,4 @@
+//component will allow the teacher to create a new quiz with a new quiz id
 var React = require('react');
 var Backbone = require('backbone');
 var PostQuestionComponent = require('./PostQuestionComponent');
@@ -20,6 +21,7 @@ module.exports = React.createClass({
 
 	},
 	onSubmit: function(e){
+		//grabbing the name and id of new quiz and passing it through to edit quiz
 		e.preventDefault();
 		var newQuiz = new QuizModel({
 			quizTitle: this.refs.quizName.value,
