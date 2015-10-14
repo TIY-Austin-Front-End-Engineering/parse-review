@@ -29,9 +29,9 @@ module.exports = React.createClass({
 	//the html to display on the post question page
 			<div className="post-question">
 				<input type="text" ref="questionTitle" className="validate" placeholder="Question" />
-				<input type="text" ref="choice" className="validate" placeholder="Answer"/>
+				<input type="text" ref="choice" className="validate choice" placeholder="Answer"/>
 
-				<button onClick={this.onAddChoice}> Add Choice </button>
+				<button className="choice-btn" onClick={this.onAddChoice}> Add Choice </button>
 					<div ref="choiceRows">				
 					{choiceRows}
 					</div>
