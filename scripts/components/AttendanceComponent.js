@@ -32,7 +32,7 @@ module.exports = React.createClass({
 			}
 		)
 	},
-	
+
 	render: function() {
 		console.log(this.state.students);
 		var quizOptions = this.state.quizList.map(function(quiz) {
@@ -55,18 +55,18 @@ module.exports = React.createClass({
 			})
 			console.log(this.state.groupedStudentAnswers);
 			var attendanceBodyData = null;
-			
+
 			attendanceBodyData = this.state.students.map(function(student) {
 				return (
 				<AttendanceRowComponent key={student.id} student={student} />
 				)
 			})
-		
+
 
 		}
-		
+
 		var attendance = (
-			<table className="u-full-width att-table">
+			<table className="u-full-width">
 				<thead>
 					<tr>
 						<th>Day Administered</th>
@@ -78,17 +78,16 @@ module.exports = React.createClass({
 			</table>
 		)
 		return (
-			<div className="att-container">
+			<div>
 				<form onSubmit={this.selectQuiz}>
-					<div className="att-div">
-						<h1 id="att-title">Class Attendance</h1>
+					<div className="six columns">
+						<h1>Class Attendance</h1>
 						<label htmlFor="exampleRecipientInput">Select Quiz/Day</label>
 						<select className="u-full-width" id="exampleRecipientInput" ref="quizPick">
 							{quizOptions}
 						</select>
-						<button className="att-butt">Select</button>
 					</div>
-					
+					<button>Select</button>
 				</form>
 				{attendance}
 			</div>
@@ -108,7 +107,7 @@ module.exports = React.createClass({
 		var answerQuery = new Parse.Query(StudentAnswerModel);
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
 		innerQuestionQuery.equalTo('quizId', new QuizModel({objectId: this.refs.quizPick.value}));
-		answerQuery.matchesQuery('questionId', innerQuestionQuery).find().then( 
+		answerQuery.matchesQuery('questionId', innerQuestionQuery).find().then(
 			(studentAnswers) => {
 				var AnswersList = _.groupBy(studentAnswers, function(answer) {
 					return answer.get('userId').id;
