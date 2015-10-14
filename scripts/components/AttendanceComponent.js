@@ -38,8 +38,13 @@ module.exports = React.createClass({
 			this.state.students.forEach((student) => {
 				if(this.state.groupedStudentAnswers.hasOwnProperty(student.id)) {
 					student.present = 'present';
+					var firstAnswer = _.min(this.state.groupedStudentAnswers[student.id], function(answer) {
+						return answer.get('createdAt');
+					})
+					student.timeStarted = firstAnswer.get('createdAt');
 			} else {
 				student.present = 'absent';
+				student.timeStarted = '-';
 			}
 			})
 			console.log(this.state.groupedStudentAnswers);
@@ -56,24 +61,17 @@ module.exports = React.createClass({
 		var showComponent = null;
 		
 		var attendance = (
-			<div className="row">
-			<div className="three columns"></div>
-				<table className="ten columns">
-					<thead>
-						<tr>
-							<th>Day Administered</th>
-							<th>Student Name</th>
-							<th>Time Started</th>
-						</tr>
-					</thead>
-					{attendanceBodyData}
-				</table>
-			</div>
+			<table className="u-full-width">
+				<thead>
+					<tr>
+						<th>Day Administered</th>
+						<th>Student Name</th>
+						<th>Time Started</th>
+					</tr>
+				</thead>
+				{attendanceBodyData}
+			</table>
 		)
-		var accessDenied = (
-			<h1>Must have Admin Permission to view attendance.</h1>
-			)
-		//Parse.User.current().get('teacher') ? showComponent = attendance : showComponent = accessDenied;
 		return (
 			<div>
 				<form onSubmit={this.selectQuiz}>
@@ -103,10 +101,9 @@ module.exports = React.createClass({
 			}
 		);
 		var answerQuery = new Parse.Query(StudentAnswerModel);
-		var innerQuestionQuery = new Parse.Query(Parse.Object.extend('QuestionModel'));
+		var innerQuestionQuery = new Parse.Query(QuestionModel);
 		innerQuestionQuery.equalTo('quizId', new QuizModel({objectId: this.refs.quizPick.value}));
-		answerQuery.matchesQuery('questionId', innerQuestionQuery);
-		answerQuery.find().then( 
+		answerQuery.matchesQuery('questionId', innerQuestionQuery).find().then( 
 			(studentAnswers) => {
 				var AnswersList = _.groupBy(studentAnswers, function(answer) {
 					return answer.get('userId').id;
@@ -117,6 +114,5 @@ module.exports = React.createClass({
 				console.log(err);
 			}
 		)
-		this.setState({show: true});
 	}
 })

@@ -65,13 +65,15 @@ var Router = Backbone.Router.extend({
 		this.navigate('', {trigger: true});
 	},
 	attendance: function() {
+		console.log(currentUser.get('teacher'), currentUser.id);
+		if(currentUser.get('teacher')) {
 		ReactDOM.render(<AttendanceComponent/>, app);
+	} else {
+		ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
+	}
 	},
 	quizList: function() {
 		ReactDOM.render(<QuizListComponent />, app);
-	},
-	dashboard: function() {
-		ReactDOM.render(<DashboardComponent />, app);
 	}
 });
 
