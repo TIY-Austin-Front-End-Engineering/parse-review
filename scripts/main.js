@@ -31,7 +31,7 @@ var Router = Backbone.Router.extend({
 		'postQuestion': 'postQuestion',
 		'quizResults/:id': 'quizResults',
 		'logout': 'logout',
-		'classAnalytics': 'classAnalytics'
+		'classAnalytics': 'classAnalytics',
 		'quizResults/:userId/:quizId': 'quizResults',
 		'logout': 'logout'
 	},
