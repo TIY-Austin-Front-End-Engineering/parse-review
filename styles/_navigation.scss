@@ -42,6 +42,10 @@ a:hover {
 	top: 70px;
 	right: 0;
 	background: $navbar;
+	text-align: center;
+}
+.nav-bar-button {
+	border-bottom: 2px solid $bodyBackground;
 }
 
 @media screen and (min-width: 550px) {
