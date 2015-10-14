@@ -4,9 +4,9 @@ var PostQuestionComponent = require('./PostQuestionComponent');
 
 module.exports  = React.createClass({
 		getInitialState: function(){
-		return{
-			quiz: null
-		};
+			return{
+				quiz: null
+			};
 	},
 	componentWillMount: function(){
 		var query = new Parse.Query(QuizModel);
