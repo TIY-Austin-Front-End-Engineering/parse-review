@@ -19,6 +19,7 @@ var QuizResultsComponent = require('./components/QuizResultsComponent');
 var HomeComponent = require('./components/HomeComponent');
 var ClassAnalyticsComponent = require('./components/ClassAnalyticsComponent');
 var DashboardComponent = require('./components/DashboardComponent');
+var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent');
 
 var currentUser = Parse.User.current();
 var app = document.getElementById('app');
@@ -37,6 +38,7 @@ var Router = Backbone.Router.extend({
 		'logout': 'logout',
 		'classAnalytics': 'classAnalytics',
 		'quizResults/:userId/:quizId': 'quizResults',
+		'studentAnalytics': 'studentAnalytics',
 		'quizDetails/:id':'quizDetailsPage',
 		'attendance': 'attendance'
 	},
@@ -87,6 +89,9 @@ var Router = Backbone.Router.extend({
 	},
 	classAnalytics: function() {
 		ReactDOM.render(<ClassAnalyticsComponent />, app);
+	},
+	studentAnalytics: function() {
+		ReactDOM.render(<StudentAnalyticsComponent />, app);
 	},
 	dashboard: function() {
 		// if(currentUser && currentUser.get('teacher') === true) {
