@@ -1,4 +1,5 @@
 .att-container {
+	margin: 0 5em;
 	.att-table {
 		background: #934C47;
 		color: #F9D824;
@@ -22,7 +23,20 @@
 	#att-title {
 		text-align: center;
 		font-size: 3em;
-		margin-top: 1em;
+		margin-top: .5em;
 		color: $hover;
+		background: $navbar;
+		padding: .4em 0;
+	}
+	.att-info {
+		font-size: 2em;
+		margin-top: 2em;
+	}
+	td {
+		background: $innerContainer;
+		border: 2px solid $bodyBackground;
+	}
+	td:first-child {
+    	padding-left: 15px;
 	}
 }
