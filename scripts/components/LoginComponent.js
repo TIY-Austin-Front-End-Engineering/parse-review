@@ -27,14 +27,14 @@ module.exports = React.createClass({
 				<h2>Login</h2>
 				<div className="row">
 					<div className="login-username">
-					<div className="six columns">
+					<div className="twelve columns">
 						<label htmlFor="userName" >User Name</label>
 						<input className="u-full-width" ref="userName" type="text" placeholder="user name" id="userName" />
 					</div>
 				</div>
 				<div className="row">
 				<div className="login-password">
-					<div className="six columns">
+					<div className="twelve columns">
 						<label htmlFor="userName" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 					</div>

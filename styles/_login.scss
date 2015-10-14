@@ -6,23 +6,35 @@
 
 }
 .login-form{
+	border-top:5em solid #FFEBBE;
 	background-color:#934C47;
 	height:80%;
-	width:80%;
+	width:60%;
 	margin:0 auto;
 	text-align: center;
+	font-family:Questrial, sans-serif;
+	color:#FD9856;
+	padding-top:4em;
 
 	
-	h2{
+	h3{
 		padding-top: .5em;
 	}
 
 	.login-username{
-		display:block;
+		padding-right:10em;
+		padding-left:10em;
 	}
-
 	.login-password{
 		@extend .login-username;
+	}
+	.button-primary{
+		background-color:#24677F;
+		border:#24677F;
+		
+		}
+	.button-primary:hover{
+		background:#FD9856;
 	}
 	
 	
