@@ -12,11 +12,9 @@ module.exports = React.createClass({
 	render: function() {
 		var errorElement = null;
 		if(this.state.error) {
-			errorElement = (<p className="error-message">{this.state.error})</p>)
-
+			errorElement = (<p className="error-message">{this.state.error}</p>)
 		}
 		return(
-
 			//Log In form starts here with username and password required
 
 			
@@ -25,11 +23,12 @@ module.exports = React.createClass({
 			<form className="login-form" onSubmit={this.onLogin}>
 
 				<h2>Login</h2>
+					{errorElement}
 				<div className="row">
 					<div className="login-username">
 					<div className="twelve columns">
 						<label htmlFor="userName" >User Name</label>
-						<input className="u-full-width" ref="userName" type="text" placeholder="user name" id="userName" />
+						<input className="u-full-width" ref="userName" type="text" placeholder="USERNAME" id="userName" />
 					</div>
 				</div>
 				<div className="row">
@@ -37,6 +36,11 @@ module.exports = React.createClass({
 					<div className="twelve columns">
 						<label htmlFor="userName" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
+
+					<div className="six columns">
+						<label htmlFor="password" >Password</label>
+						<input className="u-full-width" ref="password" type="password" placeholder="PASSWORD" id="password" />
+
 					</div>
 					<div className="row">
 						
@@ -53,7 +57,7 @@ module.exports = React.createClass({
 	onLogin: function(e) {
 		e.preventDefault();
 		console.log(this.refs.password.value)
-		var user = new Parse.User();
+		// var user = new Parse.User();
 		Parse.User.logIn(
 			this.refs.userName.value,
 			this.refs.password.value,
@@ -68,6 +72,6 @@ module.exports = React.createClass({
 					});
 				}
 			}	
-		)
+		);
 	}
 })
