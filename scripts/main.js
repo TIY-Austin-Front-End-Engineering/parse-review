@@ -23,6 +23,9 @@ var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent'
 
 var currentUser = Parse.User.current();
 var app = document.getElementById('app');
+function quizFinished(){ 
+		r.navigate('quizResults',{trigger:true});
+}
 
 var Router = Backbone.Router.extend({
 	routes: {
@@ -101,7 +104,7 @@ var Router = Backbone.Router.extend({
 		// 	this.navigate('', {trigger: true});
 		// }
 		ReactDOM.render(<DashboardComponent />, app);
-	}
+	},
 });
 
 var r = new Router();

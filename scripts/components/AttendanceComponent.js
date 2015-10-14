@@ -82,7 +82,7 @@ module.exports = React.createClass({
 				<form onSubmit={this.selectQuiz}>
 					<div className="att-div">
 						<h1 id="att-title">Class Attendance</h1>
-						<label htmlFor="exampleRecipientInput">Select Quiz/Day</label>
+						<label htmlFor="exampleRecipientInput" className="att-info">Select Quiz/Day</label>
 						<select className="u-full-width" id="exampleRecipientInput" ref="quizPick">
 							{quizOptions}
 						</select>
