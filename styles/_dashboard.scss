@@ -1,0 +1,36 @@
+.dashboard-container {
+
+	@media (min-width: 70.626em) {
+		.dashboard-links {
+			background: #934C47;
+			text-align: center;
+			display: inline-block;
+			margin-left: 1em;
+			width: 30%;
+		}
+
+		.dashboard-title {
+			margin-left: 40%;
+		}
+
+		.analytics {
+			margin-left: 3%;
+		}
+
+	}
+
+	@media (min-width: 10em) and (max-width: 70.625em) {
+		.dashboard-links {
+			background: #934C47;
+			text-align: center;
+		}
+
+		.dashboard-title {
+			margin-left: 40%;
+		}
+
+		.analytics {
+			margin-left: 3%;
+		}
+	}
+}
