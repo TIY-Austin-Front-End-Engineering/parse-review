@@ -1,6 +1,9 @@
 //This component registers new users.
 
 var React = require('react');
+var errorElement = null;
+var teachPassword = null;
+
 
 module.exports= React.createClass ({
 	getInitialState: function() {
@@ -9,14 +12,18 @@ module.exports= React.createClass ({
 		};
 	},
 	render: function() {
-		var errorElement = null;
+		
+		if (teachPassword){
+			console.log('teachy!');
+			teachPassword=(<input className="u-full-width" ref="teach" type="password" placeholder="teacher password" />);
+		}
 		if (this.state.error) {
 			errorElement = (<p className= "red">{this.state.error}</p>)
 		}
 		return (
 			<div className="container">
 				<div className="row">
-					<div className="six columns">
+					<div className="twelve columns">
 						<form onSubmit={this.onRegister} className="form">
 							<h2>Register</h2>
 							{errorElement}
@@ -45,23 +52,48 @@ module.exports= React.createClass ({
 									</div>
 								</div>
 								<div className="row">
-								<div className="twelve columns">
+									<div className="twelve columns">
 										<label htmlFor="password">Password</label>
 										<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 									</div>
 								</div>
+								<div>
+									<select onChange={this.reRender} ref="select">
+										<option>Student</option>
+										<option>Teacher</option>
+									</select>
+								</div>
+								{teachPassword}
 								<button className="button-primary">Register</button>
 						</form>
 					</div>
-					<div className="six columns">
-						<img className="img-register" src='http://i.istockimg.com/file_thumbview_approve/73612225/3/stock-illustration-73612225-register-here-grunge-retro-red-isolated-ribbon-stamp.jpg'></img>
-					</div>
+					
 				</div>
 			</div>
 			)
-	},	
+	},
+	reRender:function(e){
+		e.preventDefault();
+		console.log('rerendering');
+		teachPassword=true;
+		this.forceUpdate();
+	},
 	onRegister: function(e) {
 		e.preventDefault();
+		var teach = false;
+		
+		if (this.refs.select.value=='Teacher'){
+			
+			if (this.refs.teach.value==='teacher'){
+				console.log('yay!!!')
+				console.log(this.refs.teach.value);
+				teach=true;
+			}
+			else{
+				console.log('no beans');
+				errorElement = (<p className= "red">Incorrect Teacher Password</p>)
+			}
+		}
 		var user = new Parse.User();
 		user.signUp(
 			{
@@ -70,7 +102,7 @@ module.exports= React.createClass ({
 				username: this.refs.username.value,
 				password: this.refs.password.value,
 				email: this.refs.email.value,
-				teacher: false
+				teacher: teach
 			},
 			{
 				success: (u) => {
