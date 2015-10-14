@@ -35,8 +35,12 @@ a:hover {
 	width: 3em;
 	padding: .8em;
 }
-#hamburger-list {
+.closed {
 	display: none;
+	
+}
+.open {
+	display: block;
 	float: right;
 	position: fixed;
 	top: 70px;
