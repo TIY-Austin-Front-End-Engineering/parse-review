@@ -18,7 +18,7 @@ module.exports = React.createClass({
 		return(
 
 			//Log In form starts here with username and password required
-			<form onLogin={this.onLogin}>
+			<form onSubmit={this.onLogin}>
 				<h2>Login</h2>
 				<div className="row">
 					<div className="six columns">
@@ -31,7 +31,9 @@ module.exports = React.createClass({
 						<label htmlFor="userName" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 					</div>
-					<button className="button-primary">Log In</button>
+					<div className="row">
+						<button className="button-primary">Log In</button>
+					</div>
 				</div>
 			</form>
 		);
@@ -39,8 +41,9 @@ module.exports = React.createClass({
 	// Function to log in user which uses Parse for as a server with the users information
 	onLogin: function(e) {
 		e.preventDefault();
+		console.log(this.refs.password.value)
 		var user = new Parse.User();
-		Parse.User.login(
+		Parse.User.logIn(
 			this.refs.userName.value,
 			this.refs.password.value,
 			{
