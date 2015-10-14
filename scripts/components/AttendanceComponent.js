@@ -12,8 +12,7 @@ module.exports = React.createClass({
 		return {
 			groupedStudentAnswers: null,
 			students: [],
-			quizList: [],
-			show: false
+			quizList: []
 		}
 	},
 	componentWillMount: function() {
@@ -43,7 +42,7 @@ module.exports = React.createClass({
 				student.present = 'absent';
 			}
 			})
-			console.log(this.state.students);
+			console.log(this.state.groupedStudentAnswers);
 			var attendanceBodyData = null;
 			
 			attendanceBodyData = this.state.students.map(function(student) {
@@ -57,16 +56,19 @@ module.exports = React.createClass({
 		var showComponent = null;
 		
 		var attendance = (
-			<table className="u-full-width">
-				<thead>
-					<tr>
-						<th>Day Administered</th>
-						<th>Student Name</th>
-						<th>Time Started</th>
-					</tr>
-				</thead>
-				{attendanceBodyData}
-			</table>
+			<div className="row">
+			<div className="three columns"></div>
+				<table className="ten columns">
+					<thead>
+						<tr>
+							<th>Day Administered</th>
+							<th>Student Name</th>
+							<th>Time Started</th>
+						</tr>
+					</thead>
+					{attendanceBodyData}
+				</table>
+			</div>
 		)
 		var accessDenied = (
 			<h1>Must have Admin Permission to view attendance.</h1>
