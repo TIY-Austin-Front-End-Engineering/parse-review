@@ -1,0 +1,28 @@
+.att-container {
+	.att-table {
+		background: #934C47;
+		color: #F9D824;
+	}
+	th {
+		text-align: center;
+	}
+	.att-butt {
+		float: left;
+		background: #24677F;
+		color: #F9D824;
+	}
+	#exampleRecipientInput {
+		float: left;
+		display: inline-block;
+		width: 40%;
+	}
+	option {
+		display: inline-block;
+	}
+	#att-title {
+		text-align: center;
+		font-size: 3em;
+		margin-top: 1em;
+		color: $hover;
+	}
+}
