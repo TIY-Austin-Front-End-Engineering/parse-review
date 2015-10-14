@@ -11,7 +11,7 @@ module.exports = React.createClass({
 	getInitialState: function () {
 		return {
 			user: this.props.userId,
-			quiz: null,
+			quiz: this.props.quizId,
 			questions: [],
 			error: null
 		}
@@ -32,33 +32,60 @@ module.exports = React.createClass({
 		innerQuery.equalTo('quizId', targetQuizModel);
 		query.matchesQuery('questionId', innerQuery);
 		query.include('questionId');
-		query.find().then(function(results) {
-			for(var i = 0; i < results.length; i++) {
-				console.log(results[i].get('questionId').get('questionChoices'));
-				console.log(results[i].get('studentChoice'));
-				console.log(results[i].get('questionId').get('questionContent'));
-			}
+		query.find().then((results) => {
+			this.setState({
+				questions: results
+			})
+			// for(var i = 0; i < results.length; i++) {
+			// 	console.log(results[i].get('questionId').get('questionChoices'));
+			// 	console.log(results[i].get('studentChoice'));
+			// 	console.log(results[i].get('questionId').get('questionContent'));
+			// 	// this.setState({
+			// 		// questions: results[i].get('questionId').get('questionContent')
+			// 	// })
+			// }
 		});
 	},
 	render: function() {
+		// var questionsChoices = this.state.questions.map((thing) => {
+		// 	return thing.get('questionId').get('questionChoices');
+		// });
+
+		// var questionChoice = questionsChoices.forEach((choice) => {
+		// 	console.log(choice.toString())
+		// })
+
+		// console.log(questionChoice.toString())
+
+		var ListQuestionDetails = this.state.questions.map((question) => {
+			return (
+					<div>
+						<div>{question.get('questionId').get('questionContent')}</div>
+						<PossibleAnswersComponent questionChoices={question.get('questionId').get('questionChoices')} correctChoice={question.get('questionId').get('correctChoice')} studentChoice={question.get('studentChoice')}/>
+						<hr />
+					</div>
+				)
+		});
+
 		//var questions maps out the questions associated with the quizId
-		if (!this.state.quiz||!this.state.questions){
-			return <div>Nope</div>
-		}else{
+		// if (!this.state.quiz||!this.state.questions){
+		// 	return <div>Nope</div>
+		// }else{
 
 			return (
 				<div>
 					<div>
-						<div>Quiz Name: {this.state.quiz.get('quizTitle')}</div>
-						<div>User: {Parse.User.current('username')}</div>
-						<div>Percentage: {this.percent}%</div>
+						<div>Quiz Name: </div>
+						<div>User: </div>
+						<div>Percentage: %</div>
 					</div>
+					<hr />
 					<div>
-						{questions}
+						{ListQuestionDetails}
 					</div>
 				</div>
 			);
-		}
+		// }
 	},
 	percent: ()=>{
 		//correct answers devided by num questions
@@ -66,3 +93,4 @@ module.exports = React.createClass({
 	}
 	
 });
+
