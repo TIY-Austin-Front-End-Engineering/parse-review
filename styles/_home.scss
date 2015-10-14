@@ -1,4 +1,15 @@
-home-container {
+.home-container {
+
 	background-color: $innerContainer;
 	font-family: 'Questrial', sans-serif;
+	margin: 2em;
+	color: #fff;
+
+	.home-title {
+		margin-left: 1em;
+	}
+
+	.img-box {
+		margin-left: 2em;
+	}
 }
