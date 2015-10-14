@@ -18,12 +18,13 @@ module.exports = React.createClass({
 		console.log('render', this.state.hamburgerOpen);
 		var currentUser = Parse.User.current();
 		var links = [];
+		var name = [];
 		//'if' statement will show all the links including the ones only available to teachers.
 		if(currentUser && currentUser.get('teacher') === true) {
 			links.push(<a href="#logout"><div key="logout" className="nav-bar-button">Log Out</div></a>);
 			links.push(<a href="#dashboard"><div key="dashboard" className="nav-bar-button">Dashboard</div></a>);
 			links.push(<a href="#createQuiz"><div key="createQuiz" className="nav-bar-button">Create Quiz</div></a>);
-			links.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
+			name.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
 		}
 		//'else if' statement will only display links that are availble to students.
 		else if(currentUser && currentUser.get('teacher') === false) {
@@ -51,6 +52,7 @@ module.exports = React.createClass({
 					<img onClick={this.hamboiga} className="hamburger-image" src="../../images/hamburger.png"></img>
 				</div>
 				<a href="" id="logo-container"><img src="../../images/logo_pencil.png" className="logo"></img></a>
+				{name}
 				<div className="beniz">
 					{links}
 				</div>

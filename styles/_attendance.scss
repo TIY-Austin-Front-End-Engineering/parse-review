@@ -1,0 +1,42 @@
+.att-container {
+	margin: 0 5em;
+	.att-table {
+		background: #934C47;
+		color: #F9D824;
+	}
+	th {
+		text-align: center;
+	}
+	.att-butt {
+		float: left;
+		background: #24677F;
+		color: #F9D824;
+	}
+	#exampleRecipientInput {
+		float: left;
+		display: inline-block;
+		width: 40%;
+	}
+	option {
+		display: inline-block;
+	}
+	#att-title {
+		text-align: center;
+		font-size: 3em;
+		margin-top: .5em;
+		color: $hover;
+		background: $navbar;
+		padding: .4em 0;
+	}
+	.att-info {
+		font-size: 2em;
+		margin-top: 2em;
+	}
+	td {
+		background: $innerContainer;
+		border: 2px solid $bodyBackground;
+	}
+	td:first-child {
+    	padding-left: 15px;
+	}
+}
