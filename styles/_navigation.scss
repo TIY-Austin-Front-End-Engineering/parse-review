@@ -1,6 +1,7 @@
-nav {
+.nav-bar {
 	background: $navbar;
 	height: 67px;
+	overflow: hidden;
 }
 .beniz {
 	display:none;
@@ -23,7 +24,7 @@ a:hover {
 }
 .user-name-display {
 	color: #F9D824;
-	padding: 1.5em;
+	padding: 1.5em 0 1.5em 1.5em;
 	float: left;
 }
 .hamburger {
@@ -35,13 +36,21 @@ a:hover {
 	width: 3em;
 	padding: .8em;
 }
-#hamburger-list {
+.closed {
 	display: none;
+	
+}
+.open {
+	display: block;
 	float: right;
 	position: fixed;
 	top: 70px;
 	right: 0;
 	background: $navbar;
+	text-align: center;
+}
+.nav-bar-button {
+	border-bottom: 2px solid $bodyBackground;
 }
 
 @media screen and (min-width: 550px) {
@@ -56,7 +65,7 @@ a:hover {
 	}
 	.nav-bar-button {
 		float: right;
-		padding: 1.5em;
+		padding: 1.5em 1em;
 	}
 	.beniz {
 		display: inline;
