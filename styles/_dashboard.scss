@@ -1,5 +1,5 @@
 @media (min-width: 70.626em) {
-.dashboard-links {
+.dashboard-container .dashboard-links {
 	background: #934C47;
 	text-align: center;
 	display: inline-block;
@@ -7,27 +7,27 @@
 	width: 30%;
 }
 
-.dashboard-title {
+.dashboard-container .dashboard-title {
 	margin-left: 40%;
 }
 
-.analytics {
+.dashboard-container .analytics {
 	margin-left: 3%;
 }
 
 }
 
 @media (min-width: 10em) and (max-width: 70.625em) {
-	.dashboard-links {
+	.dashboard-container .dashboard-links {
 	background: #934C47;
 	text-align: center;
 }
 
-.dashboard-title {
+.dashboard-container .dashboard-title {
 	margin-left: 40%;
 }
 
-.analytics {
+.dashboard-container .analytics {
 	margin-left: 3%;
 }
 }
