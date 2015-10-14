@@ -1,3 +1,7 @@
+// Pulling quiz data from QuizModel and questions from QuestionModel.
+// Printing questions from database to browser page after every submit button click event.
+// Setting answers to created 'answer' model and saving the model to the database
+// Collected start time, end time, and difference.
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
@@ -5,21 +9,18 @@ var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
 
-
-
-module.exports = React.createClass({ 
+module.exports = React.createClass({
 	getInitialState: function() {
 	    return {
 	         currentQuestion:0,
 	    };
-	   
+
 	},
 	componentDidMount: function() {
 		this.start = new Date();
 		var query = new Parse.Query(QuizModel);
 		query.get(this.props.quizId).then(
 			(quiz) => {
-
 
 				var questionQuery = new Parse.Query(QuestionModel);
 				questionQuery.equalTo("quizId", quiz);
@@ -31,10 +32,8 @@ module.exports = React.createClass({
 						})
 					}
 				)
-
 			}
 		)
-
 	},
 	submitSolve: function(){
 		this.state.currentQuestion++;
@@ -47,42 +46,41 @@ module.exports = React.createClass({
 		if(this.state.currentQuestion >= this.state.questions.length){
 			var end = new Date();
 			var elapsed = this.start - end;
-			this.props.quizIsFinished(elapsed)
+			this.props.quizIsFinished(elapsed);
 			return;
 		}
 		this.setState({
 	         currentQuestion:this.state.currentQuestion;
 	    })
-	    
-	}, 
+	},
 	answerPicked: function(e){
-		this.currentQuestion.selectedChoiceId = e.currentTarget.value	
+		this.currentQuestion.selectedChoiceId = e.currentTarget.value;	
 	},
 	render: function() {
-		var questions = this.state.questions 
+		var questions = this.state.questions;
 
 		if(questions == null){
-			return (<div>Loading Quiz...</div>); 
+			return (<div>Loading Quiz...</div>);
 		}
 
-		var questionVar = questions 
-		var currentQuestion = questionVar[this.state.currentQuestion]
-		this.currentQuestion = currentQuestion 
+		var questionVar = questions;
+		var currentQuestion = questionVar[this.state.currentQuestion];
+		this.currentQuestion = currentQuestion;
 
-		var self = this;  
+		var self = this;
 		var choices = currentQuestion.get('questionChoices').map(function(qc){
 
-				return(<div><input value={qc} type='radio' name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
+			return(<div><input value={qc} type='radio' name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
 		}); 
-			
+
 			return (
 				<div className="Quiz">
 					<div>
 						{currentQuestion.get('questionContent')}
 					</div>
-					{choices} 
-					<button onClick={this.submitSolve}>Submit</button>				
-				</div>	
+					{choices}
+					<button onClick={this.submitSolve}>Submit</button>
+				</div>
 			)
 	}
 });
