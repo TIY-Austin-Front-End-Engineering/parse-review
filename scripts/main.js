@@ -31,7 +31,7 @@ var Router = Backbone.Router.extend({
 		'postQuestion': 'postQuestion',
 		'quizResults/:id': 'quizResults',
 		'logout': 'logout',
-		'classAnalytics': 'classAnalytics'
+		'classAnalytics': 'classAnalytics',
 		'quizResults/:userId/:quizId': 'quizResults',
 		'logout': 'logout'
 	},
@@ -72,6 +72,7 @@ var Router = Backbone.Router.extend({
 	},
 	classAnalytics: function() {
 		ReactDOM.render(<ClassAnalyticsComponent />, app);
+	},
 	dashboard: function() {
 		ReactDOM.render(<DashboardComponent />, app);
 	}
