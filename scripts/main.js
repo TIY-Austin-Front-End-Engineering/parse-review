@@ -15,6 +15,7 @@ var PostQuestionComponent = require('./components/PostQuestionComponent');
 var QuizResultsComponent = require('./components/QuizResultsComponent');
 var HomeComponent = require('./components/HomeComponent');
 var DashboardComponent = require('./components/DashboardComponent');
+var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent');
 
 
 var currentUser = Parse.User.current();
@@ -31,6 +32,7 @@ var Router = Backbone.Router.extend({
 		'dashboard': 'dashboard',
 		'quizResults/:userId/:quizId': 'quizResults',
 		'logout': 'logout'
+		'studentAnalytics': 'studentAnalytics'
 	},
 	home: function() {
 		ReactDOM.render(<HomeComponent />, app);
@@ -69,6 +71,9 @@ var Router = Backbone.Router.extend({
 	},
 	dashboard: function() {
 		ReactDOM.render(<DashboardComponent />, app);
+	},
+	studentAnalytics: function() {
+		ReactDom.render(<StudentAnalyticsComponent />, app)
 	}
 });
 
