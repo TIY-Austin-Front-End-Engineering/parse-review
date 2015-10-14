@@ -1,33 +1,45 @@
 .class-analytics-container {
-
+	font-family: $fontFanwood;
+	.page-title {
+		margin: 0 auto;
+		margin-top: 1em;
+		height: 4em;
+		background-color: $navbar;
+		color: $hover;
+		text-align: center;
+		font-family: $fontQuestrial;
+		width: 31em;
+		margin-bottom: 1em;
+		box-shadow: 2px 2px 2px #000;
+	}
 	.left-side {
 		background-color: $innerContainer;
-		width: 25%;
-		height: 5em;
-		display: inline-block;
-		.drop-down-class-analytics {
+		margin-top: 6em;
+		.select-btn{
 			background-color: $button;
-			font-family: $fontFanwood;
-			color: white;
+			color: $linkColor;
+			font-family: $fontQuestrial;
+		}
+		.drop-down-btn {
+			font-family: $fontQuestrial;
+			cursor: pointer;
 		}
 	}
 	.right-side {
-		background-color: $innerContainer;
-		width: 50%;
-		display: inline-block;
-	}
-}
-
-.test {
-	div {
-		height: 10em;
-
-		&:first-child {
-			background-color: red;
-		}
-
-		&:last-child {
-			background-color: blue;
+		.analytics-container {
+			background-color: $innerContainer;
+			padding: 0 1em;
+			.header {
+				font-size: 30px;
+				color: white;
+			}
+			.right-content {
+			}
+			hr {
+				border-color: $hover;
+				margin: 0;
+			}
 		}
 	}
 }
+
