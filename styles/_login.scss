@@ -5,11 +5,13 @@
 
 
 }
+
+
 .login-form{
 	border-top:5em solid #FFEBBE;
 	background-color:#934C47;
 	height:80%;
-	width:60%;
+	width:40%;
 	margin:0 auto;
 	text-align: center;
 	font-family:Questrial, sans-serif;
@@ -20,6 +22,7 @@
 	h3{
 		padding-top: .5em;
 	}
+
 
 	.login-username{
 		padding-right:10em;
@@ -35,7 +38,11 @@
 		}
 	.button-primary:hover{
 		background:#FD9856;
-	}
-	
+		}
 	
 }
+
+			
+
+
+

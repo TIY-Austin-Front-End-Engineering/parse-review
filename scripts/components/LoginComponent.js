@@ -26,26 +26,23 @@ module.exports = React.createClass({
 					{errorElement}
 				<div className="row">
 					<div className="login-username">
-					<div className="twelve columns">
+					<div className="ten columns">
 						<label htmlFor="userName" >User Name</label>
 						<input className="u-full-width" ref="userName" type="text" placeholder="USERNAME" id="userName" />
 					</div>
 				</div>
 				<div className="row">
 				<div className="login-password">
-					<div className="twelve columns">
+					<div className="ten columns">
 						<label htmlFor="userName" >Password</label>
 						<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
 
-					<div className="six columns">
-						<label htmlFor="password" >Password</label>
-						<input className="u-full-width" ref="password" type="password" placeholder="PASSWORD" id="password" />
 
 					</div>
 					<div className="row">
 						
 						<button className="button-primary">Log In</button>
-						</div>
+						
 						</div>
 					</div>
 				</div>
