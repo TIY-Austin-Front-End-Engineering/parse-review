@@ -12,14 +12,10 @@ var NavigationComponent = require('./components/NavigationComponent');
 var LoginComponent = require('./components/LoginComponent');
 var QuizListComponent = require('./components/QuizListComponent');
 var PostQuestionComponent = require('./components/PostQuestionComponent');
-<<<<<<< HEAD
 var AttendanceComponent = require('./components/AttendanceComponent');
-=======
 var QuizResultsComponent = require('./components/QuizResultsComponent');
 var HomeComponent = require('./components/HomeComponent');
 var DashboardComponent = require('./components/DashboardComponent');
-
->>>>>>> dc26a584b5366f36decaead707cba52887567289
 
 var currentUser = Parse.User.current();
 var app = document.getElementById('app');
@@ -32,7 +28,6 @@ var Router = Backbone.Router.extend({
 		'register': 'register',
 		'quizList': 'quizList',
 		'postQuestion': 'postQuestion',
-		'dashboard': 'dashboard',
 		'quizResults/:userId/:quizId': 'quizResults',
 		'logout': 'logout',
 		'attendance': 'attendance'
