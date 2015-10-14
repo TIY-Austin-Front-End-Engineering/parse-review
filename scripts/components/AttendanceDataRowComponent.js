@@ -9,7 +9,7 @@ module.exports = React.createClass({
 	return(
 		<tbody>
 			<tr>
-				<td>{this.props.student.get('firstName')} {this.props.student.get('lastName')}</td>
+				<td>{this.props.student.get('lastName')}, {this.props.student.get('firstName')}</td>
 				<td>{this.props.student.present}</td>
 				<td>{this.props.student.timeStarted !== '-' ? moment(this.props.student.timeStarted).format('MMMM Do, h:mm a') : '-'}</td>
 			</tr> 
