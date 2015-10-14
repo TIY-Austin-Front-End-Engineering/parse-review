@@ -2,12 +2,14 @@ nav {
 	background: $navbar;
 	height: 67px;
 }
-.nav-bar-button {
-	float: right;
-	padding: 1.5em;
-	a {
-		text-decoration: none;
-		color: #F9D824;
+.beniz {
+	display:none;
+}
+a {
+	text-decoration: none;
+	color: #F9D824;
+	.nav-bar-button {
+		display:block;
 	}
 }
 a:hover {
@@ -23,4 +25,40 @@ a:hover {
 	color: #F9D824;
 	padding: 1.5em;
 	float: left;
+}
+.hamburger {
+	color: #F9D824;
+	float: right;
+}
+.hamburger-image {
+	height: 3em;
+	width: 3em;
+	padding: .8em;
+}
+#hamburger-list {
+	display: none;
+	float: right;
+	position: fixed;
+	top: 70px;
+	right: 0;
+	background: $navbar;
+}
+
+@media screen and (min-width: 550px) {
+	.hamburger-image {
+		display: none;
+	}
+	.hamburger {
+		display: none;
+	}
+	#hamburger-list {
+		display: none;
+	}
+	.nav-bar-button {
+		float: right;
+		padding: 1.5em;
+	}
+	.beniz {
+		display: inline;
+	}
 }
