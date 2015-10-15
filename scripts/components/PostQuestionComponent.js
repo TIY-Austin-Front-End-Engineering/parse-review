@@ -75,8 +75,6 @@ module.exports = React.createClass({
 	},
 	onSubmit: function() {			
 	//selecting the correct answer from the multiple choice array
-		QuizModel.increment("totalQuestions");
-		QuizModel.save();
 		var radioBtns = this.refs.choiceRows.querySelectorAll('.radioo');
 		var correctAnswer = null;
 		for(var i = 0; i < radioBtns.length; i++) {
@@ -98,6 +96,8 @@ module.exports = React.createClass({
 				correctChoice: correctAnswer
 				
 			});
+			targetQuizModel.increment('totalQuestions');
+			targetQuizModel.save();
 			newQuestion.save();
 			this.refs.questionTitle.value = '',
 			this.refs.choice.value = '',

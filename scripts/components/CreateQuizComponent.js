@@ -57,7 +57,8 @@ module.exports = React.createClass({
 			var newQuiz = new QuizModel({
 				quizTitle: this.refs.quizName.value,
 				startTime: new Date(this.refs.dateToStart.value),
-				expireTime: new Date(this.refs.dateExpire.value)
+				expireTime: new Date(this.refs.dateExpire.value),
+				totalQuestions: 0
 			});
 			newQuiz.save({
 				success: (u) => {
