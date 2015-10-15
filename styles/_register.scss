@@ -1,20 +1,18 @@
 .reg-form-container {
 	background-color: #FFEBBE;
-}
 
-.reg-form{
-	border-top:10em solid #FFEBBE;
-	background-color:#934C47;
-	height:80%;
-	width:70%;
-	margin:0 auto;
-	text-align: center;
-	font-family:Questrial, sans-serif;
-	color:#FD9856;
-	padding-top:4em;
-	min-width: 20em;
-	.u-full-width {
-		width: 70%;
+	.reg-form{
+		background-color:#934C47;
+		height:80%;
+		width:70%;
+		margin:0 auto;
+		text-align: center;
+		font-family:Questrial, sans-serif;
+		color: red;
+		// #FD9856
+		padding-top:4em;
+		min-width: 20em;
+		.u-full-width {
+			width: 70%;
+	}
 }
-}
-	
