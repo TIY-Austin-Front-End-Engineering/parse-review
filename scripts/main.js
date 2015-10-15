@@ -24,9 +24,7 @@ var QuizDetailsComponent = require('./components/QuizDetailsComponent');
 
 var currentUser = Parse.User.current();
 var app = document.getElementById('app');
-// function quizFinished(){ 
-// 		r.navigate('quizResults',{trigger:true});
-// }
+
 
 var Router = Backbone.Router.extend({
 	routes: {
