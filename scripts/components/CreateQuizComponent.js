@@ -105,5 +105,4 @@ module.exports = React.createClass({
 			}	
 		}
 	}
-}
 });
