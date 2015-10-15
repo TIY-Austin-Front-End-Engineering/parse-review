@@ -28,7 +28,7 @@ module.exports = React.createClass({
 		var targetQuizModel = new QuizModel({objectId: quizId});
 		var query = new Parse.Query(StudentAnswerModel);
 		var innerQuery = new Parse.Query(QuestionModel);
-		query.equalTo('userId', targetUserModel);
+		query.equalTo('userId', targetUserModel.id);// added .id 
 		innerQuery.equalTo('quizId', targetQuizModel);
 		query.matchesQuery('questionId', innerQuery);
 		query.include('questionId');
