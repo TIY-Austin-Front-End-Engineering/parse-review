@@ -33,14 +33,14 @@ module.exports = React.createClass({
 					<h3>Create Quiz</h3>
 					<hr />
 					<form onSubmit={this.onSubmit}>
-						<label>Title</label>
-						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
-						<label>Start Date</label>
-						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
+						<label htmlFor="create-quiz-title">Title</label>
+						<input className="u-full-width" type="text" ref="quizName" id="create-quiz-title"placeholder="Quiz Title"/>
+						<label htmlFor="start-date">Start Date and Time</label>
+						<input className="u-full-width" type="date" ref="dateToStart" id="start-date" placeholder="date to starts" />
 						<input type="time" ref="timeToStart" />
-						<label>End Date</label>
-						<input className="u-full-width" type="date" ref="dateToExpire" placeholder="date to expire" />
-						<input type="time" ref="timeToExpire" />
+						<label htmlFor="start-time">End Date and Time</label>
+						<input className="u-full-width" type="date" ref="dateToExpire" id="start-time" placeholder="date to expire" />
+						<input type="time" ref="timeToExpire" /><br />
 						<button >Create Quiz</button>
 						<h2>{this.state.feedbackElement}</h2>
 					</form>
@@ -102,7 +102,7 @@ module.exports = React.createClass({
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
 				}			
 			});
-		}	
+			}	
+		}
 	}
-}
 });
