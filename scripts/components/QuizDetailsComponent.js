@@ -46,7 +46,7 @@ module.exports = React.createClass({
 		if(this.state.currentQuestion >= this.state.questions.length){
 			var end = new Date();
 			var elapsed = this.start - end;
-			this.props.quizIsFinished(elapsed);
+			this.props.router.navigate('#quizResults/'+Parse.User.current().id+'/'+this.props.quizId, {trigger: true});
 			return;
 		}
 		this.setState({
