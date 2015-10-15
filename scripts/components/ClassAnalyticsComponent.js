@@ -3,6 +3,7 @@
  *
  *	requires:
  *		React
+ *		ReactDOM
  *		Quiz Model
  *			quizTitle: string
  *			totalQuestions: number
