@@ -57,15 +57,7 @@ module.exports = React.createClass({
 			);
 		});
 
-		// future content of the right content
-					// <div key={question.id}>
-					// 	<h4>Question</h4>
-					// 	<div>{question.get('questionId')}</div>
-					// 	<h4>Answer</h4>
-					// 	<div>{question.get('questionAverage')}</div>
-					// </div>
-					// <h2>Questions and Answers go here!</h2>
-
+		// Display questions and averages for the selected quiz
 		if(this.state.allQuestions) {
 			console.log('answers appeared');
 			rightContent = this.state.allQuestions.map(function(question) {
@@ -119,7 +111,7 @@ module.exports = React.createClass({
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
 
 		innerQuestionQuery.equalTo('quizId', new QuizModel({ objectId: this.refs.thisQuiz.value }));
-		answerQuery.include('questionId').matchesQuery('questionId', innerQuestionQuery).find().then(
+		answerQuery.include('questionId').include('questionContent').matchesQuery('questionId', innerQuestionQuery).find().then(
 			(studentAnswers) => {
 				var answerList = _.groupBy(studentAnswers, function(answer) {
 					return answer.get('questionId').id;
@@ -127,10 +119,7 @@ module.exports = React.createClass({
 
 				var findQuestions = [];
 
-				console.log(answerList);
-
-					// array to map with question and percentage correct
-
+				// Loop through the answerList object to pull out needed data
 				for (var props in answerList) {
 
 					var totalNumOfAnswers = answerList[props].length;
@@ -146,12 +135,9 @@ module.exports = React.createClass({
 
 					var questionInfo = {
 						question: answerList[props][0].get('questionId'),
-						questionTitle: answerList[props][0].get('questionTitle'),
+						questionTitle: answerList[props][0].get('questionId').get('questionContent'),
 						questionAverage: numberCorrect/totalNumOfAnswers*100
 					};
-
-					console.log(answerList[props][0].get('questionId'));
-
 					findQuestions.push(questionInfo);
 				}
 				this.setState({ allQuestions: findQuestions });
