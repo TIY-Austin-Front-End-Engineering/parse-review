@@ -67,7 +67,9 @@
 
 
 @media (min-width: 550px){
-	.column, .columns {
-	  margin-left: 0;
+	.post-question-component{
+		.column, .columns {
+	  		margin-left: 0;
+		}
 	}
 }
