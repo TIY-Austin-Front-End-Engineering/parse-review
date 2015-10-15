@@ -22,7 +22,6 @@ var DashboardComponent = require('./components/DashboardComponent');
 var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent');
 var QuizDetailsComponent = require('./components/QuizDetailsComponent');
 
-var currentUser = Parse.User.current();
 var app = document.getElementById('app');
 
 
@@ -57,12 +56,27 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	createQuiz: function() {
-		ReactDOM.render(<CreateQuizComponent router={r}/>, app);
+		var currentUser = Parse.User.current();
+		console.log('post question',currentUser.id);
+		if(currentUser && currentUser.get('teacher') === true) {
+			ReactDOM.render(<CreateQuizComponent router={r}/>, app);
+		}
+		else {
+			this.navigate('', {trigger: true});
+		}
 	},
 	editQuiz:function(id){
-		ReactDOM.render(<EditQuizComponent quizId={id} router={r}/>,app)
+		var currentUser = Parse.User.current();
+		console.log('post question',currentUser.id);
+		if(currentUser && currentUser.get('teacher') === true) {
+			ReactDOM.render(<EditQuizComponent quizId={id} router={r}/>, app);
+		}
+		else {
+			this.navigate('', {trigger: true});
+		}
 	},
 	postQuestion: function(id) {
+		var currentUser = Parse.User.current();
 		console.log('post question',currentUser.id);
 		if(currentUser && currentUser.get('teacher') === true) {
 			ReactDOM.render(<PostQuestionComponent quizId={id} router={r}/>, app);
@@ -72,37 +86,66 @@ var Router = Backbone.Router.extend({
 		}
 	},
 	quizResults: function(userId, quizId) {
-		ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} router={r}/>, app);
+		var currentUser = Parse.User.current();
+		console.log(currentUser.get('teacher'), currentUser.id);
+		if(currentUser.get('teacher')) {
+			ReactDOM.render(<QuizResultsComponent quizId={id}/>, app);
+		} 
+		else {
+			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
+			}	
 	},
 	logout: function() {
 		Parse.User.logOut();
 		this.navigate('', {trigger: true});
 	},
 	attendance: function() {
+		var currentUser = Parse.User.current();
 		console.log(currentUser.get('teacher'), currentUser.id);
 		if(currentUser.get('teacher')) {
-		ReactDOM.render(<AttendanceComponent/>, app);
-	} else {
-		ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
-	}
+			ReactDOM.render(<AttendanceComponent/>, app);
+		} 
+		else {
+			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
+		}
 	},
 	quizList: function() {
-		ReactDOM.render(<QuizListComponent />, app);
+		var currentUser = Parse.User.current();
+		if(currentUser && currentUser.get('teacher') === true) {
+			ReactDOM.render(<QuizListComponent />, app);
+		}
+		else {
+			this.navigate('', {trigger: true});
+		}
 	},
 	classAnalytics: function() {
-		ReactDOM.render(<ClassAnalyticsComponent />, app);
+		var currentUser = Parse.User.current();
+		console.log('post question',currentUser.id);
+		if(currentUser && currentUser.get('teacher') === true) {
+			ReactDOM.render(<ClassAnalyticsComponent router={r}/>, app);
+		}
+		else {
+			this.navigate('', {trigger: true});
+		}
 	},
 	studentAnalytics: function() {
-		ReactDOM.render(<StudentAnalyticsComponent />, app);
+		var currentUser = Parse.User.current();
+		console.log('post question',currentUser.id);
+		if(currentUser && currentUser.get('teacher') === true) {
+			ReactDOM.render(<StudentAnalyticsComponent />, app);
+		}
+		else {
+			this.navigate('', {trigger: true});
+		}
 	},
 	dashboard: function() {
-		// if(currentUser && currentUser.get('teacher') === true) {
-		// 	ReactDOM.render(<DashboardComponent router={r} />, app);
-		// }
-		// else {
-		// 	this.navigate('', {trigger: true});
-		// }
-		ReactDOM.render(<DashboardComponent />, app);
+		var currentUser = Parse.User.current();
+		if(currentUser && currentUser.get('teacher') === true) {
+			ReactDOM.render(<DashboardComponent />, app);
+		}
+		else {
+			this.navigate('', {trigger: true});
+		}
 	},
 });
 
