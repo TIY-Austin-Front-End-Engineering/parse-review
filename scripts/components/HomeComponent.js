@@ -20,7 +20,12 @@ module.exports = React.createClass({
 								<div className="brand-title">Iron Quizzes</div>
 							</div>
 							<div className="nine columns">
-								<span>Content</span>
+								<div className="home-content">
+								<p>Iron Quizzes secure, professional web-based quiz service is an easy-to-use,
+								for both students and Instructors. Instructors will be able to create quizzes, quick and easy,
+								 while also keeping track of the info you need. From analytics to student attendance, this will be the app you CANT LIVE WITHOUT.
+								</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -33,22 +38,26 @@ module.exports = React.createClass({
 								<h3>Class Attendance</h3>
 								<hr />
 								<p>No longer will you have to keep track of class attendance!
-								 Our app does that for you! You can then spend the time that you saved making more quizzes!
+								 Our Class Attendance tool does that for you, with simple to understand mechanics! You can then spend the time that you saved making more quizzes!
 								 </p>
 							</div>
 						</div>
 					</div>
 					<div className="four columns">
 						<div className="home-card">
-							<img src="../images/analytics.png" className="u-max-full-width" />
+							<img src="../images/createQuiz.png" className="u-max-full-width" />
 							<div className="home-card-text">
-								<h3>Content</h3>
+								<h3>Quiz Creation</h3>
+								<hr />
+								<p>Iron Quizzes is all about striving to make the instructors life easier, and our Quiz Creation tool is gonna do that!
+								With simple to follow instructions, you will have students answering your quiz in no time at all!
+								</p>
 							</div>
 						</div>
 					</div>
 					<div className="four columns">
 						<div className="home-card">
-							<img src="../images/quizTaking.png" className="u-max-full-width" />
+							<img src="../images/quizList.png" className="u-max-full-width" />
 							<div className="home-card-text">
 								<h3>Quiz Taking</h3>
 								<hr />
