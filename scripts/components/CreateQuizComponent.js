@@ -16,7 +16,7 @@ module.exports = React.createClass({
 					<ul>
 						<li> - Write a quiz title.</li>
 						<li> - Select a start time and date.</li>
-						<li> - Select a end time and date.</li>
+						<li> - Select an end time and date.</li>
 						<li> - Click Create Quiz button to save!</li>
 					</ul>
 				</div>
