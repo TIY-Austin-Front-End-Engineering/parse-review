@@ -4,18 +4,19 @@ var Backbone = require('backbone');
 var PostQuestionComponent = require('./PostQuestionComponent');
 var QuizModel = require('../models/QuizModel');
 var EditQuizComponent = require('./EditQuizComponent');
+var Moment = require('moment');
 
 
 module.exports = React.createClass({
 	getInitialState: function(){
-		return (
+		return(
 			{
-				errorMsg: null
+				feedbackElement:null
 			}
-
 		);
 	},
 	render:function(){
+		var today = Moment().format('YYYY-MM-DD')
 		return(
 			<div className="row create-quiz-container">
 				<div className="instructions five columns">
@@ -36,10 +37,12 @@ module.exports = React.createClass({
 						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
 						<label>Start Date</label>
 						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
+						<input type="time" ref="timeToStart" />
 						<label>End Date</label>
-						<input className="u-full-width" type="date" ref="dateExpire" placeholder="date to expire" />
+						<input className="u-full-width" type="date" ref="dateToExpire" placeholder="date to expire" />
+						<input type="time" ref="timeToExpire" />
 						<button >Create Quiz</button>
-						{this.state.errorMsg}
+						<h2>{this.state.feedbackElement}</h2>
 					</form>
 				</div>
 			</div>
@@ -49,20 +52,44 @@ module.exports = React.createClass({
 	},
 	onSubmit: function(e){
 		//grabbing the name and id of new quiz and passing it through to edit quiz
-		if(this.refs.quizName.value === '' || this.refs.dateToStart.value === '' || this.refs.dateExpire.value === ''){
-				console.log('Please fill in all fields');
-				this.setState({errorMsg: 'Please fill in all fields'});
-		}else {
-			var newQuiz = new QuizModel({
-				quizTitle: this.refs.quizName.value,
-				startTime: new Date(this.refs.dateToStart.value),
-				expireTime: new Date(this.refs.dateExpire.value)
-			});
+		e.preventDefault();
+		var newQuiz = new QuizModel({
+			quizTitle: this.refs.quizName.value,
+			startTime: new Date(this.refs.dateToStart.value),
+			expireTime: new Date(this.refs.dateToExpire.value)
+		});
+		console.log(this.refs.dateToStart.value);
+		if(!this.refs.dateToStart.value && !this.refs.dateToExpire.value)
+		{
+			this.setState({feedbackElement: 'Please add a Starting Date and an Expiration Date'});
+		}
+		else if(!this.refs.dateToStart.value)
+		{
+			this.setState({feedbackElement: 'Please add a Starting Date'});
+		}
+		else if(!this.refs.dateToExpire.value){
+			this.setState({feedbackElement: 'Please add an Expiration Date'});
+		}
+//////////////////////////////////////////////////////////////////////////
+//THIS WILL BE OBSOLETE ONCE WE GET THE TIME AND DATE CONCATENATED ////////
+///////////////////////////////////////////////////////////////////////////
+		else if(!this.refs.timeToStart.value){
+			this.setState({feedbackElement: 'Please add a Starting Time'});
+			console.log('4');
+		}
+		else if(!this.refs.timeToExpire.value){
+			this.setState({feedbackElement: 'Please add an Expiration Time'});
+			console.log('5');
+		}
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+		else
+		{
 			newQuiz.save({
 				success: (u) => {
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
-				}
-			
+				}			
 			});
 		}	
 	}
