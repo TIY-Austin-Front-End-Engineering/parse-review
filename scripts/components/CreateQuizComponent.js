@@ -97,7 +97,6 @@ module.exports = React.createClass({
 ///////////////////////////////////////////////////////////////////////////
 		else
 		{
->>>>>>> 3801ee9fda46fb7da3cd613b540095b84341b046
 			newQuiz.save({
 				success: (u) => {
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
@@ -105,4 +104,5 @@ module.exports = React.createClass({
 			});
 		}	
 	}
+}
 });
