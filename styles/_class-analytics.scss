@@ -29,6 +29,10 @@
 			font-family: $fontQuestrial;
 			margin-left: 1em;
 		}
+		.select-btn:hover {
+			background-color: $hover;
+			color: $navbar;
+		}
 		.drop-down-btn {
 			font-family: $fontQuestrial;
 			cursor: pointer;
@@ -36,6 +40,7 @@
 		}
 	}
 	.right-side {
+		margin-left: 0;
 		.analytics-container {
 			background-color: $innerContainer;
 			padding: 0 1em;
