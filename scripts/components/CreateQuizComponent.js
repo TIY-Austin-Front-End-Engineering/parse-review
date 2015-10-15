@@ -32,10 +32,13 @@ module.exports = React.createClass({
 					<h3>Create Quiz</h3>
 					<hr />
 					<form onSubmit={this.onSubmit}>
+						<label>Title</label>
 						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
+						<label>Start Date</label>
 						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
+						<label>End Date</label>
 						<input className="u-full-width" type="date" ref="dateExpire" placeholder="date to expire" />
-						<button> Create Quiz</button>
+						<button >Create Quiz</button>
 						{this.state.errorMsg}
 					</form>
 				</div>
