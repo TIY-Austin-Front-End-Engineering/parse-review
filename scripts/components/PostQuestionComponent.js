@@ -97,12 +97,16 @@ module.exports = React.createClass({
 			});
 			targetQuizModel.increment('totalQuestions');
 			targetQuizModel.save();
-			newQuestion.save();
-			this.refs.button.disabled = true;
-			this.refs.questionTitle.value = '',
-			this.setState({choices: []});
-			this.setState({feedbackElement: 'New question submitted'});
-			this.props.router.navigate('editQuiz/'+this.state.quiz.id, {trigger: true});
+			newQuestion.save({
+				success:(u) => {
+					this.refs.button.disabled = true;
+					this.refs.questionTitle.value = '',
+					this.setState({choices: []});
+					this.setState({feedbackElement: 'New question submitted'});
+					this.props.router.navigate('editQuiz/'+this.state.quiz.id, {trigger: true})
+				}
+			});
+			;
 		}
 		
 		

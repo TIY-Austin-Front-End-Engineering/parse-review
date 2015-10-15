@@ -36,7 +36,7 @@ module.exports = React.createClass({
 						<label htmlFor="create-quiz-title">Title</label>
 						<input className="u-full-width" type="text" ref="quizName" id="create-quiz-title"placeholder="Quiz Title"/>
 						<label htmlFor="start-date">Start Date and Time</label>
-						<input className="u-full-width" type="date" ref="dateToStart" id="start-date" placeholder="date to starts" />
+						<input className="u-full-width" type="date" ref="dateToStart" id="start-date" placeholder="date to starts" value={today} />
 						<input type="time" ref="timeToStart" />
 						<label htmlFor="start-time">End Date and Time</label>
 						<input className="u-full-width" type="date" ref="dateToExpire" id="start-time" placeholder="date to expire" />
@@ -58,6 +58,7 @@ module.exports = React.createClass({
 			quizTitle: this.refs.quizName.value,
 			startTime: new Date(this.refs.dateToStart.value),
 			expireTime: new Date(this.refs.dateToExpire.value),
+			startTime: new Date(this.refs.dateToStart.value+'T'+this.refs.timeToStart.value+':00'),
 			totalQuestion: 0
 		});
 		console.log(this.refs.dateToStart.value);
