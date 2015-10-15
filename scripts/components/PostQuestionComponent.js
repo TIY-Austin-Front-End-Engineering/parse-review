@@ -84,8 +84,8 @@ module.exports = React.createClass({
 			}
 		}
 		//once question is filled out, send to the server
-		if(correctAnswer === null){
-			this.setState({feedbackElement: 'this is an error'});
+		if(correctAnswer === null || this.refs.questionTitle.value === '' || this.refs.choice.value === ''){
+			this.setState({feedbackElement: 'Please fill in all fields and select a correct answer'});
 		}else{
 			var quizId =this.props.quizId;
 			var targetQuizModel = new QuizModel({objectId: quizId});
@@ -100,7 +100,7 @@ module.exports = React.createClass({
 			this.refs.questionTitle.value = '',
 			this.refs.choice.value = '',
 			this.setState({choices: []});
-			this.setState({feedbackElement: 'new question submitted'});
+			this.setState({feedbackElement: 'New question submitted'});
 			this.props.router.navigate('editQuiz/'+this.state.quiz.id, {trigger: true});
 		}
 		
@@ -109,9 +109,13 @@ module.exports = React.createClass({
 	},
 	onAddChoice: function(){
 	//push the multiple choice answers to the choice array
-		var newChoice = this.refs.choice.value;
-		var currentChoices = this.state.choices;
-		currentChoices.push(newChoice);
-		this.setState({choices: currentChoices})	
+		if(this.refs.choice.value === ''){
+			this.setState({feedbackElement: 'Please fill in an answer'});
+		}else{
+			var newChoice = this.refs.choice.value;
+			var currentChoices = this.state.choices;
+			currentChoices.push(newChoice);
+			this.setState({choices: currentChoices})
+		}	
 	}
 });
