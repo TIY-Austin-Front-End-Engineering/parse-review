@@ -59,7 +59,7 @@ var Router = Backbone.Router.extend({
 		var currentUser = Parse.User.current();
 		console.log('post question',currentUser.id);
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<CreateQuizComponent quizId={id} router={r}/>, app);
+			ReactDOM.render(<CreateQuizComponent router={r}/>, app);
 		}
 		else {
 			this.navigate('', {trigger: true});
@@ -89,7 +89,7 @@ var Router = Backbone.Router.extend({
 		var currentUser = Parse.User.current();
 		console.log(currentUser.get('teacher'), currentUser.id);
 		if(currentUser.get('teacher')) {
-			ReactDOM.render(<AttendanceComponent/>, app);
+			ReactDOM.render(<QuizResultsComponent quizId={id}/>, app);
 		} 
 		else {
 			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
@@ -112,7 +112,7 @@ var Router = Backbone.Router.extend({
 	quizList: function() {
 		var currentUser = Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<QuizListComponent router={r} />, app);
+			ReactDOM.render(<QuizListComponent />, app);
 		}
 		else {
 			this.navigate('', {trigger: true});
@@ -122,7 +122,7 @@ var Router = Backbone.Router.extend({
 		var currentUser = Parse.User.current();
 		console.log('post question',currentUser.id);
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<ClassAnalyticsComponent quizId={id} router={r}/>, app);
+			ReactDOM.render(<ClassAnalyticsComponent router={r}/>, app);
 		}
 		else {
 			this.navigate('', {trigger: true});
@@ -132,7 +132,7 @@ var Router = Backbone.Router.extend({
 		var currentUser = Parse.User.current();
 		console.log('post question',currentUser.id);
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<StudentAnalyticsComponent quizId={id} router={r}/>, app);
+			ReactDOM.render(<StudentAnalyticsComponent />, app);
 		}
 		else {
 			this.navigate('', {trigger: true});
@@ -141,7 +141,7 @@ var Router = Backbone.Router.extend({
 	dashboard: function() {
 		var currentUser = Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<DashboardComponent router={r} />, app);
+			ReactDOM.render(<DashboardComponent />, app);
 		}
 		else {
 			this.navigate('', {trigger: true});
