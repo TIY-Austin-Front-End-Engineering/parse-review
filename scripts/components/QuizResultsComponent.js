@@ -76,6 +76,10 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		// console.log(this.state.quizName);
+
+		var ListQuizName = this.state.quizName.map((name) => {
+			console.log(name)
+		})
 		var ListQuestionDetails = this.state.questions.map((question) => {
 			return (
 					<div className="question-container">
