@@ -26,9 +26,11 @@ module.exports = React.createClass({
 	getInitialState: function() {
 		return {
 			numberOfQuestions: null,
-			allQuizzes: [],
+			answerThenQuestion: null,
 			allAnswerList: null,
-			currentType: null
+			currentType: null,
+			correctAnswers: null,
+			allQuizzes: []
 		};
 	},
 	componentWillMount: function() {
@@ -69,8 +71,6 @@ module.exports = React.createClass({
 		// innerQuery.matchesQuery('studentCorrect', query);
 		// console.log(innerQuery);
 
-		var correctAnswers = 0;
-
 		// for(var i = 0; i < studentCorrect.length; i++) {
 		// 	if(studentCorrect === true) {
 		// 		correctAnswers += 1;
@@ -78,28 +78,30 @@ module.exports = React.createClass({
 		// }
 
 	},
-	render: function(){
+	render: function() {
+		var rightContent = null;
 
-		var that = this;
 		var leftContent = this.state.allQuizzes.map(function(quiz) {
 			return (
 				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle')}</option>
 			);
 		});
 
-		if(this.state.allAnswerList) {
-			console.log('hello, señor');
-		}
-		else {
-			console.log('goodbye, man');
-		}
-
-		var rightContent = this.state.answerList
+		// if(this.state.allAnswerList) {
+		// 	console.log('answers appeared');
+		// 	rightContent = {answerThenQuestion};
+		// }
+		// else {
+		// 	rightContent = (
+		// 		<div>Please select a quiz to see data related to that query</div>
+		// 	);
+		// }
 
 		// ('Questions from selected quiz go here');
 		return (
 			<div className="class-analytics-container">
 				<div className="left-side">
+					<h1>Class Analytics</h1>
 					<form onSubmit={this.onQuizSelected}>
 						<label htmlFor="quizList">Choose Quiz</label>
 						<select ref="thisQuiz" id="quizList">
@@ -117,7 +119,6 @@ module.exports = React.createClass({
 	},
 	onQuizSelected: function(e) {
 		e.preventDefault();
-		console.log('button was clicked!');
 		console.log(this.refs.thisQuiz.value);
 
 		this.setState({
@@ -127,21 +128,23 @@ module.exports = React.createClass({
 		var quizId = this.refs.thisQuiz.id;
 		console.log(quizId);
 
-
 		var answerQuery = new Parse.Query(StudentAnswerModel);
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
+
 		innerQuestionQuery.equalTo('quizId', new QuizModel({objectId: this.refs.thisQuiz.value}));
 		answerQuery.matchesQuery('questionId', innerQuestionQuery).find().then(
 			(studentAnswers) => {
 				var answerList = _.groupBy(studentAnswers, function(answer) {
 					return answer.get('questionId').id;
-				})
-				this.setState({allAnswerList: answerList})
-				console.log(this.state.allAnswerList);
+				});
+				this.setState({allAnswerList: answerList});
+				// for(var i = 0; i < allAnswerList.length; i++) {
+				// 	answerThenQuestion.push(<div>{answerList[i]}</div>);
+				// }
 			},
 			(err) => {
 				console.log(err);
 			}
-		)
+		);
 	}
 });
