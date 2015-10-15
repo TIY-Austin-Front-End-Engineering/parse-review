@@ -17,14 +17,6 @@ module.exports = React.createClass({
 	},
 	render:function(){
 		return(
-			<div>
-				<form onSubmit={this.onSubmit}>
-					<input type="text" ref="quizName" placeholder="Quiz Title"/>
-					<input type="date" ref="dateToStart" placeholder="date to starts" />
-					<input type="date" ref="dateExpire" placeholder="date to expire" />
-					<button>Create Quiz</button>
-					{this.state.errorMsg}
-				</form>
 			<div className="row create-quiz-container">
 				<div className="instructions five columns">
 					<h3>Instructions</h3>
@@ -40,10 +32,14 @@ module.exports = React.createClass({
 					<h3>Create Quiz</h3>
 					<hr />
 					<form onSubmit={this.onSubmit}>
+						<label>Title</label>
 						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
+						<label>Start Date</label>
 						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
+						<label>End Date</label>
 						<input className="u-full-width" type="date" ref="dateExpire" placeholder="date to expire" />
-						<button > Create Quiz</button>
+						<button >Create Quiz</button>
+						{this.state.errorMsg}
 					</form>
 				</div>
 			</div>
