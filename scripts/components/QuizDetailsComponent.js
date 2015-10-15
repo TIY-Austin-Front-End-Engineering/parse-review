@@ -74,7 +74,7 @@ module.exports = React.createClass({
 		var self = this;
 		var choices = currentQuestion.get('questionChoices').map(function(qc){
 
-			return(<div><input value={qc} type='radio' defaultValue=false name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
+			return(<div><input value={qc} type='radio' defaultValue={false} name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
 		}); 
 
 			return (

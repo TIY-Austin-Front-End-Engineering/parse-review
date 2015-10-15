@@ -7,9 +7,8 @@ var PostQuestionComponent = require('./PostQuestionComponent');
 var Backbone = require('backbone');
 
 module.exports  = React.createClass({
-		getInitialState: function(){
+	getInitialState: function(){
 			return{
-				// add an if statement to check that both, if rednder truthie render
 				quiz: null,
 				questions: null
 			};
@@ -28,6 +27,7 @@ module.exports  = React.createClass({
 		newQuery.find({
 				success:(questions) => {
 					this.setState({questions: questions})
+				
 				}
 
 			});
