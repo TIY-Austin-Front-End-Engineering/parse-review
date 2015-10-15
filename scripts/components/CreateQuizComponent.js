@@ -77,11 +77,9 @@ module.exports = React.createClass({
 ///////////////////////////////////////////////////////////////////////////
 		else if(!this.refs.timeToStart.value){
 			this.setState({feedbackElement: 'Please add a Starting Time'});
-			console.log('4');
 		}
 		else if(!this.refs.timeToExpire.value){
 			this.setState({feedbackElement: 'Please add an Expiration Time'});
-			console.log('5');
 		}
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
