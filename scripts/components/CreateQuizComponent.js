@@ -52,6 +52,17 @@ module.exports = React.createClass({
 	},
 	onSubmit: function(e){
 		//grabbing the name and id of new quiz and passing it through to edit quiz
+		if(this.refs.quizName.value === '' || this.refs.dateToStart.value === '' || this.refs.dateExpire.value === ''){
+				console.log('Please fill in all fields');
+				this.setState({errorMsg: 'Please fill in all fields'});
+		}else {
+			var newQuiz = new QuizModel({
+				quizTitle: this.refs.quizName.value,
+				startTime: new Date(this.refs.dateToStart.value),
+				expireTime: new Date(this.refs.dateExpire.value),
+				totalQuestions: 0
+			});
+
 		e.preventDefault();
 		var newQuiz = new QuizModel({
 			quizTitle: this.refs.quizName.value,
@@ -86,6 +97,7 @@ module.exports = React.createClass({
 ///////////////////////////////////////////////////////////////////////////
 		else
 		{
+>>>>>>> 3801ee9fda46fb7da3cd613b540095b84341b046
 			newQuiz.save({
 				success: (u) => {
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
