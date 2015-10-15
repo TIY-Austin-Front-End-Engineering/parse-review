@@ -90,8 +90,7 @@ module.exports = React.createClass({
 				success: (u) => {
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
 				}			
-			});
-			}	
+			});	
 		}
 	}
 });
