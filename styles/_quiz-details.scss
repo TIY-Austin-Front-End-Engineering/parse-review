@@ -1,1 +1,22 @@
-
+.quiz-details-component {
+	h4, label {
+		font-family: $fontQuestrial;
+		color: $innerContainer;
+		padding: 0;
+		margin: 0;
+		}
+	.submit-btn {
+		width: 16%;
+		background-color: #24677F;
+		color: #fff;
+		padding: 0 10px;
+		border: none;
+		color: $linkColor;
+		font-family: $fontQuestrial;
+		cursor: pointer;
+		border: 1px solid #bbb;
+		}
+	#choices-content{
+		color:red;
+		}
+}

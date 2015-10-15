@@ -46,7 +46,7 @@ module.exports = React.createClass({
 		if(this.state.currentQuestion >= this.state.questions.length){
 			var end = new Date();
 			var elapsed = this.start - end;
-			this.props.quizIsFinished(elapsed);
+			this.props.router.navigate('#quizResults/'+Parse.User.current().id+'/'+this.props.quizId, {trigger: true});
 			return;
 		}
 		this.setState({
@@ -74,12 +74,16 @@ module.exports = React.createClass({
 		}); 
 
 			return (
-				<div className="Quiz">
+				<div className="quiz-details-component">
+					<h4>Quiz</h4>
+					<hr />
 					<div>
 						{currentQuestion.get('questionContent')}
 					</div>
+					<div id="choices-content">
 					{choices}
-					<button onClick={this.submitSolve}>Submit</button>
+					</div>
+					<button className="submit-btn" onClick={this.submitSolve}>Submit</button>
 				</div>
 			)
 	}
