@@ -68,7 +68,7 @@ module.exports = React.createClass({
 					{choiceRows}
 					</div>
 					{this.state.feedbackElement}
-				<button onClick={this.onSubmit}>Submit Question</button>
+				<button ref="button" disabled={false} onClick={this.onSubmit}>Submit Question</button>
 			</div>
 		</div>
 		);
@@ -97,6 +97,7 @@ module.exports = React.createClass({
 				
 			});
 			newQuestion.save();
+			this.refs.button.disabled = true;
 			this.refs.questionTitle.value = '',
 			this.setState({choices: []});
 			this.setState({feedbackElement: 'New question submitted'});
