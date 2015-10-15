@@ -71,6 +71,8 @@ module.exports  = React.createClass({
 		);
 	},
 	addQuestion: function(){
+		QuizModel.increment("totalQuestions");
+		QuizModel.save();
 		this.props.router.navigate('editQuiz/'+this.state.quiz.id+'/postQuestion', {trigger: true});
 	}
 });
