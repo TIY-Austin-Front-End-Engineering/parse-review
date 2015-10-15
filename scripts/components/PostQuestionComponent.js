@@ -114,8 +114,8 @@ module.exports = React.createClass({
 			var newChoice = this.refs.choice.value;
 			var currentChoices = this.state.choices;
 			currentChoices.push(newChoice);
-			this.setState({choices: currentChoices})
-			this.refs.choice.value === '';
+			this.setState({choices: currentChoices}),
+			this.refs.choice.value = '';
 		}	
 	}
 });
