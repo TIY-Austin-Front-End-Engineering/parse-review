@@ -98,7 +98,6 @@ module.exports = React.createClass({
 			});
 			newQuestion.save();
 			this.refs.questionTitle.value = '',
-			this.refs.choice.value = '',
 			this.setState({choices: []});
 			this.setState({feedbackElement: 'New question submitted'});
 			this.props.router.navigate('editQuiz/'+this.state.quiz.id, {trigger: true});
@@ -116,6 +115,7 @@ module.exports = React.createClass({
 			var currentChoices = this.state.choices;
 			currentChoices.push(newChoice);
 			this.setState({choices: currentChoices})
+			this.refs.choice.value === '';
 		}	
 	}
 });

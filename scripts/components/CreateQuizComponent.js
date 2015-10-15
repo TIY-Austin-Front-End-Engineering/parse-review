@@ -17,14 +17,6 @@ module.exports = React.createClass({
 	},
 	render:function(){
 		return(
-			<div>
-				<form onSubmit={this.onSubmit}>
-					<input type="text" ref="quizName" placeholder="Quiz Title"/>
-					<input type="date" ref="dateToStart" placeholder="date to starts" />
-					<input type="date" ref="dateExpire" placeholder="date to expire" />
-					<button>Create Quiz</button>
-					{this.state.errorMsg}
-				</form>
 			<div className="row create-quiz-container">
 				<div className="instructions five columns">
 					<h3>Instructions</h3>
@@ -43,7 +35,8 @@ module.exports = React.createClass({
 						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
 						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
 						<input className="u-full-width" type="date" ref="dateExpire" placeholder="date to expire" />
-						<button > Create Quiz</button>
+						<button> Create Quiz</button>
+						{this.state.errorMsg}
 					</form>
 				</div>
 			</div>
@@ -53,7 +46,6 @@ module.exports = React.createClass({
 	},
 	onSubmit: function(e){
 		//grabbing the name and id of new quiz and passing it through to edit quiz
-		e.preventDefault();
 		if(this.refs.quizName.value === '' || this.refs.dateToStart.value === '' || this.refs.dateExpire.value === ''){
 				console.log('Please fill in all fields');
 				this.setState({errorMsg: 'Please fill in all fields'});
