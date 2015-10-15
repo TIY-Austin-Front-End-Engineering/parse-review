@@ -18,17 +18,35 @@ module.exports = React.createClass({
 	render:function(){
 		var today = Moment().format('YYYY-MM-DD')
 		return(
-			<div>
-				<form onSubmit={this.onSubmit}>
-					<input type="text" ref="quizName" placeholder="Quiz Title" />
-					<input type="date" ref="dateToStart" />
-					<input type="time" ref="timeToStart" />
-					<input type="date" ref="dateToExpire" />
-					<input type="time" ref="timeToExpire" />
-					<button > Create Quiz</button>
-					<h2>{this.state.feedbackElement}</h2>
-				</form>
+			<div className="row create-quiz-container">
+				<div className="instructions five columns">
+					<h3>Instructions</h3>
+					<hr />
+					<ul>
+						<li> - Write a quiz title.</li>
+						<li> - Select a start time and date.</li>
+						<li> - Select an end time and date.</li>
+						<li> - Click Create Quiz button to save!</li>
+					</ul>
+				</div>
+				<div className="create-quiz seven columns">
+					<h3>Create Quiz</h3>
+					<hr />
+					<form onSubmit={this.onSubmit}>
+						<label>Title</label>
+						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
+						<label>Start Date</label>
+						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
+						<input type="time" ref="timeToStart" />
+						<label>End Date</label>
+						<input className="u-full-width" type="date" ref="dateToExpire" placeholder="date to expire" />
+						<input type="time" ref="timeToExpire" />
+						<button >Create Quiz</button>
+						<h2>{this.state.feedbackElement}</h2>
+					</form>
+				</div>
 			</div>
+
 		);
 
 	},
@@ -71,8 +89,8 @@ module.exports = React.createClass({
 			newQuiz.save({
 				success: (u) => {
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
-				}
-			});	
-		}
+				}			
+			});
+		}	
 	}
 });

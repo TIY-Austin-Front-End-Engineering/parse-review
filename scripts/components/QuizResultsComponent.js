@@ -32,30 +32,13 @@ module.exports = React.createClass({
 		innerQuery.equalTo('quizId', targetQuizModel);
 		query.matchesQuery('questionId', innerQuery);
 		query.include('questionId');
-		query.find().then((results) => {
+		query.ascending('createdAt').find().then((results) => {
 			this.setState({
 				questions: results
 			})
-			// for(var i = 0; i < results.length; i++) {
-			// 	console.log(results[i].get('questionId').get('questionChoices'));
-			// 	console.log(results[i].get('studentChoice'));
-			// 	console.log(results[i].get('questionId').get('questionContent'));
-			// 	// this.setState({
-			// 		// questions: results[i].get('questionId').get('questionContent')
-			// 	// })
-			// }
 		});
 	},
 	render: function() {
-		// var questionsChoices = this.state.questions.map((thing) => {
-		// 	return thing.get('questionId').get('questionChoices');
-		// });
-
-		// var questionChoice = questionsChoices.forEach((choice) => {
-		// 	console.log(choice.toString())
-		// })
-
-		// console.log(questionChoice.toString())
 
 		var ListQuestionDetails = this.state.questions.map((question) => {
 			return (
@@ -68,17 +51,12 @@ module.exports = React.createClass({
 		});
 
 		//var questions maps out the questions associated with the quizId
-		// if (!this.state.quiz||!this.state.questions){
-		// 	return <div>Nope</div>
-		// }else{
 
 			return (
 				<div>
 					<div className="container">
 						<h5>Your Results</h5>
 						<h5 className="title">Quiz Name: </h5>
-						<div>User: </div>
-						
 					</div>
 					<hr />
 					<div>
@@ -87,14 +65,12 @@ module.exports = React.createClass({
 					<div>
 						<div className="percentage">Percentage: %</div>
 					</div>
+					<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
 				</div>
 			);
-		// }
 	},
-	percent: ()=>{
-		//correct answers devided by num questions
-		
+	onReturnQuizList: function(e) {
+			this.props.router.navigate('quizList', {trigger: true});
 	}
-	
 });
 
