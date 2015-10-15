@@ -87,9 +87,9 @@ var Router = Backbone.Router.extend({
 	},
 	quizResults: function(userId, quizId) {
 		var currentUser = Parse.User.current();
-		console.log(currentUser.get('teacher'), currentUser.id);
-		if(currentUser.get('teacher')) {
-			ReactDOM.render(<QuizResultsComponent quizId={id}/>, app);
+		
+		if(currentUser) {
+			ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} router={r} />, app);
 		} 
 		else {
 			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
