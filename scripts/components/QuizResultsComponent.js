@@ -57,13 +57,13 @@ module.exports = React.createClass({
 		// 	console.log(result)
 		// })
 
-		// innerInnerQuery.equalTo('objectId', this.props.quizId)
-		// .find().then((result) => {
-		// 	// this.setState({
-		// 	// 	quizName: result
-		// 	// })
+		innerInnerQuery.equalTo('objectId', this.props.quizId)
+		.find().then((result) => {
+			this.setState({
+				quizName: result
+			})
 		// console.log(result)
-		// })
+		})
 
 		// innerQuery.equalTo('quizId', targetQuizModel);
 		// innerInnerQuery.
@@ -78,7 +78,9 @@ module.exports = React.createClass({
 		// console.log(this.state.quizName);
 
 		var ListQuizName = this.state.quizName.map((name) => {
-			console.log(name)
+			return (
+				<h5 className="title">Quiz Name: {name.get('quizTitle')}</h5>
+			)
 		})
 		var ListQuestionDetails = this.state.questions.map((question) => {
 			return (
@@ -89,14 +91,13 @@ module.exports = React.createClass({
 					</div>
 				)
 		});
-
 		//var questions maps out the questions associated with the quizId
 
 			return (
 				<div>
 					<div className="container">
 						<h5>Your Results</h5>
-						<h5 className="title">Quiz Name: </h5>
+						{ListQuizName}
 					</div>
 					<hr />
 					<div>
