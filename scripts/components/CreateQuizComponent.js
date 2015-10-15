@@ -91,7 +91,7 @@ module.exports = React.createClass({
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
 				}			
 			});
-			}	
+				
 		}
 	}
 });
