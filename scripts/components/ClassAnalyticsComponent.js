@@ -66,7 +66,6 @@ module.exports = React.createClass({
 					// </div>
 					// <h2>Questions and Answers go here!</h2>
 
-
 		if(this.state.allQuestions) {
 			console.log('answers appeared');
 			rightContent = this.state.allQuestions.map(function(question) {
@@ -119,7 +118,7 @@ module.exports = React.createClass({
 		var answerQuery = new Parse.Query(StudentAnswerModel);
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
 
-		innerQuestionQuery.equalTo('quizId', new QuizModel({objectId: this.refs.thisQuiz.value}));
+		innerQuestionQuery.equalTo('quizId', new QuizModel({ objectId: this.refs.thisQuiz.value }));
 		answerQuery.include('questionId').matchesQuery('questionId', innerQuestionQuery).find().then(
 			(studentAnswers) => {
 				var answerList = _.groupBy(studentAnswers, function(answer) {
@@ -156,7 +155,6 @@ module.exports = React.createClass({
 					findQuestions.push(questionInfo);
 				}
 				this.setState({ allQuestions: findQuestions });
-
 			},
 			(err) => {
 				console.log(err);

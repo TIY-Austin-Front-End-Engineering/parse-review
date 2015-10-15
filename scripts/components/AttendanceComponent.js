@@ -66,7 +66,7 @@ module.exports = React.createClass({
 		}
 
 		var attendance = (
-			<table className="u-full-width">
+			<table className="u-full-width att-table">
 				<thead>
 					<tr>
 						<th>Student Name</th>
@@ -78,7 +78,7 @@ module.exports = React.createClass({
 			</table>
 		)
 		return (
-			<div>
+			<div className="att-container">
 				<form onSubmit={this.selectQuiz}>
 					<div className="att-div">
 						<h1 id="att-title">Class Attendance</h1>
@@ -86,8 +86,9 @@ module.exports = React.createClass({
 						<select className="u-full-width" id="exampleRecipientInput" ref="quizPick">
 							{quizOptions}
 						</select>
+						<button className="att-butt">Select</button>
 					</div>
-					<button>Select</button>
+
 				</form>
 				{attendance}
 			</div>
