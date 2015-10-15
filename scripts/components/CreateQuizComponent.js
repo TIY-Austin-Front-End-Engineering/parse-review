@@ -49,7 +49,6 @@ module.exports = React.createClass({
 	},
 	onSubmit: function(e){
 		//grabbing the name and id of new quiz and passing it through to edit quiz
-		e.preventDefault();
 		if(this.refs.quizName.value === '' || this.refs.dateToStart.value === '' || this.refs.dateExpire.value === ''){
 				console.log('Please fill in all fields');
 				this.setState({errorMsg: 'Please fill in all fields'});
