@@ -86,6 +86,7 @@ var Router = Backbone.Router.extend({
 		}
 	},
 	quizResults: function(userId, quizId) {
+<<<<<<< HEAD
 		var currentUser = Parse.User.current();
 		console.log(currentUser.get('teacher'), currentUser.id);
 		if(currentUser.get('teacher')) {
@@ -94,6 +95,9 @@ var Router = Backbone.Router.extend({
 		else {
 			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
 			}	
+=======
+		ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} router={r}/>, app);
+>>>>>>> 483c133b464ad569dd49cc42d33665908de3a807
 	},
 	logout: function() {
 		Parse.User.logOut();
