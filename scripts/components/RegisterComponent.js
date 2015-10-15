@@ -64,7 +64,7 @@ module.exports= React.createClass ({
 								</select>
 							</div>
 							{teachPassword}
-							<button className="button-primary">Register</button>
+							<button ref="button" className="button-primary" disabled={false}>Register</button>
 							{errorElement}
 						</form>
 					</div>
@@ -81,6 +81,7 @@ module.exports= React.createClass ({
 	},
 	onRegister: function(e) {
 		e.preventDefault();
+		this.refs.button.disabled = true;
 		var that=this;
 		var teach = false;
 		
