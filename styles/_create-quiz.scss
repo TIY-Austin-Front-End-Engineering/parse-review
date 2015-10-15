@@ -1,4 +1,35 @@
-// .create-quiz-container {
-// 	margin: 0 auto;
-
-// }
+.create-quiz-container {
+	font-family: $fontFanwood;
+	padding-right: 2%;
+	padding-left: 2%;
+	font-size: 1.2em;
+		hr{
+			margin: 0;
+			border-color: $hover;
+			clear: both;
+			padding-bottom: 1em;
+		}
+		h3, label {
+			font-family: $fontQuestrial;
+			color: $linkColor;
+			padding: 0;
+			margin: 0;
+		}
+		.create-quiz {
+			background: $innerContainer;
+			margin-top: 3em;
+			border: 1px solid black;
+			float: right;
+			box-shadow: 2px 2px 2px #000;
+			padding: 2%;
+				button {
+					background-color: #24677F;
+					padding: 0 10px;
+					border: none;
+					color: $linkColor;
+					font-family: $fontQuestrial;
+					cursor: pointer;
+					border: 1px solid #bbb;
+				}
+		}
+}
