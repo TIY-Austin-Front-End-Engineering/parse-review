@@ -65,8 +65,12 @@ module.exports = React.createClass({
 					<div>
 						<div className="percentage">Percentage: %</div>
 					</div>
+					<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
 				</div>
 			);
+	},
+	onReturnQuizList: function(e) {
+			this.props.router.navigate('quizList', {trigger: true});
 	}
 });
 
