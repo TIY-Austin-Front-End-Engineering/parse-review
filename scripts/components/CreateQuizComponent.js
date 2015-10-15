@@ -25,7 +25,29 @@ module.exports = React.createClass({
 					<button>Create Quiz</button>
 					{this.state.errorMsg}
 				</form>
+			<div className="row create-quiz-container">
+				<div className="instructions five columns">
+					<h3>Instructions</h3>
+					<hr />
+					<ul>
+						<li> - Write a quiz title.</li>
+						<li> - Select a start time and date.</li>
+						<li> - Select an end time and date.</li>
+						<li> - Click Create Quiz button to save!</li>
+					</ul>
+				</div>
+				<div className="create-quiz seven columns">
+					<h3>Create Quiz</h3>
+					<hr />
+					<form onSubmit={this.onSubmit}>
+						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
+						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
+						<input className="u-full-width" type="date" ref="dateExpire" placeholder="date to expire" />
+						<button > Create Quiz</button>
+					</form>
+				</div>
 			</div>
+
 		);
 
 	},

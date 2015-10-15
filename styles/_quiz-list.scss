@@ -46,6 +46,7 @@
 				.quiz-container{
 					color: white;
 					overflow: hidden;
+					text-align: center;
 					background-color: $innerContainer;
 					transition: box-shadow 0.25s;
 					padding: 20px;
@@ -60,20 +61,11 @@
 							height: 35px;
 							float: left;
 						}
-						.take-quiz{
-							cursor: pointer;
-							color: $linkColor;
-							vertical-align: middle;
-							background-color: $button;
-							margin: 0;
-							float: right;
-						}
 					}
 					div{
 						font-size: 20px;
 						.quiz-start-expire{
 							margin-right: 1em;
-							display: inline-block;
 							.quiz-time-title{
 								font-weight: bold;
 								color: $linkColor;
@@ -86,13 +78,20 @@
 						border-color: $hover;
 						clear: both;
 					}
+					.take-quiz{
+						cursor: pointer;
+						color: $linkColor;
+						vertical-align: middle;
+						background-color: $button;
+						margin: 0 auto;
+					}
 				}
 			}
 		}
 	}
 };
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1031px){
 	.quiz-list-component{
 		.row{
 			.left{
