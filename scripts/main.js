@@ -72,7 +72,7 @@ var Router = Backbone.Router.extend({
 		}
 	},
 	quizResults: function(userId, quizId) {
-		ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} />, app);
+		ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} router={r}/>, app);
 	},
 	logout: function() {
 		Parse.User.logOut();
