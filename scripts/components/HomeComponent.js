@@ -21,7 +21,7 @@ module.exports = React.createClass({
 							</div>
 							<div className="nine columns">
 								<div className="home-content">
-								<p>Iron Quizzes secure, professional web-based quiz service is an easy-to-use,
+								<p>Iron Quizzes is a secure, professional web-based quiz service that is easy-to-use,
 								for both students and Instructors. Instructors will be able to create quizzes, quick and easy,
 								 while also keeping track of the info you need. From analytics to student attendance, this will be the app you CANT LIVE WITHOUT.
 								</p>
