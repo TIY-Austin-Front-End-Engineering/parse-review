@@ -33,13 +33,9 @@ module.exports = React.createClass({
 		var targetQuizModel = new QuizModel({objectId: quizId});
 		var query = new Parse.Query(StudentAnswerModel);
 		var innerQuery = new Parse.Query(QuestionModel);
-<<<<<<< HEAD
 		var innerInnerQuery = new Parse.Query(QuizModel);
 
-		query.equalTo('userId', targetUserModel);
-=======
 		query.equalTo('userId', targetUserModel);// added .id --> no! Aaron M. removed the .id, it broke the page render
->>>>>>> 0e57ce47510f8721490eccdd0712a3376c7ffc44
 		innerQuery.equalTo('quizId', targetQuizModel);
 		query.matchesQuery('questionId', innerQuery);
 		query.include('questionId');
