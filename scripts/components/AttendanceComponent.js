@@ -32,7 +32,7 @@ module.exports = React.createClass({
 			}
 		)
 	},
-	
+
 	render: function() {
 		console.log(this.state.students);
 		var quizOptions = this.state.quizList.map(function(quiz) {
@@ -55,22 +55,22 @@ module.exports = React.createClass({
 			})
 			console.log(this.state.groupedStudentAnswers);
 			var attendanceBodyData = null;
-			
+
 			attendanceBodyData = this.state.students.map(function(student) {
 				return (
 				<AttendanceRowComponent key={student.id} student={student} />
 				)
 			})
-		
+
 
 		}
-		
+
 		var attendance = (
 			<table className="u-full-width att-table">
 				<thead>
 					<tr>
-						<th>Day Administered</th>
 						<th>Student Name</th>
+						<th>Day Administered</th>
 						<th>Time Started</th>
 					</tr>
 				</thead>
@@ -88,7 +88,7 @@ module.exports = React.createClass({
 						</select>
 						<button className="att-butt">Select</button>
 					</div>
-					
+
 				</form>
 				{attendance}
 			</div>
@@ -111,7 +111,7 @@ module.exports = React.createClass({
 		var answerQuery = new Parse.Query(StudentAnswerModel);
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
 		innerQuestionQuery.equalTo('quizId', new QuizModel({objectId: this.refs.quizPick.value}));
-		answerQuery.matchesQuery('questionId', innerQuestionQuery).find().then( 
+		answerQuery.matchesQuery('questionId', innerQuestionQuery).find().then(
 			(studentAnswers) => {
 				var AnswersList = _.groupBy(studentAnswers, function(answer) {
 					return answer.get('userId').id;
