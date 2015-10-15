@@ -106,6 +106,16 @@ module.exports = React.createClass({
 		// 	}
 		// }
 
+		//if(average <= 60) {
+		// 	show red
+		// }
+		// else if(average >= 75) {
+		// 	show green
+		// }
+		// else {
+		// 	show oranger
+		// }
+
 	},
 	render: function(){
 
@@ -124,7 +134,7 @@ module.exports = React.createClass({
 				<div className="row">
 					<div className="left-side four columns">
 						<form onSubmit={this.onQuizSelected}>
-							<label htmlFor="quizList">Choose Quiz</label>
+							<label className="choose-quiz" htmlFor="quizList">Choose Quiz</label>
 							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
 								{leftContent}
 							</select>
@@ -137,9 +147,30 @@ module.exports = React.createClass({
 							<h1>Class Analytics</h1>
 						</div>
 						<div className="analytics-container">
-							<div className="header">Questions from selected quiz go here</div>
+							{/*Dummy Data*/}
+							<div className="header">Basic HTML and CSS</div>
 							<hr />
-							<div className="right-content">{rightContent}</div>
+							<div className="dummy-wrapper">
+								{/*<div className="right-content">{rightContent}</div>*/}
+								<div className="dummy-question-title">Question 1</div>
+								<span className="dummy-question-1">What display type is a div?</span>
+								<span className="dummy-average">Average Correct - </span>
+								<span className="dummy-average-num-green">98%</span>
+							</div>
+							<div className="dummy-wrapper">
+								{/*<div className="right-content">{rightContent}</div>*/}
+								<div className="dummy-question-title">Question 2</div>
+								<span className="dummy-question-1">What display type is a span?</span>
+								<span className="dummy-average">Average Correct - </span>
+								<span className="dummy-average-num-red">56%</span>
+							</div>
+							<div className="dummy-wrapper">
+								{/*<div className="right-content">{rightContent}</div>*/}
+								<div className="dummy-question-title">Question 3</div>
+								<span className="dummy-question-1">Is an input field a self closing tag?</span>
+								<span className="dummy-average">Average Correct - </span>
+								<span className="dummy-average-num-orange">74%</span>
+							</div>
 						</div>
 					</div>
 				</div>

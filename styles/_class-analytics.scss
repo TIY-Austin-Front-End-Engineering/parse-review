@@ -15,14 +15,24 @@
 	.left-side {
 		background-color: $innerContainer;
 		margin-top: 6em;
+		margin-right: 3em;
+		margin-left: .4em;
+		padding: 0em 1em;
+		box-shadow: 2px 2px 2px #000;
+		.choose-quiz {
+			font-size: 30px;
+			color: white;
+		}
 		.select-btn{
 			background-color: $button;
 			color: $linkColor;
 			font-family: $fontQuestrial;
+			margin-left: 1em;
 		}
 		.drop-down-btn {
 			font-family: $fontQuestrial;
 			cursor: pointer;
+			width: 19em;
 		}
 	}
 	.right-side {
@@ -38,6 +48,34 @@
 			hr {
 				border-color: $hover;
 				margin: 0;
+			}
+			.dummy-wrapper {
+				border-bottom: 1px solid $hover;
+				.dummy-question-title {
+				font-size: 24px;
+				color: $linkColor;
+				}
+				.dummy-question-1 {
+					font-size: 20px;
+					color: white;
+				}
+				.dummy-average {
+				font-size: 20px;
+				color: white;
+
+				}
+				.dummy-average-num-green {
+					font-size: 28px;
+					color: #75D055;
+				}
+				.dummy-average-num-red {
+					font-size: 28px;
+					color: #FF6969;
+				}
+				.dummy-average-num-orange {
+					font-size: 28px;
+					color: #FF8F59;
+				}
 			}
 		}
 	}
