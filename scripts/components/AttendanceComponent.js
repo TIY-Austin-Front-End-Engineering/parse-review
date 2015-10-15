@@ -69,8 +69,8 @@ module.exports = React.createClass({
 			<table className="u-full-width att-table">
 				<thead>
 					<tr>
-						<th>Day Administered</th>
 						<th>Student Name</th>
+						<th>Day Administered</th>
 						<th>Time Started</th>
 					</tr>
 				</thead>
