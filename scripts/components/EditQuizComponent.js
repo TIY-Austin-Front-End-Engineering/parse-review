@@ -27,7 +27,7 @@ module.exports  = React.createClass({
 		newQuery.find({
 				success:(questions) => {
 					this.setState({questions: questions})
-				
+
 				}
 
 			});
