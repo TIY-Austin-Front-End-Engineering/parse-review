@@ -35,7 +35,6 @@ var Router = Backbone.Router.extend({
 		'createQuiz': 'createQuiz',
 		'editQuiz/:id':'editQuiz',
 		'editQuiz/:id/postQuestion':'postQuestion',
-		'quizResults/:id': 'quizResults',
 		'logout': 'logout',
 		'classAnalytics': 'classAnalytics',
 		'quizResults/:userId/:quizId': 'quizResults',
@@ -87,7 +86,6 @@ var Router = Backbone.Router.extend({
 	},
 	quizResults: function(userId, quizId) {
 		var currentUser = Parse.User.current();
-		
 		if(currentUser) {
 			ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} router={r} />, app);
 		} 
