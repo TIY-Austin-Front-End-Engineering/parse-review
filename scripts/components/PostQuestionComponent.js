@@ -84,7 +84,7 @@ module.exports = React.createClass({
 			}
 		}
 		//once question is filled out, send to the server
-		if(correctAnswer === null || this.refs.questionTitle.value === '' || this.refs.choice.value === ''){
+		if(correctAnswer === null || this.refs.questionTitle.value === ''){
 			this.setState({feedbackElement: 'Please fill in all fields and select a correct answer'});
 		}else{
 			var quizId =this.props.quizId;
