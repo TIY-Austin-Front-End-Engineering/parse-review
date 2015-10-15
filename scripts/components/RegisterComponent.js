@@ -30,7 +30,7 @@ module.exports= React.createClass ({
 							<div className="row">
 								<div className="twelve columns">
 									<label htmlFor="firstName">First Name</label>
-									<input className="u-full-width" ref="firstName" type="text" placeholder="Jill" id="firstName" />
+									<input className="u-full-width" ref="firstName" type="text" placeholder="Gill" id="firstName" />
 								</div>
 							</div>
 							<div className="row">
