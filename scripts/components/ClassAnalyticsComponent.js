@@ -26,7 +26,7 @@ var StudentAnswerModel = require('../models/StudentAnswerModel');
 module.exports = React.createClass({
 	getInitialState: function() {
 		return {
-			numberOfQuestions: 0,
+			numberOfQuestions: null,
 			answerThenQuestion: null,
 			allAnswerList: null,
 			currentType: null,
