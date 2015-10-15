@@ -35,7 +35,6 @@ var Router = Backbone.Router.extend({
 		'createQuiz': 'createQuiz',
 		'editQuiz/:id':'editQuiz',
 		'editQuiz/:id/postQuestion':'postQuestion',
-		// 'quizResults/:id': 'quizResults',
 		'logout': 'logout',
 		'classAnalytics': 'classAnalytics',
 		'quizResults/:userId/:quizId': 'quizResults',
@@ -89,7 +88,7 @@ var Router = Backbone.Router.extend({
 		var currentUser = Parse.User.current();
 		console.log(currentUser.get('teacher'), currentUser.id);
 		if(currentUser.get('teacher')) {
-			ReactDOM.render(<QuizResultsComponent quizId={id}/>, app);
+			ReactDOM.render(<QuizResultsComponent quizId={quizId} userId={userId} router={r}/>, app); 
 		} 
 		else {
 			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
