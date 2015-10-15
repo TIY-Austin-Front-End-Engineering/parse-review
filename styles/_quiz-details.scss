@@ -1,22 +1,30 @@
+
 .quiz-details-component {
-	h4, label {
-		font-family: $fontQuestrial;
-		color: $innerContainer;
-		padding: 0;
-		margin: 0;
-		}
-	.submit-btn {
-		width: 16%;
-		background-color: #24677F;
-		color: #fff;
-		padding: 0 10px;
-		border: none;
-		color: $linkColor;
-		font-family: $fontQuestrial;
-		cursor: pointer;
-		border: 1px solid #bbb;
-		}
-	#choices-content{
+	font-family: $fontFanwood;
+	margin-left: 10%;
+	width: 80%;
+	font-size: 1.2em;
+	background: $innerContainer;
+	margin-top: 3em;
+	border: 1px solid black;
+	box-shadow: 2px 2px 2px #000;
+	padding: 2%;
+		h4 {
+			font-family: $fontQuestrial;
+			color: $linkColor;
+			padding: 0;
+			margin: 0;
+	}
+	button {
+				background-color: #24677F;
+				padding: 0 10px;
+				border: none;
+				color: $linkColor;
+				font-family: $fontQuestrial;
+				cursor: pointer;
+				border: 1px solid #bbb;
+			}
+	.questions{
 		color:red;
-		}
+	}
 }
