@@ -25,6 +25,17 @@ module.exports = React.createClass({
 						</div>
 					</div>
 				</div>
+				<div className="row">
+					<div className="four columns">
+					column one
+					</div>
+					<div className="four columns">
+					columns two
+					</div>
+					<div className="four columns">
+					columns three
+					</div>
+				</div>
 			</div>
 		)
 	}
