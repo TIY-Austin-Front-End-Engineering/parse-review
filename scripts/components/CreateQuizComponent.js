@@ -9,14 +9,14 @@ var EditQuizComponent = require('./EditQuizComponent');
 module.exports = React.createClass({
 	render:function(){
 		return(
-			<div>
-				<form onSubmit={this.onSubmit}>
-					<input type="text" ref="quizName" placeholder="Quiz Title"/>
-					<input type="date" ref="dateToStart" placeholder="date to starts" />
-					<input type="date" ref="dateExpire" placeholder="date to expire" />
+			<form onSubmit={this.onSubmit} className="create-quiz-container">
+				<div className="row six columns">
+					<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
+					<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
+					<input className="u-full-width" type="date" ref="dateExpire" placeholder="date to expire" />
 					<button > Create Quiz</button>
-				</form>
-			</div>
+				</div>
+			</form>
 		);
 
 	},
