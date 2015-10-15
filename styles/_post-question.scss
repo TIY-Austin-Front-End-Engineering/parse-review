@@ -3,7 +3,6 @@
 	font-family: $fontFanwood;
 	padding-right: 2%;
 	padding-left: 2%;
-	color: #fff;
 	font-size: 1.2em;
 	h3, label {
 		font-family: $fontQuestrial;
@@ -42,7 +41,6 @@
 			}
 			button {
 				background-color: #24677F;
-				color: #fff;
 				padding: 0 10px;
 				border: none;
 				color: $linkColor;
@@ -62,12 +60,15 @@
 	box-shadow: 2px 2px 2px #000;
 	li {
 		list-style: none;
+		color: white;
 	}
 }
 
 
 @media (min-width: 550px){
-	.column, .columns {
-	  margin-left: 0;
+	.post-question-component{
+		.column, .columns {
+	  		margin-left: 0;
+		}
 	}
 }
