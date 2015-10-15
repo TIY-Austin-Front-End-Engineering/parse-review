@@ -27,6 +27,9 @@ var app = document.getElementById('app');
 function quizFinished(){ 
 		r.navigate('quizResults',{trigger:true});
 }
+this.props.quizFinished(){ 
+		r.navigate('quizResults',{trigger:true});
+}
 
 var Router = Backbone.Router.extend({
 	routes: {
