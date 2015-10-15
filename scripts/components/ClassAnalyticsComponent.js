@@ -2,6 +2,7 @@
  *	Class Analytics Component
  *
  *	requires:
+ *		React
  *		Quiz Model
  *			quizTitle: string
  *			totalQuestions: number
@@ -25,7 +26,7 @@ var StudentAnswerModel = require('../models/StudentAnswerModel');
 module.exports = React.createClass({
 	getInitialState: function() {
 		return {
-			numberOfQuestions: null,
+			numberOfQuestions: 0,
 			answerThenQuestion: null,
 			allAnswerList: null,
 			currentType: null,
@@ -44,60 +45,46 @@ module.exports = React.createClass({
 				console.log(err);
 			}
 		);
-
-		// this.query = new Parse.Query(QuizModel);
-		// this.query.get(id).then(
-		// 	(targetQuiz) => {
-		// 		console.log(targetQuiz);
-		// 	}
-		// );
-
-		// var query2 = new Parse.Query(QuestionModel);
-		// var that = this;
-		// query2.equalTo('quizId', new QuizModel({objectId: id}));
-		// query2.count().then(function(number) {
-		// 	that.setState({numberOfQuestions: number});
-		// });
-
-		// // make an array of all questions that match a certain quiz
-		// this.query = new Parse.Query(QuestionModel);
-		// this.query
-		// .find.then({
-
-		// });
-
-		// // make an array of all studentCorrect answers from the previously formed array of questions
-		// var innerQuery = Parse.Query(StudentAnswerModel);
-		// innerQuery.matchesQuery('studentCorrect', query);
-		// console.log(innerQuery);
-
-		// for(var i = 0; i < studentCorrect.length; i++) {
-		// 	if(studentCorrect === true) {
-		// 		correctAnswers += 1;
-		// 	}
-		// }
-
 	},
 	render: function() {
 		var rightContent = null;
 
+		// Display all quizzes in the drop down
 		var leftContent = this.state.allQuizzes.map(function(quiz) {
 			return (
 				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle')}</option>
 			);
 		});
 
-		// if(this.state.allAnswerList) {
-		// 	console.log('answers appeared');
-		// 	rightContent = {answerThenQuestion};
-		// }
-		// else {
-		// 	rightContent = (
-		// 		<div>Please select a quiz to see data related to that query</div>
-		// 	);
-		// }
+		// future content of the right content
+					// <div key={question.id}>
+					// 	<h4>Question</h4>
+					// 	<div>{question.get('questionId')}</div>
+					// 	<h4>Answer</h4>
+					// 	<div>{question.get('questionAverage')}</div>
+					// </div>
+					// <h2>Questions and Answers go here!</h2>
 
-		// ('Questions from selected quiz go here');
+
+		if(this.state.allQuestions) {
+			console.log('answers appeared');
+			rightContent = this.state.allQuestions.map(function(question) {
+				return (
+					<div key={question.id}>
+						<h5>Question</h5>
+						<div>{question.questionTitle}</div>
+						<h5>Answer</h5>
+						<div>{question.questionAverage}</div>
+					</div>
+				);
+			});
+		}
+		else {
+			rightContent = (
+				<div>Please select a quiz to see data related to that query</div>
+			);
+		}
+
 		return (
 			<div className="class-analytics-container">
 				<div className="left-side">
@@ -132,15 +119,43 @@ module.exports = React.createClass({
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
 
 		innerQuestionQuery.equalTo('quizId', new QuizModel({objectId: this.refs.thisQuiz.value}));
-		answerQuery.matchesQuery('questionId', innerQuestionQuery).find().then(
+		answerQuery.include('questionId').matchesQuery('questionId', innerQuestionQuery).find().then(
 			(studentAnswers) => {
 				var answerList = _.groupBy(studentAnswers, function(answer) {
 					return answer.get('questionId').id;
 				});
-				this.setState({allAnswerList: answerList});
-				// for(var i = 0; i < allAnswerList.length; i++) {
-				// 	answerThenQuestion.push(<div>{answerList[i]}</div>);
-				// }
+
+				var findQuestions = [];
+
+				console.log(answerList);
+
+					// array to map with question and percentage correct
+
+				for (var props in answerList) {
+
+					var totalNumOfAnswers = answerList[props].length;
+					var numberCorrect = 0;
+					var questionAverage = 0;
+
+					for (var j=0; j < totalNumOfAnswers; j++) {
+
+						if (answerList[props][j].get('studentCorrect') === true) {
+							numberCorrect++;
+						}
+					}
+
+					var questionInfo = {
+						question: answerList[props][0].get('questionId'),
+						questionTitle: answerList[props][0].get('questionTitle'),
+						questionAverage: numberCorrect/totalNumOfAnswers*100
+					};
+
+					console.log(answerList[props][0].get('questionId'));
+
+					findQuestions.push(questionInfo);
+				}
+				this.setState({ allQuestions: findQuestions });
+
 			},
 			(err) => {
 				console.log(err);
