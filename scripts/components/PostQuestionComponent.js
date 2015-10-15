@@ -95,6 +95,8 @@ module.exports = React.createClass({
 				correctChoice: correctAnswer
 				
 			});
+			targetQuizModel.increment('totalQuestions');
+			targetQuizModel.save();
 			newQuestion.save();
 			this.refs.button.disabled = true;
 			this.refs.questionTitle.value = '',
