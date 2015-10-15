@@ -13,6 +13,7 @@ module.exports = React.createClass({
 	getInitialState: function() {
 	    return {
 	         currentQuestion:0,
+	         quiz: null
 	    };
 
 	},
@@ -26,9 +27,11 @@ module.exports = React.createClass({
 				questionQuery.equalTo("quizId", quiz);
 				questionQuery.find().then(
 					(questionVar) => {
+						console.log(questionVar)
 			    		this.setState({
 							currentQuestion:0,
-			  			    questions:questionVar
+			  			    questions:questionVar,
+			  			    quiz: quiz
 						})
 					}
 				)
@@ -62,24 +65,31 @@ module.exports = React.createClass({
 		if(questions == null){
 			return (<div>Loading Quiz...</div>);
 		}
-
+		var quizTitle = this.state.quiz.get("quizTitle");
 		var questionVar = questions;
 		var currentQuestion = questionVar[this.state.currentQuestion];
 		this.currentQuestion = currentQuestion;
+		console.log(currentQuestion);
 
 		var self = this;
 		var choices = currentQuestion.get('questionChoices').map(function(qc){
 
-			return(<div><input value={qc} type='radio' name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
+			return(<div><input value={qc} type='radio' defaultValue={false} name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
 		}); 
 
 			return (
-				<div className="Quiz">
-					<div>
-						{currentQuestion.get('questionContent')}
+				<div className=" row quiz-details-container">
+					<div className="quiz-details-component">
+						<h4>{quizTitle}</h4>
+						<hr />
+						<div>
+							{currentQuestion.get('questionContent')}
+						</div>
+						<div>
+						{choices}
+						</div>
+						<button className="submit-btn" onClick={this.submitSolve}>Submit</button>
 					</div>
-					{choices}
-					<button onClick={this.submitSolve}>Submit</button>
 				</div>
 			)
 	}
