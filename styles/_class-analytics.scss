@@ -52,16 +52,23 @@
 				border-color: $hover;
 				margin: 0;
 			}
-			.question-title {
-				font-size: 24px;
-				color: $linkColor;
-			}
-			.question-1 {
-				font-size: 20px;
-				color: white;
-			}
-			.avg {
-				font-size: 20px;
+			.wrapper {
+				border-bottom: 1px solid $hover;
+				.question-title {
+					font-size: 24px;
+					color: $linkColor;
+				}
+				.question-answer {
+					font-size: 24px;
+					color: $linkColor;
+				}
+				.question {
+					font-size: 20px;
+					color: white;
+				}
+				.avg {
+					font-size: 20px;
+				}
 			}
 		}
 	}

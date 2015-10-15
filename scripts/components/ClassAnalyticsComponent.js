@@ -78,11 +78,13 @@ module.exports = React.createClass({
 					}
 				}
 				return (
-					<div key={question.id}>
+					<div className="wrapper" key={question.id}>
 						<h5 className="question-title">Question</h5>
-						<div>{question.questionTitle}</div>
-						<h5>Answer</h5>
-						<div className="avg" style={color}>{question.questionAverage}%</div>
+						<div className="question">{question.questionTitle}</div>
+						<span className="question-answer">
+							<h5>Answer</h5>
+						</span>
+						<span className="avg" style={color}>{question.questionAverage}%</span>
 					</div>
 				);
 			});
