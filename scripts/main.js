@@ -24,9 +24,9 @@ var QuizDetailsComponent = require('./components/QuizDetailsComponent');
 
 var currentUser = Parse.User.current();
 var app = document.getElementById('app');
-function quizFinished(){ 
-		r.navigate('quizResults',{trigger:true});
-}
+// function quizFinished(){ 
+// 		r.navigate('quizResults',{trigger:true});
+// }
 
 var Router = Backbone.Router.extend({
 	routes: {
@@ -47,7 +47,7 @@ var Router = Backbone.Router.extend({
 		'attendance': 'attendance'
 	},
 	quizDetailsPage: function(id){
-		ReactDOM.render(<QuizDetailsComponent quizId={id}  quizIsFinished={quizFinished}/>, app);
+		ReactDOM.render(<QuizDetailsComponent quizId={id}  router={r}/>, app);
 	},
 	home: function() {
 		ReactDOM.render(<HomeComponent />, app);
