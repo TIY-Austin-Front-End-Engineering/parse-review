@@ -1,16 +1,26 @@
 .dashboard-container {
-
+	a{
+		text-decoration: none;
+	}
+	margin: 0 2em;
+	.dashboard-links{
+		color: #280036;
+		border: 2px solid #FADA00;
+		box-sizing: border-box;
+		padding-top: 0.3em;
+		
+	}
 	@media (min-width: 70.626em) {
 		.dashboard-links {
 			background: #934C47;
 			text-align: center;
 			display: inline-block;
-			margin-left: 1em;
-			width: 30%;
+			margin: 1em;
+			width: 47%;
 		}
 
 		.dashboard-title {
-			margin-left: 40%;
+			text-align: center;
 		}
 
 		.analytics {
@@ -23,10 +33,11 @@
 		.dashboard-links {
 			background: #934C47;
 			text-align: center;
+			margin: 1em 0;
 		}
 
 		.dashboard-title {
-			margin-left: 40%;
+			text-align: center;
 		}
 
 		.analytics {

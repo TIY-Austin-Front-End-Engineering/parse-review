@@ -25,7 +25,7 @@ module.exports = React.createClass({
 				<label htmlFor="password" >Password</label>
 				<input className="u-full-width" ref="password" type="password" placeholder ="password" id="password" />
 				<br/><br/>
-				<button className="button-primary">Log In</button>
+				<button ref="button" className="button-primary" disabled={false}>Log In</button>
 			</form>
 		</div>
 		);
@@ -33,6 +33,7 @@ module.exports = React.createClass({
 	// Function to log in user which uses Parse for as a server with the users information
 	onLogin: function(e) {
 		e.preventDefault();
+		this.refs.button.disabled = true;
 		console.log(this.refs.password.value)
 		// var user = new Parse.User();
 		Parse.User.logIn(
