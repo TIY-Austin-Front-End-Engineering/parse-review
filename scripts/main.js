@@ -111,7 +111,7 @@ var Router = Backbone.Router.extend({
 	},
 	quizList: function() {
 		var currentUser = Parse.User.current();
-		if(currentUser && currentUser.get('teacher') === true) {
+		if(currentUser) {
 			ReactDOM.render(<QuizListComponent />, app);
 		}
 		else {
