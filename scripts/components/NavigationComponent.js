@@ -30,7 +30,7 @@ module.exports = React.createClass({
 		else if(currentUser && currentUser.get('teacher') === false) {
 			links.push(<a href="#logout"><div key="logout" className="nav-bar-button">Log Out</div></a>);
 			links.push(<a href="#quizList"><div key="takeQuiz" className="nav-bar-button">Take Quiz</div></a>);
-			links.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
+			name.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
 		}
 		//'else' statement will display links that are available if there is no one logged in.
 		else {
