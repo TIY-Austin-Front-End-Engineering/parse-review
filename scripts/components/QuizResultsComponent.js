@@ -59,8 +59,8 @@ module.exports = React.createClass({
 
 		var ListQuestionDetails = this.state.questions.map((question) => {
 			return (
-					<div>
-						<div>{question.get('questionId').get('questionContent')}</div>
+					<div className="question-container">
+						<div className="question">{question.get('questionId').get('questionContent')}</div>
 						<PossibleAnswersComponent questionChoices={question.get('questionId').get('questionChoices')} correctChoice={question.get('questionId').get('correctChoice')} studentChoice={question.get('studentChoice')}/>
 						<hr />
 					</div>
@@ -74,14 +74,18 @@ module.exports = React.createClass({
 
 			return (
 				<div>
-					<div>
-						<div>Quiz Name: </div>
+					<div className="container">
+						<h5>Your Results</h5>
+						<h5 className="title">Quiz Name: </h5>
 						<div>User: </div>
-						<div>Percentage: %</div>
+						
 					</div>
 					<hr />
 					<div>
 						{ListQuestionDetails}
+					</div>
+					<div>
+						<div className="percentage">Percentage: %</div>
 					</div>
 				</div>
 			);
