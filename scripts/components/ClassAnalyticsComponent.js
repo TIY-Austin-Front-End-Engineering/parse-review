@@ -59,12 +59,28 @@ module.exports = React.createClass({
 		if(this.state.allQuestions) {
 			console.log('answers appeared');
 			rightContent = this.state.allQuestions.map(function(question) {
+				var color = null;
+				if(question.questionAverage >= 80) {
+					color = {
+						color: '#75D055'
+					}
+				}
+				else if(question.questionAverage <= 69) {
+					color = {
+						color:'#FF6969'
+					}
+				}
+				else {
+					color = {
+						color: '#FF8F59'
+					}
+				}
 				return (
 					<div key={question.id}>
-						<h5>Question</h5>
+						<h5 className="question-title">Question</h5>
 						<div>{question.questionTitle}</div>
 						<h5>Answer</h5>
-						<div>{question.questionAverage}</div>
+						<div className="avg" style={color}>{question.questionAverage}%</div>
 					</div>
 				);
 			});
@@ -77,19 +93,27 @@ module.exports = React.createClass({
 
 		return (
 			<div className="class-analytics-container">
-				<div className="left-side">
-					<h1>Class Analytics</h1>
-					<form onSubmit={this.onQuizSelected}>
-						<label htmlFor="quizList">Choose Quiz</label>
-						<select ref="thisQuiz" id="quizList">
-							{leftContent}
-						</select>
-						<button>Select</button>
-					</form>
-				</div>
+				<div className="row">
+					<div className="page-title">
+						<h1>Class Analytics</h1>
+					</div>
+					<div className="left-side four columns">
 
-				<div className="right-side">
-					<div>{rightContent}</div>
+						<form onSubmit={this.onQuizSelected}>
+							<label htmlFor="quizList" className="choose-quiz">Choose Quiz</label>
+							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
+								{leftContent}
+							</select>
+							<button className="select-btn">Select</button>
+						</form>
+
+					</div>
+
+					<div className="right-side eight columns">
+						<div className="analytics-container">
+							<div>{rightContent}</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
