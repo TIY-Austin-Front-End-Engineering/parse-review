@@ -20,6 +20,7 @@ var HomeComponent = require('./components/HomeComponent');
 var ClassAnalyticsComponent = require('./components/ClassAnalyticsComponent');
 var DashboardComponent = require('./components/DashboardComponent');
 var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent');
+var QuizDetailsComponent = require('./components/QuizDetailsComponent');
 
 var currentUser = Parse.User.current();
 var app = document.getElementById('app');
