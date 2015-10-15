@@ -35,12 +35,12 @@ module.exports = React.createClass({
 					<form onSubmit={this.onSubmit}>
 						<label>Title</label>
 						<input className="u-full-width" type="text" ref="quizName" placeholder="Quiz Title"/>
-						<label>Start Date</label>
+						<label>Start Date and Time</label>
 						<input className="u-full-width" type="date" ref="dateToStart" placeholder="date to starts" />
 						<input type="time" ref="timeToStart" />
-						<label>End Date</label>
+						<label>End Date and Time</label>
 						<input className="u-full-width" type="date" ref="dateToExpire" placeholder="date to expire" />
-						<input type="time" ref="timeToExpire" />
+						<input type="time" ref="timeToExpire" /><br />
 						<button >Create Quiz</button>
 						<h2>{this.state.feedbackElement}</h2>
 					</form>
