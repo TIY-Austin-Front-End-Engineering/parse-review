@@ -21,56 +21,34 @@ module.exports= React.createClass ({
 			errorElement = (<p className= "red">{this.state.error}</p>)
 		}
 		return (
-			<div className="container">
-				<div className="row">
-					<div className="twelve columns">
-						<form onSubmit={this.onRegister} className="form">
-							<h2>Register</h2>
-							
-							<div className="row">
-								<div className="twelve columns">
-									<label htmlFor="firstName">First Name</label>
-									<input className="u-full-width" ref="firstName" type="text" placeholder="Gill" id="firstName" />
-								</div>
-							</div>
-							<div className="row">
-								<div className="twelve columns">
-									<label htmlFor="lastName">Last Name</label>
-									<input className="u-full-width" ref="lastName" type="text" placeholder="Gates" id="lastName" />
-								</div>
-							</div>
-							<div className="row">
-								<div className="twelve columns">
-									<label htmlFor="userName">User Name</label>
-									<input className="u-full-width" ref="username" type="text" placeholder="user name" id="userName" />
-								</div>
-							</div>
-							<div className="row">
-								<div className="twelve columns">
-								<label htmlFor="exampleEmailInput">Your Email</label>
-								<input className="u-full-width" ref="email" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
-								</div>
-							</div>
-							<div className="row">
-								<div className="twelve columns">
-									<label htmlFor="password">Password</label>
-									<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
-								</div>
-							</div>
-							<div>
-								<select onChange={this.reRender} ref="select">
+
+			
+			<div className="reg-form-container">
+				<form className="reg-form" onSubmit={this.onRegister} >
+				<h2>Register</h2>			
+				
+				<label htmlFor="firstName">First Name</label>
+				<input className="u-full-width" ref="firstName" type="text" placeholder="Jill" id="firstName" />
+				<label htmlFor="lastName">Last Name</label>
+				<input className="u-full-width" ref="lastName" type="text" placeholder="Gates" id="lastName" />
+				<label htmlFor="userName">User Name</label>
+				<input className="u-full-width" ref="username" type="text" placeholder="user name" id="userName" />
+				<label htmlFor="exampleEmailInput">Your Email</label>
+				<input className="u-full-width" ref="email" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
+				<label htmlFor="password">Password</label>
+				<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
+					
+				<select onChange={this.reRender} ref="select">
+
 									<option>Student</option>
 									<option>Teacher</option>
 								</select>
-							</div>
+							
 							{teachPassword}
 							<button ref="button" className="button-primary" disabled={false}>Register</button>
 							{errorElement}
 						</form>
 					</div>
-					
-				</div>
-			</div>
 			)
 	},
 	reRender:function(e){
