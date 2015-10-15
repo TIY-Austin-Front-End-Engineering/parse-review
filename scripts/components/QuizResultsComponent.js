@@ -13,10 +13,15 @@ module.exports = React.createClass({
 			user: this.props.userId,
 			quiz: this.props.quizId,
 			questions: [],
-			error: null
+			error: null,
+			quizName: []
 		}
 	},
 	componentWillMount: function () {
+		this.props.router.on('route', () => {
+			this.forceUpdate();
+		})
+
 		var UserModel = Parse.User;
 		var QuizModel = Parse.Object.extend('QuizModel');
 		var QuestionModel = Parse.Object.extend('QuestionModel');
@@ -28,6 +33,8 @@ module.exports = React.createClass({
 		var targetQuizModel = new QuizModel({objectId: quizId});
 		var query = new Parse.Query(StudentAnswerModel);
 		var innerQuery = new Parse.Query(QuestionModel);
+		var innerInnerQuery = new Parse.Query(QuizModel);
+
 		query.equalTo('userId', targetUserModel);
 		innerQuery.equalTo('quizId', targetQuizModel);
 		query.matchesQuery('questionId', innerQuery);
@@ -36,10 +43,39 @@ module.exports = React.createClass({
 			this.setState({
 				questions: results
 			})
+			// console.log(results)
 		});
+		
+		// innerQuery.equalTo('quizId', targetQuizModel);
+		// innerInnerQuery.equalTo('objectId', this.props.quizId);
+		// innerQuery.matchesQuery('quizId', innerInnerQuery);
+		// innerQuery.include('quizId');
+		// innerInnerQuery.find().then((result) => {
+		// 	this.setState({
+		// 		quizName: result
+		// 	})
+		// 	console.log(result)
+		// })
+
+		// innerInnerQuery.equalTo('objectId', this.props.quizId)
+		// .find().then((result) => {
+		// 	// this.setState({
+		// 	// 	quizName: result
+		// 	// })
+		// console.log(result)
+		// })
+
+		// innerQuery.equalTo('quizId', targetQuizModel);
+		// innerInnerQuery.
+		// innerQuery.include('quizId');
+		// innerQuery.find().then((results) => {
+		// 	this.setState({
+		// 		quizName: results
+		// 	})
+		// })
 	},
 	render: function() {
-
+		// console.log(this.state.quizName);
 		var ListQuestionDetails = this.state.questions.map((question) => {
 			return (
 					<div className="question-container">
