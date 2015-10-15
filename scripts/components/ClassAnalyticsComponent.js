@@ -2,6 +2,8 @@
  *	Class Analytics Component
  *
  *	requires:
+ *		React
+ *		ReactDOM
  *		Quiz Model
  *			quizTitle: string
  *			totalQuestions: number
@@ -17,6 +19,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var _ = require('backbone/node_modules/underscore');
 var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
@@ -25,13 +28,14 @@ module.exports = React.createClass({
 	getInitialState: function() {
 		return {
 			numberOfQuestions: null,
-			allQuizzes: [],
-			allQuestionAverages: [],
-			currentType: null
+			answerThenQuestion: null,
+			allAnswerList: null,
+			currentType: null,
+			correctAnswers: null,
+			allQuizzes: []
 		};
 	},
 	componentWillMount: function() {
-
 		// pull all quizzes
 		var quizQuery = new Parse.Query(QuizModel);
 		quizQuery.find().then(
@@ -42,149 +46,109 @@ module.exports = React.createClass({
 				console.log(err);
 			}
 		);
-
-		var id = 'aXsQUrXeTB';
-
-		this.query = new Parse.Query(QuizModel);
-		// this.query.equalTo('objectId', id)
-		this.query.get(id).then(
-			(targetQuiz) => {
-				// this.setState({allQuizzes: totalQuestions});
-				console.log(targetQuiz);
-			}
-		);
-
-		var query2 = new Parse.Query(QuestionModel);
-		var that = this;
-		query2.equalTo('quizId', new QuizModel({objectId: id}));
-		query2.count().then(function(number) {
-			that.setState({numberOfQuestions: number});
-		});
-
-		// make an array of all questions that match a certain quiz
-		// this.query = new Parse.Query(QuestionModel);
-		// this.query
-		// .find.then({
-
-		// });
-
-		// make an array of all studentCorrect answers from the previously formed array of questions
-
-		// var innerQuery = Parse.Query(StudentAnswerModel);
-		// this.innerQuery.matchesQuery('studentCorrect', query);
-		// console.log(innerQuery);
-
-		// questionQuery
-		// .find()
-		// .equalTo('quizId')
-		// .then(
-		// 	(quiz) => {
-		// 		this.setState({ allQuizzes: quiz });
-		// 	},
-		// 	(err) => {
-		// 		console.log(err);
-		// 	}
-		// );
-
-		// studentAnswerQuery
-		// .find()
-		// .equalTo('studentCorrect')
-		// .then(
-		// 	(average) => {
-		// 		this.setState({ });
-		// 	},
-		// 	(err) => {
-		// 		console.log(err);
-		// 	}
-		// );
-
-		// var correctAnswers = 0;
-
-		// for(var i = 0; i < studentCorrect.length; i++) {
-		// 	if(studentCorrect === true) {
-		// 		correctAnswers += 1;
-		// 	}
-		// }
-
-		//if(average <= 60) {
-		// 	show red
-		// }
-		// else if(average >= 75) {
-		// 	show green
-		// }
-		// else {
-		// 	show oranger
-		// }
-
 	},
-	render: function(){
+	render: function() {
+		var rightContent = null;
 
-		var that = this;
+		// Display all quizzes in the drop down
 		var leftContent = this.state.allQuizzes.map(function(quiz) {
 			return (
-				<option value={that.objectId} ref={that.id}>{quiz.get('quizTitle')}</option>
+				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle')}</option>
 			);
 		});
-
-
-		var rightContent = ('Questions from selected quiz go here');
+		if(this.state.allQuestions) {
+			console.log('answers appeared');
+			rightContent = this.state.allQuestions.map(function(question) {
+				return (
+					<div key={question.id}>
+						<h5>Question</h5>
+						<div>{question.questionTitle}</div>
+						<h5>Answer</h5>
+						<div>{question.questionAverage}</div>
+					</div>
+				);
+			});
+		}
+		else {
+			rightContent = (
+				<div>Please select a quiz to see data related to that query</div>
+			);
+		}
 
 		return (
 			<div className="class-analytics-container">
-				<div className="row">
-					<div className="left-side four columns">
-						<form onSubmit={this.onQuizSelected}>
-							<label className="choose-quiz" htmlFor="quizList">Choose Quiz</label>
-							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
-								{leftContent}
-							</select>
-							<button className="select-btn">Select</button>
-						</form>
-					</div>
+				<div className="left-side">
+					<h1>Class Analytics</h1>
+					<form onSubmit={this.onQuizSelected}>
+						<label htmlFor="quizList">Choose Quiz</label>
+						<select ref="thisQuiz" id="quizList">
+							{leftContent}
+						</select>
+						<button>Select</button>
+					</form>
+				</div>
 
-					<div className="right-side eight columns">
-						<div className="page-title">
-							<h1>Class Analytics</h1>
-						</div>
-						<div className="analytics-container">
-							{/*Dummy Data*/}
-							<div className="header">Basic HTML and CSS</div>
-							<hr />
-							<div className="dummy-wrapper">
-								{/*<div className="right-content">{rightContent}</div>*/}
-								<div className="dummy-question-title">Question 1</div>
-								<span className="dummy-question-1">What display type is a div?</span>
-								<span className="dummy-average">Average Correct - </span>
-								<span className="dummy-average-num-green">98%</span>
-							</div>
-							<div className="dummy-wrapper">
-								{/*<div className="right-content">{rightContent}</div>*/}
-								<div className="dummy-question-title">Question 2</div>
-								<span className="dummy-question-1">What display type is a span?</span>
-								<span className="dummy-average">Average Correct - </span>
-								<span className="dummy-average-num-red">56%</span>
-							</div>
-							<div className="dummy-wrapper">
-								{/*<div className="right-content">{rightContent}</div>*/}
-								<div className="dummy-question-title">Question 3</div>
-								<span className="dummy-question-1">Is an input field a self closing tag?</span>
-								<span className="dummy-average">Average Correct - </span>
-								<span className="dummy-average-num-orange">74%</span>
-							</div>
-						</div>
-					</div>
+				<div className="right-side">
+					<div>{rightContent}</div>
 				</div>
 			</div>
-		)
+		);
 	},
 	onQuizSelected: function(e) {
 		e.preventDefault();
-		console.log('button was clicked!');
+		console.log(this.refs.thisQuiz.value);
 
 		this.setState({
 			currentType: this.objectId
 		});
-		var quizId = this.refs.thisQuiz.value;
+
+		var quizId = this.refs.thisQuiz.id;
 		console.log(quizId);
+
+		var answerQuery = new Parse.Query(StudentAnswerModel);
+		var innerQuestionQuery = new Parse.Query(QuestionModel);
+
+		innerQuestionQuery.equalTo('quizId', new QuizModel({ objectId: this.refs.thisQuiz.value }));
+		answerQuery.include('questionId').matchesQuery('questionId', innerQuestionQuery).find().then(
+			(studentAnswers) => {
+				var answerList = _.groupBy(studentAnswers, function(answer) {
+					return answer.get('questionId').id;
+				});
+
+				var findQuestions = [];
+
+				console.log(answerList);
+
+					// array to map with question and percentage correct
+
+				for (var props in answerList) {
+
+					var totalNumOfAnswers = answerList[props].length;
+					var numberCorrect = 0;
+					var questionAverage = 0;
+
+					for (var j=0; j < totalNumOfAnswers; j++) {
+
+						if (answerList[props][j].get('studentCorrect') === true) {
+							numberCorrect++;
+						}
+					}
+
+					var questionInfo = {
+						question: answerList[props][0].get('questionId'),
+						questionTitle: answerList[props][0].get('questionTitle'),
+						questionAverage: numberCorrect/totalNumOfAnswers*100
+					};
+
+					console.log(answerList[props][0].get('questionId'));
+
+					findQuestions.push(questionInfo);
+				}
+				this.setState({ allQuestions: findQuestions });
+			},
+			(err) => {
+				console.log(err);
+			}
+		);
 	}
 });
