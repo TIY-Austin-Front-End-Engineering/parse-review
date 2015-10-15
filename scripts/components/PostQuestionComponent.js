@@ -31,7 +31,6 @@ module.exports = React.createClass({
 	    );
 	},
 	render: function() {
-		console.log('render '+ this.state.errorElement)
 	//once a new multiple choice answer is added in, choiceRows will map and display onto the page
 		var choiceRows = this.state.choices.map(function(choice){
 			return(
@@ -68,7 +67,7 @@ module.exports = React.createClass({
 					{choiceRows}
 					</div>
 					{this.state.feedbackElement}
-				<button onClick={this.onSubmit}>Submit Question</button>
+				<button ref="button" disabled={false} onClick={this.onSubmit}>Submit Question</button>
 			</div>
 		</div>
 		);
@@ -96,7 +95,10 @@ module.exports = React.createClass({
 				correctChoice: correctAnswer
 				
 			});
+			targetQuizModel.increment('totalQuestions');
+			targetQuizModel.save();
 			newQuestion.save();
+			this.refs.button.disabled = true;
 			this.refs.questionTitle.value = '',
 			this.setState({choices: []});
 			this.setState({feedbackElement: 'New question submitted'});
