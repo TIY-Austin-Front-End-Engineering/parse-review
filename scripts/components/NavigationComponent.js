@@ -21,21 +21,21 @@ module.exports = React.createClass({
 		var name = [];
 		//'if' statement will show all the links including the ones only available to teachers.
 		if(currentUser && currentUser.get('teacher') === true) {
-			links.push(<a href="#logout"><div key="logout" className="nav-bar-button">Log Out</div></a>);
-			links.push(<a href="#dashboard"><div key="dashboard" className="nav-bar-button">Dashboard</div></a>);
-			links.push(<a href="#createQuiz"><div key="createQuiz" className="nav-bar-button">Create Quiz</div></a>);
+			links.push(<a href="#logout" key="logout"><div className="nav-bar-button">Log Out</div></a>);
+			links.push(<a href="#dashboard" key="dashboard"><div className="nav-bar-button">Dashboard</div></a>);
+			links.push(<a href="#createQuiz" key="createQuiz"><div className="nav-bar-button">Create Quiz</div></a>);
 			name.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
 		}
 		//'else if' statement will only display links that are availble to students.
 		else if(currentUser && currentUser.get('teacher') === false) {
-			links.push(<a href="#logout"><div key="logout" className="nav-bar-button">Log Out</div></a>);
-			links.push(<a href="#quizList"><div key="takeQuiz" className="nav-bar-button">Take Quiz</div></a>);
-			links.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
+			links.push(<a href="#logout" key="logout"><div className="nav-bar-button">Log Out</div></a>);
+			links.push(<a href="#quizList" key="takeQuiz"><div className="nav-bar-button">Take Quiz</div></a>);
+			name.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
 		}
 		//'else' statement will display links that are available if there is no one logged in.
 		else {
-			links.push(<a href="#register"><div key="register" className="nav-bar-button">Register</div></a>);
-			links.push(<a href="#login"><div key="login" className="nav-bar-button">Log In</div></a>);
+			links.push(<a href="#register" key="register"><div className="nav-bar-button">Register</div></a>);
+			links.push(<a href="#login" key="login"><div className="nav-bar-button">Log In</div></a>);
 		}
 		// create class for displaying burger
 		var hamburgerListClass = 'closed';

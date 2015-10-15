@@ -20,9 +20,6 @@ module.exports = React.createClass({
 		
 	},
 	render: function() {
-
-		console.log(this.props.studentChoice)
-		console.log(this.props.correctChoice)
 		var questionChoicesMap = this.props.questionChoices.map((choice) => {
 			
 			if(this.props.studentChoice === choice && this.props.studentChoice === this.props.correctChoice) {
@@ -45,32 +42,5 @@ module.exports = React.createClass({
 		return (
 			<div>{questionChoicesMap}</div>
 		)
-
-		//var answer maps out all the current answers for the associated question
-		// var answer = this.state.answers
-		// .map(function(answer) {
-		// 	//Lines 33-48 display the answers, color-coded to denote correct or incorrect answers
-		// 	if (this.state.studentChoice === this.state.correctAnswer){
-		// 		question.save({
-		// 			studentCorrect: true
-		// 		}),
-		// 		numCorrectAnswers+1;
-		// 		return (
-		// 			<div>
-		// 				<h4 className="green">{answer}</h4>
-		// 			</div>
-		// 		);	
-		// 	}
-		// 	else {
-		// 		question.save({
-		// 			studentCorrect: false
-		// 		})
-		// 		return (
-		// 			<div>
-		// 				<h4 className="red" >{answer}</h4>
-		// 			</div>
-		// 		);	
-		// 	}
-		// })
 	}
 });
