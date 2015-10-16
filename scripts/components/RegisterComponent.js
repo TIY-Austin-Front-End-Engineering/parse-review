@@ -51,8 +51,12 @@ module.exports= React.createClass ({
 	reRender:function(e){
 		e.preventDefault();
 		console.log('rerendering');
-		teachPassword=true;
 		this.forceUpdate();
+		if(this.refs.select.value === 'Teacher'){
+			teachPassword=true;
+		} else{
+			teachPassword=false;
+		}
 	},
 	onRegister: function(e) {
 		e.preventDefault();
@@ -61,6 +65,7 @@ module.exports= React.createClass ({
 		var teach = false;
 		
 		if (this.refs.select.value=='Teacher'){
+			
 			
 			if (this.refs.teach.value==='teacher'){
 				console.log('yay!!!')
