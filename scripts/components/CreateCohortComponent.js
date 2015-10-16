@@ -1,3 +1,6 @@
+//this component creates a new cohort and saves it to the CohortModel
+
+
 var React = require('react');
 var CohortModel = require('../models/CohortModel');
 
