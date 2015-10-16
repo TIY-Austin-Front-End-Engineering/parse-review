@@ -9,27 +9,28 @@
 			clear: both;
 			padding-bottom: 1em;
 		}
-		h3, label {
+		h3 {
 			font-family: $fontQuestrial;
-			color: $linkColor;
+			color: $header;
 			padding: 0;
 			margin: 0;
 		}
+		label {
+			color: $subHeader;
+		}
 		.create-quiz {
-			background: $innerContainer;
+			background: $contentBackground;
 			margin-top: 3em;
-			border: 1px solid black;
 			float: right;
-			box-shadow: 2px 2px 2px #000;
 			padding: 2%;
 				button {
-					background-color: #24677F;
+					background-color: $button;
+					border-bottom: 2px solid $header;
 					padding: 0 10px;
 					border: none;
-					color: $linkColor;
+					color: $navbar;
 					font-family: $fontQuestrial;
 					cursor: pointer;
-					border: 1px solid #bbb;
 				}
 		}
 }
