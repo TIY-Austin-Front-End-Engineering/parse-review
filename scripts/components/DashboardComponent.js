@@ -34,6 +34,12 @@ module.exports = React.createClass({
 						<h5>Student Attendance</h5>
 					</div>
 				</a>
+				<a href="#createCohort">
+					<div className="dashboard-links">
+						<img src="../../images/students5.png"/>
+						<h5>Cohorts</h5>
+					</div>
+				</a>
 				
 			</div>
 
