@@ -23,7 +23,11 @@ module.exports= React.createClass ({
 					<input className="u-full-width" ref="location" type="text" placeholder="location" id="location" />
 					<label htmlFor="date">Date</label>
 					<input className="u-full-width" ref="date" type="text" placeholder="Fall 2015" id="date" />
-			)
+					{errorElement}
+					<button ref="button" className="button-primary" disabled={false}>Log In</button>
+			</form>
+		</div>
+		);
 	},
 	onCreate: function(e) {
 		e.preventDefault();
@@ -47,6 +51,4 @@ module.exports= React.createClass ({
 			}
 		);
 	}
-
-
 })
