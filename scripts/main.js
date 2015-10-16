@@ -32,6 +32,7 @@ var Router = Backbone.Router.extend({
 		'dashboard': 'dashboard',
 		'login': 'login',
 		'register': 'register',
+		'cohortRegister/:id': 'cohortRegister',
 		'quizList': 'quizList',
 		'createQuiz': 'createQuiz',
 		'editQuiz/:id':'editQuiz',
@@ -58,6 +59,9 @@ var Router = Backbone.Router.extend({
 	},
 	register: function() {
 		ReactDOM.render(<RegisterComponent router={r} />, app);
+	},
+	cohortRegister: function(cohortId) {
+		ReactDOM.render(<RegisterComponent router={r} cohortId={cohortId} />, app);
 	},
 	createQuiz: function() {
 		var currentUser = Parse.User.current();
