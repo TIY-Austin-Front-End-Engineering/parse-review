@@ -10,7 +10,7 @@ module.exports  = React.createClass({
 	getInitialState: function(){
 			return{
 				quiz: null,
-				questions: null
+				questions: null,
 			};
 	},
 	componentWillMount: function(){
@@ -18,9 +18,11 @@ module.exports  = React.createClass({
 		var query = new Parse.Query(QuizModel);
 		query.get(this.props.quizId).then(
 			(quiz) =>{
+				console.log(quiz);
 				this.setState({quiz:quiz})
+
 			});
-		// fetching and setting the questions pointer associated with the quiz model
+				// fetching and setting the questions pointer associated with the quiz model
 		var newQuery = new Parse.Query(QuestionModel);
 		var targetQuizModel = new QuizModel({objectId: this.props.quizId});
 		newQuery.equalTo('quizId',targetQuizModel);
@@ -31,10 +33,11 @@ module.exports  = React.createClass({
 				}
 
 			});
+
 			
 		
 	},
-	render: function() {
+	render: function() {	
 		if(this.state.questions && this.state.quiz){
 			var questionsElement = this.state.questions
 			//mapping out the question model to display on edit quiz
@@ -57,6 +60,7 @@ module.exports  = React.createClass({
 					</div>
 				);
 			});
+			var quizTitle = this.state.quiz.get('quizTitle');
 		} else{
 			console.log('loading');
 
@@ -64,6 +68,7 @@ module.exports  = React.createClass({
 		
 		return (
 			<div>
+				<h5 className="title">{quizTitle}</h5>
 				<button onClick={this.addQuestion}>Add a Question </button>
 				<div>{questionsElement}</div>
 			</div>
