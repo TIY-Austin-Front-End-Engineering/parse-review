@@ -39,7 +39,7 @@ module.exports = React.createClass({
             return(
                 <tbody>
                     <tr>
-                        <td>{quiz.get('quizTitle')}</td>
+                        <td>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,"")}</td>
                     </tr>
                 </tbody>
             )
