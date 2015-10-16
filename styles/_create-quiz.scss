@@ -3,11 +3,13 @@
 	padding-right: 2%;
 	padding-left: 2%;
 	font-size: 1.2em;
-		hr{
-			margin: 0;
-			border-color: $hover;
-			clear: both;
-			padding-bottom: 1em;
+		.header {
+			background: $headerBackground;
+			padding-left: 2%;
+			padding-right: 2%;
+		}
+		form {
+			padding: 2%;
 		}
 		h3 {
 			font-family: $fontQuestrial;
@@ -22,15 +24,31 @@
 			background: $contentBackground;
 			margin-top: 3em;
 			float: right;
-			padding: 2%;
 				button {
-					background-color: $button;
-					border-bottom: 2px solid $header;
-					padding: 0 10px;
-					border: none;
-					color: $navbar;
-					font-family: $fontQuestrial;
-					cursor: pointer;
+		            background-color: $button;
+		            color: $navbar;
+		            font-family: $fontQuestrial;
+		            box-shadow: 3px 3px 0px $header;
+		            border: none;
+		            font-weight: bold;
+		            font-size: .8em;
+		            border-radius: .1em;
 				}
+		}
+		.existing-quiz {
+			padding: 0;
+			button {
+			background-color: $button;
+			font-family: $fontQuestrial;
+			box-shadow: 3px 3px 0px $header;
+			border: none;
+			font-weight: bold;
+			font-size: .8em;
+			border-radius: .1em;
+			}
+			#quizList {
+				width: 100%;
+				box-sizing: border-box;
+			}
 		}
 }

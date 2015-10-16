@@ -43,21 +43,8 @@ module.exports = React.createClass({
 		return (
 	//the html to display on the post question page
 		<div className="row post-question-component">
-			<div className="instructions five columns">
-				<h3>Instructions</h3>
-				<hr />
-				<ul>
-					<li> - Write a quiz question in the question box.</li>
-					<li> - Write in a possible answer in the answer box.</li>
-					<li> - Click the Add button to save the possible answer.</li>
-					<li> - You may add in multiple answers following the same instructions.</li>
-					<li> - Once all possible answers are set, select the correct answer from the list.</li>
-					<li> - Click Submit to save your question!</li>
-				</ul>
-			</div>
-			<div className="post-question seven columns">
+			<div className="post-question twelve columns">
 				<h3 id="h3">Add a Question</h3>
-				<hr />
 				<label>Write your question here.</label>
 				<input type="text" ref="questionTitle" className="validate" placeholder="Question" />
 				<label>Write your answer choices here.</label>

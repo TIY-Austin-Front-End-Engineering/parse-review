@@ -20,12 +20,13 @@ module.exports = React.createClass({
 		var today = Moment().format('YYYY-MM-DD')
 		return(
 			<div className="row create-quiz-container">
-				<div className="instructions five columns">
+				<div className="existing-quiz five columns">
 					<ExistingQuizComponent router={this.props.router}/>
 				</div>
 				<div className="create-quiz seven columns">
-					<h3>Create Quiz</h3>
-					<hr />
+					<div className="header">
+						<h3>Create Quiz</h3>
+					</div>
 					<form onSubmit={this.onSubmit}>
 						<label htmlFor="create-quiz-title">Title</label>
 						<input className="u-full-width" type="text" ref="quizName" id="create-quiz-title"placeholder="Quiz Title"/>
