@@ -43,7 +43,7 @@
 				background-color: #24677F;
 				padding: 0 10px;
 				border: none;
-				color: $linkColor;
+				color: $navbar;
 				font-family: $fontQuestrial;
 				cursor: pointer;
 				border: 1px solid #bbb;
@@ -60,7 +60,7 @@
 	box-shadow: 2px 2px 2px #000;
 	li {
 		list-style: none;
-		color: white;
+		color: $navbar;
 	}
 }
 

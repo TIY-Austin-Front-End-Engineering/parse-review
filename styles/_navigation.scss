@@ -7,13 +7,13 @@
 	}
 	a {
 		text-decoration: none;
-		color: #F9D824;
+		color: $linkColor;
 		.nav-bar-button {
 			display:block;
 		}
 	}
 	a:hover {
-	  	color: $hover;
+	  	color: $linkColor;
 	  	background-color: $navbar;
 	}
 	.logo {
@@ -23,12 +23,12 @@
 		margin-left: .3em;
 	}
 	.user-name-display {
-		color: #F9D824;
+		color:$linkColor;
 		padding: 1.5em 0 1.5em 1.5em;
 		float: left;
 	}
 	.hamburger {
-		color: #F9D824;
+		color: $linkColor;
 		float: right;
 	}
 	.hamburger-image {
