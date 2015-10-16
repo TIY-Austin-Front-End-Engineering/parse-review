@@ -41,7 +41,7 @@ module.exports = React.createClass({
                     <tr>
                         <td>{quiz.get('quizTitle')}</td>
                         <td>score</td>
-                        <td>date taken</td>
+                        <td>{quiz.get('startTime').toDateString()}</td>
                     </tr>
                 </tbody>
             )
