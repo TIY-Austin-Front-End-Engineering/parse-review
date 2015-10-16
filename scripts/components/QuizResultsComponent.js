@@ -13,10 +13,25 @@ module.exports = React.createClass({
 			user: this.props.userId,
 			quiz: this.props.quizId,
 			questions: [],
-			error: null
+			error: null,
+			quizName: []
 		}
 	},
+	calculateAnswers:function(answers){ 
+	var numberCorrect =0;
+	for(var i =0; i < answers.length; i ++){
+		if(answers[i].get('studentCorrect') == true){
+			numberCorrect++;
+		}
+	}
+	return numberCorrect;
+
+	},
 	componentWillMount: function () {
+		this.props.router.on('route', () => {
+			this.forceUpdate();
+		})
+
 		var UserModel = Parse.User;
 		var QuizModel = Parse.Object.extend('QuizModel');
 		var QuestionModel = Parse.Object.extend('QuestionModel');
@@ -28,18 +43,59 @@ module.exports = React.createClass({
 		var targetQuizModel = new QuizModel({objectId: quizId});
 		var query = new Parse.Query(StudentAnswerModel);
 		var innerQuery = new Parse.Query(QuestionModel);
+		var innerInnerQuery = new Parse.Query(QuizModel);
+
 		query.equalTo('userId', targetUserModel);// added .id --> no! Aaron M. removed the .id, it broke the page render
 		innerQuery.equalTo('quizId', targetQuizModel);
 		query.matchesQuery('questionId', innerQuery);
 		query.include('questionId');
 		query.ascending('createdAt').find().then((results) => {
+			var numberCorrect = this.calculateAnswers(results);
+			
 			this.setState({
-				questions: results
+				questions: results,
+				numberOfCorrectAnswers:numberCorrect,
+				percentage: ((numberCorrect/ results.length) * 100).toFixed()
 			})
+			// console.log(results)
 		});
+		
+		// innerQuery.equalTo('quizId', targetQuizModel);
+		// innerInnerQuery.equalTo('objectId', this.props.quizId);
+		// innerQuery.matchesQuery('quizId', innerInnerQuery);
+		// innerQuery.include('quizId');
+		// innerInnerQuery.find().then((result) => {
+		// 	this.setState({
+		// 		quizName: result
+		// 	})
+		// 	console.log(result)
+		// })
+
+		innerInnerQuery.equalTo('objectId', this.props.quizId)
+		.find().then((result) => {
+			this.setState({
+				quizName: result
+			})
+		// console.log(result)
+		})
+
+		// innerQuery.equalTo('quizId', targetQuizModel);
+		// innerInnerQuery.
+		// innerQuery.include('quizId');
+		// innerQuery.find().then((results) => {
+		// 	this.setState({
+		// 		quizName: results
+		// 	})
+		// })
 	},
 	render: function() {
+		// console.log(this.state.quizName);
 
+		var ListQuizName = this.state.quizName.map((name) => {
+			return (
+				<h5 className="title">Quiz Name: {name.get('quizTitle')}</h5>
+			)
+		})
 		var ListQuestionDetails = this.state.questions.map((question) => {
 			return (
 					<div className="question-container">
@@ -49,21 +105,21 @@ module.exports = React.createClass({
 					</div>
 				)
 		});
-
 		//var questions maps out the questions associated with the quizId
 
 			return (
 				<div>
 					<div className="container">
 						<h5>Your Results</h5>
-						<h5 className="title">Quiz Name: </h5>
+						{ListQuizName}
 					</div>
 					<hr />
 					<div>
 						{ListQuestionDetails}
 					</div>
 					<div>
-						<div className="percentage">Percentage: %</div>
+						<div>Number Correct: {this.state.numberOfCorrectAnswers} out of {this.state.questions.length}</div> 
+						<div className="percentage">Percentage: {this.state.percentage}%</div>
 					</div>
 					<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
 				</div>

@@ -57,14 +57,14 @@ module.exports = React.createClass({
             </table>
         )
         return (
-            <div className="six colums">
+            <div className="att-container">
                 <h1>Student Analytics</h1>
                 <form onSubmit={this.onStudentSelect}>
                     <label htmlFor="students">Select Student</label>
-                    <select className="u-full-width" ref="studentPick">
+                    <select className="u-full-width" id="exampleRecipientInput" ref="studentPick">
                         {studentOptions}
                     </select>
-                    <button>Submit</button>
+                    <button className="att-butt">Submit</button>
                 </form>
                 {results}
             </div>

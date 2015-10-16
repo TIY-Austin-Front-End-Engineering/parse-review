@@ -34,6 +34,7 @@
 >`password: string` <br>
 >`teacher: boolean` <br>
 >`email: string` <br>
+>`cohortId: pointer` <br>
 
 **Question Model**
 
@@ -57,6 +58,14 @@
 >`totalQuestions: number` <br>
 >`startTime: Date` <br>
 >`expireTime: Date` <br>
+>`cohortId: pointer` <br>
+
+**Cohort Model**
+
+>`name: string` <br>
+>`location: string` <br>
+>`date: string` //example: Fall 2015 <br>
+
 
 <hr> 
 

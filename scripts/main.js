@@ -21,6 +21,7 @@ var ClassAnalyticsComponent = require('./components/ClassAnalyticsComponent');
 var DashboardComponent = require('./components/DashboardComponent');
 var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent');
 var QuizDetailsComponent = require('./components/QuizDetailsComponent');
+var CreateCohortComponent = require('./components/CreateCohortComponent');
 
 var app = document.getElementById('app');
 
@@ -40,10 +41,14 @@ var Router = Backbone.Router.extend({
 		'quizResults/:userId/:quizId': 'quizResults',
 		'studentAnalytics': 'studentAnalytics',
 		'quizDetails/:id':'quizDetailsPage',
-		'attendance': 'attendance'
+		'attendance': 'attendance',
+		'createCohort': 'createCohort'
 	},
 	quizDetailsPage: function(id){
 		ReactDOM.render(<QuizDetailsComponent quizId={id}  router={r}/>, app);
+	},
+	createCohort: function() {
+		ReactDOM.render(<CreateCohortComponent />, app);
 	},
 	home: function() {
 		ReactDOM.render(<HomeComponent />, app);

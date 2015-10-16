@@ -1,5 +1,5 @@
 var React = require('react');
-var CohortModel = require('./models/CohortModel');
+var CohortModel = require('../models/CohortModel');
 
 module.exports= React.createClass ({
 	getInitialState: function() {
@@ -8,6 +8,11 @@ module.exports= React.createClass ({
 		};
 	},
 	render: function() {
+		var errorElement = null;
+		if(this.state.error) {
+			errorElement = (<p className="error-message">{this.state.error}</p>)
+			
+		}
 		return (
 			<div className="reg-form-container">
 				<form className="reg-form" onSubmit={this.onCreate}>
