@@ -65,6 +65,7 @@ module.exports = React.createClass({
 		this.setState({
 	         currentQuestion:this.state.currentQuestion
 	    })
+	    $(this.getDOMNode()).find('[type="radio"]').prop("checked", false);
 	},
 	answerPicked: function(e){
 		this.currentQuestion.selectedChoiceId = e.currentTarget.value;	
