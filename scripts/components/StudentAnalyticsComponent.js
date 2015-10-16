@@ -16,7 +16,7 @@ module.exports = React.createClass({
     getInitialState: function () {
         return {
             students: [],
-            answers: [],
+            scores: [],
             quizzes: []
         };
     },
@@ -35,11 +35,13 @@ module.exports = React.createClass({
                 <option value={student.id} key={student.id}>{student.get('firstName')+ ' '+student.get('lastName')}</option>
             )
         });
-        var quizList = this.state.quizzes.map(function(quiz) {
+        var studentData = this.state.quizzes.map(function(quiz) {
             return(
                 <tbody>
                     <tr>
                         <td>{quiz.get('quizTitle')}</td>
+                        <td>score</td>
+                        <td>date taken</td>
                     </tr>
                 </tbody>
             )
@@ -52,8 +54,8 @@ module.exports = React.createClass({
                         <th>Score</th>
                         <th>Date Taken</th>
                     </tr>
-                    {quizList}
                 </thead>
+                {studentData}
             </table>
         )
         return (
@@ -72,7 +74,6 @@ module.exports = React.createClass({
     },
     onStudentSelect: function(e) {
         e.preventDefault();
-        console.log(this.refs.studentPick.value);
         var query = new Parse.Query(StudentAnswerModel);
         query.include('questionId');
         query.include('userId');
@@ -82,16 +83,16 @@ module.exports = React.createClass({
                 var answersByQuiz = _.groupBy(studentAnswers, function(answer) {
                     return answer.get('questionId').get('quizId').id;
                 })
-                console.log(answersByQuiz);
-                // this.setState({answers: answers});
-            },
-            (err) => {
-                console.log(err);
-            })
-        var quizQuery = new Parse.Query(QuizModel);
-        quizQuery.find().then(
-            (quizzes) => {
-                this.setState({quizzes: quizzes});
+            var quizQuery = new Parse.Query(QuizModel);
+            var quizIds = Object.getOwnPropertyNames(answersByQuiz);
+        	quizQuery.containedIn('objectId', quizIds);
+        	quizQuery.find().then(
+            	(quizzes) => {
+                	this.setState({quizzes: quizzes});
+            	},
+            	(err) => {
+                	console.log(err);
+            	});
             }
         )
     }
