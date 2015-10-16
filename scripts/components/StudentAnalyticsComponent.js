@@ -35,15 +35,18 @@ module.exports = React.createClass({
                 <option value={student.id} key={student.id}>{student.get('firstName')+ ' '+student.get('lastName')}</option>
             )
         });
-        var studentData = this.state.quizzes.map(function(quiz) {
+        var studentData = this.state.quizzes.map( (quiz) => {
+        	var correctAnswers = this.state.answers[quiz.id].filter((answers)=>{
+        		return answers.get('studentCorrect');
+        	});
+        	var scoreCalculation = correctAnswers.length/quiz.get('totalQuestions')
+        	var score = Math.round(scoreCalculation*100)+'%';
             return(
-                <tbody>
                     <tr>
                         <td>{quiz.get('quizTitle')}</td>
-                        <td>score</td>
+                        <td>{score}</td>
                         <td>{quiz.get('startTime').toDateString()}</td>
                     </tr>
-                </tbody>
             )
         })
         var results = (
@@ -54,8 +57,8 @@ module.exports = React.createClass({
                         <th>Score</th>
                         <th>Date Taken</th>
                     </tr>
+                    {studentData}
                 </thead>
-                {studentData}
             </table>
         )
         return (
@@ -88,12 +91,12 @@ module.exports = React.createClass({
         	quizQuery.containedIn('objectId', quizIds);
         	quizQuery.find().then(
             	(quizzes) => {
-                	this.setState({quizzes: quizzes});
+                	this.setState({quizzes: quizzes, answers: answersByQuiz});
+        			})
             	},
             	(err) => {
                 	console.log(err);
-            	});
-            }
-        )
+            	}           	
+        )  	
     }
 });
