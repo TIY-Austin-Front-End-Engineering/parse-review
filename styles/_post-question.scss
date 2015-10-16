@@ -22,7 +22,6 @@
 	}
 	.post-question {
 		text-align: center;
-		background: $innerContainer;
 		margin-top: 3em;
 		border: 1px solid black;
 		float: right;
@@ -40,13 +39,11 @@
 				width: 16%;
 			}
 			button {
-				background-color: #24677F;
+				background-color: $button;
 				padding: 0 10px;
-				border: none;
 				color: $navbar;
 				font-family: $fontQuestrial;
 				cursor: pointer;
-				border: 1px solid #bbb;
 			}
 	}
 
