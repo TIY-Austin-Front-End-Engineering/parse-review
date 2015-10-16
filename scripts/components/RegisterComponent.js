@@ -115,7 +115,6 @@ module.exports= React.createClass ({
 				{
 					success: (u) => {
 						console.log('test');
-						this.props.router.navigate('', {trigger: true});
 					},
 					error: (u, error) => {
 						this.setState({
@@ -124,6 +123,7 @@ module.exports= React.createClass ({
 					}
 				}
 			);
+			this.props.router.navigate('', {trigger: true});
 		}
 		
 	}
