@@ -5,6 +5,16 @@ var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var PostQuestionComponent = require('./PostQuestionComponent');
 var Backbone = require('backbone');
+var marked = require('marked');
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    smartLists: true,
+    smartypants: false
+});
 
 module.exports  = React.createClass({
 	getInitialState: function(){
@@ -37,7 +47,8 @@ module.exports  = React.createClass({
 			
 		
 	},
-	render: function() {	
+	render: function() {
+        var _this = this;
 		if(this.state.questions && this.state.quiz){
 			var questionsElement = this.state.questions
 			//mapping out the question model to display on edit quiz
@@ -45,17 +56,15 @@ module.exports  = React.createClass({
 				//mapping out the question choice array on edit quiz
 				var choiceRows = question.get('questionChoices').map(function(choice){
 					return(
-						<div>
-						{choice}
-						</div>
+						<div dangerouslySetInnerHTML={_this.markUp(choice)} />
 					)
 				});
 				return(
 					<div>
-						<div>{question.get('questionTitle')}</div>
-						<div>{question.get('questionContent')}</div>
+                        {/* <div dangerouslySetInnerHTML={_this.markUp(question.get('questionTitle'))} /> */}
+						<div dangerouslySetInnerHTML={_this.markUp(question.get('questionContent'))} />
 						<div>{choiceRows}</div>
-						<div>Correct Answer: {question.get('correctChoice')}</div>
+						<div>Correct Answer: <span dangerouslySetInnerHTML={_this.markUp(question.get('correctChoice'))} /></div>
 						<hr />
 					</div>
 				);
@@ -77,6 +86,10 @@ module.exports  = React.createClass({
 	},
 	addQuestion: function(){
 		this.props.router.navigate('editQuiz/'+this.state.quiz.id+'/postQuestion', {trigger: true});
-	}
+	},
+    markUp: function(string){
+        var markedText = marked(string);
+        return { __html: markedText };
+    }
 });
 
