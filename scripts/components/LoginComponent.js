@@ -13,6 +13,7 @@ module.exports = React.createClass({
 		var errorElement = null;
 		if(this.state.error) {
 			errorElement = (<p className="error-message">{this.state.error}</p>)
+			
 		}
 		return(
 		//Log In form starts here with username and password required
@@ -48,6 +49,7 @@ module.exports = React.createClass({
 					this.setState({
 						error: error.message
 					});
+					this.refs.button.disabled = false;
 				}
 			}	
 		);
