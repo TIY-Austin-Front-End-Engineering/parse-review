@@ -40,7 +40,11 @@ module.exports = React.createClass({
 		})
 
 		return (
-			<div>{questionChoicesMap}</div>
+			<div>
+				<div>{questionChoicesMap}</div>
+				<br />
+				<div>Correct Answer: {this.props.correctChoice}</div>
+			</div>
 		)
 	}
 });

@@ -4,6 +4,7 @@ var Backbone = require('backbone');
 var PostQuestionComponent = require('./PostQuestionComponent');
 var QuizModel = require('../models/QuizModel');
 var EditQuizComponent = require('./EditQuizComponent');
+var ExistingQuizComponent = require('./ExistingQuizComponent')
 var Moment = require('moment');
 
 
@@ -20,14 +21,7 @@ module.exports = React.createClass({
 		return(
 			<div className="row create-quiz-container">
 				<div className="instructions five columns">
-					<h3>Instructions</h3>
-					<hr />
-					<ul>
-						<li> - Write a quiz title.</li>
-						<li> - Select a start time and date.</li>
-						<li> - Select an end time and date.</li>
-						<li> - Click Create Quiz button to save!</li>
-					</ul>
+					<ExistingQuizComponent router={this.props.router}/>
 				</div>
 				<div className="create-quiz seven columns">
 					<h3>Create Quiz</h3>
