@@ -37,7 +37,7 @@ module.exports = React.createClass({
 		console.log(this.state.students);
 		var quizOptions = this.state.quizList.map(function(quiz) {
 			return (
-				<option value={quiz.id} key={quiz.id}>{quiz.get('quizTitle')} - {(quiz.get('startTime')) ? quiz.get('startTime').toDateString(): 'Date Unspecified'}</option>
+				<option value={quiz.id} key={quiz.id}>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,"")} - {(quiz.get('startTime')) ? quiz.get('startTime').toDateString(): 'Date Unspecified'}</option>
 			)
 		})
 		if(this.state.students.length > 0 && this.state.groupedStudentAnswers) {

@@ -32,7 +32,8 @@ module.exports = React.createClass({
 			allAnswerList: null,
 			currentType: null,
 			correctAnswers: null,
-			allQuizzes: []
+			allQuizzes: [],
+			loading: false
 		};
 	},
 	componentWillMount: function() {
@@ -49,11 +50,14 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		var rightContent = null;
-
+		var button = (<button ref="button" className="select-btn">Select</button>);
+		if(this.state.loading) {
+			button = (<button ref="button" className="select-btn">Loading...</button>)
+		}
 		// Display all quizzes in the drop down
 		var leftContent = this.state.allQuizzes.map(function(quiz) {
 			return (
-				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle')}</option>
+				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,"")}</option>
 			);
 		});
 
@@ -61,15 +65,36 @@ module.exports = React.createClass({
 		if(this.state.allQuestions) {
 			console.log('answers appeared');
 			rightContent = this.state.allQuestions.map(function(question) {
+				var color = null;
+				if(question.questionAverage >= 80) {
+					color = {
+						color: '#75D055'
+					}
+				}
+				else if(question.questionAverage <= 69) {
+					color = {
+						color:'#FF6969'
+					}
+				}
+				else {
+					color = {
+						color: '#FF8F59'
+					}
+				}
 				return (
-					<div key={question.id}>
-						<h5>Question</h5>
-						<div>{question.questionTitle}</div>
-						<h5>Answer</h5>
-						<div>{question.questionAverage}</div>
+					<div className="wrapper" key={question.id}>
+						<h5 className="question-title">Question</h5>
+						<div className="question">{question.questionTitle.replace(/([>]\s*)?([#*_-]+)/gi,"")}</div>
+						<span className="question-answer">
+							<h5>Answer</h5>
+						</span>
+						<span className="avg" style={color}>{question.questionAverage}%</span>
 					</div>
 				);
 			});
+			if(this.state.allQuestions.length < 1) {
+				rightContent = (<div className="error-message">Data not yet available for this quiz</div>);
+			}
 		}
 		else {
 			rightContent = (
@@ -79,19 +104,27 @@ module.exports = React.createClass({
 
 		return (
 			<div className="class-analytics-container">
-				<div className="left-side">
-					<h1>Class Analytics</h1>
-					<form onSubmit={this.onQuizSelected}>
-						<label htmlFor="quizList">Choose Quiz</label>
-						<select ref="thisQuiz" id="quizList">
-							{leftContent}
-						</select>
-						<button>Select</button>
-					</form>
-				</div>
+				<div className="row">
+					<div className="page-title">
+						<h1>Class Analytics</h1>
+					</div>
+					<div className="left-side four columns">
 
-				<div className="right-side">
-					<div>{rightContent}</div>
+						<form onSubmit={this.onQuizSelected}>
+							<label htmlFor="quizList" className="choose-quiz">Choose Quiz</label>
+							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
+								{leftContent}
+							</select>
+							{button}
+						</form>
+
+					</div>
+
+					<div className="right-side eight columns">
+						<div className="analytics-container">
+							<div>{rightContent}</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
@@ -99,7 +132,9 @@ module.exports = React.createClass({
 	onQuizSelected: function(e) {
 		e.preventDefault();
 		console.log(this.refs.thisQuiz.value);
-
+		this.refs.button.disabled = true;
+		this.setState({loading: true});
+		console.log(this.state.button);
 		this.setState({
 			currentType: this.objectId
 		});
@@ -141,6 +176,8 @@ module.exports = React.createClass({
 					findQuestions.push(questionInfo);
 				}
 				this.setState({ allQuestions: findQuestions });
+				this.refs.button.disabled = false;
+				this.setState({loading: false});
 			},
 			(err) => {
 				console.log(err);

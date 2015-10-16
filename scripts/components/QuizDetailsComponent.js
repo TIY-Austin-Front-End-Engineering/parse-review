@@ -8,6 +8,16 @@ var Backbone = require('backbone');
 var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
+var marked = require('marked');
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    smartLists: true,
+    smartypants: false
+});
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -55,6 +65,7 @@ module.exports = React.createClass({
 		this.setState({
 	         currentQuestion:this.state.currentQuestion
 	    })
+	    $(this.getDOMNode()).find('[type="radio"]').prop("checked", false);
 	},
 	answerPicked: function(e){
 		this.currentQuestion.selectedChoiceId = e.currentTarget.value;	
@@ -74,17 +85,14 @@ module.exports = React.createClass({
 		var self = this;
 		var choices = currentQuestion.get('questionChoices').map(function(qc){
 
-			return(<div><input value={qc} type='radio' defaultValue={false} name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
-		}); 
-
+			return(<div><input value={qc} type='radio' defaultValue={false} name='radioAnswer' onChange={self.answerPicked} /> &nbsp;<span dangerouslySetInnerHTML={self.markUp(marked(qc))} /></div>);
+		});
 			return (
 				<div className=" row quiz-details-container">
 					<div className="quiz-details-component">
-						<h4>{quizTitle}</h4>
+						<h4 dangerouslySetInnerHTML={this.markUp(marked(quizTitle))} />
 						<hr />
-						<div>
-							{currentQuestion.get('questionContent')}
-						</div>
+						<div dangerouslySetInnerHTML={this.markUp(marked(currentQuestion.get('questionContent')))} />
 						<div>
 						{choices}
 						</div>
@@ -92,5 +100,8 @@ module.exports = React.createClass({
 					</div>
 				</div>
 			)
-	}
+	},
+    markUp: function(string){
+        return { __html: string };
+    }
 });

@@ -1,5 +1,16 @@
 var React = require('react');
 var Backbone = require('backbone');
+var marked = require('marked');
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    smartLists: true,
+    smartypants: false
+});
+
 var QuestionModel = require('../models/QuestionModel');
 var QuizModel = require('../models/QuizModel');
 //component for admin teachers to post questions to the server
@@ -22,7 +33,7 @@ module.exports = React.createClass({
 	    .get(this.props.quizId)
 	    .then(
 	    	(quiz) => {
-	    		this.setState({ quiz: quiz })
+	    		this.setState({ quiz: quiz });
 	    		console.log(quiz);
 	    	},
 	    	(err) => {
@@ -31,12 +42,14 @@ module.exports = React.createClass({
 	    );
 	},
 	render: function() {
+        var _this = this;
 	//once a new multiple choice answer is added in, choiceRows will map and display onto the page
 		var choiceRows = this.state.choices.map(function(choice){
+            console.log(choice);
 			return(
 				<label>
 				<input className="radioo" type="radio" value={choice} name="choices"/>
-				{choice}
+				<span dangerouslySetInnerHTML={_this.markUp(marked(choice))} />
 				</label>
 			)
 		});
@@ -63,9 +76,9 @@ module.exports = React.createClass({
 				<label>Write your answer choices here.</label>
 				<input type="text" ref="choice" className="validate choice" placeholder="Answer"/>
 				<button className="choice-btn" onClick={this.onAddChoice}>Add</button>
-					<div ref="choiceRows">				
-					{choiceRows}
-					</div>
+					<div ref="choiceRows">
+                        {choiceRows}
+                    </div>
 					{this.state.feedbackElement}
 				<button ref="button" disabled={false} onClick={this.onSubmit}>Submit Question</button>
 			</div>
@@ -100,7 +113,7 @@ module.exports = React.createClass({
 			newQuestion.save({
 				success:(u) => {
 					this.refs.button.disabled = true;
-					this.refs.questionTitle.value = '',
+					this.refs.questionTitle.value = '';
 					this.setState({choices: []});
 					this.setState({feedbackElement: 'New question submitted'});
 					this.props.router.navigate('editQuiz/'+this.state.quiz.id, {trigger: true})
@@ -123,5 +136,8 @@ module.exports = React.createClass({
 			this.setState({choices: currentChoices}),
 			this.refs.choice.value = '';
 		}	
-	}
+	},
+    markUp: function(string){
+        return { __html: string };
+    }
 });

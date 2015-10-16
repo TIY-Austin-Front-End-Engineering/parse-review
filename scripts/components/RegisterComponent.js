@@ -3,6 +3,7 @@
 var React = require('react');
 var errorElement = null;
 var teachPassword = null;
+var CohortModel = require('../models/CohortModel')
 
 
 module.exports= React.createClass ({
@@ -14,7 +15,6 @@ module.exports= React.createClass ({
 	render: function() {
 		
 		if (teachPassword){
-			console.log('teachy!');
 			teachPassword=(<input className="u-full-width" ref="teach" type="password" placeholder="teacher password" />);
 		}
 		if (this.state.error) {
@@ -54,8 +54,12 @@ module.exports= React.createClass ({
 	reRender:function(e){
 		e.preventDefault();
 		console.log('rerendering');
-		teachPassword=true;
 		this.forceUpdate();
+		if(this.refs.select.value === 'Teacher'){
+			teachPassword=true;
+		} else{
+			teachPassword=false;
+		}
 	},
 	onRegister: function(e) {
 		e.preventDefault();
@@ -64,6 +68,7 @@ module.exports= React.createClass ({
 		var teach = false;
 		
 		if (this.refs.select.value=='Teacher'){
+			
 			
 			if (this.refs.teach.value==='teacher'){
 				console.log('yay!!!')
@@ -81,7 +86,6 @@ module.exports= React.createClass ({
 					},
 					{
 						success: (u) => {
-							console.log('test');
 							this.props.router.navigate('', {trigger: true});
 						},
 						error: (u, error) => {
@@ -99,6 +103,7 @@ module.exports= React.createClass ({
 			}
 		}
 		else{
+			var targetCohortModel = new CohortModel({objectId: this.props.cohortId});
 			var user = new Parse.User();
 			user.signUp(
 				{
@@ -107,12 +112,12 @@ module.exports= React.createClass ({
 					username: this.refs.username.value,
 					password: this.refs.password.value,
 					email: this.refs.email.value,
+					cohortId: targetCohortModel,
 					teacher: teach
 				},
 				{
 					success: (u) => {
 						console.log('test');
-						this.props.router.navigate('', {trigger: true});
 					},
 					error: (u, error) => {
 						this.setState({
@@ -121,6 +126,7 @@ module.exports= React.createClass ({
 					}
 				}
 			);
+			this.props.router.navigate('', {trigger: true});
 		}
 		
 	}

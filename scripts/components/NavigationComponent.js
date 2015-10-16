@@ -23,7 +23,7 @@ module.exports = React.createClass({
 		if(currentUser && currentUser.get('teacher') === true) {
 			links.push(<a href="#logout" key="logout"><div className="nav-bar-button">Log Out</div></a>);
 			links.push(<a href="#dashboard" key="dashboard"><div className="nav-bar-button">Dashboard</div></a>);
-			links.push(<a href="#createQuiz" key="createQuiz"><div className="nav-bar-button">Create Quiz</div></a>);
+			links.push(<a href="#createQuiz" key="createQuiz"><div className="nav-bar-button">Manage Quizzes</div></a>);
 			name.push(<div key="username" className="user-name-display">{currentUser.get('firstName')} {currentUser.get('lastName')}</div>);
 		}
 		//'else if' statement will only display links that are availble to students.

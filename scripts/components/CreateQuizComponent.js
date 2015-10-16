@@ -4,6 +4,7 @@ var Backbone = require('backbone');
 var PostQuestionComponent = require('./PostQuestionComponent');
 var QuizModel = require('../models/QuizModel');
 var EditQuizComponent = require('./EditQuizComponent');
+var ExistingQuizComponent = require('./ExistingQuizComponent')
 var Moment = require('moment');
 
 
@@ -16,18 +17,11 @@ module.exports = React.createClass({
 		);
 	},
 	render:function(){
-		var today = Moment().format('YYYY-MM-DD')
+		var today = Moment().format('YYYY-MM-DD');
 		return(
 			<div className="row create-quiz-container">
 				<div className="instructions five columns">
-					<h3>Instructions</h3>
-					<hr />
-					<ul>
-						<li> - Write a quiz title.</li>
-						<li> - Select a start time and date.</li>
-						<li> - Select an end time and date.</li>
-						<li> - Click Create Quiz button to save!</li>
-					</ul>
+					<ExistingQuizComponent router={this.props.router}/>
 				</div>
 				<div className="create-quiz seven columns">
 					<h3>Create Quiz</h3>
@@ -36,7 +30,7 @@ module.exports = React.createClass({
 						<label htmlFor="create-quiz-title">Title</label>
 						<input className="u-full-width" type="text" ref="quizName" id="create-quiz-title"placeholder="Quiz Title"/>
 						<label htmlFor="start-date">Start Date and Time</label>
-						<input className="u-full-width" type="date" ref="dateToStart" id="start-date" placeholder="date to starts" value={today} />
+						<input className="u-full-width" type="date" ref="dateToStart" id="start-date" placeholder="date to starts" defaultValue={today} />
 						<input type="time" ref="timeToStart" />
 						<label htmlFor="start-time">End Date and Time</label>
 						<input className="u-full-width" type="date" ref="dateToExpire" id="start-time" placeholder="date to expire" />
