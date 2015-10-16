@@ -17,7 +17,7 @@ module.exports = React.createClass({
 		);
 	},
 	render:function(){
-		var today = Moment().format('YYYY-MM-DD')
+		var today = Moment().format('YYYY-MM-DD');
 		return(
 			<div className="row create-quiz-container">
 				<div className="instructions five columns">

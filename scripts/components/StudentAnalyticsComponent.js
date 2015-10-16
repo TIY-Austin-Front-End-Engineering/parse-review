@@ -43,12 +43,12 @@ module.exports = React.createClass({
         	var score = Math.round(scoreCalculation*100)+'%';
             return(
                     <tr>
-                        <td>{quiz.get('quizTitle')}</td>
+                        <td>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,"")}</td>
                         <td>{score}</td>
                         <td>{quiz.get('startTime').toDateString()}</td>
                     </tr>
             )
-        })
+        });
         var results = (
             <table className="u-full-width att-table">
                 <thead>

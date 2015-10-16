@@ -7,13 +7,17 @@
 	}
 	a {
 		text-decoration: none;
-		color: $navLink;
+		color: $subHeader;
 		.nav-bar-button {
 			display:block;
+			font-size: 2em;
+			text-align: left;
+			padding: .3em 2em .3em .5em;
+			border-top: 2px solid $subHeader;
 		}
 	}
 	a:hover {
-	  	color: $hover;
+	  	color: $header;
 	  	background-color: $navbar;
 	}
 	.logo {
@@ -44,15 +48,15 @@
 		display: block;
 		float: right;
 		position: fixed;
-		top: 70px;
+		top: 67px;
 		right: 0;
 		background: $navbar;
 		text-align: center;
 	}
-	.nav-bar-button {
-		border-bottom: 2px solid $bodyBackground;
-	}
-
+	#hamburger-list {
+			border-left: 4px solid $navbar;
+			border-right: 4px solid $navbar;
+		}
 	@media screen and (min-width: 550px) {
 		.hamburger-image {
 			display: none;
@@ -63,9 +67,14 @@
 		#hamburger-list {
 			display: none;
 		}
-		.nav-bar-button {
-			float: right;
-			padding: 1.5em 1em;
+		a {
+			.nav-bar-button {
+				float: right;
+				padding: .6em 1em;
+				font-size: 1.5em;
+				text-align: center;
+				border: none;
+			}
 		}
 		.beniz {
 			display: inline;
