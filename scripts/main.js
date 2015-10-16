@@ -21,9 +21,10 @@ var ClassAnalyticsComponent = require('./components/ClassAnalyticsComponent');
 var DashboardComponent = require('./components/DashboardComponent');
 var StudentAnalyticsComponent = require('./components/StudentAnalyticsComponent');
 var QuizDetailsComponent = require('./components/QuizDetailsComponent');
+var FooterComponent = require('./components/FooterComponent');
+var CreditsComponent = require('./components/CreditsComponent');
 
 var app = document.getElementById('app');
-
 
 var Router = Backbone.Router.extend({
 	routes: {
@@ -40,7 +41,8 @@ var Router = Backbone.Router.extend({
 		'quizResults/:userId/:quizId': 'quizResults',
 		'studentAnalytics': 'studentAnalytics',
 		'quizDetails/:id':'quizDetailsPage',
-		'attendance': 'attendance'
+		'attendance': 'attendance',
+		'credits': 'credits'
 	},
 	quizDetailsPage: function(id){
 		ReactDOM.render(<QuizDetailsComponent quizId={id}  router={r}/>, app);
@@ -88,10 +90,10 @@ var Router = Backbone.Router.extend({
 		var currentUser = Parse.User.current();
 		if(currentUser) {
 			ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} router={r} />, app);
-		} 
+		}
 		else {
 			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
-			}	
+			}
 	},
 	logout: function() {
 		Parse.User.logOut();
@@ -102,7 +104,7 @@ var Router = Backbone.Router.extend({
 		console.log(currentUser.get('teacher'), currentUser.id);
 		if(currentUser.get('teacher')) {
 			ReactDOM.render(<AttendanceComponent/>, app);
-		} 
+		}
 		else {
 			ReactDOM.render(<h1>Access Denied, Contact Administrator</h1>, app);
 		}
@@ -145,6 +147,9 @@ var Router = Backbone.Router.extend({
 			this.navigate('', {trigger: true});
 		}
 	},
+	credits: function() {
+		ReactDOM.render(<CreditsComponent />, app);
+	}
 });
 
 var r = new Router();
@@ -153,4 +158,9 @@ Backbone.history.start();
 ReactDOM.render(
 	<NavigationComponent router={r} />,
 	document.getElementById('nav')
+);
+
+ReactDOM.render(
+	<FooterComponent router={r} />,
+	document.getElementById('footer')
 );
