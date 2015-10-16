@@ -1,32 +1,37 @@
-.title {
-	font-family: $fontQuestrial;
-}
-.question {
-	font-size: 1.2em;
-}
+.quiz-results-container {
 
-.container {
-	margin: 2em;
-	font-family: $fontQuestrial;
-}
+	.title {
+		font-family: $fontQuestrial;
+	}
 
-.question-container {
-	margin: 2em;
-	font-family: $fontQuestrial;
-}
+	.question {
+		font-size: 1.2em;
+	}
 
-.percentage {
-	margin: 2em;
-	font-family: $fontQuestrial;
-}
-.green {
-	color: green;
-	font-weight: bold;
-	font-family: $fontQuestrial;
-}
+	.container {
+		margin: 2em;
+		font-family: $fontQuestrial;
+	}
 
-.red {
-	color: red;
-	font-weight: bold;
-	font-family: $fontQuestrial;
+	.question-container {
+		margin: 2em;
+		font-family: $fontQuestrial;
+	}
+
+	.percentage {
+		margin: 2em;
+		font-family: $fontQuestrial;
+	}
+
+	.green {
+		color: green;
+		font-weight: bold;
+		font-family: $fontQuestrial;
+	}
+
+	.red {
+		color: red;
+		font-weight: bold;
+		font-family: $fontQuestrial;
+	}
 }
