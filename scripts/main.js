@@ -44,9 +44,8 @@ var Router = Backbone.Router.extend({
 		'studentAnalytics': 'studentAnalytics',
 		'quizDetails/:id':'quizDetailsPage',
 		'attendance': 'attendance',
-		'createCohort': 'createCohort'
+		'createCohort': 'createCohort',
 		'credits': 'credits'
-
 	},
 	quizDetailsPage: function(id){
 		ReactDOM.render(<QuizDetailsComponent quizId={id}  router={r}/>, app);

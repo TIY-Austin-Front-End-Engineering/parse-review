@@ -24,7 +24,7 @@ module.exports= React.createClass ({
 					<label htmlFor="date">Date</label>
 					<input className="u-full-width" ref="date" type="text" placeholder="Fall 2015" id="date" />
 					{errorElement}
-					<button ref="button" className="button-primary" disabled={false}>Log In</button>
+					<button ref="button" className="button-primary" disabled={false}>Create Cohort</button>
 			</form>
 		</div>
 		);
