@@ -32,7 +32,8 @@ module.exports = React.createClass({
 			allAnswerList: null,
 			currentType: null,
 			correctAnswers: null,
-			allQuizzes: []
+			allQuizzes: [],
+			loading: false
 		};
 	},
 	componentWillMount: function() {
@@ -49,7 +50,10 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		var rightContent = null;
-
+		var button = (<button ref="button" className="select-btn">Select</button>);
+		if(this.state.loading) {
+			button = (<button ref="button" className="select-btn">Loading...</button>)
+		}
 		// Display all quizzes in the drop down
 		var leftContent = this.state.allQuizzes.map(function(quiz) {
 			return (
@@ -88,6 +92,9 @@ module.exports = React.createClass({
 					</div>
 				);
 			});
+			if(this.state.allQuestions.length < 1) {
+				rightContent = (<div className="error-message">Data not yet available for this quiz</div>);
+			}
 		}
 		else {
 			rightContent = (
@@ -108,7 +115,7 @@ module.exports = React.createClass({
 							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
 								{leftContent}
 							</select>
-							<button className="select-btn">Select</button>
+							{button}
 						</form>
 
 					</div>
@@ -125,7 +132,9 @@ module.exports = React.createClass({
 	onQuizSelected: function(e) {
 		e.preventDefault();
 		console.log(this.refs.thisQuiz.value);
-
+		this.refs.button.disabled = true;
+		this.setState({loading: true});
+		console.log(this.state.button);
 		this.setState({
 			currentType: this.objectId
 		});
@@ -167,6 +176,8 @@ module.exports = React.createClass({
 					findQuestions.push(questionInfo);
 				}
 				this.setState({ allQuestions: findQuestions });
+				this.refs.button.disabled = false;
+				this.setState({loading: false});
 			},
 			(err) => {
 				console.log(err);
