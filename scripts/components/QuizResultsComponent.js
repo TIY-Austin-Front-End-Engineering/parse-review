@@ -59,7 +59,7 @@ module.exports = React.createClass({
 			})
 			// console.log(results)
 		});
-		
+
 		// innerQuery.equalTo('quizId', targetQuizModel);
 		// innerInnerQuery.equalTo('objectId', this.props.quizId);
 		// innerQuery.matchesQuery('quizId', innerInnerQuery);
@@ -108,7 +108,7 @@ module.exports = React.createClass({
 		//var questions maps out the questions associated with the quizId
 
 			return (
-				<div>
+				<div className="quiz-results-container">
 					<div className="container">
 						<h5>Your Results</h5>
 						{ListQuizName}
