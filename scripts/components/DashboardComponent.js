@@ -8,9 +8,9 @@ module.exports = React.createClass({
 		return(
 			<div className="dashboard-container">
 				<div className="dashboard-title">
-					<h1>{Parse.User.current().get('username')+"'s"} Dashboard</h1>
+					<h1>{Parse.User.current().get('username')+'\'s'} Dashboard</h1>
 				</div>
-				<a href="#createQuiz">
+				<a href="#createQuiz">	
 					<div className="dashboard-links">
 						<img src="../../images/check7.png"/>
 						<h5>Create A Quiz</h5>

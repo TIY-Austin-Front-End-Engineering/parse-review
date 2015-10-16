@@ -57,7 +57,7 @@ module.exports = React.createClass({
 		// Display all quizzes in the drop down
 		var leftContent = this.state.allQuizzes.map(function(quiz) {
 			return (
-				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle')}</option>
+				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,"")}</option>
 			);
 		});
 
@@ -84,7 +84,7 @@ module.exports = React.createClass({
 				return (
 					<div className="wrapper" key={question.id}>
 						<h5 className="question-title">Question</h5>
-						<div className="question">{question.questionTitle}</div>
+						<div className="question">{question.questionTitle.replace(/([>]\s*)?([#*_-]+)/gi,"")}</div>
 						<span className="question-answer">
 							<h5>Answer</h5>
 						</span>
