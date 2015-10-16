@@ -7,13 +7,17 @@
 	}
 	a {
 		text-decoration: none;
-		color: $navLink;
+		color: $subHeader;
 		.nav-bar-button {
 			display:block;
+			font-size: 2em;
+			text-align: left;
+			padding: .3em 1em;
+			border: 
 		}
 	}
 	a:hover {
-	  	color: $hover;
+	  	color: $header;
 	  	background-color: $navbar;
 	}
 	.logo {
@@ -49,10 +53,6 @@
 		background: $navbar;
 		text-align: center;
 	}
-	.nav-bar-button {
-		border-bottom: 2px solid $bodyBackground;
-	}
-
 	@media screen and (min-width: 550px) {
 		.hamburger-image {
 			display: none;
