@@ -104,7 +104,6 @@ module.exports = React.createClass({
 			this.setState({feedbackElement: 'Please add an Expiration Time'});
 		}
 //////////////////////////////////////////////////////////////////////////
-
 		else
 		{
 			newQuiz.save({
