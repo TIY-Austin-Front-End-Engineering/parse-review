@@ -1,7 +1,7 @@
 .quiz-results-container {
 
 	.title {
-		font-family: $fontQuestrial;
+		font-family: $fontText;
 	}
 
 	.question {
@@ -10,28 +10,28 @@
 
 	.container {
 		margin: 2em;
-		font-family: $fontQuestrial;
+		font-family: $fontText;
 	}
 
 	.question-container {
 		margin: 2em;
-		font-family: $fontQuestrial;
+		font-family: $fontText;
 	}
 
 	.percentage {
 		margin: 2em;
-		font-family: $fontQuestrial;
+		font-family: $fontText;
 	}
 
 	.green {
 		color: green;
 		font-weight: bold;
-		font-family: $fontQuestrial;
+		font-family: $fontText;
 	}
 
 	.red {
 		color: red;
 		font-weight: bold;
-		font-family: $fontQuestrial;
+		font-family: $fontText;
 	}
 }
