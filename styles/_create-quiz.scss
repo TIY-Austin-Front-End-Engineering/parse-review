@@ -1,5 +1,5 @@
 .create-quiz-container {
-	font-family: $fontText;
+	font-family: $paragraphFontFamily;
 	padding-right: 2%;
 	padding-left: 2%;
 	font-size: 1.2em;
@@ -12,26 +12,25 @@
 			padding: 2%;
 		}
 		h3 {
-			font-family: $fontHeader;
-			color: $header;
+			font-family: $headerFontFamily;
+			color: $headerTextColor;
 			padding: 0;
 			margin: 0;
 		}
 		label {
-			color: $subHeader;
+			color: $subheaderTextColor;
 		}
 		.create-quiz {
 			background: $contentBackground;
 			margin-top: 3em;
 			float: right;
 				button {
-		            background-color: $button;
+		            background-color: $buttonBackground;
 		            color: $navbar;
-		            font-family: $fontText;
-		            box-shadow: 3px 3px 0px $header;
+		            font-family: $paragraphFontFamily;
+		            box-shadow: 3px 3px 0px $buttonBorderColor;
 		            border: none;
 		            font-weight: bold;
-		            font-size: .8em;
 		            border-radius: .1em;
 				}
 		}
@@ -40,13 +39,13 @@
 			padding: 0;
 			background: $contentBackground;
 			button {
-			background-color: $button;
-			font-family: $fontText;
-			box-shadow: 3px 3px 0px $header;
-			border: none;
-			font-weight: bold;
-			font-size: .8em;
-			border-radius: .1em;
+				background-color: $buttonBackground;
+				font-family: $paragraphFontFamily;
+				box-shadow: 3px 3px 0px $buttonBorderColor;
+				border: none;
+				font-weight: bold;
+				font-size: .8em;
+				border-radius: .1em;
 			}
 			#quizList {
 				width: 100%;
