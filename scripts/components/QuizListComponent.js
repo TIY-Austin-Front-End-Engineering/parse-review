@@ -14,8 +14,8 @@ module.exports = React.createClass({
 	},
 	componentWillMount: function() {
 		this.query = new Parse.Query(QuizModel);
-		this.fetch({Parse.User.current().get('cohortId')});
-		console.log(Parse.User.current.get(cohortId));
+		this.getCohort();
+		this.fetch();
 	},
 	render: function(){
 		var _this = this;
@@ -78,6 +78,9 @@ module.exports = React.createClass({
 				console.log(err)
 			}
 		)
+	},
+	getCohort : function(){
+		this.query.find(Parse.user.current().get('cohortId'))
 	},
 	capitalizeFirstLetter: function(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
