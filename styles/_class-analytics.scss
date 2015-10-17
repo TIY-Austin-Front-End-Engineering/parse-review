@@ -1,5 +1,5 @@
 .class-analytics-container {
-	font-family: $fontFanwood;
+	font-family: $fontText;
 	.page-title {
 		margin: 0 auto;
 		margin-top: 1em;
@@ -7,7 +7,7 @@
 		background-color: $navbar;
 		color: $hover;
 		text-align: center;
-		font-family: $fontQuestrial;
+		font-family: $fontText;
 		width: 99%;
 		margin-bottom: 1em;
 		box-shadow: 2px 2px 2px #000;
@@ -25,7 +25,7 @@
 		.select-btn {
 			background-color: $button;
 			color: $linkColor;
-			font-family: $fontQuestrial;
+			font-family: $fontText;
 			margin-left: 1em;
 		}
 		.select-btn:hover {
@@ -33,7 +33,7 @@
 			color: $navbar;
 		}
 		.drop-down-btn {
-			font-family: $fontQuestrial;
+			font-family: $fontText;
 			cursor: pointer;
 			width: 19em;
 		}

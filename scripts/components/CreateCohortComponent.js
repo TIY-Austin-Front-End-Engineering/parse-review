@@ -27,8 +27,8 @@ module.exports= React.createClass ({
 		var cohortList = this.state.cohorts.map(function(cohort) {
 			return (
 				<div>
-					<p>{cohort.get('name')} - {cohort.get('location')} - {cohort.get('date')}</p>
-					<p>tiy-austin-front-end-engineering.github.io/#cohortRegister/{cohort.id}</p>
+					<p className="cohortName">{cohort.get('name')} - {cohort.get('location')} - {cohort.get('date')}</p>
+					<p className="url">tiy-austin-front-end-engineering.github.io/#cohortRegister/{cohort.id}</p>
 				</div>
 				)
 		})
@@ -37,9 +37,9 @@ module.exports= React.createClass ({
 			
 		}
 		return (
-			<div className="reg-form-container container">
+			<div className="container">
 				<div className="row">
-					<form className="reg-form four columns" onSubmit={this.onCreate}>
+					<form className="five columns" onSubmit={this.onCreate}>
 						<h2>Create Cohort</h2>	
 						<label htmlFor="name">Cohort Name</label>
 						<input className="u-full-width" ref="name" type="text" placeholder="name" id="name" />
@@ -50,6 +50,7 @@ module.exports= React.createClass ({
 						{errorElement}
 						<button ref="button" className="button-primary" disabled={false}>Create Cohort</button>
 					</form>
+
 					<div className="seven columns">
 						{cohortList}
 					</div>	
@@ -58,6 +59,7 @@ module.exports= React.createClass ({
 		);
 	},
 	onCreate: function(e) {
+		var that=this;
 		e.preventDefault();
 		var newCohort = new CohortModel();
 		newCohort.save(
@@ -69,7 +71,7 @@ module.exports= React.createClass ({
 		{
 			success: (u) => {
 				console.log('test');
-				this.forceUpdate();
+				that.forceUpdate();
 				},
 					error: (u, error) => {
 						this.setState({
