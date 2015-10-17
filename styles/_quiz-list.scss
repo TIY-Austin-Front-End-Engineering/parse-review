@@ -11,7 +11,7 @@
 				.copy-title{
 					font-size: 30px;
 					color: $linkColor;
-					font-family: $fontHeader;
+					font-family: $headerFontFamily;
 
 				}
 				.copy{
@@ -34,7 +34,7 @@
 				box-shadow: 2px 2px 2px #000;
 				line-height: 5em;
 				h1{
-					font-family: $fontHeader;
+					font-family: $headerFontFamily;
 					text-align: center;
 					color: $hover;
 
@@ -55,7 +55,7 @@
 					.quiz-title{
 						height: 35px;
 						font-size: 22px;
-						font-family: $fontHeader;
+						font-family: $headerFontFamily;
 						span{
 							font-size: 24px;
 							height: 35px;
@@ -82,7 +82,7 @@
 						cursor: pointer;
 						color: $linkColor;
 						vertical-align: middle;
-						background-color: $button;
+						background-color: $buttonBackground;
 						margin: 0 auto;
 					}
 				}

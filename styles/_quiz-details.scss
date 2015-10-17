@@ -1,6 +1,6 @@
 
 .quiz-details-component {
-	font-family: $fontHeader;
+	font-family: $headerFontFamily;
 	margin-left: 10%;
 	width: 80%;
 	font-size: 1.2em;
@@ -11,17 +11,17 @@
 	padding: 2%;
 	color:white;
 		h4 {
-			font-family: $fontText;
+			font-family: $paragraphFontFamily;
 			color: $linkColor;
 			padding: 0;
 			margin: 0;
 	}
 	button {
-				background-color: #24677F;
+				background-color: $buttonBackground;
 				padding: 0 10px;
 				border: none;
-				color: $linkColor;
-				font-family: $fontText;
+				color: $buttonTextColor;
+				font-family: $paragraphFontFamily;
 				cursor: pointer;
 				border: 1px solid #bbb;
 			}

@@ -23,9 +23,9 @@
 			color: white;
 		}
 		.select-btn {
-			background-color: $button;
-			color: $linkColor;
-			font-family: $fontText;
+			background-color: $buttonBackground;
+			color: $buttonTextColor;
+			font-family: $paragraphFontFamily;
 			margin-left: 1em;
 		}
 		.select-btn:hover {
@@ -33,7 +33,7 @@
 			color: $navbar;
 		}
 		.drop-down-btn {
-			font-family: $fontText;
+			font-family: $paragraphFontFamily;
 			cursor: pointer;
 			width: 19em;
 		}
