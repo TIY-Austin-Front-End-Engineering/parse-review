@@ -13,14 +13,42 @@ module.exports = React.createClass({
 		}
 	},
 	componentWillMount: function() {
-		this.query = new Parse.Query(QuizModel);
-		this.fetch();
+
+
+		var QuizModel = Parse.Object.extend('QuizModel'); 
+		var QuestionModel = Parse.Object.extend('QuestionModel');
+		var StudentAnswerModel = Parse.Object.extend('StudentAnswerModel');
+		var targetUserModel = Parse.User.current(); 
+		var query = new Parse.Query(StudentAnswerModel);
+		var innerQuery = new Parse.Query(QuestionModel);
+		var innerInnerQuery = new Parse.Query(QuizModel);
+		var self = this;
+		query.equalTo('userId', targetUserModel);
+		query.matchesQuery('questionId', innerQuery);
+		query.include('questionId');
+		query.find().then((results) => {
+			self.studentAnswers = results;
+			self.query = new Parse.Query(QuizModel);
+			self.fetch();
+		});
+
+
+
+		
 	},
 	render: function(){
 		var _this = this;
 		var allQuizzes = this.state.quizList.map(function(quiz){
 			var startTime = quiz.get('startTime');
 			var expireTime = quiz.get('expireTime');
+			var button = '';
+			if(quiz.taken){
+				button = (<a href={"#quizResults/" + Parse.User.current().id +"/"+ quiz.id} ><button className="take-quiz">Quiz Results</button></a>)
+			}else{
+
+				button = (<a href={"#quizDetails/"+ quiz.id} ><button className="take-quiz">Take Quiz</button></a>)
+			}
+
 
 			return (
 				<div key={quiz.id} className="quiz-margin-container">
@@ -33,7 +61,7 @@ module.exports = React.createClass({
 							<div>Total Questions: {quiz.get('totalQuestions')}</div>
 							<div className="quiz-start-expire"><span className="quiz-time-title">Start-Time</span>: {moment(startTime).format("MMMM Do, h:mm a")}</div>
 							<div className="quiz-start-expire"><span className="quiz-time-title">Expire-Time</span>: {moment(expireTime).format("MMMM Do, h:mm a")}</div>
-							<a href={"#quizDetails/"+ quiz.id} ><button className="take-quiz">Take Quiz</button></a>
+								{button}
 						</div>
 					</div>
 				</div>
@@ -66,12 +94,23 @@ module.exports = React.createClass({
 			</div>
 		)
 	},
-	fetch: function(){
+	fetch: function(){  
+		var self = this;
 		this.query.descending("createdAt");
 		this.query.limit(6);
 		this.query.find().then(
 			(allQuizzes) => {
+				for(var q =0; q < allQuizzes.length; q++){ 
+					for(var sa = 0; sa < self.studentAnswers.length; sa++){
+							if(self.studentAnswers[sa].get('questionId').get('quizId').id == allQuizzes[q].id){
+								allQuizzes[q].taken = true;
+							}
+
+					}
+
+			}
 				this.setState({quizList: allQuizzes})
+
 			},
 			(err) => {
 				console.log(err)
