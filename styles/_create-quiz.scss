@@ -1,5 +1,5 @@
 .create-quiz-container {
-	font-family: $fontText;
+	font-family: $paragraphFontFamily;
 	padding-right: 2%;
 	padding-left: 2%;
 	font-size: 1.2em;
@@ -18,7 +18,7 @@
 			margin: 0;
 		}
 		label {
-			color: $subHeader;
+			color: $subheaderTextColor;
 		}
 		.create-quiz {
 			background: $contentBackground;

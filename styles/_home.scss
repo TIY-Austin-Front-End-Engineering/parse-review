@@ -1,5 +1,5 @@
 .home-container-component {
-	font-family: $fontText;
+	font-family: $paragraphFontFamily;
 	.img-box {
 		background-image: url("../images/hero.jpg");
     	height: 25em;
@@ -59,7 +59,7 @@
 					}
 					h3{
 						color: $linkColor;
-						font-family: $fontText;
+						font-family: $paragraphFontFamily;
 					}
 				}
 			}
