@@ -25,17 +25,18 @@ module.exports= React.createClass ({
 			
 			<div className="reg-form-container">
 				<form className="reg-form" onSubmit={this.onRegister} >
-				<h2 className="reg-head"><strong>Register</strong></h2>	
-				<label htmlFor="firstName">First Name</label>
-				<input className="reg-name-input" ref="firstName" type="text" placeholder="Gill" id="firstName" />
-				<label htmlFor="lastName">Last Name</label>
-				<input className="reg-last-name-input" ref="lastName" type="text" placeholder="Bates" id="lastName" />
-				<label htmlFor="userName">User Name</label>
-				<input className="reg-user-input" ref="username" type="text" placeholder="user name" id="userName" />
-				<label htmlFor="password">Password</label>
-				<input className="reg-pass-input" ref="password" type="password" placeholder="password" id="password" />
-				<label htmlFor="email">Your Email</label>
-				<input className="reg-email-input" ref="email" type="email" placeholder="test@mailbox.com" id="email" />
+					<h2 className="reg-head"><strong>Get Started Now!</strong></h2>
+						<hr />	
+						<label htmlFor="firstName">First Name</label>
+						<input className="reg-name-input" ref="firstName" type="text" placeholder="Gill" id="firstName" />
+						<label htmlFor="lastName">Last Name</label>
+						<input className="reg-last-name-input" ref="lastName" type="text" placeholder="Bates" id="lastName" />
+						<label htmlFor="userName">User Name</label>
+						<input className="reg-user-input" ref="username" type="text" placeholder="user name" id="userName" />
+						<label htmlFor="password">Password</label>
+						<input className="reg-pass-input" ref="password" type="password" placeholder="password" id="password" />
+						<label htmlFor="email">Your Email</label>
+						<input className="reg-email-input" ref="email" type="email" placeholder="test@mailbox.com" id="email" />
 					
 				<select onChange={this.reRender} ref="select">
 
