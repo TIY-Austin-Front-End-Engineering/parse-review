@@ -14,7 +14,8 @@ module.exports = React.createClass({
 	},
 	componentWillMount: function() {
 		this.query = new Parse.Query(QuizModel);
-		this.fetch();
+		this.fetch({Parse.User.current().get('cohortId')});
+		console.log(Parse.User.current.get(cohortId));
 	},
 	render: function(){
 		var _this = this;
