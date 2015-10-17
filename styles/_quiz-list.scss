@@ -1,5 +1,5 @@
 .quiz-list-component{
-	font-family: $fontFanwood;
+	font-family: $fontHeader;
 	.row{
 		.left{
 			width: 100%;
@@ -11,7 +11,7 @@
 				.copy-title{
 					font-size: 30px;
 					color: $linkColor;
-					font-family: $fontQuestrial;
+					font-family: $fontHeader;
 
 				}
 				.copy{
@@ -34,7 +34,7 @@
 				box-shadow: 2px 2px 2px #000;
 				line-height: 5em;
 				h1{
-					font-family: $fontQuestrial;
+					font-family: $fontHeader;
 					text-align: center;
 					color: $hover;
 
@@ -55,7 +55,7 @@
 					.quiz-title{
 						height: 35px;
 						font-size: 22px;
-						font-family: $fontQuestrial;
+						font-family: $fontHeader;
 						span{
 							font-size: 24px;
 							height: 35px;
