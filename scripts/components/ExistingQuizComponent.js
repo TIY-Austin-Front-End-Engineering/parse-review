@@ -34,22 +34,17 @@ module.exports = React.createClass({
 		});
 
 		return (
-			<div className="class-analytics-container">
-				<div className="row">
-					<div className="left-side four columns">
-
+					<div>
+						<div className="header">
+							<label htmlFor="quizList" className="choose-quiz"><h3>Existing Quizzes</h3></label>
+						</div>
 						<form onSubmit={this.onQuizSelected}>
-							<label htmlFor="quizList" className="choose-quiz">Choose Quiz</label>
 							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
 								{leftContent}
-							</select>
+							</select><br />
 							<button className="select-btn">Select</button>
 						</form>
-
 					</div>
-
-				</div>
-			</div>
 		);
 	},
 	onQuizSelected: function(e) {
