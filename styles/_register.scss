@@ -1,18 +1,60 @@
-.reg-form-container {
-	background-color: #FFEBBE;
+.reg-form-container{
+	height:100%;
+	width:100%;
+	padding-bottom:3em;
 
 	.reg-form{
-		background-color:#934C47;
-		height:80%;
-		width:70%;
-		margin:0 auto;
-		text-align: center;
-		font-family:Questrial, sans-serif;
-		color: #FD9856;
-		min-width: 20em;
+		height:100%;
+		width:100%;
 
-		.u-full-width {
-			width: 70%;
-		}
+		
+
+		
 	}
+	.reg-head{
+		font-family:Oswald, sans-serif;
+		color:#FF434A;
+		text-align:center;
+		font-weight: bold 20em;
+		padding-bottom:1em;
+		padding-top:1em;
+		margin-right:20%;
+
+		
+
+	}
+
+	label{
+		
+		font-family:Oswald, sans-serif;
+		color:#FFA54B;
+		display:inline-block;
+		float:left;
+		margin-left:15%;
+		
+
+	}
+	input{
+		display:block;
+		width:40%;
+		margin-left:25%;
+		
+
+		
+	}
+
+	
+	select{
+		display:block;
+		width:40%;
+		margin-left:25%;
+
+	}
+	.reg-button-primary{
+		float:left;
+		background-color:#90C5A9;
+		margin-left:52%;
+
+	}
+	
 }

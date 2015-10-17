@@ -25,18 +25,17 @@ module.exports= React.createClass ({
 			
 			<div className="reg-form-container">
 				<form className="reg-form" onSubmit={this.onRegister} >
-				<h2 className="test">Register</h2>			
-				
+				<h2 className="reg-head"><strong>Register</strong></h2>	
 				<label htmlFor="firstName">First Name</label>
-				<input className="u-full-width" ref="firstName" type="text" placeholder="Jill" id="firstName" />
+				<input className="reg-name-input" ref="firstName" type="text" placeholder="Gill" id="firstName" />
 				<label htmlFor="lastName">Last Name</label>
-				<input className="u-full-width" ref="lastName" type="text" placeholder="Gates" id="lastName" />
+				<input className="reg-last-name-input" ref="lastName" type="text" placeholder="Bates" id="lastName" />
 				<label htmlFor="userName">User Name</label>
-				<input className="u-full-width" ref="username" type="text" placeholder="user name" id="userName" />
-				<label htmlFor="exampleEmailInput">Your Email</label>
-				<input className="u-full-width" ref="email" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
+				<input className="reg-user-input" ref="username" type="text" placeholder="user name" id="userName" />
 				<label htmlFor="password">Password</label>
-				<input className="u-full-width" ref="password" type="password" placeholder="password" id="password" />
+				<input className="reg-pass-input" ref="password" type="password" placeholder="password" id="password" />
+				<label htmlFor="email">Your Email</label>
+				<input className="reg-email-input" ref="email" type="email" placeholder="test@mailbox.com" id="email" />
 					
 				<select onChange={this.reRender} ref="select">
 
@@ -45,7 +44,9 @@ module.exports= React.createClass ({
 								</select>
 							
 							{teachPassword}
-							<button ref="button" className="button-primary" disabled={false}>Register</button>
+							<div className="reg-button">
+							<button ref="button" className="reg-button-primary" disabled={false}>Register</button>
+							</div>
 							{errorElement}
 						</form>
 					</div>
