@@ -17,6 +17,16 @@ module.exports = React.createClass({
 			quizName: []
 		}
 	},
+	calculateAnswers:function(answers){ 
+	var numberCorrect =0;
+	for(var i =0; i < answers.length; i ++){
+		if(answers[i].get('studentCorrect') == true){
+			numberCorrect++;
+		}
+	}
+	return numberCorrect;
+
+	},
 	componentWillMount: function () {
 		this.props.router.on('route', () => {
 			this.forceUpdate();
@@ -40,8 +50,12 @@ module.exports = React.createClass({
 		query.matchesQuery('questionId', innerQuery);
 		query.include('questionId');
 		query.ascending('createdAt').find().then((results) => {
+			var numberCorrect = this.calculateAnswers(results);
+			
 			this.setState({
-				questions: results
+				questions: results,
+				numberOfCorrectAnswers:numberCorrect,
+				percentage: ((numberCorrect/ results.length) * 100).toFixed()
 			})
 			// console.log(results)
 		});
@@ -104,7 +118,8 @@ module.exports = React.createClass({
 						{ListQuestionDetails}
 					</div>
 					<div>
-						<div className="percentage">Percentage: %</div>
+						<div>Number Correct: {this.state.numberOfCorrectAnswers} out of {this.state.questions.length}</div> 
+						<div className="percentage">Percentage: {this.state.percentage}%</div>
 					</div>
 					<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
 				</div>

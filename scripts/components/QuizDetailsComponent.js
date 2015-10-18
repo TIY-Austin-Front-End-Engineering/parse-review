@@ -8,6 +8,16 @@ var Backbone = require('backbone');
 var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
+var marked = require('marked');
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    smartLists: true,
+    smartypants: false
+});
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -39,6 +49,13 @@ module.exports = React.createClass({
 		)
 	},
 	submitSolve: function(){
+		if(this.currentQuestion.selectedChoiceId ==null){
+			this.setState({ 
+	         currentQuestion:this.state.currentQuestion,
+	         errorMessage:'Please select your answer'
+	    	})
+			return;
+		}
 		this.state.currentQuestion++;
 		var answer = new StudentAnswerModel();
 		answer.set('studentChoice',this.currentQuestion.selectedChoiceId);
@@ -52,9 +69,12 @@ module.exports = React.createClass({
 			this.props.router.navigate('#quizResults/'+Parse.User.current().id+'/'+this.props.quizId, {trigger: true});
 			return;
 		}
-		this.setState({
-	         currentQuestion:this.state.currentQuestion
+		this.setState({ 
+	         currentQuestion:this.state.currentQuestion,
+	         errorMessage:'' 
 	    })
+	    $(this.getDOMNode()).find('[type="radio"]').prop("checked", false);
+	    this.currentQuestion.selectedChoiceId = null;
 	},
 	answerPicked: function(e){
 		this.currentQuestion.selectedChoiceId = e.currentTarget.value;	
@@ -74,23 +94,28 @@ module.exports = React.createClass({
 		var self = this;
 		var choices = currentQuestion.get('questionChoices').map(function(qc){
 
-			return(<div><input value={qc} type='radio' defaultValue={false} name='radioAnswer' onChange={self.answerPicked} /> &nbsp;{qc}</div>);
-		}); 
-
+			return(<div><input value={qc} type='radio' defaultValue={false} name='radioAnswer' onChange={self.answerPicked} /> &nbsp;<span dangerouslySetInnerHTML={self.markUp(marked(qc))} /></div>);
+		});
 			return (
+				
 				<div className=" row quiz-details-container">
 					<div className="quiz-details-component">
-						<h4>{quizTitle}</h4>
-						<hr />
-						<div>
-							{currentQuestion.get('questionContent')}
-						</div>
-						<div>
-						{choices}
-						</div>
-						<button className="submit-btn" onClick={this.submitSolve}>Submit</button>
+							<h4 dangerouslySetInnerHTML={this.markUp(marked(quizTitle))} />
+							<hr />
+							<div dangerouslySetInnerHTML={this.markUp(marked(currentQuestion.get('questionContent')))}>
+							</div>
+							<div>
+								{choices}
+							</div>
+							<div>
+								{this.state.errorMessage}
+							</div>
+							<button className="submit-btn" onClick={this.submitSolve}>Submit</button>
 					</div>
 				</div>
 			)
-	}
+	},
+    markUp: function(string){
+       return (__html:string);
+    }
 });
