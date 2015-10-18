@@ -19,7 +19,8 @@ module.exports = React.createClass({
             students: [],
             scores: [],
             quizzes: [],
-            cohorts: []
+            cohorts: [],
+            loading: false
         };
     },
     componentWillMount: function() {
@@ -54,7 +55,7 @@ module.exports = React.createClass({
         	var scoreCalculation = correctAnswers.length/quiz.get('totalQuestions')
         	var score = Math.round(scoreCalculation*100)+'%';
             return(
-                    <tr>
+                    <tr key={quiz.id}>
                         <td>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,"")}</td>
                         <td>{score}</td>
                         <td>{quiz.get('startTime').toDateString()}</td>
@@ -81,21 +82,21 @@ module.exports = React.createClass({
                     <select className="u-full-width exampleRecipientInput" ref="cohortPick">
                         {cohortOptions}
                     </select>
-                    <button className>Submit</button>
+                    <button ref="button" className="select-btn">Select</button>
                 </form>
                 <form onSubmit={this.onStudentSelect}>
                     <label htmlFor="students">Select Student</label>
                     <select className="u-full-width exampleRecipientInput" ref="studentPick">
                         {studentOptions}
                     </select>
-                    <button className>Submit</button>
+                    <button ref="button" className="select-btn">Select</button>
                 </form>
                 {results}
             </div>
         );
     },
     onCohortSelect: function(e) {
-       e.preventDefault();
+       this.setState({loading: true});
        var studentQuery = new Parse.Query(Parse.User);
        studentQuery.equalTo('cohortId', new CohortModel({objectId: this.refs.cohortPick.value}));
        studentQuery.find().then(
@@ -104,7 +105,7 @@ module.exports = React.createClass({
             },
             err => {
                 console.log(err);
-            })
+        })
     },
     onStudentSelect: function(e) {
         e.preventDefault();
@@ -127,7 +128,7 @@ module.exports = React.createClass({
             	},
             	(err) => {
                 	console.log(err);
-            	}           	
-        )  	
+            	}
+        )         	 	
     }
 });
