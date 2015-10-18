@@ -23,41 +23,62 @@ var _ = require('backbone/node_modules/underscore');
 var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
+var CohortModel = require('../models/CohortModel');
 
 module.exports = React.createClass({
 	getInitialState: function() {
 		return {
 			allAnswerList: null,
+			allCohorts: [],
+			allQuizzes: [],
 			currentType: null,
 			correctAnswers: null,
 			allQuizzes: [],
-			loading: false
+			loading: false,
+			showQuizSelect: false
 		};
 	},
 	componentWillMount: function() {
 		// pull all quizzes
-		var quizQuery = new Parse.Query(QuizModel);
-		quizQuery.find().then(
-			(quiz) => {
-				this.setState({ allQuizzes: quiz });
-			},
+		var cohortQuery = new Parse.Query(CohortModel);
+		cohortQuery.find().then(
+			(cohorts) => {
+				this.setState({allCohorts: cohorts});
+		},
 			(err) => {
 				console.log(err);
 			}
 		);
 	},
 	render: function() {
+		console.log(this.state.allCohorts);
 		var rightContent = null;
 		var button = (<button ref="button" className="select-btn">Select</button>);
 		if(this.state.loading) {
 			button = (<button ref="button" className="select-btn">Loading...</button>)
 		}
 		// Display all quizzes in the drop down
-		var leftContent = this.state.allQuizzes.map(function(quiz) {
+		var quizOptions = this.state.allQuizzes.map(function(quiz) {
 			return (
-				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,"")}</option>
+				<option key={quiz.id} value={quiz.id}>{quiz.get('quizTitle').replace(/([>]\s*)?([#*_-]+)/gi,'')}</option>
 			);
 		});
+		var cohortOptions = this.state.allCohorts.map(function(cohort) {
+			return (
+				<option key={cohort.id} value={cohort.id}>{cohort.get('name')}</option>
+			)
+		});
+		if(this.state.showQuizSelect) {
+			var showQuizSelect = (
+				<form onSubmit={this.onQuizSelected}>
+					<label htmlFor="quizList" className="choose-quiz">Choose Quiz</label>
+					<select ref="thisQuiz" id="quizList" className="drop-down-btn">
+						{quizOptions}
+					</select>
+					{button}
+				</form>
+			)
+		}
 
 		// Display questions and averages for the selected quiz
 		if(this.state.allQuestions) {
@@ -106,13 +127,14 @@ module.exports = React.createClass({
 						<h1>Class Analytics</h1>
 					</div>
 					<div className="left-side four columns">
-						<form onSubmit={this.onQuizSelected}>
-							<label htmlFor="quizList" className="choose-quiz">Choose Quiz</label>
-							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
-								{leftContent}
+						<form onSubmit={this.onCohortSelected}>
+							<label htmlFor="quizList" className="choose-quiz">Choose Cohort</label>
+							<select ref="thisCohort" id="quizList" className="drop-down-btn">
+								{cohortOptions}
 							</select>
 							{button}
 						</form>
+						{showQuizSelect}
 					</div>
 					<div className="right-side eight columns">
 						<div className="analytics-container">
@@ -123,6 +145,22 @@ module.exports = React.createClass({
 			</div>
 		);
 	},
+	onCohortSelected: function(e) {
+		e.preventDefault(e);
+		this.setState({showQuizSelect: true});
+		var quizQuery = new Parse.Query(QuizModel);
+		quizQuery.equalTo('cohortId', new CohortModel({ objectId: this.refs.thisCohort.value }));
+		console.log(this.refs.thisCohort.value);
+		console.log(quizQuery);
+		quizQuery.find().then(
+			(quiz) => {
+				this.setState({ allQuizzes: quiz });
+			},
+			(err) => {
+				console.log(err);
+			}
+		);
+	},
 	onQuizSelected: function(e) {
 		e.preventDefault();
 		this.refs.button.disabled = true;
@@ -131,7 +169,7 @@ module.exports = React.createClass({
 			currentType: this.objectId
 		});
 
-		var quizId = this.refs.thisQuiz.id;
+		//var quizId = this.refs.thisQuiz.id; --declared but not used? JA
 
 		var answerQuery = new Parse.Query(StudentAnswerModel);
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
