@@ -1,12 +1,17 @@
 .footer-container {
-    border-top: 1px solid #bbb;
     margin: 0;
     padding: 0;
     bottom: 0%;
-
+    background: $navbar;
+    margin-top: 3em;
     .footer-links {
         text-decoration: none;
         padding-left: 2em;
-        color: #42094A;
+        color: $subheaderTextColor;
+        list-style-type: none;
+        a {
+        	color: $subheaderTextColor;
+        	text-decoration: underline;
+        }
     }
 }
