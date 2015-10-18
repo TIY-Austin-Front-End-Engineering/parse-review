@@ -13,13 +13,13 @@
     			.three.columns{
     				width: 100%;
     				box-sizing: border-box;
-    				padding: 10em 0;
+    				padding: 10em 2em;
 					text-align: center;
 					.brand-title{
 						color: #FFF;
 						background-color: rgba(0,0,0,0.3);
 						font-size: 36px;
-						border-radius: 4px;
+						border-radius: 18px;
 						font-family: $paragraphFontFamily;
 					}
     			}
@@ -48,6 +48,7 @@
 				box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
 				img{
 					border: 1px solid $hover;
+                    display: none;
 				}
 				.home-card-text{
 					color: #fff;
@@ -58,7 +59,7 @@
 						border-color: $hover;
 					}
 					h3{
-						color: $linkColor;
+						color: $headerTextColor;
 						font-family: $paragraphFontFamily;
 					}
 				}
@@ -77,7 +78,7 @@
 	}
 }
 
-@media screen and(min-width: 1000px){
+@media screen and(min-width: 1050px){
 	.home-container-component{
 		.img-box .mask .row .three.columns{
 			width: 22%;

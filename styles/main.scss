@@ -25,3 +25,13 @@
 body {
 	background-color: $bodyBackground;
 }
+
+button.button {
+        background-color: $buttonBackground;
+        font-family: $paragraphFontFamily;
+        box-shadow: 3px 3px 0px $buttonBorderColor;
+        border: none;
+        font-weight: bold;
+        border-radius: .1em;
+        color: $buttonTextColor;
+}

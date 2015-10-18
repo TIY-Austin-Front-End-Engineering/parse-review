@@ -75,15 +75,22 @@ _Open to Change!_
 
 **Fonts**
 
-* Questrial - Font for **Titles**
-* Fanwood Text - Font for **Everything Else**
+* Oswald Bold - Font for **Titles**
+* Oswald Text - Font for **Everything Else**
 
-**Color Palette**
+**Color Palette by Emily Devoll**
 
-* http://www.colourlovers.com/palette/2209236/Rust_of_the_Story
-* NavBar Color `#280036`
-* Button Color `#24677F`
-* Body Background Color `#FFEBBE`
-* Inner Container Color `#934C47`
-* :hover Color `#FD9856`
+*Navbar: #412D62;
+*Paragraph Color: #412D62;
+*Button Text Color: #412D62;
+*Button Background:  #90C5A9;
+*Button Border Color: #FF434A;
+*Body Background:  #F4EAE0;
+*Nav Link: #F4EAE0;
+*Link Color:  #F4EAE0;
+*Hover: #F8E1B5;
+*Header Text Color: #FF434A;
+*Subheader Text Color: #FFA54B;
+*Content Background: #fff;
+*Header Background: #412D62;
 
