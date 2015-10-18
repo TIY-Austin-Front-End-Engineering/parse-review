@@ -1,14 +1,18 @@
 .footer-container {
-    margin: 0;
-    padding: 0;
+	position: fixed;
+	width: 100%;
     bottom: 0%;
+    padding: 0;
+    font-family: $paragraphFontFamily;
+    font-weight: bolder;
     background: $navbar;
-    margin-top: 3em;
-    .footer-links {
+    li {
         text-decoration: none;
-        padding-left: 2em;
+        display: inline;
         color: $subheaderTextColor;
         list-style-type: none;
+        padding-left: .5em;
+        padding-right: .5em;
         a {
         	color: $subheaderTextColor;
         	text-decoration: underline;
