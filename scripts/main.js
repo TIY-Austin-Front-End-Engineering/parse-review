@@ -51,6 +51,7 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<QuizDetailsComponent quizId={id}  router={r}/>, app);
 	},
 	createCohort: function() {
+		var currentUser = Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
 			ReactDOM.render(<CreateCohortComponent />, app)
 		} else {
@@ -67,6 +68,7 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	cohortRegister: function(cohortId) {
+		var currentUser = Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
 			ReactDOM.render(<RegisterComponent router={r} cohortId={cohortId} />, app);
 		} else {
