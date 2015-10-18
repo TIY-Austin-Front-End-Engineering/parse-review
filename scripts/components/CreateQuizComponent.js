@@ -37,7 +37,7 @@ module.exports = React.createClass({
 		var cohorts = this.state.allCohorts.map(function(
 			cohort){
 			return(
-				<option key={cohort.id} value = {cohort.id}>{cohort.get('name')}</option>
+				<option key={cohort.id} value={cohort.id}>{cohort.get('name')}</option>
 				);
 		});
 		return(
@@ -69,15 +69,14 @@ module.exports = React.createClass({
 			</div>
 
 		);
-
 	},
 	onSubmit: function(e){
 		//grabbing the name and id of new quiz and passing it through to edit quiz. Assigning the quiz a cohortId. 
-
+		var targetCohortModel = new CohortModel({objectId: this.refs.cohortName.value});
 		e.preventDefault();
 		var newQuiz = new QuizModel({
 			quizTitle: this.refs.quizName.value,
-			cohortId: this.refs.cohortName.value,
+			cohortId: targetCohortModel,
 			startTime: new Date(this.refs.dateToStart.value),
 			expireTime: new Date(this.refs.dateToExpire.value),
 			startTime: new Date(this.refs.dateToStart.value+'T'+this.refs.timeToStart.value+':00'),
@@ -107,6 +106,7 @@ module.exports = React.createClass({
 //////////////////////////////////////////////////////////////////////////
 		else
 		{
+			console.log('just about to save!')
 			newQuiz.save({
 				success: (u) => {
 					this.props.router.navigate('#editQuiz/'+newQuiz.id, {trigger: true});
