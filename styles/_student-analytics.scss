@@ -1,16 +1,23 @@
 .att-container {
 	margin: 0 5em;
-	.att-table {
-		background: #934C47;
-		color: #F9D824;
+	thead {
+		background: #fff;
+		color: $navbar;
 	}
+	
 	th {
 		text-align: center;
+		background: $navbar;
+		color: #fff;
 	}
-	.att-butt {
+	button {
 		float: left;
-		background: #24677F;
-		color: #F9D824;
+		background-color: $buttonBackground;
+        font-family: $paragraphFontFamily;
+        box-shadow: 3px 3px 0px $buttonBorderColor;
+        border: none;
+        font-weight: bold;
+        border-radius: .1em;
 	}
 	#exampleRecipientInput {
 		float: left;

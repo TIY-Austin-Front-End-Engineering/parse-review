@@ -7,18 +7,18 @@
 	}
 	a {
 		text-decoration: none;
-		color: $subHeader;
+		color: $subheaderTextColor;
 		.nav-bar-button {
 			display:block;
 			font-size: 2em;
 			text-align: left;
 			padding: .3em 2em .3em .5em;
-			border-top: 2px solid $subHeader;
+			border-top: 2px solid $subheaderTextColor;
 		}
 	}
 	a:hover {
-	  	color: $header;
-	  	background-color: $navbar;
+	  	color: $subheaderTextColor;
+	  	background-color: $subheaderTextColor;
 	}
 	.logo {
 		height: 4em;

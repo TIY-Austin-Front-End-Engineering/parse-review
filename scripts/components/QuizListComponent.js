@@ -14,6 +14,11 @@ module.exports = React.createClass({
 	},
 	componentWillMount: function() {
 
+		this.query = new Parse.Query(QuizModel);
+		//this.getCohort();
+		this.fetch();
+
+
 
 		var QuizModel = Parse.Object.extend('QuizModel'); 
 		var QuestionModel = Parse.Object.extend('QuestionModel');
@@ -35,6 +40,7 @@ module.exports = React.createClass({
 
 
 		
+
 	},
 	render: function(){
 		var _this = this;
@@ -116,6 +122,9 @@ module.exports = React.createClass({
 				console.log(err)
 			}
 		)
+	//},
+	//getCohort : function(){
+		//this.query.find(Parse.user.current().get('cohortId'))
 	},
 	capitalizeFirstLetter: function(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

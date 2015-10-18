@@ -1,6 +1,6 @@
 
 .post-question-component {
-	font-family: $fontHeader;
+	font-family: $headerFontFamily;
 	font-size: 1.2em;
 	background: $contentBackground;
 	width: 80%;
@@ -8,12 +8,12 @@
 	margin-right: 10%;
 	margin-top: 3em;
 	h3 {
-		color:  $header;
+		color:  $headerTextColor;
 		background: $headerBackground;
 		padding-left: 2%;
 	}
 	label{
-		color: $subHeader;
+		color: $subheaderTextColor;
 	}
 	.post-question {
 		text-align: left;
@@ -30,10 +30,10 @@
 				width: 18%;
 			}
 			button {
-				background-color: $button;
-				color: $navbar;
-				font-family: $fontText;
-				box-shadow: 3px 3px 0px $header;
+				background-color: $buttonBackground;
+				color: $buttonTextColor;
+				font-family: $paragraphFontFamily;
+				box-shadow: 3px 3px 0px $buttonBorderColor;
 				border: none;
 				font-weight: bold;
 				font-size: .8em;
