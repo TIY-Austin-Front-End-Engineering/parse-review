@@ -4,18 +4,17 @@
 		.left{
 			width: 100%;
 			.copy-container{
-				background-color: $innerContainer;
-				box-shadow: 2px 2px 2px #000;
+				background-color: $bodyBackground;
 				padding: 20px;
 				margin: 1em 10px;
 				.copy-title{
 					font-size: 30px;
-					color: $linkColor;
+					color: $subheaderTextColor;
 					font-family: $headerFontFamily;
 
 				}
 				.copy{
-					color: #FFF;
+					color: $paragraphColor;
 					font-size: 20px;
 				}
 				hr{
@@ -28,15 +27,14 @@
 			width: 100%;
 			margin: 0;
 			.quiz-banner-container{
+                background-color: $navbar;
 				height: 4em;
 				margin: 1em 10px;
-				background-color: $navbar;
-				box-shadow: 2px 2px 2px #000;
 				line-height: 5em;
 				h1{
 					font-family: $headerFontFamily;
 					text-align: center;
-					color: $hover;
+					color: $headerTextColor;
 
 				}
 			}
@@ -44,15 +42,15 @@
 				    border: 10px solid transparent;
 				    box-sizing: border-box;
 				.quiz-container{
-					color: white;
+					color: $paragraphColor;
 					overflow: hidden;
-					text-align: center;
-					background-color: $innerContainer;
+					background-color: $bodyBackground;
 					transition: box-shadow 0.25s;
 					padding: 20px;
 					border-radius: 0 0 2px 2px;
 					box-sizing: border-box;
 					.quiz-title{
+                        color: $subheaderTextColor;
 						height: 35px;
 						font-size: 22px;
 						font-family: $headerFontFamily;
@@ -68,7 +66,7 @@
 							margin-right: 1em;
 							.quiz-time-title{
 								font-weight: bold;
-								color: $linkColor;
+								color: $subheaderTextColor;
 								font-size: 15px;
 							}
 						}
@@ -80,10 +78,15 @@
 					}
 					.take-quiz{
 						cursor: pointer;
-						color: $linkColor;
+						color: $buttonTextColor;
 						vertical-align: middle;
 						background-color: $buttonBackground;
 						margin: 0 auto;
+                        font-family: $paragraphFontFamily;
+                        box-shadow: 3px 3px 0 $buttonBorderColor;
+                        border: none;
+                        font-weight: bold;
+                        border-radius: .1em;
 					}
 				}
 			}
