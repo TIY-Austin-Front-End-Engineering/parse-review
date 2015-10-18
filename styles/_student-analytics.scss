@@ -1,5 +1,8 @@
 .att-container {
 	margin: 0 5em;
+	form {
+		margin: 0;
+	}
 	thead {
 		background: #fff;
 		color: $navbar;
@@ -11,7 +14,6 @@
 		color: #fff;
 	}
 	button {
-		float: left;
 		background-color: $buttonBackground;
         font-family: $paragraphFontFamily;
         box-shadow: 3px 3px 0px $buttonBorderColor;
