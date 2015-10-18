@@ -1,0 +1,17 @@
+.edit-quiz{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	#button {
+		background-color: $buttonBackground;
+		font-family: $paragraphFontFamily;
+		box-shadow: 3px 3px 0px $buttonBorderColor;
+		border: none;
+		font-weight: bold;
+		border-radius: .1em;
+		color: $buttonTextColor;	
+	}
+	hr{
+		border: 2px solid black;
+	}
+}
