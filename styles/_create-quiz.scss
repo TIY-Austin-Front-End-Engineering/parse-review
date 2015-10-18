@@ -24,14 +24,14 @@
 			background: $contentBackground;
 			margin-top: 3em;
 			float: right;
-				button {
-		            background-color: $buttonBackground;
-		            font-family: $paragraphFontFamily;
-		            box-shadow: 3px 3px 0px $buttonBorderColor;
-		            border: none;
-		            font-weight: bold;
-		            border-radius: .1em;
-				}
+			button {
+				background-color: $buttonBackground;
+				font-family: $paragraphFontFamily;
+				box-shadow: 3px 3px 0px $buttonBorderColor;
+				border: none;
+				font-weight: bold;
+				border-radius: .1em;
+			}
 		}
 		.existing-quiz {
 			margin-top: 3em;

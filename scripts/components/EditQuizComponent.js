@@ -78,7 +78,7 @@ module.exports  = React.createClass({
 		return (
 			<div>
 				<h5 className="title">{quizTitle}</h5>
-				<button onClick={this.addQuestion}>Add a Question </button>
+				<button className="button" onClick={this.addQuestion}>Add a Question </button>
 				<div>{questionsElement}</div>
 			</div>
 
