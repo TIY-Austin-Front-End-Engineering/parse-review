@@ -27,8 +27,6 @@ var StudentAnswerModel = require('../models/StudentAnswerModel');
 module.exports = React.createClass({
 	getInitialState: function() {
 		return {
-			numberOfQuestions: null,
-			answerThenQuestion: null,
 			allAnswerList: null,
 			currentType: null,
 			correctAnswers: null,
@@ -41,7 +39,7 @@ module.exports = React.createClass({
 		var quizQuery = new Parse.Query(QuizModel);
 		quizQuery.find().then(
 			(quiz) => {
-				this.setState({allQuizzes: quiz});
+				this.setState({ allQuizzes: quiz });
 			},
 			(err) => {
 				console.log(err);
@@ -63,7 +61,6 @@ module.exports = React.createClass({
 
 		// Display questions and averages for the selected quiz
 		if(this.state.allQuestions) {
-			console.log('answers appeared');
 			rightContent = this.state.allQuestions.map(function(question) {
 				var color = null;
 				if(question.questionAverage >= 80) {
@@ -109,7 +106,6 @@ module.exports = React.createClass({
 						<h1>Class Analytics</h1>
 					</div>
 					<div className="left-side four columns">
-
 						<form onSubmit={this.onQuizSelected}>
 							<label htmlFor="quizList" className="choose-quiz">Choose Quiz</label>
 							<select ref="thisQuiz" id="quizList" className="drop-down-btn">
@@ -117,9 +113,7 @@ module.exports = React.createClass({
 							</select>
 							{button}
 						</form>
-
 					</div>
-
 					<div className="right-side eight columns">
 						<div className="analytics-container">
 							<div>{rightContent}</div>
@@ -131,16 +125,13 @@ module.exports = React.createClass({
 	},
 	onQuizSelected: function(e) {
 		e.preventDefault();
-		console.log(this.refs.thisQuiz.value);
 		this.refs.button.disabled = true;
 		this.setState({loading: true});
-		console.log(this.state.button);
 		this.setState({
 			currentType: this.objectId
 		});
 
 		var quizId = this.refs.thisQuiz.id;
-		console.log(quizId);
 
 		var answerQuery = new Parse.Query(StudentAnswerModel);
 		var innerQuestionQuery = new Parse.Query(QuestionModel);
@@ -160,6 +151,7 @@ module.exports = React.createClass({
 					var totalNumOfAnswers = answerList[props].length;
 					var numberCorrect = 0;
 					var questionAverage = 0;
+					var roundedQuestionAverage = 0;
 
 					for (var j=0; j < totalNumOfAnswers; j++) {
 
@@ -167,17 +159,19 @@ module.exports = React.createClass({
 							numberCorrect++;
 						}
 					}
+					// Round the average for each question to the nearest hundredths place
+					roundedQuestionAverage = Math.round(numberCorrect/totalNumOfAnswers*10000);
 
 					var questionInfo = {
 						question: answerList[props][0].get('questionId'),
 						questionTitle: answerList[props][0].get('questionId').get('questionContent'),
-						questionAverage: Math.round10(numberCorrect/totalNumOfAnswers*100)
+						questionAverage: roundedQuestionAverage/100
 					};
 					findQuestions.push(questionInfo);
 				}
 				this.setState({ allQuestions: findQuestions });
 				this.refs.button.disabled = false;
-				this.setState({loading: false});
+				this.setState({ loading: false });
 			},
 			(err) => {
 				console.log(err);
