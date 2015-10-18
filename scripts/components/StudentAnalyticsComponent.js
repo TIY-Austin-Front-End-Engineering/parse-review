@@ -23,9 +23,14 @@ module.exports = React.createClass({
         };
     },
     componentWillMount: function() {
-        var query = new Parse.Query(CohortModel);
-        query.find().then((cohorts) => {
-            this.setState({cohorts: cohorts});
+        var query = new Parse.Query(Parse.User);
+        query.include('cohortId');
+        query.equalTo('teacher', false).find().then((students) => {
+            this.setState({students: students});
+            var cohortQuery = new Parse.Query(CohortModel);
+            cohortQuery.find().then((cohorts) => {
+                this.setState({cohorts: cohorts});
+            });
         },
         (err) => {
             console.log(err);
@@ -90,14 +95,7 @@ module.exports = React.createClass({
         );
     },
     onCohortSelect: function(e) {
-        e.preventDefault();
-        var query = new Parse.Query(Parse.User);
-        query.equalTo('teacher', false).find().then((students) => {
-            this.setState({students: students});
-        },
-        (err) => {
-            console.log(err);
-        })
+       
     },
     onStudentSelect: function(e) {
         e.preventDefault();
