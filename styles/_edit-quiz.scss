@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+.container{
+	.row{
+		.eight.columns{
+			h3{
+				font-family: $headerFontFamily;
+				color: $headerTextColor;
+			}
+		}
+		.four.columns{
+			button{
+				background: $buttonBackground;
+				box-shadow: 3px 3px 0px $buttonBorderColor;
+			}
+		}
+		
+	}
+	.six.columns{
+		text-align: left;
+		color: $paragraphColor;
+		font-family: $paragraphFontFamily;
+		padding: 0.5em;
+		background-color: $contentBackground;
+		.answerChoices{
+			color: $buttonBackground;
+			margin: 0;
+		}
+	}
+}
+=======
 // #edit-quiz{
 // 	width: 90%;
 // 	margin-left: 5%;
@@ -17,3 +47,4 @@
 
 // 	}
 // }
+>>>>>>> 92298a29918bf9bc5e1ace12b17a6be9d20e11b3
