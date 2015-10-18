@@ -77,7 +77,6 @@ module.exports = React.createClass({
 		)
 	},
 	fetch: function() {
-        var _this = this;
         var finalQuizzes = [];
         var flag = false;
         var allTakenQuizzes = [];
@@ -105,7 +104,6 @@ module.exports = React.createClass({
                                 var cleanedTakenQuizzes = _.uniq(allTakenQuizzes);
                                 allQuizzesForCohort.forEach(function(quiz){
                                    for(var y = 0; y < cleanedTakenQuizzes.length; y++){
-                                       flag = false;
                                        if( _.contains(quiz, cleanedTakenQuizzes[y])){
                                            flag = true
                                        }
