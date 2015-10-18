@@ -26,7 +26,7 @@ module.exports= React.createClass ({
 		var errorElement = null;
 		var cohortList = this.state.cohorts.map(function(cohort) {
 			return (
-				<div>
+				<div className="cohortLinks">
 					<p className="cohortName">{cohort.get('name')} - {cohort.get('location')} - {cohort.get('date')}</p>
 					<p className="url">tiy-austin-front-end-engineering.github.io/#cohortRegister/{cohort.id}</p>
 				</div>
@@ -39,19 +39,20 @@ module.exports= React.createClass ({
 		return (
 			<div className="container">
 				<div className="row">
-					<form className="five columns" onSubmit={this.onCreate}>
-						<h2>Create Cohort</h2>	
-						<label htmlFor="name">Cohort Name</label>
-						<input className="u-full-width" ref="name" type="text" placeholder="name" id="name" />
-						<label htmlFor="location">Location</label>
-						<input className="u-full-width" ref="location" type="text" placeholder="location" id="location" />
-						<label htmlFor="date">Date</label>
-						<input className="u-full-width" ref="date" type="text" placeholder="Fall 2015" id="date" />
-						{errorElement}
-						<button ref="button" className="button-primary" disabled={false}>Create Cohort</button>
-					</form>
-
 					<div className="seven columns">
+						<h2>Create Cohort</h2>	
+						<form onSubmit={this.onCreate}>
+							<label htmlFor="name">Cohort Name</label>
+							<input className="u-full-width" ref="name" type="text" placeholder="name" id="name" />
+							<label htmlFor="location">Location</label>
+							<input className="u-full-width" ref="location" type="text" placeholder="location" id="location" />
+							<label htmlFor="date">Date</label>
+							<input className="u-full-width" ref="date" type="text" placeholder="Fall 2015" id="date" />
+							{errorElement}
+							<button ref="button" id="button-primary" disabled={false}>Create Cohort</button>
+						</form>
+					</div>
+					<div className="five columns">
 						{cohortList}
 					</div>	
 				</div>	
