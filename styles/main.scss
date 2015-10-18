@@ -25,7 +25,7 @@ body {
 	background-color: $bodyBackground;
 }
 
-button {
+button.button {
         background-color: $buttonBackground;
         font-family: $paragraphFontFamily;
         box-shadow: 3px 3px 0px $buttonBorderColor;

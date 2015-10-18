@@ -65,7 +65,7 @@ module.exports  = React.createClass({
 						<div dangerouslySetInnerHTML={_this.markUp(question.get('questionContent'))} />
 						<div>{choiceRows}</div>
 						<div>Correct Answer: <span dangerouslySetInnerHTML={_this.markUp(question.get('correctChoice'))} /></div>
-						<hr />
+						<hr id="edit-hr"/>
 					</div>
 				);
 			});
@@ -76,9 +76,9 @@ module.exports  = React.createClass({
 		}
 		
 		return (
-			<div className="edit-quiz">
+			<div id="edit-quiz">
 				<h5 className="title">{quizTitle}</h5>
-				<button id="button" onClick={this.addQuestion}>Add a Question </button>
+				<button className="button" onClick={this.addQuestion}>Add a Question </button>
 				<div>{questionsElement}</div>
 			</div>
 
