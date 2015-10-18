@@ -69,7 +69,7 @@ module.exports = React.createClass({
                     <select className="u-full-width" id="exampleRecipientInput" ref="studentPick">
                         {studentOptions}
                     </select>
-                    <button className="att-butt">Submit</button>
+                    <button className>Submit</button>
                 </form>
                 {results}
             </div>
