@@ -116,6 +116,6 @@ module.exports = React.createClass({
 			)
 	},
     markUp: function(string){
-       return (__html:string);
+       return { __html : string };
     }
 });
