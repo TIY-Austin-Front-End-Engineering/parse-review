@@ -162,7 +162,7 @@ module.exports = React.createClass({
 					var questionInfo = {
 						question: answerList[props][0].get('questionId'),
 						questionTitle: answerList[props][0].get('questionId').get('questionContent'),
-						questionAverage: numberCorrect/totalNumOfAnswers*100
+						questionAverage: Math.round10(numberCorrect/totalNumOfAnswers*100)
 					};
 					findQuestions.push(questionInfo);
 				}
