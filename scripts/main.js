@@ -51,11 +51,10 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<QuizDetailsComponent quizId={id}  router={r}/>, app);
 	},
 	createCohort: function() {
-		var currentUser=Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<CreateCohortComponent />, app);
+			ReactDOM.render(<CreateCohortComponent />, app)
 		} else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a>, app);
 		}
 	},
 	home: function() {
@@ -68,11 +67,10 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	cohortRegister: function(cohortId) {
-		var currentUser=Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
 			ReactDOM.render(<RegisterComponent router={r} cohortId={cohortId} />, app);
 		} else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	createQuiz: function() {
@@ -82,7 +80,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<CreateQuizComponent router={r}/>, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	editQuiz:function(id){
@@ -92,7 +90,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<EditQuizComponent quizId={id} router={r}/>, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	postQuestion: function(id) {
@@ -102,7 +100,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<PostQuestionComponent quizId={id} router={r}/>, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	quizResults: function(userId, quizId) {
@@ -111,7 +109,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<QuizResultsComponent userId={userId} quizId={quizId} router={r} />, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	logout: function() {
@@ -123,7 +121,7 @@ var Router = Backbone.Router.extend({
 		if(currentUser.get('teacher')) {
 			ReactDOM.render(<AttendanceComponent/>, app);
 		} else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	quizList: function() {
@@ -132,7 +130,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<QuizListComponent />, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	classAnalytics: function() {
@@ -142,7 +140,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<ClassAnalyticsComponent router={r}/>, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	studentAnalytics: function() {
@@ -152,7 +150,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<StudentAnalyticsComponent />, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	dashboard: function() {
@@ -161,7 +159,7 @@ var Router = Backbone.Router.extend({
 			ReactDOM.render(<DashboardComponent />, app);
 		}
 		else {
-			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Go Home</p></a>, app);
+			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
 		}
 	},
 	credits: function() {
