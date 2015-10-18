@@ -20,13 +20,15 @@
 		box-shadow: 2px 2px 2px #000;
 		.choose-quiz {
 			font-size: 30px;
-			color: white;
+			color: #FFA54B;
 		}
 		.select-btn {
 			background-color: $buttonBackground;
-			color: $buttonTextColor;
-			font-family: $paragraphFontFamily;
-			margin-left: 1em;
+	        font-family: $paragraphFontFamily;
+	        box-shadow: 3px 3px 0px $buttonBorderColor;
+	        border: none;
+	        font-weight: bold;
+	        border-radius: .1em;
 		}
 		.select-btn:hover {
 			background-color: $hover;
