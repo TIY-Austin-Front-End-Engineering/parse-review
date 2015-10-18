@@ -7,6 +7,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var QuizResultsComponent = require('./QuizResultsComponent');
+var CohortModel = require('../models/CohortModel');
 var QuizModel = require('../models/QuizModel');
 var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
@@ -17,19 +18,25 @@ module.exports = React.createClass({
         return {
             students: [],
             scores: [],
-            quizzes: []
+            quizzes: [],
+            cohorts: []
         };
     },
     componentWillMount: function() {
-        var query = new Parse.Query(Parse.User);
-        query.equalTo('teacher', false).find().then((students) => {
-            this.setState({students: students});
+        var query = new Parse.Query(CohortModel);
+        query.find().then((cohorts) => {
+            this.setState({cohorts: cohorts});
         },
         (err) => {
             console.log(err);
         })
     },
     render: function() {
+        var cohortOptions = this.state.cohorts.map((cohort) => {
+            return (
+                <option value={cohort.id} key={cohort.id}>{cohort.get('name')+ ' - '+cohort.get('location')+ ' - '+cohort.get('date')}</option>
+            )
+        });
         var studentOptions = this.state.students.map((student) => {
             return (
                 <option value={student.id} key={student.id}>{student.get('firstName')+ ' '+student.get('lastName')}</option>
@@ -64,9 +71,16 @@ module.exports = React.createClass({
         return (
             <div className="att-container">
                 <h1>Student Analytics</h1>
+                <form onSubmit={this.onCohortSelect}>
+                    <label htmlFor="cohorts">Select Cohort</label>
+                    <select className="u-full-width exampleRecipientInput" ref="cohortPick">
+                        {cohortOptions}
+                    </select>
+                    <button className>Submit</button>
+                </form>
                 <form onSubmit={this.onStudentSelect}>
                     <label htmlFor="students">Select Student</label>
-                    <select className="u-full-width" id="exampleRecipientInput" ref="studentPick">
+                    <select className="u-full-width exampleRecipientInput" ref="studentPick">
                         {studentOptions}
                     </select>
                     <button className>Submit</button>
@@ -74,6 +88,16 @@ module.exports = React.createClass({
                 {results}
             </div>
         );
+    },
+    onCohortSelect: function(e) {
+        e.preventDefault();
+        var query = new Parse.Query(Parse.User);
+        query.equalTo('teacher', false).find().then((students) => {
+            this.setState({students: students});
+        },
+        (err) => {
+            console.log(err);
+        })
     },
     onStudentSelect: function(e) {
         e.preventDefault();
