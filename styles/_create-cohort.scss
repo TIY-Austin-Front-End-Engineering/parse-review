@@ -1,14 +1,43 @@
-@media (max-width: 50.3125em){
-	.five.columns{
-		width: 100%;
-	}
+h2{
+	color: $headerTextColor;
+	font-family: $headerFontFamily;
+	background: $headerBackground;
+	padding-left: 0.25em;
 }
-.seven.columns{
-	margin-top: 2em;
+p{
+	font-family: $paragraphFontFamily;
 }
-.url{
-	margin: 0 0 1em 1em;
+.cohortLinks{
+	background-color: $contentBackground;
+	padding: 0.5em;
 }
 .cohortName{
-	margin: 0;
+	text-decoration: underline;
+	margin-bottom: 0;
+}
+.seven.columns{
+	background: $contentBackground;
+}
+form{
+	padding: 0.5em;
+}
+#button-primary{
+	background-color: $buttonBackground;
+	box-shadow: 3px 3px 0px $buttonBorderColor;
+}
+.container{
+	background: $bodyBackground;
+	margin-top: 1.6em;
+	margin-bottom: 2em;
+}
+@media (max-width: 62.5em){
+	.seven.columns{
+		width: 100%;
+	}
+	.five.columns{
+		width: 100%;
+		margin-top: 2em;
+		margin-left:0;
+	}
+		
 }
