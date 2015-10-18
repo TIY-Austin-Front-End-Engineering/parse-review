@@ -95,7 +95,16 @@ module.exports = React.createClass({
         );
     },
     onCohortSelect: function(e) {
-       
+       e.preventDefault();
+       var studentQuery = new Parse.Query(Parse.User);
+       studentQuery.equalTo('cohortId', new CohortModel({objectId: this.refs.cohortPick.value}));
+       studentQuery.find().then(
+            (cohortStudents) => {
+                this.setState({students: cohortStudents});
+            },
+            err => {
+                console.log(err);
+            })
     },
     onStudentSelect: function(e) {
         e.preventDefault();
