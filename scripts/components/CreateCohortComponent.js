@@ -38,7 +38,7 @@ module.exports= React.createClass ({
 		}
 		return (
 			<div className="create-cohort-box container">
-				<div className="row">
+				<div className="create-cohort-inner-box row">
 					<div className="seven columns">
 						<h2>Create Cohort</h2>
 						<form onSubmit={this.onCreate}>
