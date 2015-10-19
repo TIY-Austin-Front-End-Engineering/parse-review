@@ -100,6 +100,7 @@ module.exports = React.createClass({
 				
 				<div className=" row quiz-details-container">
 					<div className="quiz-details-component">
+							<h1>Quiz</h1> 
 							<h4 dangerouslySetInnerHTML={this.markUp(marked(quizTitle))} />
 							<hr />
 							<div dangerouslySetInnerHTML={this.markUp(marked(currentQuestion.get('questionContent')))}>
