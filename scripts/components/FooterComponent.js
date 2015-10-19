@@ -18,10 +18,8 @@ module.exports = React.createClass({
 
         return (
             <div className="footer-container">
-            	<ul className="footer-links">
-	                <li>Built at <a href="http://www.theironyard.com">The Iron Yard-Austin</a> in 2015</li>
-	                <li><a href="#credits">Credits</a></li>
-                </ul>
+                <div className="footer-links"><p>Built at <a href="http://www.theironyard.com">The Iron Yard-Austin</a> in 2015</p></div>
+                <div className="footer-links"><a href="#credits">Credits</a></div>
             </div>
         );
     }

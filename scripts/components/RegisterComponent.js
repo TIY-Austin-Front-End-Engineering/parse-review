@@ -25,8 +25,7 @@ module.exports= React.createClass ({
 			
 			<div className="reg-form-container">
 				<form className="reg-form" onSubmit={this.onRegister} >
-					<h2 className="reg-head"><strong>Get Started Now!</strong></h2>
-						<hr />	
+					<h2 className="reg-head"><strong>Register</strong></h2>
 						<label htmlFor="firstName">First Name</label>
 						<input className="reg-name-input" ref="firstName" type="text" placeholder="Gill" id="firstName" />
 						<label htmlFor="lastName">Last Name</label>
