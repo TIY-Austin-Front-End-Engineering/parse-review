@@ -60,12 +60,15 @@ module.exports  = React.createClass({
 					)
 				});
 				return(
-					<div>
+					<div className="six columns">
+						<h5>Question:</h5>
                         {/* <div dangerouslySetInnerHTML={_this.markUp(question.get('questionTitle'))} /> */}
 						<div dangerouslySetInnerHTML={_this.markUp(question.get('questionContent'))} />
+						<div className="answerChoices">Answer Choices: </div>
 						<div>{choiceRows}</div>
-						<div>Correct Answer: <span dangerouslySetInnerHTML={_this.markUp(question.get('correctChoice'))} /></div>
-						<hr />
+						<div className="answerChoices">Correct Answer:</div>
+						<div><span dangerouslySetInnerHTML={_this.markUp(question.get('correctChoice'))} /></div>
+						
 					</div>
 				);
 			});
@@ -76,10 +79,16 @@ module.exports  = React.createClass({
 		}
 		
 		return (
-			<div>
-				<h5 className="title">{quizTitle}</h5>
-				<button className="button" onClick={this.addQuestion}>Add a Question </button>
-				<div>{questionsElement}</div>
+			<div className="container">
+				<div className="row">
+					<div className="eight columns">
+						<h3 className="title">{quizTitle}:</h3>	
+					</div>
+					<div className="four columns">	
+						<button onClick={this.addQuestion}>Add a Question </button>
+					</div>
+				</div>
+				<div className="row questions">{questionsElement}</div>
 			</div>
 
 		);

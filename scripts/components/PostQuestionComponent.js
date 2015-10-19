@@ -47,9 +47,9 @@ module.exports = React.createClass({
 		var choiceRows = this.state.choices.map(function(choice){
             console.log(choice);
 			return(
-				<label>
-				<input className="radioo" type="radio" value={choice} name="choices"/>
-				<span dangerouslySetInnerHTML={_this.markUp(marked(choice))} />
+				<label id="radiooo">
+					<input className="radioo" type="radio" value={choice} name="choices"/>
+					<span dangerouslySetInnerHTML={_this.markUp(marked(choice))} />
 				</label>
 			)
 		});

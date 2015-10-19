@@ -14,7 +14,7 @@ module.exports = React.createClass({
 					<div className="row">
 						<div className="six columns">
 							<a href="#createQuiz">
-								<div>
+								<div className="need">
 									<img src="../../images/check7.png"/>
 									<h5>Create A Quiz</h5>
 								</div>
@@ -22,7 +22,7 @@ module.exports = React.createClass({
 						</div>
 						<div className="six columns">
 							<a href="#studentAnalytics">
-								<div>
+								<div className="need">
 									<img src="../../images/data-analytics.png"/>
 									<h5>Student Averages</h5>
 								</div>
@@ -32,7 +32,7 @@ module.exports = React.createClass({
 					<div className="row">
 						<div className="six columns">
 							<a href="#classAnalytics">
-								<div>
+								<div className="need">
 									<img src="../../images/quiz.png"/>
 									<h5>Quiz Averages</h5>
 								</div>
@@ -40,7 +40,7 @@ module.exports = React.createClass({
 						</div>
 						<div className="six columns">
 							<a href="#attendance">
-								<div>
+								<div className="need">
 									<img src="../../images/verification25.png"/>
 									<h5>Student Attendance</h5>
 								</div>
@@ -50,7 +50,7 @@ module.exports = React.createClass({
 					<div className="row">
 						<div className="six columns">
 							<a href="#createCohort">
-								<div>
+								<div className="need">
 									<img src="../../images/students5.png"/>
 									<h5>Cohorts</h5>
 								</div>

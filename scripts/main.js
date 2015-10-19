@@ -53,7 +53,7 @@ var Router = Backbone.Router.extend({
 	createCohort: function() {
 		var currentUser = Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<CreateCohortComponent />, app)
+			ReactDOM.render(<CreateCohortComponent router={r}/>, app)
 		} else {
 			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a>, app);
 		}
@@ -68,12 +68,7 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(<RegisterComponent router={r} />, app);
 	},
 	cohortRegister: function(cohortId) {
-		var currentUser = Parse.User.current();
-		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<RegisterComponent router={r} cohortId={cohortId} />, app);
-		} else {
-			ReactDOM.render(<div className="moveAlong404"><a href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a></div>, app);
-		}
+		ReactDOM.render(<RegisterComponent router={r} cohortId={cohortId} />, app);
 	},
 	createQuiz: function() {
 		var currentUser = Parse.User.current();

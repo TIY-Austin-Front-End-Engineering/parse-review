@@ -1,32 +1,43 @@
 .class-analytics-container {
 	font-family: $paragraphFontFamily;
+	.border{
+		width: 90%;
+		box-sizing: border-box;
+		margin-bottom: 1em;
+		padding: 1em;
+		box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+		background-color: $innerContainer;
+	}
 	.page-title {
-		margin: 0 auto;
+		// margin: 0 auto;
 		margin-top: 1em;
-		height: 4em;
-		background-color: $navbar;
+		margin-left: 1em;
+		// height: 4em;
+		// background-color: $navbar;
 		color: $hover;
-		text-align: center;
+		// text-align: center;
 		font-family: $paragraphFontFamily;
 		width: 99%;
 		margin-bottom: 1em;
-		box-shadow: 2px 2px 2px #000;
+		// box-shadow: 2px 2px 2px #000;
 	}
 	.left-side {
 		background-color: $innerContainer;
-		margin-right: 3em;
-		margin-left: .4em;
+		// margin-right: 3em;
+		// margin-left: .4em;
 		padding: 0em 1em;
-		box-shadow: 2px 2px 2px #000;
+		// box-shadow: 2px 2px 2px #000;
 		.choose-quiz {
 			font-size: 30px;
-			color: white;
+			color: #FFA54B;
 		}
 		.select-btn {
 			background-color: $buttonBackground;
-			color: $buttonTextColor;
-			font-family: $paragraphFontFamily;
-			margin-left: 1em;
+	        font-family: $paragraphFontFamily;
+	        box-shadow: 3px 3px 0px $buttonBorderColor;
+	        border: none;
+	        font-weight: bold;
+	        border-radius: .1em;
 		}
 		.select-btn:hover {
 			background-color: $hover;
@@ -35,42 +46,36 @@
 		.drop-down-btn {
 			font-family: $paragraphFontFamily;
 			cursor: pointer;
-			width: 19em;
+			width: 100%;
 		}
 	}
-	.right-side {
-		margin-left: 0;
-		.analytics-container {
-			background-color: $innerContainer;
-			padding: 0 1em;
-			.header {
-				font-size: 30px;
-				color: white;
-			}
-			.right-content {}
-			hr {
-				border-color: $hover;
-				margin: 0;
-			}
-			.wrapper {
-				border-bottom: 1px solid $hover;
-				.question-title {
-					font-size: 24px;
-					color: $linkColor;
-				}
-				.question-answer {
-					font-size: 24px;
-					color: $linkColor;
-				}
-				.question {
-					font-size: 20px;
-					color: white;
-				}
-				.avg {
-					font-size: 20px;
-				}
-			}
+	.question-title{
+		margin: 0;
+		color: #7E9E99;
+	}
+	.question-answer{
+		#silly{
+			margin-bottom: 0;
+			color: #7E9E99;
 		}
+
+	}
+	span{
+		color: $paragraphColor;
 	}
 }
-
+#silly1{
+	margin-bottom: 0;
+	color: #7E9E99;
+}
+@media (max-width: 62.5em){
+	.four.columns{
+		width: 100%;
+	}
+	.eight.columns{
+		width: 100%;
+		margin-top: 2em;
+		// margin-left:0;
+	}
+		
+}
