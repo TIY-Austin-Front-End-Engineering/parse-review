@@ -10,12 +10,20 @@
 	box-shadow: 2px 2px 2px #000;
 	padding: 2%;
 	color:$paragraphColor;
+		h1{
+			font-family: $headerFontFamily;
+		    color:#FF434A;
+			background-color:#412D62;
+			text-align:center;
+		   }
 		h4 {
 			font-family: $headerFontFamily;
-			color: $subheaderTextColor;
-			padding: 0;
+			//color: $subheaderTextColor;
+			color:$subheaderTextColor;
+			padding-left: 0;
 			margin: 0;
-	}
+			//text-align:center;
+	       }
 	button {
 				background-color: #90C5A9;
 				padding: 0 10px;
