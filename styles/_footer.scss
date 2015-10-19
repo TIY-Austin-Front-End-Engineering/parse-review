@@ -1,11 +1,16 @@
+
 .footer-container {
-	position: fixed;
+    margin-top: 7em;
 	width: 100%;
-    bottom: 0%;
-    padding: 0;
+    bottom: 0;
+    min-height: 2.5em;
     font-family: $paragraphFontFamily;
     font-weight: bolder;
     background: $navbar;
+    padding-top: 1em;
+    ul {
+        margin-bottom: 0;
+    }
     li {
         text-decoration: none;
         display: inline;
