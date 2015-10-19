@@ -51,7 +51,7 @@ module.exports = React.createClass({
 		);
 	},
 	render: function() {
-		console.log(this.state.allCohorts);
+		
 		var rightContent = null;
 		var button = (<button ref="button" className="select-btn">Select</button>);
 		if(this.state.loading) {
@@ -71,7 +71,7 @@ module.exports = React.createClass({
 		if(this.state.showQuizSelect) {
 			var showQuizSelect = (
 				<form onSubmit={this.onQuizSelected}>
-					<label htmlFor="quizList" className="choose-quiz">Choose Quiz</label>
+					<h4 className="choose-quiz">Choose Quiz</h4>
 					<select ref="thisQuiz" id="quizList" className="drop-down-btn">
 						{quizOptions}
 					</select>
@@ -85,30 +85,38 @@ module.exports = React.createClass({
 			rightContent = this.state.allQuestions.map(function(question) {
 				var color = null;
 				if(question.questionAverage >= 80) {
+					
 					color = {
 						color: '#75D055'
 					}
 				}
 				else if(question.questionAverage <= 69) {
+					
 					color = {
 						color:'#FF6969'
 					}
 				}
 				else {
+					
 					color = {
 						color: '#FF8F59'
 					}
 				}
 				return (
-					<div className="wrapper" key={question.id}>
-						<h5 className="question-title">Question</h5>
-						<div className="question">{question.questionTitle.replace(/([>]\s*)?([#*_-]+)/gi,"")}</div>
-						<span className="question-answer">
-							<h5>Answer</h5>
+					<div className="border" key={question.id}>
+						<h5 className="question-title">Question:</h5>
+						<span>
+							<div className="question">{question.questionTitle.replace(/([>]\s*)?([#*_-]+)/gi,"")}</div>
 						</span>
+						<span className="question-answer">
+							<h5 id="silly">Answer</h5>
+						</span>
+						<span>{question.questionAnswer}</span>
+						<h5 id="silly1">Percentage:</h5>
 						<span className="avg" style={color}>{question.questionAverage}%</span>
 					</div>
 				);
+
 			});
 			if(this.state.allQuestions.length < 1) {
 				rightContent = (<div className="error-message">Data not yet available for this quiz</div>);
@@ -122,13 +130,13 @@ module.exports = React.createClass({
 
 		return (
 			<div className="class-analytics-container">
+				<div className="page-title">
+					<h1>Class Analytics</h1>
+				</div>
 				<div className="row">
-					<div className="page-title">
-						<h1>Class Analytics</h1>
-					</div>
 					<div className="left-side four columns">
 						<form onSubmit={this.onCohortSelected}>
-							<label htmlFor="quizList" className="choose-quiz">Choose Cohort</label>
+							<h4 className="choose-quiz">Choose Cohort</h4>
 							<select ref="thisCohort" id="quizList" className="drop-down-btn">
 								{cohortOptions}
 							</select>
@@ -136,10 +144,8 @@ module.exports = React.createClass({
 						</form>
 						{showQuizSelect}
 					</div>
-					<div className="right-side eight columns">
-						<div className="analytics-container">
-							<div>{rightContent}</div>
-						</div>
+					<div className="eight columns">
+						<div>{rightContent}</div>
 					</div>
 				</div>
 			</div>
@@ -201,10 +207,12 @@ module.exports = React.createClass({
 					roundedQuestionAverage = Math.round(numberCorrect/totalNumOfAnswers*10000);
 
 					var questionInfo = {
+						questionAnswer: answerList[props][0].get('questionId').get('correctChoice'),
 						question: answerList[props][0].get('questionId'),
 						questionTitle: answerList[props][0].get('questionId').get('questionContent'),
 						questionAverage: roundedQuestionAverage/100
 					};
+					console.log(questionInfo.questionAnswer);
 					findQuestions.push(questionInfo);
 				}
 				this.setState({ allQuestions: findQuestions });
