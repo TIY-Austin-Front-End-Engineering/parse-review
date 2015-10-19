@@ -3,11 +3,8 @@ footer {
 	.footer-container {
 		border-top: 1px solid #bbb;
 
-		// margin: 0;
-		// padding: 0;
-		// bottom: 0%;
-
 		.footer-links {
+			font-family: $paragraphFontFamily;
 			text-decoration: none;
 			padding-left: 2em;
 			color: #42094A;

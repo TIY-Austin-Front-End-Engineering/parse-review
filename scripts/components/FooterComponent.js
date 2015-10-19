@@ -19,7 +19,7 @@ module.exports = React.createClass({
 		return (
 			<div className="footer-container">
 				<div className="footer-links"><p>Built at <a href="http://www.theironyard.com">The Iron Yard-Austin</a> in 2015</p></div>
-				<div className="footer-links"><a href="#credits">Credits</a></div>
+				<div className="footer-links"><p><a href="#credits">Credits</a></p></div>
 			</div>
 		);
 	}
