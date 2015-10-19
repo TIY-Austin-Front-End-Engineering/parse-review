@@ -1,4 +1,3 @@
-
 .post-question-component {
 	font-family: $headerFontFamily;
 	font-size: 1.2em;
@@ -7,28 +6,35 @@
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-top: 3em;
+
 	h3 {
 		color:  $headerTextColor;
 		background: $headerBackground;
 		padding-left: 2%;
 	}
-	label{
+
+	label {
 		color: $subheaderTextColor;
 	}
+
 	.post-question {
 		text-align: left;
 		float: right;
 		padding: 2%;
+
 		.validate {
 			width: 100%;
 		}
+
 		.choice {
 			width: 80%;
 			margin-right: 2%;
 		}
+
 		.choice-btn {
 			width: 18%;
 		}
+
 		button {
 			background-color: $buttonBackground;
 			color: $buttonTextColor;
@@ -40,25 +46,22 @@
 			border-radius: .1em;
 		}
 	}
-	#radiooo{
-		span{
-			p{
+
+	#radiooo {
+		span {
+			p {
 				display: inline;
 				padding-left: 0.8em;
 				color: $paragraphColor;
 			}
 		}
-			
-		
-		
 	}
-
 }
 
-
-
 @media (min-width: 550px){
+
 	.post-question-component{
+
 		.column, .columns {
 	  		margin-left: 0;
 		}

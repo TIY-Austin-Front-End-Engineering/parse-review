@@ -16,21 +16,20 @@ module.exports = React.createClass({
 		}
 	},
 	componentWillMount: function() {
-        this.fetch();
+		this.fetch();
 	},
 	render: function(){
 		var _this = this;
-		var quizzes = this.state.quizList.map(function(quiz){
+		var quizzes = this.state.quizList.map(function(quiz) {
 			var startTime = quiz.get('startTime');
 			var expireTime = quiz.get('expireTime');
 			var button = '';
 			if(quiz.taken){
 				button = (<a href={"#quizResults/" + Parse.User.current().id +"/"+ quiz.id} ><button className="take-quiz">Quiz Results</button></a>)
-			}else{
+			} else {
 
 				button = (<a href={"#quizDetails/"+ quiz.id} ><button className="take-quiz">Take Quiz</button></a>)
 			}
-
 
 			return (
 				<div key={quiz.id} className="quiz-margin-container">
@@ -77,59 +76,57 @@ module.exports = React.createClass({
 		)
 	},
 	fetch: function() {
-        var finalQuizzes = [];
-        var flag = false;
-        var allTakenQuizzes = [];
-        var currentCohort = Parse.User.current().get('cohortId');
-        var quizQuery = new Parse.Query(QuizModel);
-        quizQuery.equalTo('cohortId', currentCohort);
-        quizQuery.descending("createdAt");
-        quizQuery.limit(6);
-        quizQuery.find().then(
-            (allQuizzesForCohort) => {
-                var takenQuery = new Parse.Query(StudentAnswerModel);
-                takenQuery.equalTo('userId', Parse.User.current());
-                takenQuery.find().then(
-                    (currentStudentAnswers) => {
-                        var questionQuery = new Parse.Query(QuestionModel);
-                        questionQuery.find().then(
-                            (questions) => {
-                                for(var i = 0; i < currentStudentAnswers.length; i++){
-                                    for(var j = 0; j < questions.length; j++){
-                                        if( currentStudentAnswers[i].get('questionId').id === questions[j].id){
-                                            allTakenQuizzes.push(questions[j].get('quizId').id)
-                                        }
-                                    }
-                                }
-                                var cleanedTakenQuizzes = _.uniq(allTakenQuizzes);
-                                allQuizzesForCohort.forEach(function(quiz){
-                                   for(var y = 0; y < cleanedTakenQuizzes.length; y++){
-                                       if( _.contains(quiz, cleanedTakenQuizzes[y])){
-                                           flag = true
-                                       }
-                                   }
-                                    if(flag){
-                                        var extra = [];
-                                        extra.push(quiz);
-                                        flag = false
-                                    }else{
-                                        finalQuizzes.push(quiz);
-                                    }
-                                });
-                                this.setState({quizList: finalQuizzes})
-                            }
-                        );
-
-                    }
-                );
-            },
-            (err) => {
-                console.log(err)
-            }
-        );
-    },
+		var finalQuizzes = [];
+		var flag = false;
+		var allTakenQuizzes = [];
+		var currentCohort = Parse.User.current().get('cohortId');
+		var quizQuery = new Parse.Query(QuizModel);
+		quizQuery.equalTo('cohortId', currentCohort);
+		quizQuery.descending("createdAt");
+		quizQuery.limit(6);
+		quizQuery.find().then(
+			(allQuizzesForCohort) => {
+				var takenQuery = new Parse.Query(StudentAnswerModel);
+				takenQuery.equalTo('userId', Parse.User.current());
+				takenQuery.find().then(
+					(currentStudentAnswers) => {
+						var questionQuery = new Parse.Query(QuestionModel);
+						questionQuery.find().then(
+							(questions) => {
+								for(var i = 0; i < currentStudentAnswers.length; i++){
+									for(var j = 0; j < questions.length; j++){
+										if( currentStudentAnswers[i].get('questionId').id === questions[j].id){
+											allTakenQuizzes.push(questions[j].get('quizId').id)
+										}
+									}
+								}
+								var cleanedTakenQuizzes = _.uniq(allTakenQuizzes);
+								allQuizzesForCohort.forEach(function(quiz){
+								   for(var y = 0; y < cleanedTakenQuizzes.length; y++){
+									   if( _.contains(quiz, cleanedTakenQuizzes[y])){
+										   flag = true
+									   }
+								   }
+									if(flag) {
+										var extra = [];
+										extra.push(quiz);
+										flag = false
+									} else {
+										finalQuizzes.push(quiz);
+									}
+								});
+								this.setState({quizList: finalQuizzes})
+							}
+						);
+					}
+				);
+			},
+			(err) => {
+				console.log(err)
+			}
+		);
+	},
 	capitalizeFirstLetter: function(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
-
 });

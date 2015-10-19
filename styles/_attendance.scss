@@ -1,7 +1,7 @@
-
 .att-container {
 	text-align: none;
 	margin: 0 4em;
+
 	#att-title {
 		text-align: left;
 		font-family: $headerFontFamily;
@@ -9,41 +9,50 @@
 		background: $innerContainer;
 		margin-bottom: -1em;
 	}
+
 	.att-table {
-	background: $contentBackground;
-	color: $paragraphColor;
+		background: $contentBackground;
+		color: $paragraphColor;
 	}
-	th{
+
+	th {
 		border: 2px solid $bodyBackground;
 	}
+
 	td {
-	background: $contentBackground;
-	border: 2px solid $bodyBackground;
+		background: $contentBackground;
+		border: 2px solid $bodyBackground;
 	}
+
 	.att-butt {
-	margin-left: 1em;
-	float: left;
-	color: $buttonTextColor;
+		margin-left: 1em;
+		float: left;
+		color: $buttonTextColor;
 	}
+
 	#exampleRecipientInput {
-	float: left;
-	display: inline-block;
-	width: 40%;
+		float: left;
+		display: inline-block;
+		width: 40%;
 	}
+
 	option {
-	display: inline-block;
+		display: inline-block;
 	}
-	label{
-	color: $subheaderTextColor;
-	font-family: $paragraphFontFamily;
-	margin-top: 0;
+
+	label {
+		color: $subheaderTextColor;
+		font-family: $paragraphFontFamily;
+		margin-top: 0;
 	}
+
 	.att-info {
-	font-size: 2em;
-	margin-top: 2em;
+		font-size: 2em;
+		margin-top: 2em;
 	}
+
 	td:first-child {
-	padding-left: 15px;
+		padding-left: 15px;
 	}
 }
 

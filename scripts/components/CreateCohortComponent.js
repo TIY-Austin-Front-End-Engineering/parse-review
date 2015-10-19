@@ -34,13 +34,13 @@ module.exports= React.createClass ({
 		})
 		if(this.state.error) {
 			errorElement = (<p className="error-message">{this.state.error}</p>)
-			
+
 		}
 		return (
-			<div className="container">
+			<div className="create-cohort-box container">
 				<div className="row">
 					<div className="seven columns">
-						<h2>Create Cohort</h2>	
+						<h2>Create Cohort</h2>
 						<form onSubmit={this.onCreate}>
 							<label htmlFor="name">Cohort Name</label>
 							<input className="u-full-width" ref="name" type="text" placeholder="name" id="name" />
@@ -54,8 +54,8 @@ module.exports= React.createClass ({
 					</div>
 					<div className="five columns">
 						{cohortList}
-					</div>	
-				</div>	
+					</div>
+				</div>
 			</div>
 		);
 	},

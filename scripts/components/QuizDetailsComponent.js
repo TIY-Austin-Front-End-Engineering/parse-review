@@ -10,22 +10,21 @@ var QuestionModel = require('../models/QuestionModel');
 var StudentAnswerModel = require('../models/StudentAnswerModel');
 var marked = require('marked');
 marked.setOptions({
-    renderer: new marked.Renderer(),
-    gfm: true,
-    tables: true,
-    breaks: false,
-    pedantic: false,
-    smartLists: true,
-    smartypants: false
+	renderer: new marked.Renderer(),
+	gfm: true,
+	tables: true,
+	breaks: false,
+	pedantic: false,
+	smartLists: true,
+	smartypants: false
 });
 
 module.exports = React.createClass({
 	getInitialState: function() {
-	    return {
-	         currentQuestion:0,
-	         quiz: null
-	    };
-
+		return {
+			 currentQuestion:0,
+			 quiz: null
+		};
 	},
 	componentDidMount: function() {
 		this.start = new Date();
@@ -38,10 +37,10 @@ module.exports = React.createClass({
 				questionQuery.find().then(
 					(questionVar) => {
 						console.log(questionVar)
-			    		this.setState({
+						this.setState({
 							currentQuestion:0,
-			  			    questions:questionVar,
-			  			    quiz: quiz
+							questions:questionVar,
+							quiz: quiz
 						})
 					}
 				)
@@ -49,11 +48,11 @@ module.exports = React.createClass({
 		)
 	},
 	submitSolve: function(){
-		if(this.currentQuestion.selectedChoiceId ==null){
-			this.setState({ 
-	         currentQuestion:this.state.currentQuestion,
-	         errorMessage:'Please select your answer'
-	    	})
+		if(this.currentQuestion.selectedChoiceId ==null) {
+			this.setState({
+			 currentQuestion:this.state.currentQuestion,
+			 errorMessage:'Please select your answer'
+			})
 			return;
 		}
 		this.state.currentQuestion++;
@@ -63,21 +62,21 @@ module.exports = React.createClass({
 		answer.set('studentCorrect',this.currentQuestion.selectedChoiceId == this.currentQuestion.get('correctChoice'));
 		answer.set('userId',Parse.User.current());
 		answer.save();
-		if(this.state.currentQuestion >= this.state.questions.length){
+		if(this.state.currentQuestion >= this.state.questions.length) {
 			var end = new Date();
 			var elapsed = this.start - end;
 			this.props.router.navigate('#quizResults/'+Parse.User.current().id+'/'+this.props.quizId, {trigger: true});
 			return;
 		}
-		this.setState({ 
-	         currentQuestion:this.state.currentQuestion,
-	         errorMessage:'' 
-	    })
-	    $(this.getDOMNode()).find('[type="radio"]').prop("checked", false);
-	    this.currentQuestion.selectedChoiceId = null;
+		this.setState({
+			 currentQuestion:this.state.currentQuestion,
+			 errorMessage:''
+		})
+		$(this.getDOMNode()).find('[type="radio"]').prop("checked", false);
+		this.currentQuestion.selectedChoiceId = null;
 	},
 	answerPicked: function(e){
-		this.currentQuestion.selectedChoiceId = e.currentTarget.value;	
+		this.currentQuestion.selectedChoiceId = e.currentTarget.value;
 	},
 	render: function() {
 		var questions = this.state.questions;
@@ -97,10 +96,9 @@ module.exports = React.createClass({
 			return(<div><input value={qc} type='radio' defaultValue={false} name='radioAnswer' onChange={self.answerPicked} /> &nbsp;<span dangerouslySetInnerHTML={self.markUp(marked(qc))} /></div>);
 		});
 			return (
-				
 				<div className=" row quiz-details-container">
 					<div className="quiz-details-component">
-							<h1>Quiz</h1> 
+							<h1>Quiz</h1>
 							<h4 dangerouslySetInnerHTML={this.markUp(marked(quizTitle))} />
 							<hr />
 							<h5 dangerouslySetInnerHTML={this.markUp(marked(currentQuestion.get('questionContent')))}></h5>
@@ -115,7 +113,7 @@ module.exports = React.createClass({
 				</div>
 			)
 	},
-    markUp: function(string){
-       return { __html : string };
-    }
+	markUp: function(string){
+		return { __html : string };
+	}
 });
