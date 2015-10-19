@@ -53,7 +53,7 @@ var Router = Backbone.Router.extend({
 	createCohort: function() {
 		var currentUser = Parse.User.current();
 		if(currentUser && currentUser.get('teacher') === true) {
-			ReactDOM.render(<CreateCohortComponent />, app)
+			ReactDOM.render(<CreateCohortComponent router={r}/>, app)
 		} else {
 			ReactDOM.render(<a className="moveAlong404"href=""><img src="images/move-along-404.jpg"/><p>Moving Along</p></a>, app);
 		}
