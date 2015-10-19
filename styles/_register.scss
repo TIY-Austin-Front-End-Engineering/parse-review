@@ -1,12 +1,12 @@
 .reg-form-container {
 	height: 100%;
 	width:60%;
-+	margin-left: 20%;
-+	margin-right: 20%;
-+	background: $contentBackground;
-+	padding-bottom:1em;
-+	margin-top: 3em;
-+	margin-bottom: 6em;
+	margin-left: 20%;
+	margin-right: 20%;
+	background: $contentBackground;
+	padding-bottom: 1em;
+	margin-top: 3em;
+	margin-bottom: 6em;
 
 	.reg-form {
 		height: 100%;
@@ -35,12 +35,12 @@
 		color: #FFA54B;
 		display:block;
 		margin-left: 4%;
-+		margin-right: 5%;
+		margin-right: 5%;
 	}
 
 	input {
 		margin-left: 4%;
-+		margin-right: 5%;
+		margin-right: 5%;
 		display: block;
 		width: 90%;
 		color: #42094A;
@@ -58,4 +58,5 @@
 		color:#42094A;
 		margin-left: 4%;
 		margin-right: 5%;
+	}
 }
