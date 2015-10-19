@@ -1,14 +1,15 @@
 .reg-form-container{
 	height:100%;
-	width:100%;
-	padding-bottom:7em;
-
+	width:60%;
+	margin-left: 20%;
+	margin-right: 20%;
+	background: $contentBackground;
+	padding-bottom:1em;
+	margin-top: 3em;
+	margin-bottom: 6em;
 	.reg-form{
 		height:100%;
-		width:100%;
-
-		
-
+		width:100%;	
 		
 	}
 	.reg-head{
@@ -18,50 +19,40 @@
 		font-weight: bold 20em;
 		padding-bottom:0.5em;
 		padding-top:1em;
-		margin-right:13%;
+		margin-right:.4em;
 		}
-		hr{
-			margin: 0;
-			border-color: $hover;
-			clear: both;
-			padding-bottom: 2em;
-			
-
-		}
-
 	label{
-		
+		margin-left: 4%;
 		font-family:Oswald, sans-serif;
 		color:#FFA54B;
-		display:inline-block;
-		float:left;
-		margin-left:15%;
+		display:block;
+		margin-right: 5%;
 		
 
 	}
 	input{
+		margin-left: 4%;
+		margin-right: 5%;
 		display:block;
-		width:40%;
-		margin-left:25%;
+		width: 90%;
 		color:#42094A;
-		
-
-		
+			
 	}
 
 	
 	select{
 		display:block;
-		width:40%;
-		margin-left:25%;
+		width:90%;
+		margin-left: 4%;
+		margin-right: 5%;
 
 	}
 	.reg-button-primary{
-		float:left;
 		background-color:#90C5A9;
-		margin-left:54%;
 		border-bottom: 2px solid #FF434A;
 		color:#42094A;
+		margin-left: 4%;
+		margin-right: 5%;
 
 	}
 	
