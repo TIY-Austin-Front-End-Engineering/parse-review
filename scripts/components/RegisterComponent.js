@@ -13,20 +13,17 @@ module.exports= React.createClass ({
 		};
 	},
 	render: function() {
-		
-		if (teachPassword){
+		if (teachPassword) {
 			teachPassword=(<input className="u-full-width" ref="teach" type="password" placeholder="teacher password" />);
 		}
 		if (this.state.error) {
 			errorElement = (<p className= "red">{this.state.error}</p>)
 		}
 		return (
-
-			
 			<div className="reg-form-container">
 				<form className="reg-form" onSubmit={this.onRegister} >
 					<h2 className="reg-head"><strong>Get Started Now!</strong></h2>
-						<hr />	
+						<hr />
 						<label htmlFor="firstName">First Name</label>
 						<input className="reg-name-input" ref="firstName" type="text" placeholder="Gill" id="firstName" />
 						<label htmlFor="lastName">Last Name</label>
@@ -37,13 +34,13 @@ module.exports= React.createClass ({
 						<input className="reg-pass-input" ref="password" type="password" placeholder="password" id="password" />
 						<label htmlFor="email">Your Email</label>
 						<input className="reg-email-input" ref="email" type="email" placeholder="test@mailbox.com" id="email" />
-					
+
 				<select onChange={this.reRender} ref="select">
 
 									<option>Student</option>
 									<option>Teacher</option>
 								</select>
-							
+
 							{teachPassword}
 							<div className="reg-button">
 							<button ref="button" className="reg-button-primary" disabled={false}>Register</button>
@@ -68,11 +65,11 @@ module.exports= React.createClass ({
 		this.refs.button.disabled = true;
 		var that=this;
 		var teach = false;
-		
-		if (this.refs.select.value=='Teacher'){
-			
-			
-			if (this.refs.teach.value==='teacher'){
+
+		if (this.refs.select.value=='Teacher') {
+
+
+			if (this.refs.teach.value==='teacher') {
 				console.log('yay!!!')
 				console.log(this.refs.teach.value);
 				teach=true;
@@ -98,13 +95,13 @@ module.exports= React.createClass ({
 					}
 				);
 			}
-			else{
+			else {
 				console.log('no beans');
 				errorElement = (<p className= "red">Incorrect Teacher Password</p>);
 				that.forceUpdate();
 			}
 		}
-		else{
+		else {
 			var targetCohortModel = new CohortModel({objectId: this.props.cohortId});
 			var user = new Parse.User();
 			user.signUp(
@@ -130,14 +127,5 @@ module.exports= React.createClass ({
 			);
 			this.props.router.navigate('', {trigger: true});
 		}
-		
 	}
 });
-
-
-
-
-
-
-
-

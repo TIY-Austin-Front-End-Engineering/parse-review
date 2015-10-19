@@ -16,12 +16,12 @@ module.exports = React.createClass({
 			studentChoice: null
 		}
 	},
-	componentWillMount: function(){
-		
+	componentWillMount: function() {
+
 	},
 	render: function() {
 		var questionChoicesMap = this.props.questionChoices.map((choice) => {
-			
+
 			if(this.props.studentChoice === choice && this.props.studentChoice === this.props.correctChoice) {
 				return (
 					<div className="green">{choice}</div>

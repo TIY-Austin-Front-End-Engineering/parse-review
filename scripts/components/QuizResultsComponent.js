@@ -6,7 +6,6 @@ var PossibleAnswersComponent = require('./PossibleAnswersComponent');
 var numQuestions = 0;
 var numCorrect = 0;
 
-
 module.exports = React.createClass({
 	getInitialState: function () {
 		return {
@@ -17,7 +16,7 @@ module.exports = React.createClass({
 			quizName: []
 		}
 	},
-	calculateAnswers:function(answers){ 
+	calculateAnswers:function(answers){
 	var numberCorrect =0;
 	for(var i =0; i < answers.length; i ++){
 		if(answers[i].get('studentCorrect') == true){
@@ -51,13 +50,12 @@ module.exports = React.createClass({
 		query.include('questionId');
 		query.ascending('createdAt').find().then((results) => {
 			var numberCorrect = this.calculateAnswers(results);
-			
+
 			this.setState({
 				questions: results,
 				numberOfCorrectAnswers:numberCorrect,
 				percentage: ((numberCorrect/ results.length) * 100).toFixed()
 			})
-			// console.log(results)
 		});
 
 		// innerQuery.equalTo('quizId', targetQuizModel);
@@ -76,7 +74,6 @@ module.exports = React.createClass({
 			this.setState({
 				quizName: result
 			})
-		// console.log(result)
 		})
 
 		// innerQuery.equalTo('quizId', targetQuizModel);
@@ -89,8 +86,6 @@ module.exports = React.createClass({
 		// })
 	},
 	render: function() {
-		// console.log(this.state.quizName);
-
 		var ListQuizName = this.state.quizName.map((name) => {
 			return (
 				<h5 className="title">Quiz Name: {name.get('quizTitle')}</h5>
@@ -107,27 +102,27 @@ module.exports = React.createClass({
 		});
 		//var questions maps out the questions associated with the quizId
 
-			return (
-				<div className="quiz-results-container container">
-					<div className="row">
-						<div className="eight columns">
-							<div>
-								<h5>Your Results</h5>
-								{ListQuizName}
-							</div>
-							<hr />
-							<div>
-								{ListQuestionDetails}
-							</div>
+		return (
+			<div className="quiz-results-container container">
+				<div className="row">
+					<div className="eight columns">
+						<div>
+							<h5>Your Results</h5>
+							{ListQuizName}
 						</div>
-						<div className="four columns totals">
-							<div>Number Correct: {this.state.numberOfCorrectAnswers} out of {this.state.questions.length}</div> 
-							<div className="percentage">Percentage: {this.state.percentage}%</div>
-							<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
+						<hr />
+						<div>
+							{ListQuestionDetails}
 						</div>
 					</div>
+					<div className="four columns totals">
+						<div>Number Correct: {this.state.numberOfCorrectAnswers} out of {this.state.questions.length}</div>
+						<div className="percentage">Percentage: {this.state.percentage}%</div>
+						<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
+					</div>
 				</div>
-			);
+			</div>
+		);
 	},
 	onReturnQuizList: function(e) {
 			this.props.router.navigate('quizList', {trigger: true});

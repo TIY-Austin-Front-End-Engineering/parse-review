@@ -2,12 +2,15 @@
 	background: $navbar;
 	height: 67px;
 	overflow: hidden;
+
 	.beniz {
 		display:none;
 	}
+
 	a {
 		text-decoration: none;
 		color: $subheaderTextColor;
+
 		.nav-bar-button {
 			display:block;
 			font-size: 2em;
@@ -16,34 +19,40 @@
 			border-top: 2px solid $subheaderTextColor;
 		}
 	}
+
 	a:hover {
 	  	color: $subheaderTextColor;
 	  	background-color: $subheaderTextColor;
 	}
+
 	.logo {
 		height: 4em;
 		width: 4em;
 		float: left;
 		margin-left: .3em;
 	}
+
 	.user-name-display {
 		color:$navLink;
 		padding: 1.5em 0 1.5em 1.5em;
 		float: left;
 	}
+
 	.hamburger {
 		color: $hover;
 		float: right;
 	}
+
 	.hamburger-image {
 		height: 3em;
 		width: 3em;
 		padding: .8em;
 	}
+
 	.closed {
 		display: none;
-		
 	}
+
 	.open {
 		display: block;
 		float: right;
@@ -53,20 +62,25 @@
 		background: $navbar;
 		text-align: center;
 	}
+
 	#hamburger-list {
 			border-left: 4px solid $navbar;
 			border-right: 4px solid $navbar;
 		}
+
 	@media screen and (min-width: 550px) {
 		.hamburger-image {
 			display: none;
 		}
+
 		.hamburger {
 			display: none;
 		}
+
 		#hamburger-list {
 			display: none;
 		}
+
 		a {
 			.nav-bar-button {
 				float: right;
@@ -76,6 +90,7 @@
 				border: none;
 			}
 		}
+
 		.beniz {
 			display: inline;
 		}

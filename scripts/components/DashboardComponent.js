@@ -1,12 +1,12 @@
-//this component is the dashboard for the analytics componenets. 
+//this component is the dashboard for the analytics componenets.
 
 'use strict';
 var React = require('react');
 
 module.exports = React.createClass({
 	render: function() {
-		return(
-			<div className="container">
+		return (
+			<div className="dashboard-box container">
 				<div className="dashboard-title">
 					<h1>{Parse.User.current().get('username')+'\'s'} Dashboard</h1>
 				</div>
@@ -59,7 +59,6 @@ module.exports = React.createClass({
 					</div>
 				</div>
 			</div>
-
 		)
 	}
 })
