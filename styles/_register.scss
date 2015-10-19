@@ -1,7 +1,12 @@
 .reg-form-container {
 	height: 100%;
-	width: 100%;
-	padding-bottom: 7em;
+	width:60%;
++	margin-left: 20%;
++	margin-right: 20%;
++	background: $contentBackground;
++	padding-bottom:1em;
++	margin-top: 3em;
++	margin-bottom: 6em;
 
 	.reg-form {
 		height: 100%;
@@ -15,7 +20,7 @@
 		font-weight: bold 20em;
 		padding-bottom: 0.5em;
 		padding-top: 1em;
-		margin-right: 13%;
+		margin-right: 0.4em;
 
 		hr {
 			margin: 0;
@@ -28,15 +33,16 @@
 	label {
 		font-family: Oswald, sans-serif;
 		color: #FFA54B;
-		display: inline-block;
-		float: left;
-		margin-left: 15%;
+		display:block;
+		margin-left: 4%;
++		margin-right: 5%;
 	}
 
 	input {
+		margin-left: 4%;
++		margin-right: 5%;
 		display: block;
-		width: 40%;
-		margin-left: 25%;
+		width: 90%;
 		color: #42094A;
 	}
 
@@ -47,10 +53,9 @@
 	}
 
 	.reg-button-primary {
-		float: left;
-		background-color: #90C5A9;
-		margin-left: 54%;
+		background-color:#90C5A9;
 		border-bottom: 2px solid #FF434A;
-		color: #42094A;
-	}
+		color:#42094A;
+		margin-left: 4%;
+		margin-right: 5%;
 }
