@@ -2,6 +2,7 @@
 
 	.title {
 		font-family: $paragraphFontFamily;
+		color: $buttonBackground;
 	}
 
 	.question {
@@ -10,16 +11,19 @@
 
 	.container {
 		margin: 2em;
-		font-family: $paragraphFontFamily
+		font-family: $paragraphFontFamily;
 	}
 
 	.question-container {
 		margin: 2em;
 		font-family: $paragraphFontFamily;
 	}
-
+	.totals{
+		padding: 1em;
+		box-shadow: 2px 2px 10px #000;
+	}
 	.percentage {
-		margin: 2em;
+		margin: 2em 0;
 		font-family: $paragraphFontFamily;
 	}
 

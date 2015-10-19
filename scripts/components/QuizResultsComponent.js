@@ -108,20 +108,24 @@ module.exports = React.createClass({
 		//var questions maps out the questions associated with the quizId
 
 			return (
-				<div className="quiz-results-container">
-					<div className="container">
-						<h5>Your Results</h5>
-						{ListQuizName}
+				<div className="quiz-results-container container">
+					<div className="row">
+						<div className="eight columns">
+							<div>
+								<h5>Your Results</h5>
+								{ListQuizName}
+							</div>
+							<hr />
+							<div>
+								{ListQuestionDetails}
+							</div>
+						</div>
+						<div className="four columns totals">
+							<div>Number Correct: {this.state.numberOfCorrectAnswers} out of {this.state.questions.length}</div> 
+							<div className="percentage">Percentage: {this.state.percentage}%</div>
+							<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
+						</div>
 					</div>
-					<hr />
-					<div>
-						{ListQuestionDetails}
-					</div>
-					<div>
-						<div>Number Correct: {this.state.numberOfCorrectAnswers} out of {this.state.questions.length}</div> 
-						<div className="percentage">Percentage: {this.state.percentage}%</div>
-					</div>
-					<button className="button" onClick={this.onReturnQuizList}>Return to Quiz List</button>
 				</div>
 			);
 	},
