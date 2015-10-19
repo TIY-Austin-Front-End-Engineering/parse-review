@@ -80,17 +80,17 @@ _Open to Change!_
 
 **Color Palette by Emily Devoll**
 
-*Navbar: #412D62;
-*Paragraph Color: #412D62;
-*Button Text Color: #412D62;
-*Button Background:  #90C5A9;
-*Button Border Color: #FF434A;
-*Body Background:  #F4EAE0;
-*Nav Link: #F4EAE0;
-*Link Color:  #F4EAE0;
-*Hover: #F8E1B5;
-*Header Text Color: #FF434A;
-*Subheader Text Color: #FFA54B;
-*Content Background: #fff;
-*Header Background: #412D62;
+* Navbar: #412D62;
+* Paragraph Color: #412D62;
+* Button Text Color: #412D62;
+* Button Background:  #90C5A9;
+* Button Border Color: #FF434A;
+* Body Background:  #F4EAE0;
+* Nav Link: #F4EAE0;
+* Link Color:  #F4EAE0;
+* Hover: #F8E1B5;
+* Header Text Color: #FF434A;
+* Subheader Text Color: #FFA54B;
+* Content Background: #fff;
+* Header Background: #412D62;
 
