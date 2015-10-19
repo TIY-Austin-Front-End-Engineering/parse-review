@@ -19,26 +19,38 @@
 		text-align: left;
 		float: right;
 		padding: 2%;
-			.validate {
-				width: 100%;
+		.validate {
+			width: 100%;
+		}
+		.choice {
+			width: 80%;
+			margin-right: 2%;
+		}
+		.choice-btn {
+			width: 18%;
+		}
+		button {
+			background-color: $buttonBackground;
+			color: $buttonTextColor;
+			font-family: $paragraphFontFamily;
+			box-shadow: 3px 3px 0px $buttonBorderColor;
+			border: none;
+			font-weight: bold;
+			font-size: .8em;
+			border-radius: .1em;
+		}
+	}
+	#radiooo{
+		span{
+			p{
+				display: inline;
+				padding-left: 0.8em;
+				color: $paragraphColor;
 			}
-			.choice {
-				width: 80%;
-				margin-right: 2%;
-			}
-			.choice-btn {
-				width: 18%;
-			}
-			button {
-				background-color: $buttonBackground;
-				color: $buttonTextColor;
-				font-family: $paragraphFontFamily;
-				box-shadow: 3px 3px 0px $buttonBorderColor;
-				border: none;
-				font-weight: bold;
-				font-size: .8em;
-				border-radius: .1em;
-			}
+		}
+			
+		
+		
 	}
 
 }
