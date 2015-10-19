@@ -60,7 +60,6 @@ module.exports= React.createClass ({
 		);
 	},
 	onCreate: function(e) {
-		var that=this;
 		e.preventDefault();
 		var newCohort = new CohortModel();
 		newCohort.save(
@@ -71,15 +70,22 @@ module.exports= React.createClass ({
 		},
 		{
 			success: (u) => {
-				console.log('test');
-				that.forceUpdate();
-				},
-					error: (u, error) => {
-						this.setState({
-							error: error.message
-					});
-				}
+				//just trying 3 methods here. None works.
+				this.forceUpdate();
+				this.props.router.navigate('#createCohort', {trigger: true});
+				this.reRender();
+			},
+			error: (u, error) => {
+				this.setState({
+					error: error.message
+				});
 			}
+		}
 		);
+
+	},
+	reRender: function(){
+		this.forceUpdate();
+		this.props.router.navigate('#createCohort', {trigger: true});
 	}
 })
