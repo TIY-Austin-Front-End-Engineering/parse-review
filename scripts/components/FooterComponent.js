@@ -14,13 +14,13 @@ var ReactDOM = require('react-dom');
 var CreditsComponent = require('./CreditsComponent');
 
 module.exports = React.createClass({
-    render: function() {
+	render: function() {
 
-        return (
-            <div className="footer-container">
-                <div className="footer-links"><p>Built at <a href="http://www.theironyard.com">The Iron Yard-Austin</a> in 2015</p></div>
-                <div className="footer-links"><a href="#credits">Credits</a></div>
-            </div>
-        );
-    }
+		return (
+			<div className="footer-container">
+				<div className="footer-links"><p>Built at <a href="http://www.theironyard.com">The Iron Yard-Austin</a> in 2015</p></div>
+				<div className="footer-links"><a href="#credits">Credits</a></div>
+			</div>
+		);
+	}
 });
